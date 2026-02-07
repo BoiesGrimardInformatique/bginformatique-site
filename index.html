@@ -48,14 +48,16 @@
 
         header {
             background: var(--white);
-            padding: 15px 0;
+            padding: 20px 0; /* Un peu plus d'espace en hauteur */
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        .logo { max-width: 220px; height: auto; }
+        
+        /* C'est ici que la magie opère : 380px au lieu de 220px */
+        .logo { max-width: 380px; height: auto; width: 80%; }
 
         .hero {
             background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
