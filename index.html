@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BG Informatique | Gestion Microsoft 365 & Administration Système</title>
+    <meta name="description" content="Partenaire TI stratégique à Saint-Jérôme. Expert en gestion de Tenants Microsoft 365 (toutes licences) et administration de parcs hybrides (Windows, Linux, macOS).">
+    <meta name="keywords" content="Gestion Tenant Microsoft 365, Administrateur Système Saint-Jérôme, Support TI Entreprise, Linux, Windows, macOS, Cybersécurité, E5, Business Premium">
+    <link rel="canonical" href="https://bginformatique.ca/">
+
+    <meta property="og:title" content="BG Informatique | Partenaire Stratégique TI">
+    <meta property="og:description" content="Expertise transversale en gestion de Tenants Microsoft 365 et administration système multi-plateformes.">
+    <meta property="og:image" content="https://bginformatique.ca/assets/LogoNoBackground.png">
+    <meta property="og:url" content="https://bginformatique.ca/">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ITService",
+      "name": "BG Informatique",
+      "image": "https://bginformatique.ca/assets/LogoNoBackground.png",
+      "telephone": "450 231-9199",
+      "email": "information@bginformatique.ca",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Saint-Jérôme",
+        "addressRegion": "QC",
+        "addressCountry": "CA"
+      },
+      "description": "Gestion de Tenants Microsoft 365 et support informatique multi-OS (Windows, Linux, macOS).",
+      "url": "https://bginformatique.ca",
+      "priceRange": "clear"
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #0056b3; /* Bleu Corporate */
+            --dark-blue: #003366;
+            --accent: #28a745;  /* Vert Validation/Succès */
+            --dark: #1a1a1a;
+            --grey: #f4f6f9;
+            --white: #ffffff;
+        }
+        body { margin: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--dark); line-height: 1.6; background: var(--white); }
+
+        header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { max-width: 220px; height: auto; }
+
+        /* Section Hero Pro */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .hero h1 { margin: 0 0 20px 0; font-size: 2.5em; font-weight: 700; }
+        .hero p { font-size: 1.25em; opacity: 0.95; max-width: 800px; margin: 0 auto 35px auto; font-weight: 300; }
+        
+        .btn-cta {
+            background: var(--accent);
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 4px; /* Plus carré pour aspect pro */
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-cta:hover { transform: translateY(-2px); background: #218838; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Section Expertise Centrale (Nouveau) */
+        .expertise-banner {
+            background: var(--grey);
+            padding: 60px 0;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .expertise-item h3 { color: var(--primary); margin-bottom: 10px; }
+        .expertise-item p { font-size: 0.95em; color: #555; }
+
+        /* Section Services Grid */
+        .services-section { padding: 80px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        
+        /* Mise en valeur de la carte Affaires */
+        .card.business { border-top: 5px solid var(--primary); }
+        .card.residential { border-top: 5px solid var(--accent); }
+
+        h2 { color: var(--dark-blue); font-size: 2em; margin-bottom: 30px; }
+        h3 { font-size: 1.4em; margin-top: 0; }
+        
+        ul { padding-left: 20px; color: #444; margin-top: 20px; }
+        li { margin-bottom: 12px; }
+
+        footer { background: var(--dark); color: var(--white); text-align: center; padding: 60px 20px; }
+        .contact-box { 
+            background: rgba(255,255,255,0.05); 
+            padding: 40px; 
+            border-radius: 8px; 
+            display: inline-block; 
+            margin-top: 20px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            min-width: 300px;
+        }
+        .contact-link { color: var(--white); text-decoration: none; font-weight: bold; }
+        .contact-link:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="assets/LogoNoBackground.png" alt="BG Informatique - Solutions d'Affaires" class="logo">
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Services Informatiques & Gestion TI à Saint-Jérôme</h1>
+          <p>Expertise technique pour <strong>Entreprises et Particuliers</strong>. De l'administration Microsoft 365 au dépannage rapide, nous réglons vos problèmes informatiques efficacement.</p>
+          <div style="margin-top: 25px;">
+              <a href="tel:+14502319199" class="btn-cta" style="margin-right: 15px;">📞 450 231-9199</a>
+              <a href="mailto:information@bginformatique.ca" class="btn-cta" style="background-color: #333;">Demander une intervention</a>
+          </div>
+    </div>
+</section>
+
+<section class="expertise-banner">
+    <div class="container">
+        <h2>Une expertise technique sans compromis</h2>
+        <p class="lead" style="max-width: 800px; margin: 0 auto; color: #555;">
+            Au-delà du simple dépannage, nous assurons l'architecture et la maintenance de vos outils de travail, peu importe votre environnement.
+        </p>
+        
+                <style>
+    @media (min-width: 900px) {
+        .expertise-grid { grid-template-columns: repeat(2, 1fr) !important; column-gap: 40px; }
+    }
+</style>
+<div class="expertise-grid">
+            <div class="expertise-item">
+                <h3>🚑 Dépannage Rapide</h3>
+                <p><strong>Urgence ?</strong> Ordinateur lent, virus, écran bleu ? Intervention rapide sur Windows et Mac. On règle le problème, point final.</p>
+            </div>
+            <div class="expertise-item">
+                <h3>☁️ Gestion Microsoft 365</h3>
+                <p>Pour les pros : Administration de vos courriels, Teams et licences. Sécurité et conformité pour votre entreprise.</p>
+            </div>
+            <div class="expertise-item">
+                <h3>💻 Installation & Nettoyage</h3>
+                <p>Remise à neuf de PC, configuration de routeurs Wi-Fi, et transfert de données. On donne une seconde vie à votre équipement.</p>
+            </div>
+            <div class="expertise-item">
+                <h3>🛡️ Sécurité & Sauvegarde</h3>
+                <p>Protection contre le piratage et backups automatisés. Vos photos et documents d'affaires en sécurité.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="container">
+        <div class="grid">
+            <div class="card business">
+                <h3>🏢 Solutions Entreprises</h3>
+                <p style="font-style: italic; color: #666; margin-bottom: 20px;">Pour PME et organisations exigeantes.</p>
+                <ul>
+                    <li><strong>Architecture Microsoft 365 :</strong> Déploiement, migration et optimisation de votre Tenant.</li>
+                    <li><strong>Administration Système :</strong> Gestion de serveurs et postes de travail (Physique & Virtuel).</li>
+                    <li><strong>Support Hybride :</strong> Intervention experte sur environnements mixtes (PC/Mac/Linux).</li>
+                    <li><strong>Continuité des affaires :</strong> Plans de relève et minimisation des interruptions.</li>
+                </ul>
+            </div>
+
+            <div class="card residential">
+                <h3>🛠️ Support Particuliers</h3>
+                <p style="font-style: italic; color: #666; margin-bottom: 20px;">Service expert à domicile ou à distance.</p>
+                <ul>
+                    <li><strong>Diagnostic Avancé :</strong> Réparation matérielle et logicielle précise.</li>
+                    <li><strong>Sécurité Personnelle :</strong> Nettoyage de virus et sécurisation de vos comptes.</li>
+                    <li><strong>Optimisation :</strong> Configuration sur mesure de vos appareils (Gaming, Travail).</li>
+                    <li><strong>Conseils TI :</strong> Recommandations d'achat neutres et objectives.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2>Discutons de vos besoins TI</h2>
+    <div class="contact-box">
+        <p style="font-size:1.5em; margin-bottom: 15px;"><a href="tel:+14502319199" class="contact-link">📞 450 231-9199</a></p>
+        <p style="margin-bottom: 15px;"><a href="mailto:information@bginformatique.ca" class="contact-link">📧 information@bginformatique.ca</a></p>
+        <p style="opacity:0.8;">📍 Saint-Jérôme, Québec</p>
+    </div>
+    <p style="margin-top: 50px; font-size: 0.85em; opacity: 0.5;">© 2026 BG Informatique. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
