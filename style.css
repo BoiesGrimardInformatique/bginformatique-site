@@ -99,3 +99,5 @@
         .contact-link { color: var(--white); text-decoration: none; font-weight: bold; font-size: 1.1em; display: block; margin-bottom: 15px; }
         .contact-label { font-size: 0.9em; opacity: 0.7; margin-bottom: 5px; display: block; }
     
+footer a { color: var(--primary); text-decoration: none; margin: 0 10px; }
+footer a:hover { text-decoration: underline; }
