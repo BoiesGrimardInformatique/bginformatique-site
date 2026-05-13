@@ -9,51 +9,41 @@
 </head>
 <body>
 
-
 <div id="header-placeholder"></div>
+
+<section class="diagnostic-page" style="background-color: #f4f4f9; padding: 60px 0; min-height: 80vh;">
+    <div class="container" style="max-width: 800px; margin: auto; text-align: center;">
+        <h1>Outil de Pré-diagnostic Matériel</h1>
+        <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: left;">
+            <strong>⚠️ Rappel :</strong> Ignorez les publicités sur le site partenaire. Suivez nos étapes.
+        </div>
+        <div class="grid">
+            <div class="expertise-card" style="text-align: left;">
+                <h3>Étape 1 : Analyse</h3>
+                <p>Générez votre rapport technique via DriversCloud.</p>
+                <a href="https://www.driverscloud.com/fr/demarrer" target="_blank" class="btn-cta">Lancer la détection</a>
+            </div>
+            <div class="expertise-card" style="text-align: left;">
+                <h3>Étape 2 : Envoi</h3>
+                <p>Copiez l'URL de vos résultats dans le courriel ci-dessous.</p>
+                <a href="mailto:information@bginformatique.ca?subject=Pré-diagnostic" class="btn-cta" style="background-color: #28a745;">Envoyer le rapport</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div id="footer-placeholder"></div>
 
 <script>
     function loadComponent(id, file, activeId) {
-        fetch(file)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(id).innerHTML = data;
-                if (activeId) {
-                    const el = document.getElementById(activeId);
-                    if (el) el.classList.add('active');
-                }
-            });
+        fetch(file).then(r => r.text()).then(d => {
+            document.getElementById(id).innerHTML = d;
+            if (activeId) document.getElementById(activeId)?.classList.add('active');
+        });
     }
-
-    const path = window.location.pathname.split("/").pop() || "index.html";
-    let activeNav = "";
-    if (path === "services.html") activeNav = "nav-services";
-    else if (path === "faq.html") activeNav = "nav-faq";
-    else if (path === "diagnostic.html") activeNav = "nav-diagnostic";
-    else if (path === "index.html") activeNav = "nav-expertise";
-
-    loadComponent('header-placeholder', 'header.html', activeNav);
+    loadComponent('header-placeholder', 'header.html', 'nav-diagnostic');
     loadComponent('footer-placeholder', 'footer.html');
 </script>
-
-
-<section class="diagnostic-page" style="background-color: #f4f4f9; padding: 60px 0; min-height: 80vh;">
-    <div class="container" style="max-width: 800px; margin: auto; text-align: center;">
-        <h1 style="margin-bottom: 20px;">Outil de Pré-diagnostic Matériel</h1>
-        <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: left;">
-            <strong>⚠️ Avertissement :</strong> Suivez uniquement nos étapes sur le site partenaire.
-        </div>
-        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; margin-bottom: 25px;">
-            <h3>Étape 1 : Analyser votre appareil</h3>
-            <a href="https://www.driverscloud.com/fr/demarrer" target="_blank" rel="noopener noreferrer" class="btn-cta">1. Ouvrir la détection</a>
-        </div>
-        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left;">
-            <h3>Étape 2 : Envoyer les résultats</h3>
-            <a href="mailto:information@bginformatique.ca?subject=Pré-diagnostic" class="btn-cta" style="background-color: #28a745;">2. Envoyer par courriel</a>
-        </div>
-    </div>
-</section>
 
 </body>
 </html>
