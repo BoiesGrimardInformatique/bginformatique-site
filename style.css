@@ -14,8 +14,8 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 header nav a { margin: 0 15px; text-decoration: none; color: var(--dark); font-weight: bold; transition: color 0.3s ease; }
 header nav a:hover, header nav a.active { color: var(--primary); }
 
-/* Le logo ajusté avec mix-blend-mode pour effacer le fond blanc de l'image */
-.logo { max-width: 220px; height: auto; width: 100%; mix-blend-mode: multiply; }
+/* Le logo ajusté pour l'image recadrée transparente */
+.logo { max-width: 220px; height: auto; width: 100%; }
 
 .hero { background: var(--dark); color: var(--white); text-align: center; padding: 60px 0; }
 .btn-cta { display: inline-block; padding: 12px 25px; background: var(--primary); color: var(--white); text-decoration: none; border-radius: 5px; margin: 5px; font-weight: bold; }
