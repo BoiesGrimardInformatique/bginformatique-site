@@ -9,15 +9,34 @@
 </head>
 <body>
 
-<header>
-    <a href="index.html"><img src="Logo.png" alt="BG Informatique" class="logo"></a>
-    <nav>
-        <a href="#expertise" class="active">Notre Expertise</a>
-        <a href="services.html">Services & Tarifs</a>
-        <a href="faq.html">FAQ</a>
-        <a href="diagnostic.html" style="color: #0056b3;">Pré-diagnostic</a>
-    </nav>
-</header>
+
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+
+<script>
+    function loadComponent(id, file, activeId) {
+        fetch(file)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(id).innerHTML = data;
+                if (activeId) {
+                    const el = document.getElementById(activeId);
+                    if (el) el.classList.add('active');
+                }
+            });
+    }
+
+    const path = window.location.pathname.split("/").pop() || "index.html";
+    let activeNav = "";
+    if (path === "services.html") activeNav = "nav-services";
+    else if (path === "faq.html") activeNav = "nav-faq";
+    else if (path === "diagnostic.html") activeNav = "nav-diagnostic";
+    else if (path === "index.html") activeNav = "nav-expertise";
+
+    loadComponent('header-placeholder', 'header.html', activeNav);
+    loadComponent('footer-placeholder', 'footer.html');
+</script>
+
 
 <section class="hero">
     <div class="container">
@@ -62,29 +81,6 @@
         </div>
     </div>
 </section>
-
-<footer>
-    <div class="container footer-grid">
-        <div class="footer-col">
-            <h4>BG Informatique</h4>
-            <p>📍 Saint-Jérôme, QC</p>
-            <p>🌐 Service à distance disponible</p>
-        </div>
-        <div class="footer-col">
-            <h4>Contact</h4>
-            <p>📞 <a href="tel:+14502319199">450 231-9199</a></p>
-            <p>✉️ <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-            <p>Disponible 24/7</p>
-        </div>
-        <div class="footer-col">
-            <h4>Liens Rapides</h4>
-            <p><a href="services.html">Services & Tarifs</a></p>
-            <p><a href="faq.html">FAQ</a></p>
-            <p><a href="diagnostic.html">Pré-diagnostic</a></p>
-        </div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 BG Informatique</p></div>
-</footer>
 
 </body>
 </html>

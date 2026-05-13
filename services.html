@@ -9,102 +9,60 @@
 </head>
 <body>
 
-<header>
-    <a href="index.html"><img src="Logo.png" alt="BG Informatique" class="logo"></a>
-    <nav>
-        <a href="index.html#expertise">Notre Expertise</a>
-        <a href="services.html" class="active">Services & Tarifs</a>
-        <a href="diagnostic.html" style="color: #0056b3;">Pré-diagnostic</a>
-    </nav>
-</header>
 
-<section style="padding: 60px 0; background: #f4f4f9;">
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+
+<script>
+    function loadComponent(id, file, activeId) {
+        fetch(file)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(id).innerHTML = data;
+                if (activeId) {
+                    const el = document.getElementById(activeId);
+                    if (el) el.classList.add('active');
+                }
+            });
+    }
+
+    const path = window.location.pathname.split("/").pop() || "index.html";
+    let activeNav = "";
+    if (path === "services.html") activeNav = "nav-services";
+    else if (path === "faq.html") activeNav = "nav-faq";
+    else if (path === "diagnostic.html") activeNav = "nav-diagnostic";
+    else if (path === "index.html") activeNav = "nav-expertise";
+
+    loadComponent('header-placeholder', 'header.html', activeNav);
+    loadComponent('footer-placeholder', 'footer.html');
+</script>
+
+
+<section style="padding: 60px 0; background: #f4f4f9; min-height: 70vh;">
     <div class="container" style="max-width: 900px; margin: auto;">
         <h1 style="text-align: center;">Nos Services TI</h1>
-        <p style="text-align: center; margin-bottom: 40px;">Des tarifs transparents et compétitifs. Tous les prix incluent les taxes.</p>
+        <p style="text-align: center; margin-bottom: 40px;">Tarifs transparents (Taxes incluses).</p>
 
         <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px;">🛠️ Services Résidentiels</h2>
         <table class="price-table">
-            <tr>
-                <th>Service</th>
-                <th>Description</th>
-                <th>Prix (Tax Inc.)</th>
-            </tr>
-            <tr>
-                <td>Réinstallation & Sauvegarde</td>
-                <td>Remise à neuf du système avec récupération complète de vos documents et photos.</td>
-                <td class="price-tag">130 $</td>
-            </tr>
-            <tr>
-                <td>Optimisation Performance</td>
-                <td>Nettoyage logiciel, suppression de malwares et accélération du démarrage.</td>
-                <td class="price-tag">95 $</td>
-            </tr>
-            <tr>
-                <td>Soutien à distance</td>
-                <td>Dépannage rapide via logiciel sécurisé. (Facturé à l'heure)</td>
-                <td class="price-tag">80 $ / h</td>
-            </tr>
+            <tr><th>Service</th><th>Description</th><th>Prix</th></tr>
+            <tr><td>Réinstallation & Sauvegarde</td><td>Remise à neuf complète du système.</td><td class="price-tag">130 $</td></tr>
+            <tr><td>Optimisation Performance</td><td>Nettoyage logiciel et accélération.</td><td class="price-tag">95 $</td></tr>
+            <tr><td>Soutien à distance</td><td>Dépannage logiciel rapide.</td><td class="price-tag">80 $ / h</td></tr>
         </table>
 
         <h2 style="color: #333; border-left: 5px solid #333; padding-left: 15px; margin-top: 50px;">🏢 Services Entreprises</h2>
         <table class="price-table">
-            <tr>
-                <th>Solution</th>
-                <th>Description</th>
-                <th>Prix (Tax Inc.)</th>
-            </tr>
-            <tr>
-                <td>Déploiement Microsoft 365</td>
-                <td>Configuration de Tenant, courriels pro et politiques de sécurité de base.</td>
-                <td class="price-tag">Dès 160 $</td>
-            </tr>
-            <tr>
-                <td>Audit de Sécurité</td>
-                <td>Analyse des vulnérabilités logicielles et plan de continuité des affaires.</td>
-                <td class="price-tag">Sur devis</td>
-            </tr>
-            <tr>
-                <td>Administration Système</td>
-                <td>Gestion de serveurs, parcs informatiques hybrides et automatisation. Disponibilité 24/7.</td>
-                <td class="price-tag">125 $ / h</td>
-            </tr>
+            <tr><th>Solution</th><th>Description</th><th>Prix</th></tr>
+            <tr><td>Déploiement Microsoft 365</td><td>Configuration Tenant et sécurité.</td><td class="price-tag">Dès 160 $</td></tr>
+            <tr><td>Administration Système</td><td>Gestion de parcs informatiques.</td><td class="price-tag">125 $ / h</td></tr>
         </table>
 
         <div style="margin-top: 40px; padding: 20px; background: #e7f3ff; border-radius: 8px; text-align: center;">
-            <p><strong>Besoin d'un diagnostic avant de commander ?</strong></p>
             <a href="diagnostic.html" class="btn-cta">Lancer un pré-diagnostic gratuit</a>
         </div>
     </div>
 </section>
-
-<footer>
-    <div class="container footer-grid">
-        <div class="footer-col">
-            <h4>BG Informatique</h4>
-            <p>Votre partenaire TI spécialisé en optimisation logicielle et administration système.</p>
-            <p style="margin-top: 15px;">📍 Saint-Jérôme, QC</p>
-            <p>🌐 Service à distance disponible</p>
-        </div>
-        <div class="footer-col">
-            <h4>Contact</h4>
-            <p>📞 <a href="tel:+14502319199">450 231-9199</a></p>
-            <p>✉️ <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-            <p style="margin-top: 15px; font-weight: bold; color: #fff;">Horaires d'intervention :</p>
-            <p>Disponible 24/7</p>
-        </div>
-        <div class="footer-col">
-            <h4>Liens Rapides</h4>
-            <p><a href="services.html">Consulter nos tarifs</a></p>
-            <p><a href="diagnostic.html">Outil de pré-diagnostic</a></p>
-            <p style="margin-top: 15px;"><a href="confidentialite.html" style="font-size: 0.9em;">Politique de confidentialité</a></p>
-            <p><a href="conditions.html" style="font-size: 0.9em;">Termes et conditions</a></p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 BG Informatique</p>
-    </div>
-</footer>
 
 </body>
 </html>

@@ -3,78 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pré-diagnostic Matériel | BG Informatique</title>
-    <meta name="description" content="Outil de pré-diagnostic pour les clients de BG Informatique. Identifiez rapidement les spécifications techniques de votre appareil.">
+    <title>Pré-diagnostic | BG Informatique</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="Logo.png">
 </head>
 <body>
 
-<header>
-    <a href="index.html"><img src="Logo.png" alt="BG Informatique" class="logo"></a>
-    <nav>
-        <a href="index.html#expertise">Notre Expertise</a>
-        <a href="services.html">Services & Tarifs</a>
-        <a href="diagnostic.html" class="active" style="color: #0056b3;">Pré-diagnostic</a>
-    </nav>
-</header>
+
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+
+<script>
+    function loadComponent(id, file, activeId) {
+        fetch(file)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(id).innerHTML = data;
+                if (activeId) {
+                    const el = document.getElementById(activeId);
+                    if (el) el.classList.add('active');
+                }
+            });
+    }
+
+    const path = window.location.pathname.split("/").pop() || "index.html";
+    let activeNav = "";
+    if (path === "services.html") activeNav = "nav-services";
+    else if (path === "faq.html") activeNav = "nav-faq";
+    else if (path === "diagnostic.html") activeNav = "nav-diagnostic";
+    else if (path === "index.html") activeNav = "nav-expertise";
+
+    loadComponent('header-placeholder', 'header.html', activeNav);
+    loadComponent('footer-placeholder', 'footer.html');
+</script>
+
 
 <section class="diagnostic-page" style="background-color: #f4f4f9; padding: 60px 0; min-height: 80vh;">
     <div class="container" style="max-width: 800px; margin: auto; text-align: center;">
-        <h1 style="color: #333; margin-bottom: 20px;">Outil de Pré-diagnostic Matériel</h1>
-        <p style="margin-bottom: 30px; font-size: 1.1em;">Afin d'accélérer la prise en charge de votre appareil, nous utilisons un outil de détection sécurisé via notre partenaire DriversCloud.</p>
-        
+        <h1 style="margin-bottom: 20px;">Outil de Pré-diagnostic Matériel</h1>
         <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: left;">
-            <h3 style="margin-top: 0; font-size: 1.1em;">⚠️ Avertissement de sécurité important</h3>
-            <p style="margin-bottom: 0;">Le site partenaire DriversCloud se finance par la publicité. Vous pourriez voir des boutons "Download" ou "Start" qui ne font pas partie de l'outil. <strong>Ignorez-les.</strong> Suivez uniquement les étapes décrites ci-dessous.</p>
+            <strong>⚠️ Avertissement :</strong> Suivez uniquement nos étapes sur le site partenaire.
         </div>
-
         <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; margin-bottom: 25px;">
-            <h3 style="margin-top: 0; color: #0056b3; border-bottom: 2px solid #f4f4f9; padding-bottom: 10px;">Étape 1 : Analyser votre appareil</h3>
-            <p>1. Cliquez sur le bouton ci-dessous pour ouvrir la page de détection.<br>
-               2. Sur la page DriversCloud, <strong>faites défiler la page vers le bas</strong>.<br>
-               3. Cliquez sur le bouton bleu <strong>"Démarrer la détection"</strong>.<br>
-               4. Installez l'agent de détection. Une page web de résultats s'ouvrira dès la fin de l'analyse.</p>
-            <a href="https://www.driverscloud.com/fr/demarrer" target="_blank" rel="noopener noreferrer" class="btn-cta" style="display: inline-block; margin-top: 15px;">1. Ouvrir la page de détection</a>
+            <h3>Étape 1 : Analyser votre appareil</h3>
+            <a href="https://www.driverscloud.com/fr/demarrer" target="_blank" rel="noopener noreferrer" class="btn-cta">1. Ouvrir la détection</a>
         </div>
-
         <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left;">
-            <h3 style="margin-top: 0; color: #28a745; border-bottom: 2px solid #f4f4f9; padding-bottom: 10px;">Étape 2 : Envoyer les résultats</h3>
-            <p>Une fois vos résultats affichés, copiez l'adresse URL de la page (ex: <em>https://www.driverscloud.com/fr/configuration/...</em>) et collez-la dans le courriel ci-dessous.</p>
-            <a href="mailto:information@bginformatique.ca?subject=Résultats de mon pré-diagnostic&body=Bonjour BG Informatique,%0A%0AVoici le lien vers la configuration de mon appareil : %0A[COLLEZ VOTRE LIEN ICI]%0A%0AMon problème est le suivant : %0A[DÉCRIVEZ VOTRE PROBLÈME]%0A%0AMerci." class="btn-cta" style="display: inline-block; background-color: #28a745; margin-top: 15px;">2. Envoyer mon rapport par courriel</a>
+            <h3>Étape 2 : Envoyer les résultats</h3>
+            <a href="mailto:information@bginformatique.ca?subject=Pré-diagnostic" class="btn-cta" style="background-color: #28a745;">2. Envoyer par courriel</a>
         </div>
-        
-        <p style="margin-top: 40px;"><a href="index.html" style="color: #666; text-decoration: underline;">Retour à l'accueil</a></p>
     </div>
 </section>
-
-<footer>
-    <div class="container footer-grid">
-        <div class="footer-col">
-            <h4>BG Informatique</h4>
-            <p>Votre partenaire TI spécialisé en optimisation logicielle et administration système.</p>
-            <p style="margin-top: 15px;">📍 Saint-Jérôme, QC</p>
-            <p>🌐 Service à distance disponible</p>
-        </div>
-        <div class="footer-col">
-            <h4>Contact</h4>
-            <p>📞 <a href="tel:+14502319199">450 231-9199</a></p>
-            <p>✉️ <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-            <p style="margin-top: 15px; font-weight: bold; color: #fff;">Horaires d'intervention :</p>
-            <p>Disponible 24/7</p>
-        </div>
-        <div class="footer-col">
-            <h4>Liens Rapides</h4>
-            <p><a href="services.html">Consulter nos tarifs</a></p>
-            <p><a href="diagnostic.html">Outil de pré-diagnostic</a></p>
-            <p style="margin-top: 15px;"><a href="confidentialite.html" style="font-size: 0.9em;">Politique de confidentialité</a></p>
-            <p><a href="conditions.html" style="font-size: 0.9em;">Termes et conditions</a></p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 BG Informatique</p>
-    </div>
-</footer>
 
 </body>
 </html>
