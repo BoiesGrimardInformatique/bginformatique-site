@@ -9,70 +9,46 @@
 </head>
 <body>
 
-
 <div id="header-placeholder"></div>
+
+<section class="faq-section" style="min-height: 70vh; background-color: #f4f4f9; padding: 40px 0;">
+    <div class="container" style="max-width: 900px; margin: auto; background: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <h1 style="text-align: center; margin-bottom: 20px; color: #333;">Foire Aux Questions</h1>
+        
+        <div class="faq-item">
+            <h4>🐌 Mon ordinateur est très lent, que faire ?</h4>
+            <p><strong>D'abord :</strong> Redémarrez complètement l'appareil et vérifiez l'espace disque libre.</p>
+            <p style="margin-top: 10px; border-left: 3px solid #0056b3; padding-left: 15px;"><em>Besoin d'aide ?</em> Notre service d'optimisation (95$) est là pour vous.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>🔧 Réparez-vous le matériel ?</h4>
+            <p>Non. Nous nous spécialisons exclusivement dans la partie logicielle et réseau pour garantir une expertise neutre et pointue sans vente de pièces.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>🌐 Comment fonctionne le soutien à distance ?</h4>
+            <p>Nous utilisons des outils sécurisés pour résoudre vos problèmes sans déplacement. C'est rapide, efficace et disponible 24/7.</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="mailto:information@bginformatique.ca" class="btn-cta">Nous contacter</a>
+        </div>
+    </div>
+</section>
+
 <div id="footer-placeholder"></div>
 
 <script>
     function loadComponent(id, file, activeId) {
-        fetch(file)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(id).innerHTML = data;
-                if (activeId) {
-                    const el = document.getElementById(activeId);
-                    if (el) el.classList.add('active');
-                }
-            });
+        fetch(file).then(r => r.text()).then(data => {
+            document.getElementById(id).innerHTML = data;
+            if (activeId) document.getElementById(activeId)?.classList.add('active');
+        });
     }
-
-    const path = window.location.pathname.split("/").pop() || "index.html";
-    let activeNav = "";
-    if (path === "services.html") activeNav = "nav-services";
-    else if (path === "faq.html") activeNav = "nav-faq";
-    else if (path === "diagnostic.html") activeNav = "nav-diagnostic";
-    else if (path === "index.html") activeNav = "nav-expertise";
-
-    loadComponent('header-placeholder', 'header.html', activeNav);
+    loadComponent('header-placeholder', 'header.html', 'nav-faq');
     loadComponent('footer-placeholder', 'footer.html');
 </script>
-
-
-<section class="faq-section" style="min-height: 70vh; background-color: #f4f4f9;">
-    <div class="container" style="max-width: 900px; margin: auto; background: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-        <h1 style="text-align: center; margin-bottom: 20px; color: #333;">Foire Aux Questions & Autodiagnostic</h1>
-        <p style="text-align: center; margin-bottom: 40px; color: #666;">Essayez ces manipulations simples par vous-même. Si le problème persiste ou vous semble trop complexe, nous sommes là pour prendre le relais.</p>
-        
-        <div class="faq-item">
-            <h4>🐌 Mon ordinateur est soudainement très lent, que faire ?</h4>
-            <p><strong>Essayez ceci d'abord :</strong> Redémarrez complètement votre ordinateur. Fermez les applications en arrière-plan et vérifiez l'espace disque.</p>
-            <p style="margin-top: 10px; padding-left: 15px; border-left: 3px solid #0056b3;"><em>Besoin d'aide ?</em> Si la lenteur persiste, notre service d'optimisation (95$) est là pour vous.</p>
-        </div>
-
-        <div class="faq-item">
-            <h4>🕷️ Mon navigateur affiche des publicités bizarres ?</h4>
-            <p><strong>Essayez ceci d'abord :</strong> Vérifiez et supprimez les extensions inconnues dans Chrome ou Edge.</p>
-            <p style="margin-top: 10px; padding-left: 15px; border-left: 3px solid #0056b3;"><em>Besoin d'aide ?</em> Contactez-nous pour une désinfection sécurisée à distance.</p>
-        </div>
-
-        <div class="faq-item">
-            <h4>📁 J'ai perdu un fichier important ?</h4>
-            <p><strong>Essayez ceci d'abord :</strong> Vérifiez la corbeille ou l'historique des versions sur OneDrive/SharePoint.</p>
-            <p style="margin-top: 10px; padding-left: 15px; border-left: 3px solid #0056b3;"><em>Besoin d'aide ?</em> Nous sommes experts en récupération et sauvegarde Microsoft 365.</p>
-        </div>
-
-        <div class="faq-item">
-            <h4>🔧 Réparez-vous les bris matériels ?</h4>
-            <p>Non. Nous nous concentrons exclusivement sur l'optimisation logicielle et la sécurité pour vous offrir une expertise spécialisée sans vente de pièces.</p>
-        </div>
-        
-        <div style="text-align: center; margin-top: 40px;">
-            <p><strong>Un problème non listé ?</strong></p>
-            <a href="mailto:information@bginformatique.ca" class="btn-cta">Nous écrire directement</a>
-            <a href="diagnostic.html" class="btn-cta" style="background-color: #333;">Lancer un pré-diagnostic</a>
-        </div>
-    </div>
-</section>
 
 </body>
 </html>
