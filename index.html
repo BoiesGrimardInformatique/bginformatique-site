@@ -9,34 +9,7 @@
 </head>
 <body>
 
-
 <div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-
-<script>
-    function loadComponent(id, file, activeId) {
-        fetch(file)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(id).innerHTML = data;
-                if (activeId) {
-                    const el = document.getElementById(activeId);
-                    if (el) el.classList.add('active');
-                }
-            });
-    }
-
-    const path = window.location.pathname.split("/").pop() || "index.html";
-    let activeNav = "";
-    if (path === "services.html") activeNav = "nav-services";
-    else if (path === "faq.html") activeNav = "nav-faq";
-    else if (path === "diagnostic.html") activeNav = "nav-diagnostic";
-    else if (path === "index.html") activeNav = "nav-expertise";
-
-    loadComponent('header-placeholder', 'header.html', activeNav);
-    loadComponent('footer-placeholder', 'footer.html');
-</script>
-
 
 <section class="hero">
     <div class="container">
@@ -62,25 +35,38 @@
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 40px;">Pourquoi choisir BG Informatique ?</h2>
         <div class="expertise-grid">
-            <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <div class="expertise-card">
                 <h3>🌙 Disponibilité Totale (24/7)</h3>
                 <p>Nous sommes disponibles en tout temps. Nous effectuons la maintenance de vos systèmes au moment qui vous convient le mieux pour garantir <strong>zéro temps d'arrêt</strong> à vos opérations.</p>
             </div>
-            <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <div class="expertise-card">
                 <h3>☁️ Maîtrise de Microsoft 365</h3>
                 <p>Nous administrons vos Tenants, gérons la sécurité des identités et optimisons vos flux de travail sur Teams et SharePoint.</p>
             </div>
-            <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <div class="expertise-card">
                 <h3>🛡️ Approche "Security-First"</h3>
                 <p>Chaque intervention inclut une vérification des politiques de sécurité. Vos données sont protégées par des systèmes de sauvegarde robustes.</p>
             </div>
-            <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <div class="expertise-card">
                 <h3>🐧 Agnosticisme Système</h3>
-                <p>Que vous soyez sous Windows, macOS ou Linux, notre spécialisation en administration logicielle nous permet d'effectuer des diagnostics approfondis et d'optimiser vos systèmes avec une précision de haut niveau.</p>
+                <p>Que vous soyez sous Windows, macOS ou Linux, notre spécialisation en administration logicielle nous permet d'effectuer des diagnostics approfondis.</p>
             </div>
         </div>
     </div>
 </section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+    function loadComponent(id, file, activeId) {
+        fetch(file).then(r => r.text()).then(data => {
+            document.getElementById(id).innerHTML = data;
+            if (activeId) document.getElementById(activeId)?.classList.add('active');
+        });
+    }
+    loadComponent('header-placeholder', 'header.html', 'nav-expertise');
+    loadComponent('footer-placeholder', 'footer.html');
+</script>
 
 </body>
 </html>
