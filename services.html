@@ -9,34 +9,7 @@
 </head>
 <body>
 
-
 <div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-
-<script>
-    function loadComponent(id, file, activeId) {
-        fetch(file)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(id).innerHTML = data;
-                if (activeId) {
-                    const el = document.getElementById(activeId);
-                    if (el) el.classList.add('active');
-                }
-            });
-    }
-
-    const path = window.location.pathname.split("/").pop() || "index.html";
-    let activeNav = "";
-    if (path === "services.html") activeNav = "nav-services";
-    else if (path === "faq.html") activeNav = "nav-faq";
-    else if (path === "diagnostic.html") activeNav = "nav-diagnostic";
-    else if (path === "index.html") activeNav = "nav-expertise";
-
-    loadComponent('header-placeholder', 'header.html', activeNav);
-    loadComponent('footer-placeholder', 'footer.html');
-</script>
-
 
 <section style="padding: 60px 0; background: #f4f4f9; min-height: 70vh;">
     <div class="container" style="max-width: 900px; margin: auto;">
@@ -63,6 +36,19 @@
         </div>
     </div>
 </section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+    function loadComponent(id, file, activeId) {
+        fetch(file).then(r => r.text()).then(d => {
+            document.getElementById(id).innerHTML = d;
+            if (activeId) document.getElementById(activeId)?.classList.add('active');
+        });
+    }
+    loadComponent('header-placeholder', 'header.html', 'nav-services');
+    loadComponent('footer-placeholder', 'footer.html');
+</script>
 
 </body>
 </html>
