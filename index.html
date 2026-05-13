@@ -12,7 +12,7 @@
 <header>
     <a href="index.html"><img src="Logo.png" alt="BG Informatique" class="logo"></a>
     <nav>
-        <a href="index.html#expertise">Notre Expertise</a>
+        <a href="index.html#expertise" class="active">Notre Expertise</a>
         <a href="services.html">Services & Tarifs</a>
         <a href="diagnostic.html" style="color: #0056b3;">Pré-diagnostic</a>
     </nav>
@@ -42,29 +42,57 @@
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 40px;">Pourquoi choisir BG Informatique ?</h2>
         <div class="expertise-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <h3>🌙 Interventions Sans Interruption</h3>
+                <p>Disponibilités étendues de soir et de nuit. Nous effectuons les mises à jour et la maintenance de vos systèmes en dehors de vos heures de bureau pour garantir <strong>zéro temps d'arrêt</strong> à votre équipe de jour.</p>
+            </div>
+            
             <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
                 <h3>☁️ Maîtrise de Microsoft 365</h3>
                 <p>Nous ne nous contentons pas d'installer Office. Nous administrons vos Tenants, gérons la sécurité des identités et optimisons vos flux de travail sur Teams et SharePoint.</p>
             </div>
+            
             <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
                 <h3>🛡️ Approche "Security-First"</h3>
                 <p>Dans un monde de cybermenaces, chaque intervention inclut une vérification des politiques de sécurité. Vos données sont protégées par des systèmes de sauvegarde robustes et éprouvés.</p>
             </div>
-            <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                <h3>🤖 Innovation & IA</h3>
-                <p>Expertise en intégration d'outils d'intelligence artificielle (Copilot) pour automatiser les tâches répétitives et libérer du temps pour votre entreprise.</p>
-            </div>
+            
             <div class="expertise-card" style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
                 <h3>🐧 Agnosticisme Système</h3>
                 <p>Que vous soyez sous Windows, macOS ou Linux, notre connaissance approfondie des noyaux systèmes permet des diagnostics logiciels qu'un simple réparateur de matériel ne peut offrir.</p>
             </div>
+
         </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 BG Informatique - Saint-Jérôme</p>
-    <p><a href="confidentialite.html">Politique de Confidentialité</a> | <a href="conditions.html">Termes et Conditions</a></p>
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h4>BG Informatique</h4>
+            <p>Votre partenaire TI spécialisé en optimisation logicielle et administration système.</p>
+            <p style="margin-top: 15px;">📍 Saint-Jérôme, QC</p>
+            <p>🌐 Service à distance disponible</p>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p>📞 <a href="tel:+14502319199">450 231-9199</a></p>
+            <p>✉️ <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+            <p style="margin-top: 15px; font-weight: bold; color: #fff;">Horaires d'intervention :</p>
+            <p>Spécialiste de soir et de nuit</p>
+        </div>
+        <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <p><a href="services.html">Consulter nos tarifs</a></p>
+            <p><a href="diagnostic.html">Outil de pré-diagnostic</a></p>
+            <p style="margin-top: 15px;"><a href="confidentialite.html" style="font-size: 0.9em;">Politique de confidentialité</a></p>
+            <p><a href="conditions.html" style="font-size: 0.9em;">Termes et conditions</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 BG Informatique - Fondé et opéré par Jérémie Boies Grimard.</p>
+    </div>
 </footer>
 
 </body>
