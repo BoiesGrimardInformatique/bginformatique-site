@@ -19,8 +19,13 @@
 </head>
 <body>
 
-<header>
-    <img src="Logo.png" alt="BG Informatique" class="logo">
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
+    <a href="index.html"><img src="Logo.png" alt="BG Informatique" class="logo" style="max-height: 60px;"></a>
+    <nav>
+        <a href="index.html#expertise" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: bold;">Expertise</a>
+        <a href="index.html#services" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: bold;">Services</a>
+        <a href="diagnostic.html" style="margin: 0 15px; text-decoration: none; color: #0056b3; font-weight: bold;">Pré-diagnostic</a>
+    </nav>
 </header>
 
 <section class="hero">
@@ -29,36 +34,46 @@
           <p>Expertise technique pour <strong>Entreprises et Particuliers</strong>. Administration Microsoft 365, Sécurité et Dépannage.</p>
           <div style="margin-top: 20px;">
               <a href="tel:+14502319199" class="btn-cta">📞 450 231-9199</a>
-              <a href="#diagnostic" class="btn-cta" style="background-color: #333;">Outil de pré-diagnostic</a>
+              <a href="diagnostic.html" class="btn-cta" style="background-color: #333;">Outil de pré-diagnostic</a>
           </div>
     </div>
 </section>
 
-<section class="expertise-banner">
+<section class="certifications-banner" style="background-color: #e9ecef; text-align: center; padding: 15px 0; font-size: 14px; color: #555;">
+    <div class="container">
+        <strong>Technicien certifié :</strong> Microsoft | Cisco | IBM | Google
+    </div>
+</section>
+
+<section id="expertise" class="expertise-banner">
     <div class="container">
         <h2>Expertise Technique</h2>
         <div class="expertise-grid">
             <div class="expertise-item">
-                <h3>🚑 Dépannage</h3>
-                <p>Urgence Windows/Mac, virus, lenteur. Diagnostic précis.</p>
+                <h3>🚑 Dépannage Logiciel</h3>
+                <p>Urgence Windows/Mac, nettoyage de virus, résolution de lenteurs.</p>
             </div>
             <div class="expertise-item">
                 <h3>☁️ Microsoft 365</h3>
                 <p>Gestion de Tenant, Teams, Exchange et Sécurité.</p>
             </div>
             <div class="expertise-item">
-                <h3>🛡️ Sécurité</h3>
-                <p>Sauvegardes automatisées et protection des données.</p>
-            </div><div class="expertise-item"><h3>🤖 Intelligence Artificielle</h3><p>Optimisation de la productivité via l’IA (Copilot) et automatisation de processus d’affaires.</p></div>
+                <h3>🛡️ Sécurité des données</h3>
+                <p>Sauvegardes automatisées et protection de vos informations.</p>
+            </div>
             <div class="expertise-item">
-                <h3>💻 Installation</h3>
-                <p>Configuration sur mesure, réseaux Wi-Fi et mises à niveau.</p>
+                <h3>🤖 Intelligence Artificielle</h3>
+                <p>Optimisation de la productivité via l’IA (Copilot) et automatisation de processus d’affaires.</p>
+            </div>
+            <div class="expertise-item">
+                <h3>💻 Configuration</h3>
+                <p>Paramétrage sur mesure, réseaux Wi-Fi et optimisation de systèmes.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="services-section">
+<section id="services" class="services-section">
     <div class="container">
         <div class="grid">
             <div class="card business">
@@ -66,7 +81,7 @@
                 <ul>
                     <li>Architecture & Migration M365</li>
                     <li>Administration Système (Win/Linux)</li>
-                    <li>Support Parc Informatique</li>
+                    <li>Support Logiciel Parc Informatique</li>
                     <li>Plan de continuité</li>
                 </ul>
             </div>
@@ -74,37 +89,12 @@
             <div class="card residential">
                 <h3>🛠️ Particuliers</h3>
                 <ul>
-                    <li>Réparation Ordinateur (PC/Mac)</li>
+                    <li>Dépannage Système (PC/Mac)</li>
                     <li>Nettoyage & Optimisation</li>
                     <li>Sécurisation Domicile</li>
-                    <li>Conseils d'achat</li>
+                    <li>Assistance à distance</li>
                 </ul>
             </div>
-        </div>
-    </div>
-</section>
-
-<section id="diagnostic" class="diagnostic-section" style="background-color: #f4f4f9; padding: 60px 0; text-align: center;">
-    <div class="container" style="max-width: 800px; margin: auto;">
-        <h2>Outil de Pré-diagnostic Matériel</h2>
-        <p style="margin-bottom: 30px;">Afin d'accélérer la prise en charge de votre appareil, nous utilisons un outil de détection sécurisé via notre partenaire DriversCloud.</p>
-        
-        <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: left;">
-            <strong>⚠️ Avertissement de sécurité :</strong> Le site partenaire peut afficher des publicités trompeuses (boutons "Download" ou "Start" factices). <strong>Ne cliquez sur aucune publicité.</strong> Suivez uniquement les instructions ci-dessous.
-        </div>
-
-        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: left; margin-bottom: 20px;">
-            <h3 style="margin-top: 0; color: #0056b3;">Étape 1 : Obtenir votre rapport</h3>
-            <p>1. Cliquez sur le bouton bleu ci-dessous pour ouvrir la page de détection.<br>
-               2. Sur la page qui s'ouvre, <strong>descendez jusqu'en bas</strong> pour trouver le bouton bleu nommé <strong>"Démarrer la détection"</strong>.<br>
-               3. Installez l'agent léger si demandé. Une page de résultats s'ouvrira automatiquement à la fin.</p>
-            <a href="https://www.driverscloud.com/fr/demarrer" target="_blank" rel="noopener noreferrer" class="btn-cta" style="display: inline-block; margin-top: 10px;">Accéder à la détection</a>
-        </div>
-
-        <div style="background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: left;">
-            <h3 style="margin-top: 0; color: #0056b3;">Étape 2 : Nous envoyer le lien</h3>
-            <p>Copiez l'URL (le lien en haut de votre navigateur) de la page de vos résultats, et envoyez-le-nous via le bouton ci-dessous.</p>
-            <a href="mailto:information@bginformatique.ca?subject=Résultats de mon pré-diagnostic&body=Bonjour BG Informatique,%0A%0AVoici le lien vers la configuration de mon appareil : %0A[COLLEZ VOTRE LIEN ICI]%0A%0AMon problème est le suivant : %0A[DÉCRIVEZ VOTRE PROBLÈME]%0A%0AMerci." class="btn-cta" style="display: inline-block; background-color: #28a745; margin-top: 10px;">Envoyer mon rapport par courriel</a>
         </div>
     </div>
 </section>
