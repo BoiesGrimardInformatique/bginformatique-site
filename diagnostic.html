@@ -1,48 +1,153 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pré-diagnostic | BG Informatique</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="Logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pré-diagnostic gratuit | BG Informatique</title>
+  <meta name="description" content="Outil de pré-diagnostic matériel gratuit. Générez un rapport technique de votre PC en deux clics et envoyez-le-nous pour une analyse experte.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bginformatique.ca/diagnostic.html">
+
+  <meta property="og:title" content="Pré-diagnostic gratuit | BG Informatique">
+  <meta property="og:description" content="Outil de pré-diagnostic matériel gratuit en deux étapes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bginformatique.ca/diagnostic.html">
+  <meta property="og:locale" content="fr_CA">
+
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="apple-touch-icon" href="Logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+<header class="site-header">
+  <div class="container header-container">
+    <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
+      <img src="Logo.png" alt="" width="48" height="48">
+      <span class="visually-hidden">BG Informatique</span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="services.html">Services & Tarifs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="diagnostic.html" class="nav-accent" aria-current="page">Pré-diagnostic</a>
+    </nav>
+    <a href="tel:+14502319199" class="header-phone">
+      <span aria-hidden="true">📞</span>
+      <span>450 231-9199</span>
+    </a>
+    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
 
-<section class="diagnostic-page" style="background-color: #f4f4f9; padding: 60px 0; min-height: 80vh;">
-    <div class="container" style="max-width: 800px; margin: auto; text-align: center;">
-        <h1>Outil de Pré-diagnostic Matériel</h1>
-        <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: left;">
-            <strong>⚠️ Rappel :</strong> Ignorez les publicités sur le site partenaire. Suivez nos étapes.
-        </div>
-        <div class="grid">
-            <div class="expertise-card" style="text-align: left;">
-                <h3>Étape 1 : Analyse</h3>
-                <p>Générez votre rapport technique via DriversCloud.</p>
-                <a href="https://www.driverscloud.com/fr/demarrer" target="_blank" class="btn-cta">Lancer la détection</a>
-            </div>
-            <div class="expertise-card" style="text-align: left;">
-                <h3>Étape 2 : Envoi</h3>
-                <p>Copiez l'URL de vos résultats dans le courriel ci-dessous.</p>
-                <a href="mailto:information@bginformatique.ca?subject=Pré-diagnostic" class="btn-cta" style="background-color: #28a745;">Envoyer le rapport</a>
-            </div>
-        </div>
-    </div>
+<section class="page-hero">
+  <div class="container">
+    <h1>Outil de pré-diagnostic matériel</h1>
+    <p class="page-hero-lead">Deux étapes simples pour nous aider à identifier le problème avant l'intervention. Gratuit et sans engagement.</p>
+  </div>
 </section>
 
-<div id="footer-placeholder"></div>
+<section class="section">
+  <div class="container container-narrow">
+
+    <div class="alert alert-warning">
+      <strong>⚠️ Important :</strong> Le site partenaire (DriversCloud) peut afficher des publicités. Ignorez-les et suivez uniquement nos deux étapes ci-dessous.
+    </div>
+
+    <div class="steps-grid">
+      <article class="step-card">
+        <span class="step-number" aria-label="Étape 1">1</span>
+        <h3>Analyse de votre système</h3>
+        <p>Générez votre rapport technique automatiquement via notre outil partenaire DriversCloud.</p>
+        <a
+          href="https://www.driverscloud.com/fr/demarrer"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-cta btn-cta--primary"
+        >
+          Lancer la détection ↗
+        </a>
+      </article>
+
+      <article class="step-card">
+        <span class="step-number" aria-label="Étape 2">2</span>
+        <h3>Envoi du rapport</h3>
+        <p>Copiez l'URL de vos résultats dans le courriel et envoyez-nous. Nous analysons et revenons vers vous rapidement.</p>
+        <a
+          href="mailto:information@bginformatique.ca?subject=Pr%C3%A9-diagnostic&body=Bonjour%2C%0A%0AVoici%20l%27URL%20de%20mon%20rapport%20DriversCloud%20%3A%0A%0A%5Bcollez%20l%27URL%20ici%5D%0A%0AMerci%20%21"
+          class="btn-cta btn-cta--success"
+        >
+          Envoyer le rapport
+        </a>
+      </article>
+    </div>
+
+    <div class="alert alert-info" style="margin-top:40px;">
+      <strong>Pourquoi un pré-diagnostic ?</strong> Connaître la configuration exacte de votre machine nous permet d'arriver préparés et de réduire le temps d'intervention — donc votre facture.
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Préférez-vous nous appeler directement ?</h2>
+    <p>Nous prenons aussi les pré-diagnostics par téléphone. Disponible 24/7.</p>
+    <div class="hero-cta-group">
+      <a href="tel:+14502319199" class="btn-cta btn-cta--primary">📞 450 231-9199</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 class="footer-heading">BG Informatique</h4>
+        <p class="footer-line">📍 Saint-Jérôme, QC</p>
+        <p class="footer-line">🌐 Service à distance disponible</p>
+        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
+        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Services & Tarifs</a></li>
+          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Mentions</h4>
+        <ul class="footer-links">
+          <li><a href="conditions.html">Termes & Conditions</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
 
 <script>
-    function loadComponent(id, file, activeId) {
-        fetch(file).then(r => r.text()).then(d => {
-            document.getElementById(id).innerHTML = d;
-            if (activeId) document.getElementById(activeId)?.classList.add('active');
-        });
-    }
-    loadComponent('header-placeholder', 'header.html', 'nav-diagnostic');
-    loadComponent('footer-placeholder', 'footer.html');
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
 </script>
 
 </body>
