@@ -23,6 +23,32 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Pages SEO nouvelles catégories -->
+  <url>
+    <loc>https://bginformatique.ca/automatisation-processus-affaires-saint-jerome.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bginformatique.ca/consultation-ia-laurentides.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bginformatique.ca/infrastructure-cloud-saint-jerome.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bginformatique.ca/cybersecurite-formation-saint-jerome.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Pages SEO longue-traîne -->
   <url>
     <loc>https://bginformatique.ca/reparation-ordinateur-saint-jerome-bg-informatique.html</loc>
