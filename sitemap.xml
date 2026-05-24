@@ -69,6 +69,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- À propos -->
+  <url>
+    <loc>https://bginformatique.ca/a-propos.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- FAQ -->
   <url>
     <loc>https://bginformatique.ca/faq.html</loc>

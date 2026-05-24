@@ -873,6 +873,23 @@ p { color: var(--text); }
 }
 
 /* ── Listes de bénéfices ──────────────────────────────── */
+/* ── Page À propos ────────────────────────────────────── */
+.about-block {
+  margin: 0 0 44px;
+}
+.about-block h2 {
+  font-size: 1.35rem;
+  margin-bottom: 14px;
+  padding-left: 14px;
+  border-left: 4px solid var(--brand-blue);
+}
+.about-block p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
 .benefit-list {
   display: flex;
   flex-direction: column;
