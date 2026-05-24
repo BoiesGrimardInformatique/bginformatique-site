@@ -166,9 +166,9 @@ p { color: var(--text); }
 }
 
 .site-logo img {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
+  height: 44px;
+  width: auto;
+  border-radius: 4px;
 }
 
 .site-nav {
