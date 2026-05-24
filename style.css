@@ -544,6 +544,37 @@ p { color: var(--text); }
   transition: opacity 0.5s ease, transform 0.5s ease, box-shadow var(--transition), border-color var(--transition);
 }
 
+/* ── Sommaire (table des matières) ───────────────────── */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+.toc-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+.toc a {
+  font-size: 0.93rem;
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+.toc a:hover { text-decoration: underline; }
+
 /* ── Tableaux de prix ─────────────────────────────────── */
 .pricing-block {
   margin: 36px 0 50px;
