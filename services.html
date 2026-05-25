@@ -1,53 +1,337 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services & Tarifs | BG Informatique</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="Logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Services & Tarifs | BG Informatique — Saint-Jérôme</title>
+  <meta name="description" content="Tarifs transparents pour services TI à Saint-Jérôme : réinstallation, optimisation, Microsoft 365, automatisation, infrastructure cloud, IA et cybersécurité.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bginformatique.ca/services.html">
+
+  <meta property="og:title" content="Services & Tarifs | BG Informatique">
+  <meta property="og:description" content="Tarifs transparents pour services TI résidentiels et entreprises à Saint-Jérôme.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bginformatique.ca/services.html">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:image" content="https://bginformatique.ca/Logo.png">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="apple-touch-icon" href="Logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://bginformatique.ca/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services & Tarifs",
+      "item": "https://bginformatique.ca/services.html"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+<header class="site-header">
+  <div class="container header-container">
+    <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
+      <img src="Logo.png" alt="" height="44">
+      <span class="visually-hidden">BG Informatique</span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="services.html" aria-current="page">Services & Tarifs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="diagnostic.html" class="nav-accent">Pré-diagnostic</a>
+    </nav>
+    <a href="tel:+14502319199" class="header-phone">
+      <span aria-hidden="true">📞</span>
+      <span>450 231-9199</span>
+    </a>
+    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
 
-<section style="padding: 60px 0; background: #f4f4f9; min-height: 70vh;">
-    <div class="container" style="max-width: 900px; margin: auto;">
-        <h1 style="text-align: center;">Nos Services TI</h1>
-        <p style="text-align: center; margin-bottom: 40px;">Tarifs transparents (Taxes incluses).</p>
-
-        <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px;">🛠️ Services Résidentiels</h2>
-        <table class="price-table">
-            <tr><th>Service</th><th>Description</th><th>Prix</th></tr>
-            <tr><td>Réinstallation & Sauvegarde</td><td>Remise à neuf complète du système.</td><td class="price-tag">130 $</td></tr>
-            <tr><td>Optimisation Performance</td><td>Nettoyage logiciel et accélération.</td><td class="price-tag">95 $</td></tr>
-            <tr><td>Soutien à distance</td><td>Dépannage logiciel rapide.</td><td class="price-tag">80 $ / h</td></tr>
-        </table>
-
-        <h2 style="color: #333; border-left: 5px solid #333; padding-left: 15px; margin-top: 50px;">🏢 Services Entreprises</h2>
-        <table class="price-table">
-            <tr><th>Solution</th><th>Description</th><th>Prix</th></tr>
-            <tr><td>Déploiement Microsoft 365</td><td>Configuration Tenant et sécurité.</td><td class="price-tag">Dès 160 $</td></tr>
-            <tr><td>Administration Système</td><td>Gestion de parcs informatiques.</td><td class="price-tag">125 $ / h</td></tr>
-        </table>
-
-        <div style="margin-top: 40px; padding: 20px; background: #e7f3ff; border-radius: 8px; text-align: center;">
-            <a href="diagnostic.html" class="btn-cta">Lancer un pré-diagnostic gratuit</a>
-        </div>
-    </div>
+<section class="page-hero">
+  <div class="container">
+    <h1>Nos services TI</h1>
+    <p class="page-hero-lead">Tarifs transparents, taxes incluses. Aucune surprise sur la facture, aucune vente de matériel.</p>
+  </div>
 </section>
 
-<div id="footer-placeholder"></div>
+<section class="section">
+  <div class="container container-narrow">
+
+    <nav class="toc" aria-label="Sommaire des services">
+      <p class="toc-label">Sommaire</p>
+      <ul>
+        <li><a href="#services-residentiels">🛠️ Services résidentiels</a></li>
+        <li><a href="#services-entreprises">🏢 Services entreprises</a></li>
+        <li><a href="#automatisation">🤖 Automatisation des processus</a></li>
+        <li><a href="#ia">💡 Consultation IA</a></li>
+        <li><a href="#infrastructure">🖥️ Infrastructure cloud & systèmes</a></li>
+        <li><a href="#cybersecurite">🛡️ Cybersécurité & formation</a></li>
+      </ul>
+    </nav>
+
+    <div class="pricing-block" id="services-residentiels">
+      <h2><span aria-hidden="true">🛠️</span> Services résidentiels</h2>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">Description</th>
+            <th scope="col" style="text-align:right;">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-name">Réinstallation & sauvegarde</td>
+            <td class="service-desc">Remise à neuf complète du système avec préservation de vos données.</td>
+            <td class="price-tag">130 $</td>
+          </tr>
+          <tr>
+            <td class="service-name">Optimisation performance</td>
+            <td class="service-desc">Nettoyage logiciel, désactivation des processus inutiles, accélération.</td>
+            <td class="price-tag">95 $</td>
+          </tr>
+          <tr>
+            <td class="service-name">Soutien à distance</td>
+            <td class="service-desc">Dépannage logiciel rapide via outil sécurisé.</td>
+            <td class="price-tag">80 $ / h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-block is-business" id="services-entreprises">
+      <h2><span aria-hidden="true">🏢</span> Services entreprises</h2>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Solution</th>
+            <th scope="col">Description</th>
+            <th scope="col" style="text-align:right;">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-name">Déploiement Microsoft 365</td>
+            <td class="service-desc">Configuration du Tenant, politiques de sécurité, gestion des identités.</td>
+            <td class="price-tag">Dès 160 $</td>
+          </tr>
+          <tr>
+            <td class="service-name">Administration système</td>
+            <td class="service-desc">Gestion de parcs informatiques, monitoring, mises à jour planifiées.</td>
+            <td class="price-tag">125 $ / h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-block is-business" id="automatisation">
+      <h2><span aria-hidden="true">🤖</span> Automatisation des processus d'affaires</h2>
+      <p style="color:var(--text-muted); margin-bottom:18px; font-size:0.97rem;">Éliminez les tâches répétitives avec des outils construits pour vos besoins spécifiques.</p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Solution</th>
+            <th scope="col">Description</th>
+            <th scope="col" style="text-align:right;">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-name">Scripts Python & Bash sur mesure</td>
+            <td class="service-desc">Traitement de données, gestion de fichiers, sauvegardes planifiées et toute tâche récurrente que vous faites manuellement aujourd'hui.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+          <tr>
+            <td class="service-name">Outils de gestion internes</td>
+            <td class="service-desc">Applications légères avec interface graphique (formulaires, tableaux de bord, mini-outils), sans abonnement logiciel tiers.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+          <tr>
+            <td class="service-name">Intégration d'API entre logiciels</td>
+            <td class="service-desc">Connexion de vos outils existants entre eux : CRM ↔ comptabilité, formulaires web ↔ base de données, notifications automatiques, etc.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-block is-business" id="ia">
+      <h2><span aria-hidden="true">💡</span> Consultation et intégration en intelligence artificielle</h2>
+      <p style="color:var(--text-muted); margin-bottom:18px; font-size:0.97rem;">Des outils IA concrets, adaptés à votre flux de travail, sans promesses vides.</p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Solution</th>
+            <th scope="col">Description</th>
+            <th scope="col" style="text-align:right;">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-name">Audit d'opportunités IA</td>
+            <td class="service-desc">Analyse de vos opérations pour identifier où l'IA peut réduire la charge de travail ou améliorer la qualité des livrables.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+          <tr>
+            <td class="service-name">Déploiement Microsoft Copilot</td>
+            <td class="service-desc">Configuration et intégration de Copilot dans votre environnement Microsoft 365 existant (Teams, Word, Outlook, Excel).</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+          <tr>
+            <td class="service-name">Formation : prompting & IA sécuritaire</td>
+            <td class="service-desc">Ateliers pratiques pour utiliser l'IA efficacement et de façon sécuritaire en entreprise — quoi partager, quoi protéger, comment formuler des requêtes utiles.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-block is-business" id="infrastructure">
+      <h2><span aria-hidden="true">🖥️</span> Gestion d'infrastructures cloud et systèmes</h2>
+      <p style="color:var(--text-muted); margin-bottom:18px; font-size:0.97rem;">Administration à distance, gouvernance rigoureuse, continuité garantie.</p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Solution</th>
+            <th scope="col">Description</th>
+            <th scope="col" style="text-align:right;">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-name">Administration de serveurs Linux</td>
+            <td class="service-desc">Gestion à distance de serveurs Debian et dérivés : configuration, mises à jour, monitoring, gestion des accès et résolution d'incidents.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+          <tr>
+            <td class="service-name">Gouvernance Microsoft 365 avancée</td>
+            <td class="service-desc">Politiques de rétention, MFA conditionnel, DLP (prévention des fuites de données), audit des accès et revue des permissions.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+          <tr>
+            <td class="service-name">Stratégie de sauvegarde cloud (BaaS/DRaaS)</td>
+            <td class="service-desc">Conception et mise en place d'une stratégie de sauvegarde contre les rançongiciels, avec RPO/RTO définis et tests de restauration inclus.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-block is-business" id="cybersecurite">
+      <h2><span aria-hidden="true">🛡️</span> Cybersécurité préventive et formation</h2>
+      <p style="color:var(--text-muted); margin-bottom:18px; font-size:0.97rem;">Préparez votre équipe avant qu'un incident survienne — sans jargon, sans panique.</p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Solution</th>
+            <th scope="col">Description</th>
+            <th scope="col" style="text-align:right;">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-name">Simulation d'hameçonnage</td>
+            <td class="service-desc">Campagne contrôlée avec rapport de vigilance personnalisé : qui a cliqué, qui a soumis ses identifiants, qui a signalé la tentative. Aucune donnée réelle collectée.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+          <tr>
+            <td class="service-name">Formation & sensibilisation en visioconférence</td>
+            <td class="service-desc">Atelier adapté à votre contexte : mots de passe et gestionnaires, détection de fraudes, bonnes pratiques au quotidien. Format court (60–90 min), accessible à tous.</td>
+            <td class="price-tag">Sur devis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-info" style="margin-top:36px;">
+      <strong>Vous n'êtes pas certain de quoi vous avez besoin ?</strong> Lancez un pré-diagnostic gratuit — nous identifions le problème avant tout engagement.
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+      <a href="diagnostic.html" class="btn-cta btn-cta--primary">Lancer un pré-diagnostic gratuit</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Une question sur un service ?</h2>
+    <p>Appelez-nous, nous répondons 24/7.</p>
+    <div class="hero-cta-group">
+      <a href="tel:+14502319199" class="btn-cta btn-cta--primary">📞 450 231-9199</a>
+      <a href="mailto:information@bginformatique.ca" class="btn-cta btn-cta--secondary">Nous écrire</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 class="footer-heading">BG Informatique</h4>
+        <p class="footer-line">📍 Saint-Jérôme, QC</p>
+        <p class="footer-line">🌐 Service à distance disponible</p>
+        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
+        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Services & Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Mentions</h4>
+        <ul class="footer-links">
+          <li><a href="conditions.html">Termes & Conditions</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
 
 <script>
-    function loadComponent(id, file, activeId) {
-        fetch(file).then(r => r.text()).then(d => {
-            document.getElementById(id).innerHTML = d;
-            if (activeId) document.getElementById(activeId)?.classList.add('active');
-        });
-    }
-    loadComponent('header-placeholder', 'header.html', 'nav-services');
-    loadComponent('footer-placeholder', 'footer.html');
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
 </script>
 
 </body>
