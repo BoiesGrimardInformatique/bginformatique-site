@@ -30,19 +30,24 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "ProfessionalService",
     "name": "BG Informatique",
     "image": "https://bginformatique.ca/Logo.png",
     "url": "https://bginformatique.ca/",
     "telephone": "+1-450-231-9199",
     "email": "information@bginformatique.ca",
+    "sameAs": "https://share.google/5wv5iBPd5JccjrC0v",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Saint-Jérôme",
       "addressRegion": "QC",
       "addressCountry": "CA"
     },
-    "areaServed": ["Saint-Jérôme", "Laurentides", "Mirabel", "Sainte-Adèle", "Mont-Tremblant"],
+    "areaServed": [
+      {"@type": "City", "name": "Saint-Jérôme"},
+      {"@type": "AdministrativeArea", "name": "Laurentides"},
+      {"@type": "AdministrativeArea", "name": "Québec"}
+    ],
     "knowsAbout": ["Microsoft 365", "automatisation de processus", "intelligence artificielle", "cybersécurité", "administration Linux", "sauvegarde cloud"],
     "priceRange": "$$",
     "openingHoursSpecification": {
@@ -50,6 +55,17 @@
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
       "opens": "00:00",
       "closes": "23:59"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services TI",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Automatisation de processus d'affaires", "url": "https://bginformatique.ca/automatisation-processus-affaires-saint-jerome.html"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Consultation en intelligence artificielle", "url": "https://bginformatique.ca/consultation-ia-laurentides.html"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Infrastructure cloud et systèmes", "url": "https://bginformatique.ca/infrastructure-cloud-saint-jerome.html"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cybersécurité préventive et formation", "url": "https://bginformatique.ca/cybersecurite-formation-saint-jerome.html"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dépannage informatique d'urgence", "url": "https://bginformatique.ca/depannage-informatique-urgence-saint-jerome.html"}}
+      ]
     }
   }
   </script>
