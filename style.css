@@ -1162,7 +1162,7 @@ p { color: var(--text); }
 }
 .result-service-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
 .result-service-card p { color: var(--text-muted); font-size: 0.9rem; }
-.wizard-result-driverscloud {
+.wizard-result-tool {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -1171,8 +1171,8 @@ p { color: var(--text); }
   max-width: 480px;
   text-align: left;
 }
-.wizard-result-driverscloud h3 { font-size: 1rem; margin-bottom: 6px; }
-.wizard-result-driverscloud p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 12px; }
+.wizard-result-tool h3 { font-size: 1rem; margin-bottom: 6px; }
+.wizard-result-tool p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 12px; }
 .wizard-result-actions {
   display: flex;
   flex-wrap: wrap;
