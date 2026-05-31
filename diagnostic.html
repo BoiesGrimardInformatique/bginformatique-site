@@ -26,6 +26,44 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <style>
+    .wizard-submit-block {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+    .wizard-email-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .wizard-email-input {
+      width: 100%;
+      max-width: 360px;
+      padding: 10px 14px;
+      border: 2px solid var(--border, #ddd);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--surface, #fff);
+      color: var(--text, #111);
+    }
+    .wizard-email-input:focus {
+      outline: 2px solid var(--accent, #0066cc);
+      border-color: var(--accent, #0066cc);
+    }
+    .wizard-form-status {
+      min-height: 1.5em;
+      font-size: 0.88rem;
+      text-align: center;
+      max-width: 380px;
+    }
+    .wizard-form-status.success { color: #1a7f4b; font-weight: 600; }
+    .wizard-form-status.error   { color: #c0392b; }
+  </style>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -315,10 +353,12 @@
             <a href="outils-diagnostic.html" class="btn-cta btn-cta--secondary" style="font-size:0.88rem; padding:8px 18px;">Voir l'outil de diagnostic Windows →</a>
           </div>
 
-          <div class="wizard-result-actions">
-            <a id="mailto-residential" href="#" class="btn-cta btn-cta--primary">📧 Envoyer mon résumé par courriel</a>
+          <div class="wizard-submit-block">
+            <label for="email-residential" class="wizard-email-label">Votre adresse courriel</label>
+            <input type="email" id="email-residential" name="email" placeholder="votre@courriel.com" class="wizard-email-input" autocomplete="email">
+            <button id="btn-submit-residential" type="button" class="btn-cta btn-cta--primary">📧 Envoyer mon résumé</button>
+            <div id="status-residential" class="wizard-form-status" aria-live="polite"></div>
           </div>
-          <p style="color:var(--text-muted); font-size:0.83rem; max-width:420px; margin:8px auto 0;">Ce bouton ouvre votre application de courriel avec un message pré-rempli. Aucune donnée n'est transmise automatiquement.</p>
           <button class="wizard-restart" type="button">↩ Recommencer</button>
         </div>
       </div>
@@ -338,9 +378,13 @@
 
           <div class="wizard-result-actions">
             <a id="result-service-link" href="services.html" class="btn-cta btn-cta--secondary" style="font-size:0.88rem;">Voir la page du service</a>
-            <a id="mailto-business" href="#" class="btn-cta btn-cta--primary">📧 Envoyer mon résumé par courriel</a>
           </div>
-          <p style="color:var(--text-muted); font-size:0.83rem; max-width:420px; margin:8px auto 0;">Ce bouton ouvre votre application de courriel avec un message pré-rempli. Aucune donnée n'est transmise automatiquement.</p>
+          <div class="wizard-submit-block">
+            <label for="email-business" class="wizard-email-label">Votre adresse courriel</label>
+            <input type="email" id="email-business" name="email" placeholder="votre@courriel.com" class="wizard-email-input" autocomplete="email">
+            <button id="btn-submit-business" type="button" class="btn-cta btn-cta--primary">📧 Envoyer mon résumé</button>
+            <div id="status-business" class="wizard-form-status" aria-live="polite"></div>
+          </div>
           <button class="wizard-restart" type="button">↩ Recommencer</button>
         </div>
       </div>
@@ -414,6 +458,8 @@
     clientType: null,
     r_problem: null, r_duration: null, r_os: null,
     b_challenge: null, b_size: null, b_urgency: null,
+    residentialSubject: null, residentialMessage: null,
+    businessSubject: null, businessMessage: null,
   };
 
   const labels = {
@@ -531,17 +577,17 @@
     const prob = labels[state.r_problem]  || state.r_problem;
     const dur  = labels[state.r_duration] || state.r_duration;
     const os   = labels[state.r_os]       || state.r_os;
-    const subject = encodeURIComponent('Pré-diagnostic résidentiel — BG Informatique');
-    const body = encodeURIComponent(
+    state.residentialSubject = 'Pré-diagnostic résidentiel — BG Informatique';
+    state.residentialMessage =
       'Bonjour,\n\nVoici mon résumé de pré-diagnostic :\n\n' +
       '• Type : Particulier / résidentiel\n' +
       '• Problème : ' + prob + '\n' +
       '• Depuis : ' + dur + '\n' +
       '• Système : ' + os + '\n\n' +
-      "[Joignez le fichier Diagnostic-BG_*.txt si vous l'avez généré, ou ajoutez tout détail supplémentaire]\n\nMerci !"
-    );
-    document.getElementById('mailto-residential').href =
-      'mailto:information@bginformatique.ca?subject=' + subject + '&body=' + body;
+      "[Joignez le fichier Diagnostic-BG_*.txt si vous l'avez généré, ou ajoutez tout détail supplémentaire]";
+    document.getElementById('email-residential').value = '';
+    document.getElementById('status-residential').textContent = '';
+    document.getElementById('status-residential').className = 'wizard-form-status';
     showStep('step-result-residential');
   }
 
@@ -555,19 +601,58 @@
     document.getElementById('result-service-desc').textContent = rec.desc;
     document.getElementById('result-service-link').href = rec.url;
 
-    const subject = encodeURIComponent(rec.subject);
-    const body = encodeURIComponent(
+    state.businessSubject = rec.subject;
+    state.businessMessage =
       'Bonjour,\n\nVoici mon résumé de pré-diagnostic :\n\n' +
       '• Type : Entreprise / OBNL / travailleur autonome\n' +
       '• Défi principal : ' + chall + '\n' +
       '• Taille : ' + size + '\n' +
       '• Urgence : ' + urgency + '\n\n' +
-      '[Ajoutez ici tout détail supplémentaire sur votre situation]\n\nMerci !'
-    );
-    document.getElementById('mailto-business').href =
-      'mailto:information@bginformatique.ca?subject=' + subject + '&body=' + body;
+      '[Ajoutez ici tout détail supplémentaire sur votre situation]';
+    document.getElementById('email-business').value = '';
+    document.getElementById('status-business').textContent = '';
+    document.getElementById('status-business').className = 'wizard-form-status';
     showStep('step-result-business');
   }
+
+  async function submitToFormspree(emailId, statusId, subject, message) {
+    const emailEl  = document.getElementById(emailId);
+    const statusEl = document.getElementById(statusId);
+    const email = emailEl.value.trim();
+    if (!email || !email.includes('@')) {
+      statusEl.textContent = 'Veuillez entrer une adresse courriel valide.';
+      statusEl.className = 'wizard-form-status error';
+      emailEl.focus();
+      return;
+    }
+    statusEl.textContent = 'Envoi en cours…';
+    statusEl.className = 'wizard-form-status';
+    try {
+      const res = await fetch('https://formspree.io/f/mnjrkalw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email, subject, message }),
+      });
+      if (res.ok) {
+        statusEl.textContent = '✅ Reçu ! Nous vous répondons sous peu.';
+        statusEl.className = 'wizard-form-status success';
+        emailEl.value = '';
+      } else {
+        throw new Error('server');
+      }
+    } catch {
+      statusEl.textContent = "Échec de l'envoi. Appelez-nous au 450 231-9199 ou écrivez à information@bginformatique.ca";
+      statusEl.className = 'wizard-form-status error';
+    }
+  }
+
+  document.getElementById('btn-submit-residential').addEventListener('click', () => {
+    submitToFormspree('email-residential', 'status-residential', state.residentialSubject, state.residentialMessage);
+  });
+
+  document.getElementById('btn-submit-business').addEventListener('click', () => {
+    submitToFormspree('email-business', 'status-business', state.businessSubject, state.businessMessage);
+  });
 
   // Restart
   document.querySelectorAll('.wizard-restart').forEach(btn => {
@@ -577,6 +662,14 @@
         b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false');
       });
       document.querySelectorAll('.wizard-btn-next').forEach(b => b.disabled = true);
+      ['email-residential', 'email-business'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      ['status-residential', 'status-business'].forEach(id => {
+        const el = document.getElementById(id);
+        el.textContent = '';
+        el.className = 'wizard-form-status';
+      });
       showStep('step-type');
     });
   });
