@@ -1,2 +1,42 @@
-# Fichiers sources non publiés (logos originaux, archives)
+# ── Fichiers sources non publiés (logos originaux, archives) ──────────────
 _source/
+
+# ── Secrets et configuration locale ──────────────────────────────────────
+.env
+.env.*
+*.secret
+secrets/
+config.local.*
+
+# ── Dépendances (si un outil de build est ajouté un jour) ──────────────────
+node_modules/
+vendor/
+
+# ── Artefacts de build ────────────────────────────────────────────────────
+dist/
+build/
+.cache/
+
+# ── Fichiers système macOS ────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Fichiers système Windows ──────────────────────────────────────────────
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── Éditeurs et IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ── Archives et sauvegardes ───────────────────────────────────────────────
+*.zip
+*.tar.gz
+*.bak
+*.orig
