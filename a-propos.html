@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -49,173 +49,170 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html" aria-current="page">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html" aria-current="page">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html" aria-current="page">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="page-hero">
-  <div class="container">
-    <h1>À propos de BG Informatique</h1>
-    <p class="page-hero-lead">Une entreprise locale en pleine croissance, à la recherche de nouveaux défis — et fière de travailler sans jamais vendre de matériel.</p>
-  </div>
-</section>
+<main class="site-main" id="main">
 
-<section class="section">
-  <div class="container container-narrow">
-
-    <div class="about-block">
-      <h2>Qui nous sommes</h2>
-      <p>
-        BG Informatique est une entreprise TI ancrée dans les Laurentides, à Saint-Jérôme.
-        Nous travaillons avec des PME, des OBNL et des travailleurs autonomes qui ont besoin d'expertise informatique sérieuse —
-        sans les complications d'un grand intégrateur et sans les limites d'un technicien généraliste.
-      </p>
-      <p>
-        Nous sommes en pleine croissance et nous cherchons activement de nouveaux défis : des mandats complexes, des problèmes que d'autres n'ont pas su résoudre, des organisations qui veulent vraiment moderniser leur façon de travailler.
-        Si votre situation sort de l'ordinaire, c'est exactement là où nous sommes à notre meilleur.
-      </p>
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// à propos</span>
+      <h1>Une firme TI locale, neutre par conception.</h1>
+      <p class="page-hero-lead">Une entreprise des Laurentides en pleine croissance, à la recherche de nouveaux défis — et fière de travailler sans jamais vendre de matériel.</p>
     </div>
+  </section>
 
-    <div class="about-block">
-      <h2>Notre position : zéro vente de matériel</h2>
-      <p>
-        C'est un choix délibéré, pas une contrainte. La plupart des firmes TI tirent une part de leurs revenus de la vente de matériel — ce qui crée un conflit d'intérêts évident au moment de vous recommander un équipement.
-      </p>
-      <p>
-        Chez BG Informatique, <strong>nous ne vendons aucun appareil, aucune pièce, aucun accessoire.</strong>
-        Notre seul produit, c'est notre expertise. Quand nous vous suggérons un ordinateur, un serveur ou un périphérique,
-        c'est parce que c'est le bon choix pour vous — et vous pouvez magasiner le meilleur prix où vous voulez, sans pression de notre part.
-      </p>
-      <p>
-        Cette indépendance nous permet de rester neutres, objectifs et entièrement alignés sur vos intérêts.
-      </p>
+  <!-- Who / position -->
+  <section class="section--tight" style="max-width:1200px;margin:0 auto;">
+    <div class="about-cols">
+      <div class="about-card">
+        <span class="eyebrow accent" style="color:var(--blue);">// qui nous sommes</span>
+        <h2>Qui nous sommes</h2>
+        <p>BG Informatique est une entreprise TI ancrée dans les Laurentides, à Saint-Jérôme. Nous travaillons avec des PME, des OBNL et des travailleurs autonomes qui ont besoin d'expertise informatique sérieuse — sans les complications d'un grand intégrateur et sans les limites d'un technicien généraliste.</p>
+        <p>Nous sommes en pleine croissance et cherchons activement de nouveaux défis : des mandats complexes, des problèmes que d'autres n'ont pas su résoudre, des organisations qui veulent vraiment moderniser leur façon de travailler. Si votre situation sort de l'ordinaire, c'est exactement là où nous sommes à notre meilleur.</p>
+      </div>
+      <div class="about-card about-card--accent">
+        <span class="eyebrow">// notre position</span>
+        <h2>Zéro vente de matériel</h2>
+        <p>C'est un choix délibéré, pas une contrainte. La plupart des firmes TI tirent une part de leurs revenus de la vente de matériel — ce qui crée un conflit d'intérêts évident au moment de vous recommander un équipement.</p>
+        <p>Chez BG Informatique, <strong>nous ne vendons aucun appareil, aucune pièce, aucun accessoire.</strong> Notre seul produit, c'est notre expertise. Quand nous suggérons un ordinateur ou un serveur, c'est parce que c'est le bon choix pour vous — et vous magasinez le meilleur prix où vous voulez, sans pression.</p>
+        <p>Cette indépendance nous garde neutres, objectifs et entièrement alignés sur vos intérêts.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="card-grid" style="margin-top:40px;">
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">📍</span>
+  <!-- Values -->
+  <section class="section--tight" style="max-width:1200px;margin:0 auto;">
+    <div class="value-grid">
+      <article class="value-card reveal">
+        <span class="icon-wrap icon-wrap--green"><span class="glyph glyph--circle-green"></span></span>
         <h3>Ancrage local</h3>
         <p>Basés à Saint-Jérôme, nous connaissons la réalité des entreprises des Laurentides. Nos interventions se font à distance — partout au Québec.</p>
       </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🔍</span>
+      <article class="value-card reveal">
+        <span class="icon-wrap icon-wrap--blue"><span class="glyph glyph--diamond-blue"></span></span>
         <h3>Neutralité totale</h3>
-        <p>Aucune commission sur le matériel, aucun partenariat d'affiliation qui influence nos recommandations. Vous obtenez notre avis honnête, point.</p>
+        <p>Aucune commission sur le matériel, aucun partenariat d'affiliation. Vous obtenez notre avis honnête, point.</p>
       </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🚀</span>
+      <article class="value-card reveal">
+        <span class="icon-wrap icon-wrap--blue"><span class="glyph glyph--pill-blue"></span></span>
         <h3>En croissance</h3>
-        <p>Nous développons constamment notre offre — automatisation, IA, cybersécurité — pour répondre aux besoins réels des organisations d'aujourd'hui.</p>
+        <p>Nous développons constamment notre offre — automatisation, IA, cybersécurité — pour les besoins réels d'aujourd'hui.</p>
       </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🌙</span>
+      <article class="value-card reveal">
+        <span class="icon-wrap icon-wrap--green"><span class="glyph glyph--dot-green"></span></span>
         <h3>Disponible 24/7</h3>
         <p>Les urgences n'attendent pas les heures d'ouverture. Nous non plus.</p>
       </article>
     </div>
+  </section>
 
-    <div class="about-block" style="margin-top:50px;">
-      <h2>Ce que nous faisons concrètement</h2>
-      <ul class="benefit-list">
-        <li>Automatisation de processus d'affaires — scripts sur mesure, intégration d'API, outils internes</li>
-        <li>Consultation et intégration en intelligence artificielle — audit, Copilot, formation</li>
-        <li>Gestion d'infrastructures cloud et systèmes — Linux, Microsoft 365 avancé, BaaS/DRaaS</li>
-        <li>Cybersécurité préventive — simulations d'hameçonnage, formation des équipes</li>
-        <li>Services résidentiels — optimisation, réinstallation, soutien à distance</li>
-      </ul>
-      <p style="margin-top:18px;">
-        <a href="services.html">Consulter tous nos services et tarifs →</a>
-      </p>
+  <!-- What we do -->
+  <section class="section--tight" style="max-width:1200px;margin:0 auto;">
+    <div class="panel">
+      <span class="eyebrow">// concrètement</span>
+      <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:24px;">Ce que nous faisons</h2>
+      <div class="doings">
+        <div class="doing"><span class="d-num">01</span><span class="d-text">Automatisation de processus d'affaires — scripts sur mesure, intégration d'API, outils internes.</span></div>
+        <div class="doing"><span class="d-num">02</span><span class="d-text">Consultation et intégration en intelligence artificielle — audit, Copilot, formation.</span></div>
+        <div class="doing"><span class="d-num">03</span><span class="d-text">Gestion d'infrastructures cloud et systèmes — Linux, Microsoft 365 avancé, BaaS/DRaaS.</span></div>
+        <div class="doing"><span class="d-num">04</span><span class="d-text">Cybersécurité préventive — simulations d'hameçonnage, formation des équipes.</span></div>
+        <div class="doing"><span class="d-num">05</span><span class="d-text">Services résidentiels — optimisation, réinstallation, soutien à distance.</span></div>
+      </div>
+      <a href="services.html" class="btn btn--ghost" style="margin-top:26px;">Consulter tous nos services et tarifs →</a>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Vous avez un défi TI qui sort de l'ordinaire ?</h2>
-    <p>C'est exactement le genre de mandat qu'on cherche. Parlons-en.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca" class="btn-cta btn-cta--primary">Nous écrire</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+  <!-- CTA band -->
+  <section class="cta-band">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › nouveaux défis bienvenus</span>
+        <h2>Un défi TI qui sort de l'ordinaire ?</h2>
+        <p>C'est exactement le genre de mandat qu'on cherche. Parlons-en — 24/7.</p>
+        <div class="cta-btns">
+          <a href="contact.html" class="btn btn--on-light">Nous écrire</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+</main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -97,191 +97,185 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- ═══ Header ═══ -->
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <span class="hero-eyebrow">Saint-Jérôme · Mirabel · Sainte-Adèle · Mont-Tremblant</span>
-    <h1>Consultant informatique pour les PME des Laurentides</h1>
-    <p class="hero-lead">Votre partenaire TI régional pour Microsoft 365, la sécurité des identités, et l'administration de parcs informatiques. Pas de vente de matériel, juste de l'expertise.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20de%20consultation%20entreprise" class="btn-cta btn-cta--primary">Demander une consultation</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+<main class="site-main" id="main">
+
+  <!-- ═══ Page hero ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// consultant ti · laurentides</span>
+      <h1>Consultant informatique pour les PME des Laurentides</h1>
+      <p class="page-hero-lead">Votre partenaire TI régional pour Microsoft 365, la sécurité des identités, et l'administration de parcs informatiques. Pas de vente de matériel, juste de l'expertise.</p>
+      <div class="btn-row" style="margin-top:28px;">
+        <a href="mailto:information@bginformatique.ca?subject=Demande%20de%20consultation%20entreprise" class="btn btn--primary"><span class="arrow">›</span> Demander une consultation</a>
+        <a href="tel:+14502319199" class="btn btn--secondary mono">450 231-9199</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="certifications-banner">
-  <div class="container">
-    <p class="cert-label">Certifié</p>
-    <ul class="cert-list">
-      <li>Cisco</li>
-      <li>IBM</li>
-      <li>Google</li>
-    </ul>
-    <p class="cert-label" style="margin-left: 2rem;">Spécialiste</p>
-    <ul class="cert-list">
-      <li>Microsoft 365</li>
-    </ul>
-  </div>
-</section>
+  <!-- ═══ Cert ticker ═══ -->
+  <section class="cert-ticker" aria-label="Certifications et technologies">
+    <div class="cert-track">
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● SÉCURITÉ</span><span>● LOI 25</span><span>● GESTION DE PARCS</span>
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● SÉCURITÉ</span><span>● LOI 25</span><span>● GESTION DE PARCS</span>
+    </div>
+  </section>
 
-<section class="section">
-  <div class="container container-narrow">
+  <!-- ═══ Intro ═══ -->
+  <section class="section">
+    <div class="prose container--mid">
+      <h2>Une présence locale, une approche orientée résultats</h2>
+      <p>Basés à Saint-Jérôme, nous accompagnons les PME des Laurentides — de Mirabel à Mont-Tremblant — dans la gestion de leur infrastructure logicielle. Notre spécialisation : <strong>l'administration système et Microsoft 365</strong>, sans vente de matériel pour préserver une recommandation neutre.</p>
+    </div>
+  </section>
 
-    <h2 style="margin-bottom:14px;">Une présence locale, une approche orientée résultats</h2>
-    <p style="color:var(--text-muted); margin-bottom:18px; font-size:1.05rem;">
-      Basés à Saint-Jérôme, nous accompagnons les PME des Laurentides — de Mirabel à Mont-Tremblant — dans la gestion de leur infrastructure logicielle.
-      Notre spécialisation : <strong>l'administration système et Microsoft 365</strong>, sans vente de matériel pour préserver une recommandation neutre.
-    </p>
-
-    <h2 style="margin:40px 0 18px;">Nos domaines d'intervention</h2>
+  <!-- ═══ Domaines d'intervention ═══ -->
+  <section class="section" style="padding-top:0;" aria-labelledby="domaines-title">
+    <div class="section-head">
+      <span class="eyebrow">// domaines d'intervention</span>
+      <h2 class="section-title" id="domaines-title">Nos domaines d'intervention</h2>
+    </div>
     <div class="card-grid">
       <article class="card">
-        <span class="card-icon" aria-hidden="true">☁️</span>
         <h3>Administration Microsoft 365</h3>
         <p>Configuration de Tenants, gestion des identités, politiques de sécurité, automatisation des licences, optimisation Teams/SharePoint.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true">🛡️</span>
-        <h3>Sécurité & conformité</h3>
+        <h3>Sécurité &amp; conformité</h3>
         <p>MFA, accès conditionnel, DLP, sauvegarde des données critiques. Conformité avec la Loi 25 du Québec.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true">🖥️</span>
         <h3>Gestion de parcs</h3>
         <p>Inventaire, mises à jour planifiées, monitoring, support utilisateur, gestion des incidents.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true">📈</span>
         <h3>Conseil stratégique TI</h3>
         <p>Audit, planification d'évolution, sélection d'outils, alignement de votre stack avec vos opérations.</p>
       </article>
     </div>
+  </section>
 
-    <h2 style="margin:50px 0 18px;">Tarifs entreprises</h2>
-    <table class="price-table">
-      <thead>
-        <tr><th>Service</th><th>Tarif</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="service-name">Déploiement Microsoft 365</td><td class="price-tag">Dès 160 $</td></tr>
-        <tr><td class="service-name">Administration système (horaire)</td><td class="price-tag">125 $ / h</td></tr>
-      </tbody>
-    </table>
-    <p style="color:var(--text-muted); font-size:0.93rem; margin-top:14px;">
-      Pour les mandats récurrents, des forfaits sur mesure sont disponibles. Contactez-nous.
-    </p>
+  <!-- ═══ Tarifs + zones desservies ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="prose container--mid">
+      <h2>Tarifs entreprises</h2>
+      <ul>
+        <li><strong>Déploiement Microsoft 365</strong> — Dès 160 $</li>
+        <li><strong>Administration système (horaire)</strong> — 125 $ / h</li>
+      </ul>
+      <p>Pour les mandats récurrents, des forfaits sur mesure sont disponibles. Contactez-nous.</p>
 
-    <h2 style="margin:50px 0 18px;">Zones desservies</h2>
-    <p style="color:var(--text-muted); margin-bottom:14px;">
-      Nous intervenons à distance partout au Québec, et sur place dans les Laurentides :
-    </p>
-    <ul class="benefit-list">
-      <li>Saint-Jérôme · Mirabel · Blainville · Boisbriand</li>
-      <li>Sainte-Adèle · Saint-Sauveur · Prévost · Piedmont</li>
-      <li>Sainte-Agathe-des-Monts · Mont-Tremblant · Val-David</li>
-      <li>Et toutes les autres municipalités des Laurentides</li>
-    </ul>
-    <div class="about-block related-services-block" style="margin-top:50px;">
+      <h2>Zones desservies</h2>
+      <p>Nous intervenons à distance partout au Québec, et sur place dans les Laurentides :</p>
+      <ul>
+        <li>Saint-Jérôme · Mirabel · Blainville · Boisbriand</li>
+        <li>Sainte-Adèle · Saint-Sauveur · Prévost · Piedmont</li>
+        <li>Sainte-Agathe-des-Monts · Mont-Tremblant · Val-David</li>
+        <li>Et toutes les autres municipalités des Laurentides</li>
+      </ul>
+
       <h2>Services complémentaires</h2>
-      <ul class="benefit-list">
+      <ul>
         <li><a href="automatisation-processus-affaires-saint-jerome.html"><strong>Automatisation de processus</strong></a> — Éliminer les tâches répétitives par scripts et intégrations</li>
         <li><a href="consultation-ia-laurentides.html"><strong>Intelligence artificielle</strong></a> — Audit, Copilot, formation au prompting</li>
         <li><a href="cybersecurite-formation-saint-jerome.html"><strong>Cybersécurité préventive</strong></a> — Simulations et formation des équipes</li>
       </ul>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Prêt à parler de votre infrastructure ?</h2>
-    <p>Première discussion sans frais ni engagement. Nous évaluons vos besoins et proposons une approche claire.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20de%20consultation%20entreprise" class="btn-cta btn-cta--primary">Demander une consultation</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+  <!-- ═══ CTA band ═══ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › discussion gratuite</span>
+        <h2 id="cta-title">Prêt à parler de votre infrastructure ?</h2>
+        <p>Première discussion sans frais ni engagement. Nous évaluons vos besoins et proposons une approche claire.</p>
+        <div class="cta-btns">
+          <a href="mailto:information@bginformatique.ca?subject=Demande%20de%20consultation%20entreprise" class="btn btn--on-light">Demander une consultation</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+</main>
+
+<!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

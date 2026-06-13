@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -48,143 +48,222 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<main class="container">
-  <article class="legal-content">
-    <h1>Politique de Confidentialité</h1>
-    <p class="legal-meta">Dernière mise à jour : 31 mai 2026</p>
+<main class="site-main" id="main">
 
-    <h2>1. Responsable de la protection des renseignements personnels</h2>
-    <p>Conformément à la Loi 25 du Québec, le responsable de la protection des renseignements personnels est <strong>Jérémie Boies Grimard</strong>, propriétaire de BG Informatique. Pour toute question relative à vos renseignements personnels : <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a>.</p>
-
-    <h2>2. Renseignements collectés</h2>
-    <p>Dans le cadre de nos services d'administration Microsoft 365 et de support TI, nous collectons uniquement les renseignements nécessaires à la prestation :</p>
-    <ul>
-      <li>Noms et coordonnées de contact (nom, téléphone, courriel).</li>
-      <li>Identifiants techniques nécessaires aux interventions, gérés via coffre-fort sécurisé chiffré.</li>
-      <li>Données de facturation.</li>
-      <li>Informations techniques sur l'environnement à administrer (configuration, journaux d'événements).</li>
-    </ul>
-
-    <h2>3. Utilisation des données</h2>
-    <p>Les données sont utilisées exclusivement pour :</p>
-    <ul>
-      <li>La prestation des services convenus.</li>
-      <li>La sécurisation de vos environnements informatiques.</li>
-      <li>La facturation et le suivi commercial.</li>
-    </ul>
-    <p><strong>Aucune donnée n'est vendue, louée ou partagée à des fins marketing</strong>, ni transmise à des tiers en dehors des prestataires nécessaires à la facturation (ex. processeur de paiement).</p>
-
-    <h2>4. Sécurité</h2>
-    <p>En tant que spécialiste en sécurité informatique, BG Informatique utilise :</p>
-    <ul>
-      <li>Le chiffrement en transit et au repos pour les identifiants.</li>
-      <li>L'authentification multifacteur (MFA) sur tous les accès.</li>
-      <li>Des pratiques d'isolation de données entre clients.</li>
-      <li>Une politique stricte de revue d'accès.</li>
-    </ul>
-
-    <h2>5. Conservation des données</h2>
-    <p>Les renseignements personnels sont conservés uniquement pendant la durée nécessaire aux fins pour lesquelles ils ont été collectés, ou selon les obligations légales applicables (ex. archivage comptable).</p>
-
-    <h2>6. Rapports de diagnostic</h2>
-    <p>L'outil de diagnostic Windows (<em>Diagnostic-BG.ps1</em>) génère un rapport entièrement local sur votre poste. Ce rapport peut contenir des renseignements à caractère personnel ou professionnel (nom d'utilisateur, nom du poste, adresses réseau, logiciels installés). Si vous choisissez de nous transmettre ce rapport par courriel, nous le traitons selon les mêmes principes que les renseignements collectés dans le cadre de nos services (section 3) et nous le conservons uniquement pour la durée du diagnostic ou du mandat concerné.</p>
-
-    <h2>7. Services tiers</h2>
-    <p>Ce site utilise les services tiers suivants :</p>
-    <ul>
-      <li><strong>Google Fonts</strong> — chargement des polices de caractères. Lors de chaque visite, votre navigateur se connecte aux serveurs de Google (fonts.googleapis.com), ce qui leur transmet votre adresse IP à des fins techniques. BG Informatique ne contrôle pas le traitement de ces données par Google.</li>
-      <li><strong>GoatCounter</strong> — statistiques de consultation anonymisées. GoatCounter est un outil d'analytique web open source qui ne dépose aucun témoin (cookie) et ne collecte aucune donnée personnelle identifiable : aucune adresse IP n'est stockée, aucun identifiant de suivi n'est créé. Seules des statistiques agrégées sont enregistrées (page visitée, pays approximatif, type d'appareil). Les données sont hébergées en Europe. Pour en savoir plus : <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">goatcounter.com/help/privacy</a>.</li>
-      <li><strong>Formspree</strong> — traitement des soumissions du formulaire de contact. Lorsque vous utilisez le formulaire de contact, les données saisies (prénom, nom, courriel, téléphone, organisation, sujet, message) sont transmises à Formspree (États-Unis) qui les achemine par courriel à BG Informatique. Ces données ne sont pas conservées par Formspree au-delà du délai nécessaire à la transmission. Pour en savoir plus : <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>. Si vous préférez ne pas utiliser ce service, vous pouvez nous contacter directement par téléphone ou par courriel.</li>
-    </ul>
-    <p>Aucune publicité ou réseau social tiers n'est utilisé sur ce site.</p>
-
-    <h2>8. Vos droits</h2>
-    <p>En vertu de la Loi 25, vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression de vos renseignements personnels. Pour exercer ces droits, contactez-nous à <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a>.</p>
-
-    <div class="legal-back">
-      <a href="index.html" class="btn-cta btn-cta--ghost">← Retour à l'accueil</a>
+  <!-- Page hero -->
+  <section class="page-hero container--mid" style="max-width:1100px;">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// vie privée · loi 25</span>
+      <h1>Politique de confidentialité</h1>
+      <p class="page-hero-lead">Comment nous recueillons, utilisons et protégeons vos renseignements personnels — conformément à la <strong style="color:var(--ink);">Loi 25</strong> du Québec. On collecte le minimum, on protège le reste.</p>
+      <div class="legal-updated">Dernière mise à jour : 13 juin 2026</div>
     </div>
-  </article>
+  </section>
+
+  <!-- Legal grid -->
+  <section class="section" style="max-width:1100px;padding-top:26px;">
+    <div class="legal-grid legal--green">
+
+      <aside class="legal-aside">
+        <div class="legal-toc">
+          <div class="legal-toc-title">sommaire</div>
+          <div class="legal-toc-links">
+            <a href="#engagement"><span class="ln">01</span>Notre engagement</a>
+            <a href="#responsable"><span class="ln">02</span>Responsable de la protection</a>
+            <a href="#collecte"><span class="ln">03</span>Renseignements recueillis</a>
+            <a href="#finalites"><span class="ln">04</span>Pourquoi nous les recueillons</a>
+            <a href="#consentement"><span class="ln">05</span>Consentement</a>
+            <a href="#partage"><span class="ln">06</span>Partage et hébergement</a>
+            <a href="#conservation"><span class="ln">07</span>Conservation et destruction</a>
+            <a href="#securite"><span class="ln">08</span>Sécurité</a>
+            <a href="#droits"><span class="ln">09</span>Vos droits</a>
+            <a href="#temoins"><span class="ln">10</span>Témoins (cookies)</a>
+            <a href="#acces-distance"><span class="ln">11</span>Accès à distance</a>
+            <a href="#plainte"><span class="ln">12</span>Plainte et modifications</a>
+          </div>
+        </div>
+        <div class="legal-aside-card">
+          <div class="lac-tag">// responsable</div>
+          <p>Pour toute question relative à vos renseignements : <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+        </div>
+      </aside>
+
+      <div class="legal-body">
+        <p class="legal-intro"><strong>BG Informatique</strong>, établie à Saint-Jérôme (Québec), s'engage à protéger la vie privée des personnes qui communiquent avec elle. La présente politique explique nos pratiques en matière de renseignements personnels.</p>
+
+        <div class="legal-section" id="engagement">
+          <h2><span class="ln">01</span>Notre engagement</h2>
+          <p>Nous appliquons un principe simple : ne recueillir que les renseignements strictement nécessaires pour vous servir, les protéger rigoureusement et ne jamais les vendre.</p>
+          <p>Cette politique s'applique aux renseignements recueillis par l'entremise de notre site, de nos formulaires et de nos interventions.</p>
+        </div>
+
+        <div class="legal-section" id="responsable">
+          <h2><span class="ln">02</span>Responsable de la protection des renseignements</h2>
+          <p>Conformément à la Loi 25, BG Informatique a désigné une personne responsable de la protection des renseignements personnels. Vous pouvez la joindre à l'adresse information@bginformatique.ca pour toute question, demande d'accès ou plainte.</p>
+        </div>
+
+        <div class="legal-section" id="collecte">
+          <h2><span class="ln">03</span>Renseignements que nous recueillons</h2>
+          <p>Selon votre interaction avec nous, nous pouvons recueillir :</p>
+          <ul class="legal-list">
+            <li>Renseignements de contact : nom, courriel, numéro de téléphone, organisation — lorsque vous remplissez un formulaire ou nous écrivez.</li>
+            <li>Contenu de votre demande : la description de votre besoin ou de votre problème technique.</li>
+            <li>Données techniques limitées : informations système que vous choisissez de nous transmettre (par exemple un rapport de diagnostic) ou auxquelles nous accédons durant une intervention autorisée.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section" id="finalites">
+          <h2><span class="ln">04</span>Pourquoi nous les recueillons</h2>
+          <p>Nous utilisons vos renseignements uniquement pour :</p>
+          <ul class="legal-list">
+            <li>Répondre à vos demandes et vous fournir les services convenus.</li>
+            <li>Établir un devis et assurer le suivi d'un mandat.</li>
+            <li>Communiquer avec vous au sujet de votre dossier.</li>
+            <li>Respecter nos obligations légales et comptables.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section" id="consentement">
+          <h2><span class="ln">05</span>Consentement</h2>
+          <p>En nous transmettant vos renseignements, vous consentez à leur utilisation aux fins décrites ci-dessus. Nous ne les utilisons pas à d'autres fins sans votre consentement.</p>
+          <p>Vous pouvez retirer votre consentement en tout temps, sous réserve des renseignements que nous devons conserver pour des raisons légales.</p>
+        </div>
+
+        <div class="legal-section" id="partage">
+          <h2><span class="ln">06</span>Partage et hébergement</h2>
+          <p>Nous ne vendons ni ne louons vos renseignements personnels. Nous pouvons faire appel à des fournisseurs de services de confiance strictement pour le fonctionnement de nos activités, notamment :</p>
+          <ul class="legal-list">
+            <li>Un service de traitement des formulaires pour acheminer vos messages vers notre boîte courriel.</li>
+            <li>Des services infonuagiques (par exemple Microsoft 365) pour la messagerie et le stockage.</li>
+            <li>Ces fournisseurs sont tenus de protéger vos renseignements et de ne les utiliser que pour le service rendu.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section" id="conservation">
+          <h2><span class="ln">07</span>Conservation et destruction</h2>
+          <p>Nous conservons vos renseignements aussi longtemps que nécessaire pour répondre à votre demande et respecter nos obligations légales, puis nous les détruisons de façon sécuritaire.</p>
+          <p>Aucune copie de vos fichiers n'est conservée à la suite d'une intervention à distance, sauf entente explicite (par exemple un mandat de sauvegarde).</p>
+        </div>
+
+        <div class="legal-section" id="securite">
+          <h2><span class="ln">08</span>Sécurité</h2>
+          <p>Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos renseignements : chiffrement des sessions à distance, authentification, accès restreint et principe du moindre privilège.</p>
+          <p>En cas d'incident de confidentialité présentant un risque sérieux, nous prenons les mesures requises et, le cas échéant, en informons les personnes concernées et la Commission d'accès à l'information.</p>
+        </div>
+
+        <div class="legal-section" id="droits">
+          <h2><span class="ln">09</span>Vos droits</h2>
+          <p>La Loi 25 vous reconnaît plusieurs droits sur vos renseignements personnels :</p>
+          <ul class="legal-list">
+            <li>Accès : consulter les renseignements que nous détenons à votre sujet.</li>
+            <li>Rectification : faire corriger un renseignement inexact ou incomplet.</li>
+            <li>Retrait et suppression : retirer votre consentement et demander la suppression, dans les limites de la loi.</li>
+            <li>Portabilité : obtenir, lorsque applicable, vos renseignements dans un format technologique structuré.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section" id="temoins">
+          <h2><span class="ln">10</span>Témoins (cookies)</h2>
+          <p>Notre site fonctionne sans témoins de suivi publicitaire. Tout outil de mesure d'audience éventuel serait limité à des statistiques agrégées et anonymes, et ne servirait jamais à vous profiler.</p>
+        </div>
+
+        <div class="legal-section" id="acces-distance">
+          <h2><span class="ln">11</span>Accès à distance</h2>
+          <p>Lors d'une intervention à distance, vous autorisez chaque connexion de façon explicite, vous voyez votre écran en tout temps et vous pouvez interrompre la session immédiatement. Nous n'accédons qu'à ce qui est nécessaire pour résoudre votre problème.</p>
+        </div>
+
+        <div class="legal-section" id="plainte">
+          <h2><span class="ln">12</span>Plainte et modifications</h2>
+          <p>Si vous estimez que vos droits n'ont pas été respectés, vous pouvez nous écrire et, à défaut de résolution, déposer une plainte auprès de la Commission d'accès à l'information du Québec.</p>
+          <p>Nous pouvons mettre à jour cette politique. La version en vigueur est celle publiée sur cette page, avec sa date de dernière mise à jour.</p>
+        </div>
+
+        <div class="legal-callout">
+          <div class="lc-tag">// exercer vos droits</div>
+          <p>Pour consulter, corriger ou faire supprimer vos renseignements, écrivez à <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a>. Nous répondons dans un délai de 30 jours.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

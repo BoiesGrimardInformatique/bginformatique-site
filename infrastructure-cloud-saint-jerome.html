@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -97,188 +97,183 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- ═══ Header ═══ -->
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <span class="hero-eyebrow">Saint-Jérôme · Laurentides · Service entièrement à distance</span>
-    <h1>Gestion d'infrastructures cloud et systèmes à distance</h1>
-    <p class="hero-lead">Administration Linux, gouvernance Microsoft 365 avancée et stratégie de sauvegarde cloud — une infrastructure fiable, gérée rigoureusement, sans que vous ayez à vous en préoccuper.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20infrastructure%20cloud" class="btn-cta btn-cta--primary">Discuter de mon infrastructure</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+<main class="site-main" id="main">
+
+  <!-- ═══ Hero ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// infrastructure-cloud</span>
+      <h1>Gestion d'infrastructures cloud et systèmes à distance</h1>
+      <p class="page-hero-lead">Administration Linux, gouvernance Microsoft 365 avancée et stratégie de sauvegarde cloud — une infrastructure fiable, gérée rigoureusement, sans que vous ayez à vous en préoccuper.</p>
+      <div class="btn-row" style="margin-top:28px;">
+        <a href="mailto:information@bginformatique.ca?subject=Demande%20infrastructure%20cloud" class="btn btn--primary">Discuter de mon infrastructure</a>
+        <a href="tel:+14502319199" class="btn btn--secondary mono">450 231-9199</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="certifications-banner">
-  <div class="container">
-    <p class="cert-label">Certifié</p>
-    <ul class="cert-list">
-      <li>Cisco</li>
-      <li>IBM</li>
-      <li>Google</li>
-    </ul>
-    <p class="cert-label" style="margin-left: 2rem;">Spécialiste</p>
-    <ul class="cert-list">
-      <li>Microsoft 365</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container container-narrow">
-
-    <h2 style="margin-bottom:14px;">Une infrastructure bien gérée, c'est une équipe qui ne perd pas de temps</h2>
-    <p style="color:var(--text-muted); margin-bottom:18px; font-size:1.05rem;">
-      Un serveur mal configuré, un accès trop permissif, une sauvegarde qui n'a jamais été testée — ces angles morts ne se voient pas jusqu'au jour où ils posent un problème.
-      Nous gérons votre infrastructure à distance avec rigueur : configurations documentées, accès contrôlés, continuité planifiée.
-    </p>
-
-    <h2 style="margin:40px 0 18px;">Nos domaines d'intervention</h2>
-    <div class="card-grid">
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🐧</span>
-        <h3>Administration Linux à distance</h3>
-        <p>Configuration, mises à jour, monitoring et gestion des accès sur serveurs Debian et dérivés. Résolution d'incidents, durcissement de la configuration et documentation de l'environnement.</p>
-      </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">☁️</span>
-        <h3>Gouvernance Microsoft 365 avancée</h3>
-        <p>Politiques de rétention, MFA conditionnel, DLP (prévention des fuites de données), audit des connexions et revue régulière des permissions — bien au-delà de la configuration de base.</p>
-      </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">💾</span>
-        <h3>Stratégie de sauvegarde cloud</h3>
-        <p>Conception et mise en place d'une stratégie BaaS/DRaaS : RPO et RTO définis selon vos besoins, tests de restauration planifiés, protection efficace contre les rançongiciels.</p>
-      </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">📊</span>
-        <h3>Monitoring & alertes</h3>
-        <p>Surveillance proactive de la disponibilité et des performances de vos systèmes, avec alertes configurées selon vos seuils critiques — pour intervenir avant que vos utilisateurs ne remarquent un problème.</p>
-      </article>
+  <!-- ═══ Intro ═══ -->
+  <section class="section" style="padding-top:32px;">
+    <div class="prose container--mid">
+      <h2>Une infrastructure bien gérée, c'est une équipe qui ne perd pas de temps</h2>
+      <p>Un serveur mal configuré, un accès trop permissif, une sauvegarde qui n'a jamais été testée — ces angles morts ne se voient pas jusqu'au jour où ils posent un problème. Nous gérons votre infrastructure à distance avec rigueur : configurations documentées, accès contrôlés, continuité planifiée.</p>
     </div>
+  </section>
 
-    <h2 style="margin:50px 0 18px;">Tarification</h2>
-    <table class="price-table">
-      <thead>
-        <tr><th scope="col">Service</th><th scope="col" style="text-align:right;">Prix</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="service-name">Administration Linux à distance</td><td class="price-tag">Sur devis</td></tr>
-        <tr><td class="service-name">Gouvernance Microsoft 365 avancée</td><td class="price-tag">Sur devis</td></tr>
-        <tr><td class="service-name">Stratégie de sauvegarde cloud (BaaS/DRaaS)</td><td class="price-tag">Sur devis</td></tr>
-      </tbody>
-    </table>
-    <p style="color:var(--text-muted); font-size:0.93rem; margin-top:14px;">
-      Des forfaits de gestion mensuelle récurrente sont disponibles pour les organisations qui souhaitent une relation continue. Contactez-nous pour en discuter.
-    </p>
+  <!-- ═══ Domaines d'intervention ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="container--mid">
+      <div class="section-head">
+        <span class="eyebrow">// nos domaines</span>
+        <h2 class="section-title">Nos domaines d'intervention</h2>
+      </div>
+      <div class="card-grid">
+        <article class="module-card">
+          <h3>Administration Linux à distance</h3>
+          <p>Configuration, mises à jour, monitoring et gestion des accès sur serveurs Debian et dérivés. Résolution d'incidents, durcissement de la configuration et documentation de l'environnement.</p>
+        </article>
+        <article class="module-card">
+          <h3>Gouvernance Microsoft 365 avancée</h3>
+          <p>Politiques de rétention, MFA conditionnel, DLP (prévention des fuites de données), audit des connexions et revue régulière des permissions — bien au-delà de la configuration de base.</p>
+        </article>
+        <article class="module-card">
+          <h3>Stratégie de sauvegarde cloud</h3>
+          <p>Conception et mise en place d'une stratégie BaaS/DRaaS : RPO et RTO définis selon vos besoins, tests de restauration planifiés, protection efficace contre les rançongiciels.</p>
+        </article>
+        <article class="module-card">
+          <h3>Monitoring &amp; alertes</h3>
+          <p>Surveillance proactive de la disponibilité et des performances de vos systèmes, avec alertes configurées selon vos seuils critiques — pour intervenir avant que vos utilisateurs ne remarquent un problème.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <h2 style="margin:50px 0 18px;">Pour qui ?</h2>
-    <ul class="benefit-list">
-      <li>PME avec serveurs Linux en production ou hébergement web à administrer</li>
-      <li>Organisations utilisant Microsoft 365 qui veulent aller au-delà de la configuration de base</li>
-      <li>Entreprises qui n'ont pas encore testé leur plan de reprise après sinistre</li>
-      <li>Équipes TI qui cherchent un partenaire externe pour alléger la gestion courante</li>
-    </ul>
-    <div class="about-block related-services-block" style="margin-top:50px;">
+  <!-- ═══ Tarification ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="prose container--mid">
+      <h2>Tarification</h2>
+      <ul>
+        <li><strong>Administration Linux à distance</strong> — sur devis</li>
+        <li><strong>Gouvernance Microsoft 365 avancée</strong> — sur devis</li>
+        <li><strong>Stratégie de sauvegarde cloud (BaaS/DRaaS)</strong> — sur devis</li>
+      </ul>
+      <p>Des forfaits de gestion mensuelle récurrente sont disponibles pour les organisations qui souhaitent une relation continue. Contactez-nous pour en discuter.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Pour qui + complémentaires ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="prose container--mid">
+      <h2>Pour qui ?</h2>
+      <ul>
+        <li>PME avec serveurs Linux en production ou hébergement web à administrer</li>
+        <li>Organisations utilisant Microsoft 365 qui veulent aller au-delà de la configuration de base</li>
+        <li>Entreprises qui n'ont pas encore testé leur plan de reprise après sinistre</li>
+        <li>Équipes TI qui cherchent un partenaire externe pour alléger la gestion courante</li>
+      </ul>
+
       <h2>Services complémentaires</h2>
-      <ul class="benefit-list">
+      <ul>
         <li><a href="cybersecurite-formation-saint-jerome.html"><strong>Cybersécurité préventive</strong></a> — MFA, DLP, simulations d'hameçonnage, formation</li>
         <li><a href="automatisation-processus-affaires-saint-jerome.html"><strong>Automatisation de processus</strong></a> — Scripts, intégrations, sauvegardes planifiées</li>
       </ul>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Votre infrastructure est-elle aussi solide que vous le croyez ?</h2>
-    <p>Une première discussion permet d'identifier rapidement les angles morts — sans engagement de votre part.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20infrastructure%20cloud" class="btn-cta btn-cta--primary">Nous contacter</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+  <!-- ═══ CTA band ═══ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › discussion gratuite</span>
+        <h2 id="cta-title">Votre infrastructure est-elle aussi solide que vous le croyez ?</h2>
+        <p>Une première discussion permet d'identifier rapidement les angles morts — sans engagement de votre part.</p>
+        <div class="cta-btns">
+          <a href="mailto:information@bginformatique.ca?subject=Demande%20infrastructure%20cloud" class="btn btn--on-light">Nous contacter</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+</main>
+
+<!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Pré-diagnostic gratuit | BG Informatique</title>
-  <meta name="description" content="Répondez à 3 questions simples — nous identifions quel service correspond à votre situation et vous recevez un résumé prêt à envoyer. Gratuit, sans engagement.">
+  <meta name="description" content="Répondez à 4 questions simples — nous identifions quel service correspond à votre situation et vous recevez un résumé prêt à envoyer. Gratuit, sans engagement.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://bginformatique.ca/diagnostic.html">
 
   <meta property="og:title" content="Pré-diagnostic gratuit | BG Informatique">
-  <meta property="og:description" content="3 questions pour identifier votre besoin TI. Service recommandé + courriel pré-rempli généré automatiquement.">
+  <meta property="og:description" content="4 questions pour identifier votre besoin TI. Service recommandé + courriel pré-rempli généré automatiquement.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bginformatique.ca/diagnostic.html">
   <meta property="og:locale" content="fr_CA">
@@ -22,47 +22,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .wizard-submit-block {
-      margin-top: 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-    }
-    .wizard-email-label {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .wizard-email-input {
-      width: 100%;
-      max-width: 360px;
-      padding: 10px 14px;
-      border: 2px solid var(--border, #ddd);
-      border-radius: 8px;
-      font-size: 1rem;
-      font-family: inherit;
-      background: var(--surface, #fff);
-      color: var(--text, #111);
-    }
-    .wizard-email-input:focus {
-      outline: 2px solid var(--accent, #0066cc);
-      border-color: var(--accent, #0066cc);
-    }
-    .wizard-form-status {
-      min-height: 1.5em;
-      font-size: 0.88rem;
-      text-align: center;
-      max-width: 380px;
-    }
-    .wizard-form-status.success { color: #1a7f4b; font-weight: 600; }
-    .wizard-form-status.error   { color: #c0392b; }
-  </style>
 
   <script type="application/ld+json">
 {
@@ -87,599 +49,313 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services &amp; Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic" aria-current="page">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic" aria-current="page">diagnostic</a>
+  </nav>
 </header>
 
-<section class="page-hero">
-  <div class="container">
-    <h1>Pré-diagnostic</h1>
-    <p class="page-hero-lead">3 questions pour cerner votre besoin. On génère ensuite un résumé prêt à nous envoyer — aucune donnée transmise avant que vous cliquiez.</p>
-  </div>
-</section>
+<main class="site-main" id="main">
 
-<section class="section">
-  <div class="container container-narrow">
+  <!-- Page hero -->
+  <section class="page-hero page-hero--center" style="max-width:880px;">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// pré-diagnostic</span>
+      <h1>Cernons votre besoin en 4 questions.</h1>
+      <p class="page-hero-lead">On génère ensuite un résumé prêt à nous envoyer — aucune donnée n'est transmise avant que vous cliquiez.</p>
+    </div>
+  </section>
 
+  <!-- Wizard -->
+  <section class="section" style="max-width:760px;padding-top:14px;">
     <div class="wizard" id="wizard" role="form" aria-label="Questionnaire de pré-diagnostic">
-
-      <!-- Étape 0 : type de client -->
-      <div class="wizard-step is-active" id="step-type">
-        <p class="wizard-eyebrow">Étape 1 sur 4</p>
-        <p class="wizard-question">Vous représentez…</p>
-        <p class="wizard-hint">Choisissez la situation qui correspond le mieux à votre besoin.</p>
-        <div class="wizard-choices type-select" role="group" aria-label="Type de client">
-          <button class="wizard-choice" data-value="residential" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🏠</span>
-            Particulier ou usage résidentiel
-          </button>
-          <button class="wizard-choice" data-value="business" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🏢</span>
-            Entreprise, OBNL ou travailleur autonome
-          </button>
-        </div>
-        <div class="wizard-nav">
-          <button class="wizard-btn-next" id="btn-next-type" disabled type="button">Suivant →</button>
-        </div>
+      <div class="terminal-bar">
+        <span class="tdot tdot--r"></span>
+        <span class="tdot tdot--y"></span>
+        <span class="tdot tdot--g"></span>
+        <span class="terminal-name">bg · diagnostic</span>
       </div>
+      <div class="wizard-body">
 
-      <!-- BRANCHE RÉSIDENTIELLE -->
-
-      <div class="wizard-step" id="step-r1">
-        <div class="wizard-progress" aria-hidden="true">
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot"></div>
-          <div class="wizard-progress-dot"></div>
-        </div>
-        <p class="wizard-eyebrow">Résidentiel · Étape 2 sur 4</p>
-        <p class="wizard-question">Quel est le problème principal ?</p>
-        <p class="wizard-hint">Choisissez la situation la plus proche de ce que vous vivez.</p>
-        <div class="wizard-choices" role="group" aria-label="Type de problème">
-          <button class="wizard-choice" data-value="slow" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🐌</span>Mon PC est lent
-          </button>
-          <button class="wizard-choice" data-value="crash" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">💥</span>Plantages ou ne démarre plus
-          </button>
-          <button class="wizard-choice" data-value="virus" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🦠</span>Virus ou malware suspecté
-          </button>
-          <button class="wizard-choice" data-value="reinstall" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">💿</span>Réinstallation ou sauvegarde
-          </button>
-          <button class="wizard-choice" data-value="network" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🌐</span>Problème réseau ou WiFi
-          </button>
-          <button class="wizard-choice" data-value="other-r" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🔧</span>Autre problème logiciel
-          </button>
-        </div>
-        <div class="wizard-nav">
-          <button class="wizard-btn-back" type="button">← Retour</button>
-          <button class="wizard-btn-next" disabled type="button">Suivant →</button>
-        </div>
-      </div>
-
-      <div class="wizard-step" id="step-r2">
-        <div class="wizard-progress" aria-hidden="true">
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot"></div>
-        </div>
-        <p class="wizard-eyebrow">Résidentiel · Étape 3 sur 4</p>
-        <p class="wizard-question">Depuis combien de temps ?</p>
-        <p class="wizard-hint">L'ancienneté du problème aide à orienter le diagnostic.</p>
-        <div class="wizard-choices" role="group" aria-label="Durée du problème">
-          <button class="wizard-choice" data-value="today" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">⏱️</span>Aujourd'hui ou hier
-          </button>
-          <button class="wizard-choice" data-value="days" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">📅</span>Quelques jours
-          </button>
-          <button class="wizard-choice" data-value="weeks" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🗓️</span>Plusieurs semaines ou plus
-          </button>
-          <button class="wizard-choice" data-value="unknown" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🤷</span>Je ne sais pas
-          </button>
-        </div>
-        <div class="wizard-nav">
-          <button class="wizard-btn-back" type="button">← Retour</button>
-          <button class="wizard-btn-next" disabled type="button">Suivant →</button>
-        </div>
-      </div>
-
-      <div class="wizard-step" id="step-r3">
-        <div class="wizard-progress" aria-hidden="true">
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-        </div>
-        <p class="wizard-eyebrow">Résidentiel · Étape 4 sur 4</p>
-        <p class="wizard-question">Quel système d'exploitation ?</p>
-        <p class="wizard-hint">Si vous ne savez pas, choisissez la dernière option.</p>
-        <div class="wizard-choices" role="group" aria-label="Système d'exploitation">
-          <button class="wizard-choice" data-value="win11" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🪟</span>Windows 11
-          </button>
-          <button class="wizard-choice" data-value="win10" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🪟</span>Windows 10
-          </button>
-          <button class="wizard-choice" data-value="winold" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🖥️</span>Windows plus ancien
-          </button>
-          <button class="wizard-choice" data-value="macos" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🍎</span>macOS
-          </button>
-          <button class="wizard-choice" data-value="unknown-os" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">❓</span>Je ne sais pas
-          </button>
-        </div>
-        <div class="wizard-nav">
-          <button class="wizard-btn-back" type="button">← Retour</button>
-          <button class="wizard-btn-next" disabled type="button">Voir mon résultat →</button>
-        </div>
-      </div>
-
-      <!-- BRANCHE ENTREPRISE -->
-
-      <div class="wizard-step" id="step-b1">
-        <div class="wizard-progress" aria-hidden="true">
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot"></div>
-          <div class="wizard-progress-dot"></div>
-        </div>
-        <p class="wizard-eyebrow">Entreprise · Étape 2 sur 4</p>
-        <p class="wizard-question">Quel est votre défi principal ?</p>
-        <p class="wizard-hint">Choisissez le domaine qui représente votre besoin prioritaire.</p>
-        <div class="wizard-choices" role="group" aria-label="Défi principal">
-          <button class="wizard-choice" data-value="automation" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">⚙️</span>Automatisation de tâches répétitives
-          </button>
-          <button class="wizard-choice" data-value="security" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🛡️</span>Cybersécurité et protection
-          </button>
-          <button class="wizard-choice" data-value="cloud" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">☁️</span>Infrastructure cloud ou serveurs
-          </button>
-          <button class="wizard-choice" data-value="ai" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🤖</span>Intelligence artificielle
-          </button>
-          <button class="wizard-choice" data-value="m365" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">📊</span>Microsoft 365 et gouvernance
-          </button>
-          <button class="wizard-choice" data-value="other-b" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">❓</span>Autre / Je ne sais pas encore
-          </button>
-        </div>
-        <div class="wizard-nav">
-          <button class="wizard-btn-back" type="button">← Retour</button>
-          <button class="wizard-btn-next" disabled type="button">Suivant →</button>
-        </div>
-      </div>
-
-      <div class="wizard-step" id="step-b2">
-        <div class="wizard-progress" aria-hidden="true">
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot"></div>
-        </div>
-        <p class="wizard-eyebrow">Entreprise · Étape 3 sur 4</p>
-        <p class="wizard-question">Quelle est la taille de votre organisation ?</p>
-        <p class="wizard-hint">Cette information nous aide à calibrer l'approche et les outils.</p>
-        <div class="wizard-choices" role="group" aria-label="Taille de l'organisation">
-          <button class="wizard-choice" data-value="solo" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">👤</span>Travailleur autonome
-          </button>
-          <button class="wizard-choice" data-value="small" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">👥</span>2 à 10 employés
-          </button>
-          <button class="wizard-choice" data-value="medium" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🏢</span>11 à 50 employés
-          </button>
-          <button class="wizard-choice" data-value="large" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🏗️</span>50 employés et plus
-          </button>
-        </div>
-        <div class="wizard-nav">
-          <button class="wizard-btn-back" type="button">← Retour</button>
-          <button class="wizard-btn-next" disabled type="button">Suivant →</button>
-        </div>
-      </div>
-
-      <div class="wizard-step" id="step-b3">
-        <div class="wizard-progress" aria-hidden="true">
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-          <div class="wizard-progress-dot done"></div>
-        </div>
-        <p class="wizard-eyebrow">Entreprise · Étape 4 sur 4</p>
-        <p class="wizard-question">Quelle est l'urgence de votre besoin ?</p>
-        <p class="wizard-hint">Ça nous aide à prioriser notre réponse.</p>
-        <div class="wizard-choices" role="group" aria-label="Urgence">
-          <button class="wizard-choice" data-value="urgent" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🚨</span>Urgent — impact sur les opérations maintenant
-          </button>
-          <button class="wizard-choice" data-value="planned" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">📋</span>Planifié — projet à mettre en place
-          </button>
-          <button class="wizard-choice" data-value="exploring" type="button" aria-pressed="false">
-            <span class="wizard-choice-icon" aria-hidden="true">🔍</span>Exploration — je magasine des options
-          </button>
-        </div>
-        <div class="wizard-nav">
-          <button class="wizard-btn-back" type="button">← Retour</button>
-          <button class="wizard-btn-next" disabled type="button">Voir mon résultat →</button>
-        </div>
-      </div>
-
-      <!-- RÉSULTAT RÉSIDENTIEL -->
-      <div class="wizard-step" id="step-result-residential">
-        <div class="wizard-result">
-          <div class="wizard-result-icon" aria-hidden="true">✅</div>
-          <h2>Votre résumé est prêt</h2>
-          <p class="result-lead">Envoyez-nous ce courriel pré-rempli — nous revenons vers vous rapidement avec une première évaluation.</p>
-
-          <div class="wizard-result-tool">
-            <h3>🔍 Étape recommandée : rapport système complet</h3>
-            <p>Avant de nous écrire, générez un rapport technique de votre PC avec notre outil maison : matériel, sécurité, performance, erreurs récentes. Le rapport reste sur votre Bureau — c'est vous qui décidez de nous l'envoyer en pièce jointe.</p>
-            <a href="outils-diagnostic.html" class="btn-cta btn-cta--secondary" style="font-size:0.88rem; padding:8px 18px;">Voir l'outil de diagnostic Windows →</a>
+        <!-- Step 1 : type -->
+        <div class="wizard-step is-active" id="step-type">
+          <div class="wizard-progress" aria-hidden="true">
+            <span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar"></span><span class="wizard-progress-bar"></span><span class="wizard-progress-bar"></span>
           </div>
-
-          <div class="wizard-submit-block">
-            <label for="email-residential" class="wizard-email-label">Votre adresse courriel</label>
-            <input type="email" id="email-residential" name="email" placeholder="votre@courriel.com" class="wizard-email-input" autocomplete="email">
-            <button id="btn-submit-residential" type="button" class="btn-cta btn-cta--primary">📧 Envoyer mon résumé</button>
-            <div id="status-residential" class="wizard-form-status" aria-live="polite"></div>
+          <div class="wizard-eyebrow">Étape 1 sur 4</div>
+          <h2 class="wizard-question">Vous représentez…</h2>
+          <p class="wizard-hint">Choisissez la situation qui correspond le mieux à votre besoin.</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" type="button" data-value="residential" aria-pressed="false"><span class="mark">[ ]</span><span>Particulier ou usage résidentiel</span></button>
+            <button class="wizard-choice" type="button" data-value="business" aria-pressed="false"><span class="mark">[ ]</span><span>Entreprise, OBNL ou travailleur autonome</span></button>
           </div>
-          <button class="wizard-restart" type="button">↩ Recommencer</button>
+          <div class="wizard-nav">
+            <span></span>
+            <button class="wizard-next" type="button" disabled>Suivant →</button>
+          </div>
         </div>
-      </div>
 
-      <!-- RÉSULTAT ENTREPRISE -->
-      <div class="wizard-step" id="step-result-business">
-        <div class="wizard-result">
-          <div class="wizard-result-icon" aria-hidden="true">✅</div>
-          <h2>Votre service recommandé</h2>
-          <p class="result-lead">D'après vos réponses, voici le service qui correspond le mieux à votre situation.</p>
+        <!-- Residential -->
+        <div class="wizard-step" id="step-r1">
+          <div class="wizard-progress" aria-hidden="true">
+            <span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar"></span><span class="wizard-progress-bar"></span>
+          </div>
+          <div class="wizard-eyebrow">Résidentiel · Étape 2 sur 4</div>
+          <h2 class="wizard-question">Quel est le problème principal ?</h2>
+          <p class="wizard-hint">Choisissez la situation la plus proche de ce que vous vivez.</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" type="button" data-value="slow" aria-pressed="false"><span class="mark">[ ]</span><span>Mon PC est lent</span></button>
+            <button class="wizard-choice" type="button" data-value="crash" aria-pressed="false"><span class="mark">[ ]</span><span>Plantages ou ne démarre plus</span></button>
+            <button class="wizard-choice" type="button" data-value="virus" aria-pressed="false"><span class="mark">[ ]</span><span>Virus ou malware suspecté</span></button>
+            <button class="wizard-choice" type="button" data-value="reinstall" aria-pressed="false"><span class="mark">[ ]</span><span>Réinstallation ou sauvegarde</span></button>
+            <button class="wizard-choice" type="button" data-value="network" aria-pressed="false"><span class="mark">[ ]</span><span>Problème réseau ou WiFi</span></button>
+            <button class="wizard-choice" type="button" data-value="other-r" aria-pressed="false"><span class="mark">[ ]</span><span>Autre problème logiciel</span></button>
+          </div>
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button">← Retour</button>
+            <button class="wizard-next" type="button" disabled>Suivant →</button>
+          </div>
+        </div>
 
-          <div class="result-service-card" id="result-service-card">
-            <p class="result-service-label">Service recommandé</p>
+        <div class="wizard-step" id="step-r2">
+          <div class="wizard-progress" aria-hidden="true">
+            <span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar"></span>
+          </div>
+          <div class="wizard-eyebrow">Résidentiel · Étape 3 sur 4</div>
+          <h2 class="wizard-question">Depuis combien de temps ?</h2>
+          <p class="wizard-hint">L'ancienneté du problème aide à orienter le diagnostic.</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" type="button" data-value="today" aria-pressed="false"><span class="mark">[ ]</span><span>Aujourd'hui ou hier</span></button>
+            <button class="wizard-choice" type="button" data-value="days" aria-pressed="false"><span class="mark">[ ]</span><span>Quelques jours</span></button>
+            <button class="wizard-choice" type="button" data-value="weeks" aria-pressed="false"><span class="mark">[ ]</span><span>Plusieurs semaines ou plus</span></button>
+            <button class="wizard-choice" type="button" data-value="unknown" aria-pressed="false"><span class="mark">[ ]</span><span>Je ne sais pas</span></button>
+          </div>
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button">← Retour</button>
+            <button class="wizard-next" type="button" disabled>Suivant →</button>
+          </div>
+        </div>
+
+        <div class="wizard-step" id="step-r3">
+          <div class="wizard-progress" aria-hidden="true">
+            <span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span>
+          </div>
+          <div class="wizard-eyebrow">Résidentiel · Étape 4 sur 4</div>
+          <h2 class="wizard-question">Quel système d'exploitation ?</h2>
+          <p class="wizard-hint">Si vous ne savez pas, choisissez la dernière option.</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" type="button" data-value="win11" aria-pressed="false"><span class="mark">[ ]</span><span>Windows 11</span></button>
+            <button class="wizard-choice" type="button" data-value="win10" aria-pressed="false"><span class="mark">[ ]</span><span>Windows 10</span></button>
+            <button class="wizard-choice" type="button" data-value="winold" aria-pressed="false"><span class="mark">[ ]</span><span>Windows plus ancien</span></button>
+            <button class="wizard-choice" type="button" data-value="macos" aria-pressed="false"><span class="mark">[ ]</span><span>macOS</span></button>
+            <button class="wizard-choice" type="button" data-value="unknown-os" aria-pressed="false"><span class="mark">[ ]</span><span>Je ne sais pas</span></button>
+          </div>
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button">← Retour</button>
+            <button class="wizard-next" type="button" disabled>Voir mon résultat →</button>
+          </div>
+        </div>
+
+        <!-- Business -->
+        <div class="wizard-step" id="step-b1">
+          <div class="wizard-progress" aria-hidden="true">
+            <span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar"></span><span class="wizard-progress-bar"></span>
+          </div>
+          <div class="wizard-eyebrow">Entreprise · Étape 2 sur 4</div>
+          <h2 class="wizard-question">Quel est votre défi principal ?</h2>
+          <p class="wizard-hint">Choisissez le domaine qui représente votre besoin prioritaire.</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" type="button" data-value="automation" aria-pressed="false"><span class="mark">[ ]</span><span>Automatisation de tâches répétitives</span></button>
+            <button class="wizard-choice" type="button" data-value="security" aria-pressed="false"><span class="mark">[ ]</span><span>Cybersécurité et protection</span></button>
+            <button class="wizard-choice" type="button" data-value="cloud" aria-pressed="false"><span class="mark">[ ]</span><span>Infrastructure cloud ou serveurs</span></button>
+            <button class="wizard-choice" type="button" data-value="ai" aria-pressed="false"><span class="mark">[ ]</span><span>Intelligence artificielle</span></button>
+            <button class="wizard-choice" type="button" data-value="m365" aria-pressed="false"><span class="mark">[ ]</span><span>Microsoft 365 et gouvernance</span></button>
+            <button class="wizard-choice" type="button" data-value="other-b" aria-pressed="false"><span class="mark">[ ]</span><span>Autre / Je ne sais pas encore</span></button>
+          </div>
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button">← Retour</button>
+            <button class="wizard-next" type="button" disabled>Suivant →</button>
+          </div>
+        </div>
+
+        <div class="wizard-step" id="step-b2">
+          <div class="wizard-progress" aria-hidden="true">
+            <span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar"></span>
+          </div>
+          <div class="wizard-eyebrow">Entreprise · Étape 3 sur 4</div>
+          <h2 class="wizard-question">Quelle est la taille de votre organisation ?</h2>
+          <p class="wizard-hint">Cette information nous aide à calibrer l'approche et les outils.</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" type="button" data-value="solo" aria-pressed="false"><span class="mark">[ ]</span><span>Travailleur autonome</span></button>
+            <button class="wizard-choice" type="button" data-value="small" aria-pressed="false"><span class="mark">[ ]</span><span>2 à 10 employés</span></button>
+            <button class="wizard-choice" type="button" data-value="medium" aria-pressed="false"><span class="mark">[ ]</span><span>11 à 50 employés</span></button>
+            <button class="wizard-choice" type="button" data-value="large" aria-pressed="false"><span class="mark">[ ]</span><span>50 employés et plus</span></button>
+          </div>
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button">← Retour</button>
+            <button class="wizard-next" type="button" disabled>Suivant →</button>
+          </div>
+        </div>
+
+        <div class="wizard-step" id="step-b3">
+          <div class="wizard-progress" aria-hidden="true">
+            <span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span><span class="wizard-progress-bar is-done"></span>
+          </div>
+          <div class="wizard-eyebrow">Entreprise · Étape 4 sur 4</div>
+          <h2 class="wizard-question">Quelle est l'urgence de votre besoin ?</h2>
+          <p class="wizard-hint">Ça nous aide à prioriser notre réponse.</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" type="button" data-value="urgent" aria-pressed="false"><span class="mark">[ ]</span><span>Urgent — impact sur les opérations maintenant</span></button>
+            <button class="wizard-choice" type="button" data-value="planned" aria-pressed="false"><span class="mark">[ ]</span><span>Planifié — projet à mettre en place</span></button>
+            <button class="wizard-choice" type="button" data-value="exploring" aria-pressed="false"><span class="mark">[ ]</span><span>Exploration — je magasine des options</span></button>
+          </div>
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button">← Retour</button>
+            <button class="wizard-next" type="button" disabled>Voir mon résultat →</button>
+          </div>
+        </div>
+
+        <!-- Result : residential -->
+        <div class="wizard-step" id="step-result-residential">
+          <div class="wizard-result-head">
+            <span class="wizard-check" aria-hidden="true">✓</span>
+            <h2>Votre résumé est prêt</h2>
+          </div>
+          <p class="wizard-result-lead">Envoyez-nous ce courriel pré-rempli — on revient vers vous rapidement avec une première évaluation.</p>
+          <div class="summary-box" id="summary-residential"></div>
+          <div class="wizard-field">
+            <label for="email-residential">votre adresse courriel</label>
+            <input type="email" id="email-residential" class="wizard-email" placeholder="votre@courriel.com" autocomplete="email">
+            <div class="wizard-submit-row">
+              <button type="button" id="submit-residential" class="wizard-submit">Envoyer mon résumé</button>
+              <a href="#" id="mailto-residential" class="wizard-mailto">ouvrir dans ma messagerie</a>
+            </div>
+            <div class="wizard-status" id="status-residential" role="status" aria-live="polite"></div>
+          </div>
+          <button class="wizard-restart" type="button">↩ recommencer</button>
+        </div>
+
+        <!-- Result : business -->
+        <div class="wizard-step" id="step-result-business">
+          <div class="wizard-result-head">
+            <span class="wizard-check" aria-hidden="true">✓</span>
+            <h2>Votre service recommandé</h2>
+          </div>
+          <p class="wizard-result-lead">D'après vos réponses, voici le service qui correspond le mieux à votre situation.</p>
+          <div class="reco-card">
+            <div class="reco-label">Service recommandé</div>
             <h3 id="result-service-name">—</h3>
             <p id="result-service-desc">—</p>
+            <a id="result-service-link" href="services.html" class="reco-link">voir la page du service →</a>
           </div>
+          <div class="summary-box" id="summary-business"></div>
+          <div class="wizard-field">
+            <label for="email-business">votre adresse courriel</label>
+            <input type="email" id="email-business" class="wizard-email" placeholder="votre@courriel.com" autocomplete="email">
+            <div class="wizard-submit-row">
+              <button type="button" id="submit-business" class="wizard-submit">Envoyer mon résumé</button>
+              <a href="#" id="mailto-business" class="wizard-mailto">ouvrir dans ma messagerie</a>
+            </div>
+            <div class="wizard-status" id="status-business" role="status" aria-live="polite"></div>
+          </div>
+          <button class="wizard-restart" type="button">↩ recommencer</button>
+        </div>
 
-          <div class="wizard-result-actions">
-            <a id="result-service-link" href="services.html" class="btn-cta btn-cta--secondary" style="font-size:0.88rem;">Voir la page du service</a>
-          </div>
-          <div class="wizard-submit-block">
-            <label for="email-business" class="wizard-email-label">Votre adresse courriel</label>
-            <input type="email" id="email-business" name="email" placeholder="votre@courriel.com" class="wizard-email-input" autocomplete="email">
-            <button id="btn-submit-business" type="button" class="btn-cta btn-cta--primary">📧 Envoyer mon résumé</button>
-            <div id="status-business" class="wizard-form-status" aria-live="polite"></div>
-          </div>
-          <button class="wizard-restart" type="button">↩ Recommencer</button>
+      </div>
+    </div>
+
+    <!-- tool hint -->
+    <div class="hint-card">
+      <span class="hint-tag">[i]</span>
+      <p>Astuce résidentielle : avant de nous écrire, vous pouvez générer un rapport système complet de votre PC (matériel, sécurité, performance, erreurs récentes) avec notre <a href="outils-diagnostic.html" style="color:var(--blue);">outil de diagnostic Windows</a>. Le rapport reste sur votre Bureau — c'est vous qui décidez de nous l'envoyer.</p>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <h2>Vous préférez nous appeler directement ?</h2>
+        <p>Disponible 24/7 — expliquez-nous votre situation en quelques mots.</p>
+        <div class="cta-btns">
+          <a href="tel:+14502319199" class="btn btn--on-light mono">450 231-9199</a>
+          <a href="mailto:information@bginformatique.ca" class="btn btn--on-translucent">Nous écrire</a>
         </div>
       </div>
-
-    </div><!-- /wizard -->
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Vous préférez nous appeler directement ?</h2>
-    <p>Disponible 24/7 — expliquez-nous votre situation en quelques mots.</p>
-    <div class="hero-cta-group">
-      <a href="tel:+14502319199" class="btn-cta btn-cta--primary">📞 450 231-9199</a>
-      <a href="mailto:information@bginformatique.ca" class="btn-cta btn-cta--secondary">Nous écrire</a>
     </div>
-  </div>
-</section>
+  </section>
+
+</main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services &amp; Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  // Nav mobile
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-
-  // ── Wizard ──────────────────────────────────
-  const state = {
-    clientType: null,
-    r_problem: null, r_duration: null, r_os: null,
-    b_challenge: null, b_size: null, b_urgency: null,
-    residentialSubject: null, residentialMessage: null,
-    businessSubject: null, businessMessage: null,
-  };
-
-  const labels = {
-    residential: 'Particulier / résidentiel',
-    business: 'Entreprise / OBNL / travailleur autonome',
-    slow: 'PC lent', crash: 'Plantages ou ne démarre plus',
-    virus: 'Virus ou malware suspecté', reinstall: 'Réinstallation ou sauvegarde',
-    network: 'Problème réseau ou WiFi', 'other-r': 'Autre problème logiciel',
-    today: "Aujourd'hui ou hier", days: 'Quelques jours',
-    weeks: 'Plusieurs semaines ou plus', unknown: 'Je ne sais pas',
-    win11: 'Windows 11', win10: 'Windows 10',
-    winold: 'Windows (version plus ancienne)', macos: 'macOS', 'unknown-os': 'Système inconnu',
-    automation: 'Automatisation de tâches répétitives',
-    security: 'Cybersécurité et protection des données',
-    cloud: 'Infrastructure cloud ou serveurs',
-    ai: 'Intelligence artificielle',
-    m365: 'Microsoft 365 et gouvernance',
-    'other-b': 'Autre / Je ne sais pas encore',
-    solo: 'Travailleur autonome', small: '2 à 10 employés',
-    medium: '11 à 50 employés', large: '50 employés et plus',
-    urgent: 'Urgent — impact sur les opérations maintenant',
-    planned: 'Planifié — projet à mettre en place',
-    exploring: 'Exploration — je magasine des options',
-  };
-
-  const businessRecs = {
-    automation: {
-      name: "Automatisation des processus d'affaires",
-      desc: "Scripts Python/Bash sur mesure, intégration d'API et outils internes pour éliminer vos tâches répétitives.",
-      url: 'automatisation-processus-affaires-saint-jerome.html',
-      subject: "Demande d'automatisation de processus",
-    },
-    security: {
-      name: 'Cybersécurité préventive et formation',
-      desc: "Simulations d'hameçonnage, formation des équipes et sensibilisation — avant qu'un incident ne survienne.",
-      url: 'cybersecurite-formation-saint-jerome.html',
-      subject: 'Demande en cybersécurité préventive',
-    },
-    cloud: {
-      name: "Gestion d'infrastructures cloud et systèmes",
-      desc: 'Administration Linux à distance, gouvernance Microsoft 365 avancée et stratégie de sauvegarde BaaS/DRaaS.',
-      url: 'infrastructure-cloud-saint-jerome.html',
-      subject: 'Demande gestion infrastructure cloud',
-    },
-    ai: {
-      name: 'Consultation et intégration en intelligence artificielle',
-      desc: "Audit d'opportunités IA, déploiement Microsoft Copilot et formation sur l'utilisation sécuritaire.",
-      url: 'consultation-ia-laurentides.html',
-      subject: 'Demande de consultation IA',
-    },
-    m365: {
-      name: "Gestion d'infrastructures cloud et systèmes",
-      desc: 'Gouvernance Microsoft 365 avancée : MFA conditionnel, DLP, politiques de rétention et audit des accès.',
-      url: 'infrastructure-cloud-saint-jerome.html',
-      subject: 'Demande gouvernance Microsoft 365',
-    },
-    'other-b': {
-      name: 'Services entreprises BG Informatique',
-      desc: 'Consultez notre page complète de services pour trouver la prestation qui correspond à votre situation.',
-      url: 'services.html',
-      subject: 'Demande de consultation TI',
-    },
-  };
-
-  function showStep(id) {
-    document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('is-active'));
-    const el = document.getElementById(id);
-    if (el) { el.classList.add('is-active'); el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-  }
-
-  function bindChoices(stepId, stateKey, onNext, onBack) {
-    const step = document.getElementById(stepId);
-    if (!step) return;
-    const choices = step.querySelectorAll('.wizard-choice');
-    const nextBtn = step.querySelector('.wizard-btn-next');
-    const backBtn = step.querySelector('.wizard-btn-back');
-    choices.forEach(btn => {
-      btn.addEventListener('click', () => {
-        choices.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false'); });
-        btn.classList.add('selected'); btn.setAttribute('aria-pressed', 'true');
-        state[stateKey] = btn.dataset.value;
-        if (nextBtn) nextBtn.disabled = false;
-      });
-    });
-    if (nextBtn) nextBtn.addEventListener('click', () => { if (state[stateKey]) onNext(); });
-    if (backBtn) backBtn.addEventListener('click', onBack);
-  }
-
-  // Step 0
-  const typeChoices = document.querySelectorAll('#step-type .wizard-choice');
-  const typeNext = document.getElementById('btn-next-type');
-  typeChoices.forEach(btn => {
-    btn.addEventListener('click', () => {
-      typeChoices.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('selected'); btn.setAttribute('aria-pressed', 'true');
-      state.clientType = btn.dataset.value;
-      typeNext.disabled = false;
-    });
-  });
-  typeNext.addEventListener('click', () => {
-    showStep(state.clientType === 'residential' ? 'step-r1' : 'step-b1');
-  });
-
-  // Residential
-  bindChoices('step-r1', 'r_problem',  () => showStep('step-r2'), () => showStep('step-type'));
-  bindChoices('step-r2', 'r_duration', () => showStep('step-r3'), () => showStep('step-r1'));
-  bindChoices('step-r3', 'r_os', buildResidentialResult, () => showStep('step-r2'));
-
-  // Business
-  bindChoices('step-b1', 'b_challenge', () => showStep('step-b2'), () => showStep('step-type'));
-  bindChoices('step-b2', 'b_size',      () => showStep('step-b3'), () => showStep('step-b1'));
-  bindChoices('step-b3', 'b_urgency', buildBusinessResult, () => showStep('step-b2'));
-
-  function buildResidentialResult() {
-    const prob = labels[state.r_problem]  || state.r_problem;
-    const dur  = labels[state.r_duration] || state.r_duration;
-    const os   = labels[state.r_os]       || state.r_os;
-    state.residentialSubject = 'Pré-diagnostic résidentiel — BG Informatique';
-    state.residentialMessage =
-      'Bonjour,\n\nVoici mon résumé de pré-diagnostic :\n\n' +
-      '• Type : Particulier / résidentiel\n' +
-      '• Problème : ' + prob + '\n' +
-      '• Depuis : ' + dur + '\n' +
-      '• Système : ' + os + '\n\n' +
-      "[Joignez le fichier Diagnostic-BG_*.txt si vous l'avez généré, ou ajoutez tout détail supplémentaire]";
-    document.getElementById('email-residential').value = '';
-    document.getElementById('status-residential').textContent = '';
-    document.getElementById('status-residential').className = 'wizard-form-status';
-    showStep('step-result-residential');
-  }
-
-  function buildBusinessResult() {
-    const rec     = businessRecs[state.b_challenge] || businessRecs['other-b'];
-    const chall   = labels[state.b_challenge] || state.b_challenge;
-    const size    = labels[state.b_size]      || state.b_size;
-    const urgency = labels[state.b_urgency]   || state.b_urgency;
-
-    document.getElementById('result-service-name').textContent = rec.name;
-    document.getElementById('result-service-desc').textContent = rec.desc;
-    document.getElementById('result-service-link').href = rec.url;
-
-    state.businessSubject = rec.subject;
-    state.businessMessage =
-      'Bonjour,\n\nVoici mon résumé de pré-diagnostic :\n\n' +
-      '• Type : Entreprise / OBNL / travailleur autonome\n' +
-      '• Défi principal : ' + chall + '\n' +
-      '• Taille : ' + size + '\n' +
-      '• Urgence : ' + urgency + '\n\n' +
-      '[Ajoutez ici tout détail supplémentaire sur votre situation]';
-    document.getElementById('email-business').value = '';
-    document.getElementById('status-business').textContent = '';
-    document.getElementById('status-business').className = 'wizard-form-status';
-    showStep('step-result-business');
-  }
-
-  async function submitToFormspree(emailId, statusId, subject, message) {
-    const emailEl  = document.getElementById(emailId);
-    const statusEl = document.getElementById(statusId);
-    const email = emailEl.value.trim();
-    if (!email || !email.includes('@')) {
-      statusEl.textContent = 'Veuillez entrer une adresse courriel valide.';
-      statusEl.className = 'wizard-form-status error';
-      emailEl.focus();
-      return;
-    }
-    statusEl.textContent = 'Envoi en cours…';
-    statusEl.className = 'wizard-form-status';
-    try {
-      const res = await fetch('https://formspree.io/f/mnjrkalw', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email, subject, message }),
-      });
-      if (res.ok) {
-        statusEl.textContent = '✅ Reçu ! Nous vous répondons sous peu.';
-        statusEl.className = 'wizard-form-status success';
-        emailEl.value = '';
-      } else {
-        throw new Error('server');
-      }
-    } catch {
-      statusEl.textContent = "Échec de l'envoi. Appelez-nous au 450 231-9199 ou écrivez à information@bginformatique.ca";
-      statusEl.className = 'wizard-form-status error';
-    }
-  }
-
-  document.getElementById('btn-submit-residential').addEventListener('click', () => {
-    submitToFormspree('email-residential', 'status-residential', state.residentialSubject, state.residentialMessage);
-  });
-
-  document.getElementById('btn-submit-business').addEventListener('click', () => {
-    submitToFormspree('email-business', 'status-business', state.businessSubject, state.businessMessage);
-  });
-
-  // Restart
-  document.querySelectorAll('.wizard-restart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      Object.keys(state).forEach(k => state[k] = null);
-      document.querySelectorAll('.wizard-choice').forEach(b => {
-        b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false');
-      });
-      document.querySelectorAll('.wizard-btn-next').forEach(b => b.disabled = true);
-      ['email-residential', 'email-business'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
-      ['status-residential', 'status-business'].forEach(id => {
-        const el = document.getElementById(id);
-        el.textContent = '';
-        el.className = 'wizard-form-status';
-      });
-      showStep('step-type');
-    });
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

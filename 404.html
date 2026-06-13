@@ -11,58 +11,106 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- ═══ Header ═══ -->
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="/" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="/logo-nav.webp" type="image/webp">
-          <img src="/logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="/logo-nav.webp" type="image/webp">
+        <img src="/logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="/">Accueil</a>
-      <a href="/services.html">Services & Tarifs</a>
-      <a href="/guides-depannage.html">Centre d'aide</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="/">accueil</a>
+      <a href="/services.html">services</a>
+      <a href="/guides-depannage.html">aide</a>
+      <a href="/faq.html">faq</a>
+      <a href="/a-propos.html">à propos</a>
+      <a href="/contact.html">contact</a>
+      <a href="/diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="/">accueil</a>
+    <a href="/services.html">services</a>
+    <a href="/guides-depannage.html">aide</a>
+    <a href="/faq.html">faq</a>
+    <a href="/a-propos.html">à propos</a>
+    <a href="/contact.html">contact</a>
+    <a href="/diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="hero" style="text-align:center; min-height: 50vh; display:flex; align-items:center;">
-  <div class="container">
-    <span class="hero-eyebrow">Erreur 404</span>
-    <h1>Cette page n'existe pas (ou plus)</h1>
-    <p class="hero-lead" style="margin-left:auto; margin-right:auto;">Le lien est peut-être brisé ou la page a été déplacée. Pas de panique — voici comment retrouver ce que vous cherchiez.</p>
-    <div class="hero-cta-group" style="justify-content:center;">
-      <a href="/" class="btn-cta btn-cta--primary">Retour à l'accueil</a>
-      <a href="/services.html" class="btn-cta btn-cta--secondary">Voir nos services</a>
-    </div>
-  </div>
-</section>
+<main class="site-main" id="main">
 
+  <!-- ═══ Page hero (centré) ═══ -->
+  <section class="page-hero page-hero--center">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// erreur 404</span>
+      <h1>Cette page n'existe pas (ou plus)</h1>
+      <p class="page-hero-lead">Le lien est peut-être brisé ou la page a été déplacée. Pas de panique — voici comment retrouver ce que vous cherchiez.</p>
+      <div class="btn-row" style="justify-content:center; margin-top:24px;">
+        <a href="/" class="btn btn--primary"><span class="arrow">›</span> Retour à l'accueil</a>
+        <a href="/services.html" class="btn btn--secondary">Voir nos services</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-bottom" style="border-top:none; padding-top:20px;">
-      <p>© 2026 BG Informatique · <a href="/" style="color:rgba(255,255,255,0.7);">bginformatique.ca</a></p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="/logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="/services.html">Services &amp; Tarifs</a>
+        <a href="/a-propos.html">À propos</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/diagnostic.html">Pré-diagnostic</a>
+        <a href="/guides-depannage.html">Centre d'aide</a>
+        <a href="/outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="/faq.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="/conditions.html">Termes &amp; Conditions</a>
+        <a href="/confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
+<script src="/main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

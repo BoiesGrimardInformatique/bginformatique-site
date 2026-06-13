@@ -22,182 +22,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 60px;
-      align-items: start;
-      margin-top: 48px;
-    }
-    @media (max-width: 768px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    }
-
-    .contact-info h2 { margin: 0 0 20px; font-size: 1.35rem; }
-    .contact-info p  { color: var(--text-muted); font-size: 0.97rem; line-height: 1.7; margin: 0 0 28px; }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .contact-item-icon {
-      font-size: 1.3rem;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .contact-item-body { display: flex; flex-direction: column; gap: 2px; }
-    .contact-item-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-    .contact-item-value { font-size: 1rem; font-weight: 500; }
-    .contact-item-value a { color: var(--text); text-decoration: none; }
-    .contact-item-value a:hover { color: var(--brand-blue); }
-
-    .availability-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--success-bg);
-      color: var(--success);
-      border: 1px solid var(--success);
-      border-radius: var(--radius-pill);
-      padding: 6px 14px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-top: 8px;
-    }
-    .availability-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--success);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    /* Formulaire */
-    .contact-form-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 32px;
-    }
-    @media (max-width: 480px) {
-      .contact-form-card { padding: 24px 18px; }
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 560px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 18px;
-    }
-    .form-group:last-of-type { margin-bottom: 0; }
-
-    .form-group label {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .form-group label .required {
-      color: var(--brand-blue);
-      margin-left: 2px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 10px 14px;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: var(--text);
-      transition: border-color var(--transition), box-shadow var(--transition);
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--brand-blue);
-      box-shadow: 0 0 0 3px rgba(10, 79, 212, 0.12);
-    }
-    .form-group textarea { resize: vertical; min-height: 130px; }
-    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
-
-    .form-submit {
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .btn-submit {
-      width: 100%;
-      padding: 13px 24px;
-      background: var(--brand-blue);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background var(--transition), transform 0.1s;
-    }
-    .btn-submit:hover  { background: var(--brand-blue-dark, #0843c0); }
-    .btn-submit:active { transform: scale(0.98); }
-    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    .form-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    /* États du formulaire */
-    .form-status {
-      display: none;
-      padding: 14px 18px;
-      border-radius: var(--radius);
-      font-size: 0.93rem;
-      margin-top: 16px;
-      font-weight: 500;
-    }
-    .form-status.success {
-      display: block;
-      background: var(--success-bg);
-      border: 1px solid var(--success);
-      color: var(--success);
-    }
-    .form-status.error {
-      display: block;
-      background: var(--warning-bg);
-      border: 1px solid var(--warning-border);
-      color: var(--warning);
-    }
-  </style>
 
   <script type="application/ld+json">
 {
@@ -212,250 +39,195 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services &amp; Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html" aria-current="page">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html" aria-current="page">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="page-hero">
-  <div class="container">
-    <h1>Nous contacter</h1>
-    <p class="page-hero-lead">Un projet, une urgence ou une simple question — écrivez-nous directement. Nous répondons rapidement, 24 h/7 j.</p>
-  </div>
-</section>
+<main class="site-main" id="main">
 
-<section class="section">
-  <div class="container">
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// contact</span>
+      <h1>Parlons de votre besoin.</h1>
+      <p class="page-hero-lead">Un projet, une urgence ou une simple question — écrivez-nous directement. On répond rapidement, 24 h/7 j.</p>
+    </div>
+  </section>
+
+  <!-- Contact grid -->
+  <section class="section" style="padding-top:28px;">
     <div class="contact-grid">
 
-      <!-- Coordonnées -->
-      <div class="contact-info">
-        <h2>Coordonnées</h2>
-        <p>Basés à Saint-Jérôme, nous intervenons entièrement à distance pour les PME et OBNL des Laurentides et de tout le Québec.</p>
-
-        <div class="contact-item">
-          <span class="contact-item-icon" aria-hidden="true">📞</span>
-          <div class="contact-item-body">
-            <span class="contact-item-label">Téléphone</span>
-            <span class="contact-item-value"><a href="tel:+14502319199">450 231-9199</a></span>
+      <!-- Coordinates -->
+      <div class="coord-card">
+        <span class="eyebrow accent" style="color:var(--blue);">// coordonnées</span>
+        <p>Basés à Saint-Jérôme, on intervient entièrement à distance pour les PME et OBNL des Laurentides et de tout le Québec.</p>
+        <div class="coord-list">
+          <div class="coord">
+            <span class="coord-icon"><span class="glyph glyph--circle-blue"></span></span>
+            <span class="coord-text"><span class="coord-label">Téléphone</span><span class="coord-value"><a href="tel:+14502319199" style="color:inherit;text-decoration:none;">450 231-9199</a></span></span>
+          </div>
+          <div class="coord">
+            <span class="coord-icon"><span class="glyph glyph--rect-blue"></span></span>
+            <span class="coord-text"><span class="coord-label">Courriel</span><span class="coord-value"><a href="mailto:information@bginformatique.ca" style="color:inherit;text-decoration:none;">information@bginformatique.ca</a></span></span>
+          </div>
+          <div class="coord">
+            <span class="coord-icon"><span class="glyph glyph--pin-green" style="border-color:var(--blue);"></span></span>
+            <span class="coord-text"><span class="coord-label">Localisation</span><span class="coord-value">Saint-Jérôme, Québec</span></span>
+          </div>
+          <div class="coord">
+            <span class="coord-icon"><span class="glyph glyph--diamond-blue"></span></span>
+            <span class="coord-text"><span class="coord-label">Intervention</span><span class="coord-value">Entièrement à distance</span></span>
           </div>
         </div>
-
-        <div class="contact-item">
-          <span class="contact-item-icon" aria-hidden="true">✉️</span>
-          <div class="contact-item-body">
-            <span class="contact-item-label">Courriel</span>
-            <span class="contact-item-value"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></span>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <span class="contact-item-icon" aria-hidden="true">📍</span>
-          <div class="contact-item-body">
-            <span class="contact-item-label">Localisation</span>
-            <span class="contact-item-value">Saint-Jérôme, Québec</span>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <span class="contact-item-icon" aria-hidden="true">🌐</span>
-          <div class="contact-item-body">
-            <span class="contact-item-label">Intervention</span>
-            <span class="contact-item-value">Entièrement à distance</span>
-          </div>
-        </div>
-
-        <span class="availability-badge">Disponible 24 h / 7 j</span>
-
-        <p style="margin-top: 28px;">Vous préférez le télédiagnostic ? Générez d'abord un rapport système avec notre <a href="outils-diagnostic.html">outil de diagnostic Windows</a>.</p>
+        <span class="coord-badge"><span class="dot" aria-hidden="true"></span>disponible 24 h / 7 j</span>
+        <p class="coord-foot">Vous préférez le télédiagnostic ? Générez d'abord un rapport système avec notre <a href="outils-diagnostic.html">outil de diagnostic Windows</a>.</p>
       </div>
 
-      <!-- Formulaire -->
-      <div class="contact-form-card">
-        <h2 style="margin: 0 0 6px; font-size: 1.25rem;">Envoyer un message</h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0 0 24px;">Première consultation gratuite, sans engagement.</p>
+      <!-- Form -->
+      <div class="form-card">
+        <div class="terminal-bar">
+          <span class="tdot tdot--r"></span>
+          <span class="tdot tdot--y"></span>
+          <span class="tdot tdot--g"></span>
+          <span class="terminal-name">bg · nouveau message</span>
+        </div>
+        <div class="form-card-body">
+          <h2>Envoyer un message</h2>
+          <p class="form-intro">Première consultation gratuite, sans engagement.</p>
 
-        <!-- Remplacer mnjrkalw par votre identifiant Formspree après inscription sur formspree.io -->
-        <form id="contact-form" action="https://formspree.io/f/mnjrkalw" method="POST" novalidate>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="prenom">Prénom <span class="required">*</span></label>
-              <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Jérémie">
+          <form id="contact-form" action="https://formspree.io/f/mnjrkalw" method="POST">
+            <input type="hidden" name="_subject" value="Nouveau message — bginformatique.ca">
+            <div class="field-row">
+              <div class="field">
+                <label for="prenom">Prénom <span class="req">*</span></label>
+                <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Jérémie">
+              </div>
+              <div class="field">
+                <label for="nom">Nom <span class="req">*</span></label>
+                <input type="text" id="nom" name="nom" required autocomplete="family-name" placeholder="Boies Grimard">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="nom">Nom <span class="required">*</span></label>
-              <input type="text" id="nom" name="nom" required autocomplete="family-name" placeholder="Boies Grimard">
+
+            <div class="field">
+              <label for="courriel">Courriel <span class="req">*</span></label>
+              <input type="email" id="courriel" name="courriel" required autocomplete="email" placeholder="vous@exemple.com">
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="courriel">Courriel <span class="required">*</span></label>
-            <input type="email" id="courriel" name="courriel" required autocomplete="email" placeholder="vous@exemple.com">
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="telephone">Téléphone</label>
-              <input type="tel" id="telephone" name="telephone" autocomplete="tel" placeholder="450 000-0000">
+            <div class="field-row">
+              <div class="field">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" autocomplete="tel" placeholder="450 000-0000">
+              </div>
+              <div class="field">
+                <label for="organisation">Organisation</label>
+                <input type="text" id="organisation" name="organisation" autocomplete="organization" placeholder="Mon entreprise inc.">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="organisation">Organisation</label>
-              <input type="text" id="organisation" name="organisation" autocomplete="organization" placeholder="Mon entreprise inc.">
+
+            <div class="field">
+              <label for="sujet">Sujet <span class="req">*</span></label>
+              <select id="sujet" name="sujet" required>
+                <option value="" disabled selected>Choisir…</option>
+                <option value="Automatisation de processus">Automatisation de processus</option>
+                <option value="Cybersécurité">Cybersécurité</option>
+                <option value="Infrastructure cloud / systèmes">Infrastructure cloud / systèmes</option>
+                <option value="Intelligence artificielle">Intelligence artificielle</option>
+                <option value="Microsoft 365">Microsoft 365</option>
+                <option value="Dépannage informatique">Dépannage informatique</option>
+                <option value="Question générale">Question générale</option>
+                <option value="Autre">Autre</option>
+              </select>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="sujet">Sujet <span class="required">*</span></label>
-            <select id="sujet" name="sujet" required>
-              <option value="" disabled selected>Choisir…</option>
-              <option value="Automatisation de processus">Automatisation de processus</option>
-              <option value="Cybersécurité">Cybersécurité</option>
-              <option value="Infrastructure cloud / systèmes">Infrastructure cloud / systèmes</option>
-              <option value="Intelligence artificielle">Intelligence artificielle</option>
-              <option value="Microsoft 365">Microsoft 365</option>
-              <option value="Dépannage informatique">Dépannage informatique</option>
-              <option value="Question générale">Question générale</option>
-              <option value="Autre">Autre</option>
-            </select>
-          </div>
+            <div class="field">
+              <label for="message">Message <span class="req">*</span></label>
+              <textarea id="message" name="message" required placeholder="Décrivez brièvement votre situation ou votre besoin…"></textarea>
+            </div>
 
-          <div class="form-group">
-            <label for="message">Message <span class="required">*</span></label>
-            <textarea id="message" name="message" required placeholder="Décrivez brièvement votre situation ou votre besoin…"></textarea>
-          </div>
+            <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-          <!-- Honeypot anti-spam (invisible pour les humains) -->
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
-          <div class="form-submit">
-            <button type="submit" class="btn-submit" id="submit-btn">Envoyer le message</button>
-            <p class="form-note">Vos informations sont transmises de façon sécurisée et utilisées uniquement pour vous répondre. <a href="confidentialite.html">Politique de confidentialité</a>.</p>
-          </div>
-
-          <div class="form-status" id="form-status" role="alert" aria-live="polite"></div>
-        </form>
+            <button type="submit" class="form-submit">Envoyer le message</button>
+            <p class="form-fineprint">Vos informations sont transmises de façon sécurisée et utilisées uniquement pour vous répondre. <a href="confidentialite.html">Politique de confidentialité</a>.</p>
+            <div id="form-status" class="form-status" role="status" aria-live="polite" style="display:none;"></div>
+          </form>
+        </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
+
+</main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services &amp; Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const status = document.getElementById('form-status');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Validation de base
-    const required = form.querySelectorAll('[required]');
-    let valid = true;
-    required.forEach(el => {
-      if (!el.value.trim()) { el.focus(); valid = false; }
-    });
-    if (!valid) return;
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours…';
-    status.className = 'form-status';
-    status.textContent = '';
-
-    try {
-      const data = new FormData(form);
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        status.className = 'form-status success';
-        status.textContent = '✅ Message envoyé ! Nous vous répondrons dans les meilleurs délais.';
-        form.reset();
-        submitBtn.textContent = 'Message envoyé';
-      } else {
-        throw new Error('Erreur serveur');
-      }
-    } catch {
-      status.className = 'form-status error';
-      status.textContent = '⚠️ Une erreur est survenue. Veuillez nous contacter directement au 450 231-9199 ou par courriel.';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer le message';
-    }
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"

@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -97,188 +97,184 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- ═══ Header ═══ -->
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <span class="hero-eyebrow">Saint-Jérôme · Laurentides · PME & travailleurs autonomes</span>
-    <h1>Automatisation de vos processus d'affaires — sur mesure, à distance</h1>
-    <p class="hero-lead">Vos employés passent des heures sur des tâches répétitives que l'on peut automatiser. Nous développons les outils qui s'adaptent à vos opérations, pas l'inverse.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20d%27automatisation" class="btn-cta btn-cta--primary">Discuter de votre projet</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+<main class="site-main" id="main">
+
+  <!-- ═══ Page hero ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// automatisation</span>
+      <h1>Automatisation de vos processus d'affaires — sur mesure, à distance</h1>
+      <p class="page-hero-lead">Vos employés passent des heures sur des tâches répétitives que l'on peut automatiser. Nous développons les outils qui s'adaptent à vos opérations, pas l'inverse.</p>
+      <div class="btn-row" style="margin-top:28px;">
+        <a href="mailto:information@bginformatique.ca?subject=Demande%20d%27automatisation" class="btn btn--primary"><span class="arrow">›</span> Discuter de votre projet</a>
+        <a href="tel:+14502319199" class="btn btn--secondary mono">450 231-9199</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="certifications-banner">
-  <div class="container">
-    <p class="cert-label">Certifié</p>
-    <ul class="cert-list">
-      <li>Cisco</li>
-      <li>IBM</li>
-      <li>Google</li>
-    </ul>
-    <p class="cert-label" style="margin-left: 2rem;">Spécialiste</p>
-    <ul class="cert-list">
-      <li>Microsoft 365</li>
-    </ul>
-  </div>
-</section>
+  <!-- ═══ Cert ticker ═══ -->
+  <section class="cert-ticker" aria-label="Certifications et technologies">
+    <div class="cert-track">
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● PYTHON</span><span>● BASH</span><span>● API</span>
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● PYTHON</span><span>● BASH</span><span>● API</span>
+    </div>
+  </section>
 
-<section class="section">
-  <div class="container container-narrow">
+  <!-- ═══ Intro ═══ -->
+  <section class="section">
+    <div class="prose container--mid">
+      <h2>Ce que l'automatisation peut changer concrètement</h2>
+      <p>Un rapport généré manuellement chaque semaine, un transfert de données entre deux logiciels qui ne se parlent pas, des fichiers renommés à la main, des sauvegardes oubliées — ce sont des problèmes réels avec des solutions techniques simples. Nous les identifions et les réglons avec des scripts ou des outils sur mesure, développés pour votre contexte spécifique.</p>
+    </div>
+  </section>
 
-    <h2 style="margin-bottom:14px;">Ce que l'automatisation peut changer concrètement</h2>
-    <p style="color:var(--text-muted); margin-bottom:18px; font-size:1.05rem;">
-      Un rapport généré manuellement chaque semaine, un transfert de données entre deux logiciels qui ne se parlent pas, des fichiers renommés à la main, des sauvegardes oubliées — ce sont des problèmes réels avec des solutions techniques simples.
-      Nous les identifions et les réglons avec des scripts ou des outils sur mesure, développés pour votre contexte spécifique.
-    </p>
-
-    <h2 style="margin:40px 0 18px;">Ce que nous développons</h2>
+  <!-- ═══ Ce que nous développons ═══ -->
+  <section class="section" style="padding-top:0;" aria-labelledby="dev-title">
+    <div class="section-head">
+      <span class="eyebrow">// nos livrables</span>
+      <h2 class="section-title" id="dev-title">Ce que nous développons</h2>
+    </div>
     <div class="card-grid">
       <article class="card">
-        <span class="card-icon" aria-hidden="true">🐍</span>
-        <h3>Scripts Python & Bash</h3>
+        <h3>Scripts Python &amp; Bash</h3>
         <p>Traitement de fichiers, extraction et transformation de données, envoi de rapports automatiques, gestion de sauvegardes planifiées. Fonctionne en arrière-plan, sans intervention manuelle.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true">🖥️</span>
         <h3>Outils internes sur mesure</h3>
         <p>Formulaires, tableaux de bord simples ou mini-applications avec interface graphique légère — construits pour votre équipe, sans abonnement logiciel récurrent.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true">🔗</span>
         <h3>Intégration d'API</h3>
         <p>Faites communiquer vos logiciels entre eux : CRM ↔ comptabilité, formulaires web ↔ base de données, notifications automatiques entre systèmes. Plus besoin de copier-coller.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true">📄</span>
         <h3>Documentation incluse</h3>
         <p>Chaque livrable est accompagné d'une documentation claire et d'une explication en langage simple, pour que vous puissiez comprendre, maintenir et faire évoluer vos outils.</p>
       </article>
     </div>
+  </section>
 
-    <h2 style="margin:50px 0 18px;">Tarification</h2>
-    <table class="price-table">
-      <thead>
-        <tr><th scope="col">Service</th><th scope="col" style="text-align:right;">Prix</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="service-name">Scripts & automatisation sur mesure</td><td class="price-tag">Sur devis</td></tr>
-        <tr><td class="service-name">Outil interne avec interface</td><td class="price-tag">Sur devis</td></tr>
-        <tr><td class="service-name">Intégration d'API entre logiciels</td><td class="price-tag">Sur devis</td></tr>
-      </tbody>
-    </table>
-    <p style="color:var(--text-muted); font-size:0.93rem; margin-top:14px;">
-      Les devis sont basés sur la complexité et le temps estimé. Une première discussion est toujours gratuite et sans engagement.
-    </p>
+  <!-- ═══ Tarification + pour qui ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="prose container--mid">
+      <h2>Tarification</h2>
+      <ul>
+        <li><strong>Scripts &amp; automatisation sur mesure</strong> — Sur devis</li>
+        <li><strong>Outil interne avec interface</strong> — Sur devis</li>
+        <li><strong>Intégration d'API entre logiciels</strong> — Sur devis</li>
+      </ul>
+      <p>Les devis sont basés sur la complexité et le temps estimé. Une première discussion est toujours gratuite et sans engagement.</p>
 
-    <h2 style="margin:50px 0 18px;">Pour qui ?</h2>
-    <ul class="benefit-list">
-      <li>PME qui utilisent plusieurs logiciels qui ne communiquent pas entre eux</li>
-      <li>Travailleurs autonomes avec des tâches administratives répétitives à automatiser</li>
-      <li>OBNL avec des ressources limitées qui souhaitent gagner du temps sur les opérations</li>
-      <li>Équipes qui gèrent des fichiers volumineux ou des rapports récurrents manuellement</li>
-    </ul>
-    <div class="about-block related-services-block" style="margin-top:50px;">
+      <h2>Pour qui ?</h2>
+      <ul>
+        <li>PME qui utilisent plusieurs logiciels qui ne communiquent pas entre eux</li>
+        <li>Travailleurs autonomes avec des tâches administratives répétitives à automatiser</li>
+        <li>OBNL avec des ressources limitées qui souhaitent gagner du temps sur les opérations</li>
+        <li>Équipes qui gèrent des fichiers volumineux ou des rapports récurrents manuellement</li>
+      </ul>
+
       <h2>Services complémentaires</h2>
-      <ul class="benefit-list">
+      <ul>
         <li><a href="consultation-ia-laurentides.html"><strong>Consultation en intelligence artificielle</strong></a> — Audit IA, Microsoft Copilot, formation au prompting</li>
         <li><a href="infrastructure-cloud-saint-jerome.html"><strong>Infrastructure cloud et systèmes</strong></a> — Linux, gouvernance Microsoft 365, sauvegarde cloud</li>
       </ul>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Décrivez-nous votre tâche la plus répétitive</h2>
-    <p>On évalue ensemble si elle peut être automatisée — et combien de temps ça vous ferait gagner par mois.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20d%27automatisation" class="btn-cta btn-cta--primary">Nous écrire</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+  <!-- ═══ CTA band ═══ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › discussion gratuite</span>
+        <h2 id="cta-title">Décrivez-nous votre tâche la plus répétitive</h2>
+        <p>On évalue ensemble si elle peut être automatisée — et combien de temps ça vous ferait gagner par mois.</p>
+        <div class="cta-btns">
+          <a href="mailto:information@bginformatique.ca?subject=Demande%20d%27automatisation" class="btn btn--on-light">Nous écrire</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+</main>
+
+<!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

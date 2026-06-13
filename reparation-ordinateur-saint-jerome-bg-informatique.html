@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -97,198 +97,226 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- ═══ Header ═══ -->
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <span class="hero-eyebrow">Saint-Jérôme · Service à distance · 24/7</span>
-    <h1>Réparation d'ordinateur à Saint-Jérôme</h1>
-    <p class="hero-lead">Lenteur extrême, virus, écran bleu, démarrage qui plante, fichiers perdus ? Notre expertise logicielle remet votre PC ou Mac en état — sans vente de pièces, sans surfacturation.</p>
-    <div class="hero-cta-group">
-      <a href="tel:+14502319199" class="btn-cta btn-cta--primary">📞 Appeler maintenant</a>
-      <a href="diagnostic.html" class="btn-cta btn-cta--secondary">Pré-diagnostic gratuit</a>
+<main class="site-main" id="main">
+
+  <!-- ═══ Hero ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// reparation-logicielle</span>
+      <h1>Réparation d'ordinateur à Saint-Jérôme</h1>
+      <p class="page-hero-lead">Lenteur extrême, virus, écran bleu, démarrage qui plante, fichiers perdus ? Notre expertise logicielle remet votre PC ou Mac en état — sans vente de pièces, sans surfacturation.</p>
+      <div class="btn-row">
+        <a href="tel:+14502319199" class="btn btn--primary">Appeler maintenant</a>
+        <a href="diagnostic.html" class="btn btn--secondary">Pré-diagnostic gratuit</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="certifications-banner">
-  <div class="container">
-    <p class="cert-label">Certifié</p>
-    <ul class="cert-list">
-      <li>Cisco</li>
-      <li>IBM</li>
-      <li>Google</li>
-    </ul>
-    <p class="cert-label" style="margin-left: 2rem;">Spécialiste</p>
-    <ul class="cert-list">
-      <li>Microsoft 365</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container container-narrow">
-
-    <h2 style="margin-bottom:14px;">Une approche différente de la « réparation »</h2>
-    <p style="color:var(--text-muted); margin-bottom:18px; font-size:1.05rem;">
-      La plupart des problèmes d'ordinateur ne viennent pas du matériel — ils viennent du logiciel.
-      C'est précisément notre spécialité : <strong>diagnostiquer ce que personne ne regarde</strong> (logiciels au démarrage, processus parasites, pilotes corrompus, malwares discrets, fragmentation, registre, permissions, journaux d'événements).
-    </p>
-    <p style="color:var(--text-muted); margin-bottom:30px;">
-      Nous ne vendons pas de pièces. Cette neutralité garantit qu'on vous recommande la vraie solution, pas la plus rentable pour nous.
-    </p>
-
-    <h2 style="margin:40px 0 18px;">Les symptômes que nous corrigeons</h2>
-    <ul class="benefit-list">
-      <li><strong>Lenteur générale :</strong> démarrage interminable, applications qui figent, navigation pâteuse.</li>
-      <li><strong>Virus et malwares :</strong> publicités intrusives, redirections de navigateur, ransomware, rogues antivirus.</li>
-      <li><strong>Écran bleu (BSOD) :</strong> diagnostics de pilote, vérification de mémoire, analyse des dumps.</li>
-      <li><strong>Démarrage qui échoue :</strong> récupération de Windows/macOS, restauration des fichiers système.</li>
-      <li><strong>Mises à jour bloquées :</strong> Windows Update qui plante, mises à niveau interrompues.</li>
-      <li><strong>Réinstallation complète :</strong> remise à neuf du système avec préservation des données.</li>
-      <li><strong>Récupération de fichiers :</strong> sauvegarde et migration de vos données sensibles.</li>
-    </ul>
-
-    <h2 style="margin:40px 0 18px;">Tarifs résidentiels transparents</h2>
-    <table class="price-table">
-      <thead>
-        <tr><th>Service</th><th>Prix (taxes incluses)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="service-name">Optimisation performance</td><td class="price-tag">95 $</td></tr>
-        <tr><td class="service-name">Réinstallation & sauvegarde</td><td class="price-tag">130 $</td></tr>
-        <tr><td class="service-name">Soutien à distance (horaire)</td><td class="price-tag">80 $ / h</td></tr>
-      </tbody>
-    </table>
-
-    <div class="alert alert-info" style="margin-top:36px;">
-      <strong>Pas certain du problème ?</strong> Notre pré-diagnostic gratuit identifie la cause avant tout engagement financier.
+  <!-- ═══ Cert ticker ═══ -->
+  <section class="cert-ticker" aria-label="Certifications et technologies">
+    <div class="cert-track">
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span>
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span>
     </div>
+  </section>
 
-    <div style="text-align:center; margin-top:30px;">
-      <a href="diagnostic.html" class="btn-cta btn-cta--primary">Lancer un pré-diagnostic gratuit</a>
+  <!-- ═══ Approche différente ═══ -->
+  <section class="section" style="padding-bottom:0;">
+    <div class="prose container--mid">
+      <h2>Une approche différente de la « réparation »</h2>
+      <p>La plupart des problèmes d'ordinateur ne viennent pas du matériel — ils viennent du logiciel. C'est précisément notre spécialité : <strong>diagnostiquer ce que personne ne regarde</strong> (logiciels au démarrage, processus parasites, pilotes corrompus, malwares discrets, fragmentation, registre, permissions, journaux d'événements).</p>
+      <p>Nous ne vendons pas de pièces. Cette neutralité garantit qu'on vous recommande la vraie solution, pas la plus rentable pour nous.</p>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- ═══ Symptômes ═══ -->
+  <section class="section" style="padding-bottom:0;">
+    <div class="prose container--mid">
+      <h2>Les symptômes que nous corrigeons</h2>
+      <ul>
+        <li><strong>Lenteur générale :</strong> démarrage interminable, applications qui figent, navigation pâteuse.</li>
+        <li><strong>Virus et malwares :</strong> publicités intrusives, redirections de navigateur, ransomware, rogues antivirus.</li>
+        <li><strong>Écran bleu (BSOD) :</strong> diagnostics de pilote, vérification de mémoire, analyse des dumps.</li>
+        <li><strong>Démarrage qui échoue :</strong> récupération de Windows/macOS, restauration des fichiers système.</li>
+        <li><strong>Mises à jour bloquées :</strong> Windows Update qui plante, mises à niveau interrompues.</li>
+        <li><strong>Réinstallation complète :</strong> remise à neuf du système avec préservation des données.</li>
+        <li><strong>Récupération de fichiers :</strong> sauvegarde et migration de vos données sensibles.</li>
+      </ul>
+    </div>
+  </section>
 
-<section class="section section-alt">
-  <div class="container container-narrow">
-    <h2 class="section-title">Pourquoi nous choisir à Saint-Jérôme ?</h2>
+  <!-- ═══ Tarifs ═══ -->
+  <section class="section">
+    <div class="prose container--mid">
+      <h2>Tarifs résidentiels transparents</h2>
+      <div class="price-table">
+        <div class="price-row">
+          <div class="price-row-main">
+            <div class="price-name">Optimisation performance</div>
+          </div>
+          <div class="price-amount price-amount--fixed">95 $</div>
+        </div>
+        <div class="price-row">
+          <div class="price-row-main">
+            <div class="price-name">Réinstallation &amp; sauvegarde</div>
+          </div>
+          <div class="price-amount price-amount--fixed">130 $</div>
+        </div>
+        <div class="price-row">
+          <div class="price-row-main">
+            <div class="price-name">Soutien à distance (horaire)</div>
+          </div>
+          <div class="price-amount price-amount--rate">80 $ / h</div>
+        </div>
+      </div>
+      <p style="margin-top:14px;">Prix taxes incluses.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Pas certain + CTA ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="note-card container--mid">
+      <div class="note-card-main">
+        <p><strong>Pas certain du problème ?</strong> Notre pré-diagnostic gratuit identifie la cause avant tout engagement financier.</p>
+      </div>
+      <a href="diagnostic.html" class="btn btn--primary">Lancer un pré-diagnostic gratuit</a>
+    </div>
+  </section>
+
+  <!-- ═══ Pourquoi nous choisir ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">// pourquoi nous</span>
+      <h2 class="section-title" style="font-size:clamp(1.7rem,3.2vw,2.3rem);">Pourquoi nous choisir à Saint-Jérôme ?</h2>
+    </div>
     <div class="card-grid">
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🎯</span>
+      <article class="module-card">
+        <div class="module-card-top">
+          <span class="module-tag accent">// logiciel</span>
+          <span class="icon-wrap icon-wrap--blue"><span class="glyph glyph--diamond-blue"></span></span>
+        </div>
         <h3>Spécialisation logicielle</h3>
         <p>Nous ne touchons pas au matériel — nous excellons sur ce qui fait vraiment ralentir 90 % des PC : le logiciel.</p>
       </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🌙</span>
+      <article class="module-card">
+        <div class="module-card-top">
+          <span class="module-tag" style="color:var(--green-ink);">// disponibilité</span>
+          <span class="icon-wrap icon-wrap--green"><span class="glyph glyph--dot-green"></span></span>
+        </div>
         <h3>Disponible 24/7</h3>
         <p>Pas besoin d'attendre lundi matin. On répond aux urgences résidentielles à toute heure.</p>
       </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🌐</span>
+      <article class="module-card">
+        <div class="module-card-top">
+          <span class="module-tag accent">// à distance</span>
+          <span class="icon-wrap icon-wrap--blue"><span class="glyph glyph--circle-blue"></span></span>
+        </div>
         <h3>Soutien à distance</h3>
         <p>La plupart des problèmes se règlent sans déplacement, par connexion sécurisée. Plus rapide, moins cher.</p>
       </article>
     </div>
-    <div class="about-block related-services-block" style="margin-top:50px;">
+    <div class="prose container--mid" style="margin-top:50px;">
       <h2>Services complémentaires</h2>
-      <ul class="benefit-list">
+      <ul>
         <li><a href="depannage-informatique-urgence-saint-jerome.html"><strong>Dépannage d'urgence</strong></a> — Soutien à distance immédiat, 24/7</li>
       </ul>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Votre ordinateur ne fonctionne pas ? On peut aider tout de suite.</h2>
-    <p>Appelez ou faites un pré-diagnostic gratuit en ligne.</p>
-    <div class="hero-cta-group">
-      <a href="tel:+14502319199" class="btn-cta btn-cta--primary">📞 450 231-9199</a>
-      <a href="diagnostic.html" class="btn-cta btn-cta--secondary">Pré-diagnostic gratuit</a>
+  <!-- ═══ CTA band ═══ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › réparation logicielle</span>
+        <h2 id="cta-title">Votre ordinateur ne fonctionne pas ? On peut aider tout de suite.</h2>
+        <p>Appelez ou faites un pré-diagnostic gratuit en ligne.</p>
+        <div class="cta-btns">
+          <a href="diagnostic.html" class="btn btn--on-light">Pré-diagnostic gratuit</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+</main>
+
+<!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

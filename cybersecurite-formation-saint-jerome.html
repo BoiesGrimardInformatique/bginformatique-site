@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -97,188 +97,183 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- ═══ Header ═══ -->
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <span class="hero-eyebrow">Saint-Jérôme · Laurentides · PME & OBNL</span>
-    <h1>Cybersécurité préventive et formation des équipes</h1>
-    <p class="hero-lead">La majorité des incidents de sécurité commencent par une erreur humaine. Nos formations et simulations permettent à votre équipe de reconnaître les menaces avant d'y répondre — sans panique ni jargon technique.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20formation%20cybersecurite" class="btn-cta btn-cta--primary">Planifier une formation</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+<main class="site-main" id="main">
+
+  <!-- ═══ Hero ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// cybersécurité-formation</span>
+      <h1>Cybersécurité préventive et formation des équipes</h1>
+      <p class="page-hero-lead">La majorité des incidents de sécurité commencent par une erreur humaine. Nos formations et simulations permettent à votre équipe de reconnaître les menaces avant d'y répondre — sans panique ni jargon technique.</p>
+      <div class="btn-row" style="margin-top:28px;">
+        <a href="mailto:information@bginformatique.ca?subject=Demande%20formation%20cybersecurite" class="btn btn--primary">Planifier une formation</a>
+        <a href="tel:+14502319199" class="btn btn--secondary mono">450 231-9199</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="certifications-banner">
-  <div class="container">
-    <p class="cert-label">Certifié</p>
-    <ul class="cert-list">
-      <li>Cisco</li>
-      <li>IBM</li>
-      <li>Google</li>
-    </ul>
-    <p class="cert-label" style="margin-left: 2rem;">Spécialiste</p>
-    <ul class="cert-list">
-      <li>Microsoft 365</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container container-narrow">
-
-    <h2 style="margin-bottom:14px;">La menace la plus sous-estimée : votre propre équipe</h2>
-    <p style="color:var(--text-muted); margin-bottom:18px; font-size:1.05rem;">
-      Les antivirus et pare-feux ne protègent pas contre un employé qui clique sur un lien frauduleux ou qui utilise le même mot de passe partout.
-      La prévention passe par la formation — pas pour culpabiliser, mais pour équiper votre équipe des réflexes qui font la différence au quotidien.
-    </p>
-
-    <h2 style="margin:40px 0 18px;">Nos services en cybersécurité préventive</h2>
-    <div class="card-grid">
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">🎣</span>
-        <h3>Simulation d'hameçonnage</h3>
-        <p>Campagne contrôlée reproduisant de vraies tentatives de phishing. Rapport de vigilance détaillé : qui a cliqué, qui a soumis des identifiants, qui a signalé la tentative. Aucune donnée réelle collectée.</p>
-      </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">👥</span>
-        <h3>Formation en visioconférence</h3>
-        <p>Atelier de 60 à 90 minutes adapté à votre contexte organisationnel : mots de passe et gestionnaires, détection de fraudes par courriel, bonnes pratiques sur les appareils professionnels. Accessible à tous les niveaux techniques.</p>
-      </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">📋</span>
-        <h3>Sensibilisation continue</h3>
-        <p>Campagnes périodiques pour maintenir un niveau de vigilance élevé dans le temps — parce qu'une formation unique s'oublie rapidement et que les techniques d'hameçonnage évoluent.</p>
-      </article>
-      <article class="card">
-        <span class="card-icon" aria-hidden="true">📈</span>
-        <h3>Rapport de vigilance</h3>
-        <p>Suivi du niveau de sensibilisation de votre équipe avant et après les interventions. Indicateurs clairs pour mesurer la progression et cibler les employés qui bénéficieraient d'un suivi supplémentaire.</p>
-      </article>
+  <!-- ═══ Intro ═══ -->
+  <section class="section" style="padding-top:32px;">
+    <div class="prose container--mid">
+      <h2>La menace la plus sous-estimée : votre propre équipe</h2>
+      <p>Les antivirus et pare-feux ne protègent pas contre un employé qui clique sur un lien frauduleux ou qui utilise le même mot de passe partout. La prévention passe par la formation — pas pour culpabiliser, mais pour équiper votre équipe des réflexes qui font la différence au quotidien.</p>
     </div>
+  </section>
 
-    <h2 style="margin:50px 0 18px;">Tarification</h2>
-    <table class="price-table">
-      <thead>
-        <tr><th scope="col">Service</th><th scope="col" style="text-align:right;">Prix</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="service-name">Simulation d'hameçonnage avec rapport</td><td class="price-tag">Sur devis</td></tr>
-        <tr><td class="service-name">Formation en visioconférence (jusqu'à 15 personnes)</td><td class="price-tag">Sur devis</td></tr>
-        <tr><td class="service-name">Programme de sensibilisation continue (forfait)</td><td class="price-tag">Sur devis</td></tr>
-      </tbody>
-    </table>
-    <p style="color:var(--text-muted); font-size:0.93rem; margin-top:14px;">
-      Les tarifs varient selon la taille de l'équipe, le nombre de sessions et la fréquence des campagnes. Contactez-nous pour un devis adapté à votre organisation.
-    </p>
+  <!-- ═══ Services en cybersécurité préventive ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="container--mid">
+      <div class="section-head">
+        <span class="eyebrow">// nos services</span>
+        <h2 class="section-title">Nos services en cybersécurité préventive</h2>
+      </div>
+      <div class="card-grid">
+        <article class="module-card">
+          <h3>Simulation d'hameçonnage</h3>
+          <p>Campagne contrôlée reproduisant de vraies tentatives de phishing. Rapport de vigilance détaillé : qui a cliqué, qui a soumis des identifiants, qui a signalé la tentative. Aucune donnée réelle collectée.</p>
+        </article>
+        <article class="module-card">
+          <h3>Formation en visioconférence</h3>
+          <p>Atelier de 60 à 90 minutes adapté à votre contexte organisationnel : mots de passe et gestionnaires, détection de fraudes par courriel, bonnes pratiques sur les appareils professionnels. Accessible à tous les niveaux techniques.</p>
+        </article>
+        <article class="module-card">
+          <h3>Sensibilisation continue</h3>
+          <p>Campagnes périodiques pour maintenir un niveau de vigilance élevé dans le temps — parce qu'une formation unique s'oublie rapidement et que les techniques d'hameçonnage évoluent.</p>
+        </article>
+        <article class="module-card">
+          <h3>Rapport de vigilance</h3>
+          <p>Suivi du niveau de sensibilisation de votre équipe avant et après les interventions. Indicateurs clairs pour mesurer la progression et cibler les employés qui bénéficieraient d'un suivi supplémentaire.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <h2 style="margin:50px 0 18px;">Pour qui ?</h2>
-    <ul class="benefit-list">
-      <li>PME qui n'ont jamais fait de sensibilisation formelle à la cybersécurité</li>
-      <li>OBNL qui manipulent des données personnelles ou financières sensibles</li>
-      <li>Organisations qui ont déjà subi un incident et veulent renforcer leur culture sécurité</li>
-      <li>Directions qui veulent mesurer le niveau réel de vigilance de leurs employés</li>
-    </ul>
-    <div class="about-block related-services-block" style="margin-top:50px;">
+  <!-- ═══ Tarification ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="prose container--mid">
+      <h2>Tarification</h2>
+      <ul>
+        <li><strong>Simulation d'hameçonnage avec rapport</strong> — sur devis</li>
+        <li><strong>Formation en visioconférence (jusqu'à 15 personnes)</strong> — sur devis</li>
+        <li><strong>Programme de sensibilisation continue (forfait)</strong> — sur devis</li>
+      </ul>
+      <p>Les tarifs varient selon la taille de l'équipe, le nombre de sessions et la fréquence des campagnes. Contactez-nous pour un devis adapté à votre organisation.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Pour qui + complémentaires ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="prose container--mid">
+      <h2>Pour qui ?</h2>
+      <ul>
+        <li>PME qui n'ont jamais fait de sensibilisation formelle à la cybersécurité</li>
+        <li>OBNL qui manipulent des données personnelles ou financières sensibles</li>
+        <li>Organisations qui ont déjà subi un incident et veulent renforcer leur culture sécurité</li>
+        <li>Directions qui veulent mesurer le niveau réel de vigilance de leurs employés</li>
+      </ul>
+
       <h2>Services complémentaires</h2>
-      <ul class="benefit-list">
+      <ul>
         <li><a href="infrastructure-cloud-saint-jerome.html"><strong>Infrastructure cloud sécurisée</strong></a> — Linux, M365 avancé, sauvegarde anti-rançongiciel</li>
         <li><a href="consultation-ia-laurentides.html"><strong>IA en entreprise — formation sécuritaire</strong></a> — Quoi partager, quoi protéger avec l'IA</li>
       </ul>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Combien d'employés cliqueraient sur un faux courriel aujourd'hui ?</h2>
-    <p>Une simulation vous donne la réponse — et un plan pour l'améliorer.</p>
-    <div class="hero-cta-group">
-      <a href="mailto:information@bginformatique.ca?subject=Demande%20formation%20cybersecurite" class="btn-cta btn-cta--primary">Planifier une simulation</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+  <!-- ═══ CTA band ═══ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › discussion gratuite</span>
+        <h2 id="cta-title">Combien d'employés cliqueraient sur un faux courriel aujourd'hui ?</h2>
+        <p>Une simulation vous donne la réponse — et un plan pour l'améliorer.</p>
+        <div class="cta-btns">
+          <a href="mailto:information@bginformatique.ca?subject=Demande%20formation%20cybersecurite" class="btn btn--on-light">Planifier une simulation</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+</main>
+
+<!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

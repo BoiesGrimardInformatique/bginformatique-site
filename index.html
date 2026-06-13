@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -72,191 +72,258 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <!-- ═══ Header ═══ -->
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html" aria-current="page">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html" aria-current="page">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<!-- ═══ Hero ═══ -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="container">
-    <span class="hero-eyebrow">Saint-Jérôme · Laurentides · 24/7</span>
-    <h1 id="hero-title">L'expertise TI au service de votre productivité</h1>
-    <p class="hero-lead">Automatisation, intelligence artificielle, infrastructure cloud, cybersécurité et Microsoft 365 — à distance, pour les PME et OBNL des Laurentides. Sans vente de matériel.</p>
-    <div class="hero-cta-group">
-      <a href="services.html" class="btn-cta btn-cta--primary">Consulter nos services</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">
-        <span aria-hidden="true">📞</span>
-        <span>450 231-9199</span>
-      </a>
+<main class="site-main" id="main">
+
+  <!-- ═══ Hero ═══ -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="status-badge"><span class="dot" aria-hidden="true"></span> En ligne 24/7 — Saint-Jérôme · Laurentides</span>
+        <h1 class="hero-title" id="hero-title">L'expertise TI au service de votre <span class="accent">productivité</span>.</h1>
+        <p class="hero-lead">Automatisation, IA, infrastructure cloud, cybersécurité et Microsoft 365 — à distance, pour les PME et OBNL des Laurentides. Sans vente de matériel.</p>
+        <div class="btn-row">
+          <a href="services.html" class="btn btn--primary"><span class="arrow">›</span> Voir nos services</a>
+          <a href="diagnostic.html" class="btn btn--secondary">Discussion gratuite</a>
+        </div>
+      </div>
+
+      <div class="terminal terminal--float terminal--anim" aria-hidden="true">
+        <div class="terminal-bar">
+          <span class="tdot tdot--r"></span>
+          <span class="tdot tdot--y"></span>
+          <span class="tdot tdot--g"></span>
+          <span class="terminal-name">bg · état des systèmes</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-cmd" data-cmd="$ bg status --all">$ bg status --all</div>
+          <div class="terminal-line"><span class="mark-ok">✓</span> uptime ............ <span class="val">99.9%</span></div>
+          <div class="terminal-line"><span class="mark-ok">✓</span> backups ........... <span class="val">cloud · OK</span></div>
+          <div class="terminal-line"><span class="mark-ok">✓</span> mfa ............... <span class="val">enforced</span></div>
+          <div class="terminal-line"><span class="mark-ok">✓</span> automations ....... <span class="val">14 active</span></div>
+          <div class="terminal-line"><span class="mark-go">→</span> m365 governance ... <span class="val">audited</span></div>
+          <div class="terminal-prompt" style="color:#9aa0ac; margin-top:6px;">bg ›<span class="caret"></span></div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ Certifications ═══ -->
-<section class="certifications-banner" aria-label="Certifications">
-  <div class="container">
-    <p class="cert-label">Certifié</p>
-    <ul class="cert-list">
-      <li>Cisco</li>
-      <li>IBM</li>
-      <li>Google</li>
-    </ul>
-    <p class="cert-label" style="margin-left: 2rem;">Spécialiste</p>
-    <ul class="cert-list">
-      <li>Microsoft 365</li>
-    </ul>
-  </div>
-</section>
+  <!-- ═══ Cert ticker ═══ -->
+  <section class="cert-ticker" aria-label="Certifications et technologies">
+    <div class="cert-track">
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● PYTHON</span><span>● LINUX</span><span>● MICROSOFT COPILOT</span><span>● BaaS / DRaaS</span>
+      <span>● CISCO</span><span>● IBM</span><span>● GOOGLE</span><span class="is-blue">● MICROSOFT 365</span><span>● PYTHON</span><span>● LINUX</span><span>● MICROSOFT COPILOT</span><span>● BaaS / DRaaS</span>
+    </div>
+  </section>
 
-<!-- ═══ Expertise ═══ -->
-<section id="expertise" class="section" aria-labelledby="expertise-title">
-  <div class="container">
-    <h2 id="expertise-title" class="section-title">Pourquoi choisir BG Informatique ?</h2>
-    <p class="section-subtitle">Automatisation, IA, cybersécurité, infrastructure — une expertise complète, à distance, sans vente de matériel.</p>
-
-    <div class="card-grid">
-      <article class="card reveal">
-        <span class="card-icon" aria-hidden="true">🌙</span>
-        <h3>Disponibilité totale (24/7)</h3>
-        <p>Nous sommes disponibles en tout temps. La maintenance de vos systèmes s'effectue au moment qui vous convient le mieux pour garantir <strong>zéro temps d'arrêt</strong> à vos opérations.</p>
+  <!-- ═══ Expertise modules ═══ -->
+  <section class="section" id="expertise" aria-labelledby="expertise-title">
+    <div class="section-head">
+      <span class="eyebrow">// nos expertises</span>
+      <h2 class="section-title" id="expertise-title">Une couverture TI complète, sans compromis.</h2>
+    </div>
+    <div class="module-grid">
+      <article class="module-card reveal">
+        <div class="module-card-top">
+          <span class="module-tag" style="color:var(--green-ink);">// disponibilité</span>
+          <span class="icon-wrap icon-wrap--green"><span class="glyph glyph--dot-green"></span></span>
+        </div>
+        <h3>Disponibilité totale — 24/7</h3>
+        <p>Maintenance hors de vos heures critiques, monitoring continu. Zéro temps d'arrêt à vos opérations.</p>
+        <div class="tag-row"><span class="tag">monitoring</span><span class="tag">sla</span><span class="tag">réponse &lt;1h</span></div>
       </article>
-
-      <article class="card reveal">
-        <span class="card-icon" aria-hidden="true">🤖</span>
-        <h3>Automatisation & Intelligence artificielle</h3>
-        <p>Scripts Python/Bash sur mesure, intégration d'API et déploiement de Microsoft Copilot pour <strong>réduire vos tâches répétitives</strong> et accélérer votre équipe.</p>
+      <article class="module-card reveal">
+        <div class="module-card-top">
+          <span class="module-tag accent">// automatisation</span>
+          <span class="icon-wrap icon-wrap--blue"><span class="glyph glyph--diamond-blue"></span></span>
+        </div>
+        <h3>Automatisation &amp; IA</h3>
+        <p>Scripts Python/Bash, intégration d'API et Microsoft Copilot pour réduire les tâches répétitives.</p>
+        <div class="tag-row"><span class="tag">python</span><span class="tag">api</span><span class="tag">copilot</span></div>
       </article>
-
-      <article class="card reveal">
-        <span class="card-icon" aria-hidden="true">🛡️</span>
+      <article class="module-card reveal">
+        <div class="module-card-top">
+          <span class="module-tag" style="color:var(--green-ink);">// cybersécurité</span>
+          <span class="icon-wrap icon-wrap--green"><span class="glyph glyph--circle-green"></span></span>
+        </div>
         <h3>Approche « Security-First »</h3>
-        <p>Simulations d'hameçonnage, MFA conditionnel, DLP et sauvegarde cloud robuste — chaque intervention protège autant <strong>votre équipe que vos données</strong>.</p>
+        <p>Simulations d'hameçonnage, MFA conditionnel, DLP et sauvegarde cloud robuste.</p>
+        <div class="tag-row"><span class="tag">mfa</span><span class="tag">dlp</span><span class="tag">phishing</span></div>
       </article>
-
-      <article class="card reveal">
-        <span class="card-icon" aria-hidden="true">☁️</span>
-        <h3>Infrastructure cloud & systèmes</h3>
-        <p>Administration de serveurs Linux, gouvernance Microsoft 365 avancée et stratégie BaaS/DRaaS — le tout géré <strong>entièrement à distance</strong>, sans interruption.</p>
+      <article class="module-card reveal">
+        <div class="module-card-top">
+          <span class="module-tag accent">// infrastructure</span>
+          <span class="icon-wrap icon-wrap--blue"><span class="glyph glyph--pill-blue"></span></span>
+        </div>
+        <h3>Infrastructure cloud &amp; systèmes</h3>
+        <p>Serveurs Linux, gouvernance Microsoft 365 avancée et stratégie BaaS/DRaaS.</p>
+        <div class="tag-row"><span class="tag">linux</span><span class="tag">m365</span><span class="tag">baas/draas</span></div>
       </article>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ Centre d'aide / autodépannage ═══ -->
-<section class="section" aria-labelledby="aide-title">
-  <div class="container container-narrow" style="text-align:center;">
-    <h2 id="aide-title" class="section-title">Un petit problème ? Essayez de le régler vous-même 💪</h2>
-    <p class="section-subtitle">Notre Centre d'aide réunit des guides pas-à-pas gratuits pour les pannes les plus courantes : PC lent, WiFi, imprimante, mots de passe, sécurité. Si ça résiste, on prend le relais.</p>
-    <a href="guides-depannage.html" class="btn-cta btn-cta--primary">Consulter les guides de dépannage</a>
-  </div>
-</section>
-
-<!-- ═══ Bande CTA finale ═══ -->
-<section class="cta-band" aria-labelledby="final-cta">
-  <div class="container">
-    <h2 id="final-cta">Un projet d'automatisation ? Un problème de sécurité ? Une question sur Microsoft 365 ?</h2>
-    <p>Première discussion gratuite, sans engagement. Nous évaluons votre situation et proposons une approche claire — disponible 24/7.</p>
-    <div class="hero-cta-group">
-      <a href="diagnostic.html" class="btn-cta btn-cta--primary">Lancer un pré-diagnostic</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+  <!-- ═══ Process / méthode ═══ -->
+  <section class="section" id="process" style="padding-top:20px;" aria-labelledby="process-title">
+    <div class="panel">
+      <div class="section-head" style="margin-bottom:44px;">
+        <span class="eyebrow">// méthode</span>
+        <h2 class="section-title" id="process-title" style="font-size:clamp(1.7rem,3.2vw,2.3rem);">Du diagnostic au déploiement, sans friction.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step"><div class="step-num">01 →</div><h3>Pré-diagnostic</h3><p>On évalue votre situation lors d'une première discussion gratuite, sans engagement.</p></div>
+        <div class="step"><div class="step-num">02 →</div><h3>Plan d'action</h3><p>Une approche claire, chiffrée et priorisée selon vos risques et vos objectifs.</p></div>
+        <div class="step"><div class="step-num">03 →</div><h3>Déploiement</h3><p>Mise en place à distance, hors de vos heures critiques, sans interruption.</p></div>
+        <div class="step"><div class="step-num">04 ✓</div><h3>Suivi continu</h3><p>Monitoring, maintenance et support 24/7. On reste votre partenaire TI.</p></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ═══ Centre d'aide + stats ═══ -->
+  <section class="section" id="aide" style="padding-top:0;" aria-labelledby="aide-title">
+    <div class="split-grid">
+      <div class="promo-card">
+        <span class="eyebrow">// libre-service</span>
+        <h2 id="aide-title">Un petit problème ? Réglez-le vous-même.</h2>
+        <p>Guides pas-à-pas gratuits : PC lent, WiFi, imprimante, mots de passe, sécurité. Si ça résiste, on prend le relais — 24/7.</p>
+        <a href="guides-depannage.html" class="btn btn--green">Consulter les guides →</a>
+      </div>
+      <div class="stats-card">
+        <div class="stat"><span class="stat-num">99.9<span style="color:var(--green);">%</span></span><span class="stat-label">uptime moyen</span></div>
+        <div class="stat-rule"></div>
+        <div class="stat"><span class="stat-num">&lt;1<span style="color:var(--blue);">h</span></span><span class="stat-label">délai de réponse urgence</span></div>
+        <div class="stat-rule"></div>
+        <div class="stat"><span class="stat-num">0 <span style="color:var(--green);">$</span></span><span class="stat-label">vente de matériel</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="section" id="faq" style="padding-top:0; max-width:860px;" aria-labelledby="faq-title">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">// faq</span>
+      <h2 class="section-title" id="faq-title" style="font-size:clamp(1.7rem,3.2vw,2.3rem);">Questions fréquentes</h2>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-trigger"><span class="accordion-q">Réparez-vous le matériel informatique ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+        <div class="accordion-panel"><p>Non. Nous nous spécialisons exclusivement dans la partie logicielle et réseau, pour garantir une expertise neutre et pointue — sans vente de pièces. On vous recommande ce qui est bon pour vous, jamais ce qui est bon pour notre stock.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger"><span class="accordion-q">Comment fonctionne le soutien à distance ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+        <div class="accordion-panel"><p>Nous utilisons des outils sécurisés (chiffrement et authentification) pour résoudre vos problèmes sans déplacement. C'est rapide, efficace et disponible 24/7 — la solution la plus économique pour la plupart des problèmes logiciels.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger"><span class="accordion-q">Pouvez-vous automatiser des tâches dans mon entreprise ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+        <div class="accordion-panel"><p>Oui. Nous développons des scripts Python/Bash sur mesure, des outils internes légers et des intégrations d'API : rapports automatiques, transferts entre logiciels, sauvegardes planifiées, notifications. Une première discussion gratuite estime le gain de temps réel.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger"><span class="accordion-q">Proposez-vous des services liés à l'intelligence artificielle ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+        <div class="accordion-panel"><p>Oui, sur trois axes : audit d'opportunités IA, déploiement de Microsoft Copilot dans votre environnement M365, et formation au prompting et à l'usage sécuritaire. On ne vend pas de l'IA pour de l'IA — si ça ne s'applique pas, on vous le dit.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger"><span class="accordion-q">Faites-vous des simulations d'hameçonnage ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+        <div class="accordion-panel"><p>Oui. Nous organisons des campagnes contrôlées qui reproduisent de vraies tentatives de phishing, suivies d'un rapport de vigilance : qui a cliqué, qui a soumis des identifiants, qui a signalé. Aucune donnée réelle n'est collectée — l'objectif est de mesurer et d'améliorer la vigilance de l'équipe.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger"><span class="accordion-q">Servez-vous toute la région des Laurentides ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+        <div class="accordion-panel"><p>Oui. Basés à Saint-Jérôme, nous servons Mirabel, Sainte-Adèle, Saint-Sauveur, Mont-Tremblant, Prévost et plus. La majorité des interventions se font à distance, ce qui élimine les frais et délais de déplacement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA band ═══ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › discussion gratuite</span>
+        <h2 id="cta-title">Un projet d'automatisation ? Une question sur Microsoft 365 ?</h2>
+        <p>Première discussion gratuite, sans engagement. On évalue votre situation et on propose une approche claire — 24/7.</p>
+        <div class="cta-btns">
+          <a href="diagnostic.html" class="btn btn--on-light">Lancer un pré-diagnostic</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <!-- ═══ Footer ═══ -->
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  // Toggle menu mobile
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-
-  // Animation d'apparition des cartes
-  const cards = document.querySelectorAll('.card.reveal');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 90);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    cards.forEach(c => observer.observe(c));
-  } else {
-    cards.forEach(c => c.classList.add('visible'));
-  }
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

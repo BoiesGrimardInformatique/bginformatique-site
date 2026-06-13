@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -48,116 +48,215 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<main class="container">
-  <article class="legal-content">
-    <h1>Termes et Conditions de Service</h1>
-    <p class="legal-meta">En vigueur depuis le 11 février 2026 · Mis à jour le 31 mai 2026</p>
+<main class="site-main" id="main">
 
-    <h2>1. Nature des services</h2>
-    <p>BG Informatique agit à titre de consultant en gestion de systèmes et de Tenants Microsoft 365. Nous fournissons exclusivement des prestations logicielles et de configuration : aucune vente ni installation de matériel n'est offerte.</p>
-
-    <h2>2. Responsabilité du client</h2>
-    <p>Le client demeure responsable de la possession de sauvegardes valides avant toute intervention. BG Informatique ne peut être tenu responsable des pertes de données résultant de défaillances matérielles préexistantes, d'erreurs dans les informations fournies par le client, ou de l'absence de sauvegardes adéquates. En toute circonstance, la responsabilité de BG Informatique est limitée au montant total facturé pour le mandat en cause.</p>
-
-    <h2>3. Disponibilité</h2>
-    <p>BG Informatique s'efforce d'être disponible 24 h/7 j. Cette disponibilité est offerte à titre indicatif et ne constitue pas une garantie de réponse immédiate en tout temps. Les délais de réponse peuvent varier selon les mandats en cours et les circonstances exceptionnelles.</p>
-
-    <h2>4. Confidentialité professionnelle</h2>
-    <p>BG Informatique s'engage à respecter le secret professionnel concernant l'ensemble des données consultées lors des mandats d'administration système. Les accès accordés sont utilisés strictement pour les fins du mandat.</p>
-
-    <h2>5. Tarification</h2>
-    <p>Les tarifs affichés sur la page <a href="services.html">Services & Tarifs</a> incluent les taxes applicables au Québec. Tout dépassement ou service additionnel est communiqué et approuvé par le client avant exécution.</p>
-
-    <h2>6. Droit applicable et juridiction</h2>
-    <p>Les présentes conditions sont régies par les lois de la province de Québec et les lois fédérales du Canada applicables. Tout litige découlant de ces conditions ou des services rendus sera soumis à la compétence exclusive des tribunaux du Québec.</p>
-
-    <h2>7. Modification des conditions</h2>
-    <p>BG Informatique se réserve le droit de modifier les présentes conditions. La version en vigueur est celle publiée sur le site au moment de la prestation.</p>
-
-    <div class="legal-back">
-      <a href="index.html" class="btn-cta btn-cta--ghost">← Retour à l'accueil</a>
+  <!-- Page hero -->
+  <section class="page-hero container--mid" style="max-width:1100px;">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// mentions légales</span>
+      <h1>Termes &amp; Conditions</h1>
+      <p class="page-hero-lead">Les conditions qui encadrent la prestation de nos services TI. Rédigées en langage clair, sans clauses cachées.</p>
+      <div class="legal-updated">Dernière mise à jour : 13 juin 2026</div>
     </div>
-  </article>
+  </section>
+
+  <!-- Legal grid -->
+  <section class="section" style="max-width:1100px;padding-top:26px;">
+    <div class="legal-grid">
+
+      <aside class="legal-aside">
+        <div class="legal-toc">
+          <div class="legal-toc-title">sommaire</div>
+          <div class="legal-toc-links">
+            <a href="#acceptation"><span class="ln">01</span>Acceptation des conditions</a>
+            <a href="#services"><span class="ln">02</span>Description des services</a>
+            <a href="#materiel"><span class="ln">03</span>Aucune vente de matériel</a>
+            <a href="#tarifs"><span class="ln">04</span>Tarifs, devis et facturation</a>
+            <a href="#acces"><span class="ln">05</span>Accès à distance et collaboration</a>
+            <a href="#disponibilite"><span class="ln">06</span>Disponibilité et délais</a>
+            <a href="#responsabilites-client"><span class="ln">07</span>Responsabilités du client</a>
+            <a href="#limitation"><span class="ln">08</span>Limitation de responsabilité</a>
+            <a href="#propriete"><span class="ln">09</span>Propriété intellectuelle</a>
+            <a href="#confidentialite"><span class="ln">10</span>Confidentialité</a>
+            <a href="#resiliation"><span class="ln">11</span>Résiliation</a>
+            <a href="#droit"><span class="ln">12</span>Droit applicable</a>
+            <a href="#modifications"><span class="ln">13</span>Modifications</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="legal-body">
+        <p class="legal-intro">Les présentes conditions régissent l'utilisation des services offerts par <strong>BG Informatique</strong> (« nous », « notre »), entreprise établie à Saint-Jérôme, Québec. En retenant nos services, vous (« le client ») acceptez les conditions ci-dessous.</p>
+
+        <div class="legal-section" id="acceptation">
+          <h2><span class="ln">01</span>Acceptation des conditions</h2>
+          <p>En demandant un devis, en confirmant un mandat ou en utilisant l'un de nos services, vous reconnaissez avoir lu, compris et accepté les présentes conditions.</p>
+          <p>Si vous agissez au nom d'une organisation, vous déclarez avoir l'autorité nécessaire pour l'engager.</p>
+        </div>
+
+        <div class="legal-section" id="services">
+          <h2><span class="ln">02</span>Description des services</h2>
+          <p>BG Informatique offre des services informatiques à distance, notamment : automatisation de processus, consultation et intégration en intelligence artificielle, gestion d'infrastructures cloud et systèmes, cybersécurité préventive, gouvernance Microsoft 365 et soutien technique résidentiel et d'entreprise.</p>
+          <p>La portée précise de chaque mandat est définie par écrit (devis, courriel ou entente de service) avant le début des travaux.</p>
+        </div>
+
+        <div class="legal-section" id="materiel">
+          <h2><span class="ln">03</span>Aucune vente de matériel</h2>
+          <p>Nous ne vendons aucun équipement, aucune pièce ni aucun accessoire informatique. Nos recommandations de matériel sont fournies à titre indicatif et sans commission.</p>
+          <p>L'achat de tout équipement demeure la responsabilité du client, auprès du fournisseur de son choix.</p>
+        </div>
+
+        <div class="legal-section" id="tarifs">
+          <h2><span class="ln">04</span>Tarifs, devis et facturation</h2>
+          <p>Les services résidentiels sont offerts à prix fixe affiché, taxes incluses. Les mandats d'entreprise sont chiffrés sur devis selon le contexte.</p>
+          <ul class="legal-list">
+            <li>Les devis sont valides 30 jours à compter de leur émission.</li>
+            <li>Sauf entente contraire, les factures sont payables dans les 30 jours suivant leur réception.</li>
+            <li>Les interventions hors heures normales peuvent faire l'objet d'un tarif d'urgence, toujours annoncé à l'avance.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section" id="acces">
+          <h2><span class="ln">05</span>Accès à distance et collaboration</h2>
+          <p>La majorité de nos interventions s'effectuent à distance au moyen d'outils sécurisés. Chaque session nécessite votre autorisation explicite et peut être interrompue par vous en tout temps.</p>
+          <p>Le client s'engage à fournir un accès raisonnable aux systèmes concernés et les informations nécessaires à la bonne exécution du mandat.</p>
+        </div>
+
+        <div class="legal-section" id="disponibilite">
+          <h2><span class="ln">06</span>Disponibilité et délais</h2>
+          <p>Nous offrons un soutien disponible 24 h / 7 j et visons un délai de réponse inférieur à une heure pour les urgences ayant un impact opérationnel.</p>
+          <p>Ces délais constituent des objectifs de service et non des garanties contractuelles, sauf entente écrite spécifique.</p>
+        </div>
+
+        <div class="legal-section" id="responsabilites-client">
+          <h2><span class="ln">07</span>Responsabilités du client</h2>
+          <p>Le client demeure responsable de l'usage légal de ses systèmes et des données qu'il y héberge.</p>
+          <ul class="legal-list">
+            <li>Maintenir des sauvegardes à jour de ses données importantes, sauf lorsque la gestion des sauvegardes fait explicitement partie du mandat.</li>
+            <li>Conserver de façon confidentielle ses identifiants et mots de passe.</li>
+            <li>Nous informer rapidement de tout incident de sécurité ou comportement anormal.</li>
+          </ul>
+        </div>
+
+        <div class="legal-section" id="limitation">
+          <h2><span class="ln">08</span>Limitation de responsabilité</h2>
+          <p>Nous mettons en œuvre des pratiques professionnelles reconnues. Toutefois, dans les limites permises par la loi, notre responsabilité totale relative à un mandat ne saurait excéder le montant facturé pour ce mandat.</p>
+          <p>Nous ne pouvons être tenus responsables des pertes de données résultant d'une absence de sauvegarde du côté du client, ni des dommages indirects, pertes de profits ou interruptions d'activité.</p>
+        </div>
+
+        <div class="legal-section" id="propriete">
+          <h2><span class="ln">09</span>Propriété intellectuelle</h2>
+          <p>Les scripts, outils et configurations développés spécifiquement dans le cadre d'un mandat sont remis au client à l'acquittement complet de la facture correspondante.</p>
+          <p>Nos méthodes, modèles et savoir-faire génériques demeurent notre propriété et peuvent être réutilisés.</p>
+        </div>
+
+        <div class="legal-section" id="confidentialite">
+          <h2><span class="ln">10</span>Confidentialité</h2>
+          <p>Nous traitons les renseignements auxquels nous accédons de façon strictement confidentielle. Le traitement des renseignements personnels est détaillé dans notre <a href="confidentialite.html" style="color:var(--blue);">Politique de confidentialité</a>, conforme à la Loi 25 du Québec.</p>
+        </div>
+
+        <div class="legal-section" id="resiliation">
+          <h2><span class="ln">11</span>Résiliation</h2>
+          <p>Chaque partie peut mettre fin à un mandat moyennant un préavis raisonnable. Les services rendus jusqu'à la date de résiliation demeurent facturables.</p>
+          <p>Nous nous réservons le droit de refuser ou d'interrompre un service en cas d'usage illégal, abusif ou contraire aux présentes conditions.</p>
+        </div>
+
+        <div class="legal-section" id="droit">
+          <h2><span class="ln">12</span>Droit applicable</h2>
+          <p>Les présentes conditions sont régies par les lois en vigueur dans la province de Québec et les lois fédérales du Canada qui s'y appliquent. Tout litige sera soumis aux tribunaux compétents du district judiciaire de Terrebonne.</p>
+        </div>
+
+        <div class="legal-section" id="modifications">
+          <h2><span class="ln">13</span>Modifications</h2>
+          <p>Nous pouvons mettre à jour ces conditions à tout moment. La version en vigueur est celle publiée sur cette page, avec sa date de dernière mise à jour.</p>
+        </div>
+
+        <div class="legal-callout">
+          <div class="lc-tag">// une question sur ces conditions ?</div>
+          <p>Écrivez-nous à <a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a> ou appelez le <a href="tel:+14502319199">450 231-9199</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 

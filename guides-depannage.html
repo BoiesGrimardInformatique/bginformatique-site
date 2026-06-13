@@ -22,57 +22,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .guide-cats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 36px;
-    }
-    .guide-cat-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: var(--surface-elevated);
-      color: var(--text);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: border-color var(--transition), background var(--transition);
-    }
-    .guide-cat-link:hover {
-      border-color: var(--brand-blue);
-      background: var(--brand-blue-soft);
-    }
-    .guide-group-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.35rem;
-      margin: 44px 0 16px;
-      scroll-margin-top: 90px;
-    }
-    .guide-group-title:first-of-type { margin-top: 0; }
-    .guide-steps {
-      margin: 12px 0 4px 0;
-      padding-left: 22px;
-      line-height: 1.7;
-    }
-    .guide-steps li { margin-bottom: 8px; }
-    .faq-content h4 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      margin: 14px 0 4px;
-      color: var(--text);
-    }
-  </style>
 
   <script type="application/ld+json">
   {
@@ -103,295 +55,354 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services &amp; Tarifs</a>
-      <a href="guides-depannage.html" aria-current="page">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html" aria-current="page">aide</a>
+      <a href="faq.html">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html" aria-current="page">aide</a>
+    <a href="faq.html">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="page-hero">
-  <div class="container">
-    <h1>Centre d'aide — Guides de dépannage</h1>
-    <p class="page-hero-lead">Beaucoup de problèmes informatiques se règlent en quelques minutes, sans technicien. Voici nos guides pas-à-pas, gratuits et sans engagement. Si ça résiste, on est là — mais on préfère un client outillé à un client dépendant.</p>
-  </div>
-</section>
+<main class="site-main" id="main">
 
-<section class="section">
-  <div class="container container-narrow">
-
-    <div class="alert alert-warning">
-      <strong>⚠️ Avant de commencer :</strong> assurez-vous d'avoir une sauvegarde récente de vos fichiers importants (photos, documents). Suivez les étapes une à la fois. Si une manipulation vous rend mal à l'aise ou touche des données critiques d'entreprise, arrêtez-vous et <a href="contact.html">contactez-nous</a> — mieux vaut prévenir.
-    </div>
-
-    <nav class="guide-cats" aria-label="Catégories de guides">
-      <a class="guide-cat-link" href="#pc-lent">🐌 PC lent</a>
-      <a class="guide-cat-link" href="#wifi">🌐 WiFi / Internet</a>
-      <a class="guide-cat-link" href="#demarrage">💥 Démarrage</a>
-      <a class="guide-cat-link" href="#imprimante">🖨️ Imprimante</a>
-      <a class="guide-cat-link" href="#comptes">🔑 Comptes &amp; mots de passe</a>
-      <a class="guide-cat-link" href="#securite">🛡️ Sécurité</a>
-    </nav>
-
-    <!-- ═══ PC LENT ═══ -->
-    <h2 class="guide-group-title" id="pc-lent">🐌 Mon ordinateur est lent</h2>
-    <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>Windows devient lent au quotidien</summary>
-        <div class="faq-content">
-          <p>Dans 8 cas sur 10, ces quatre gestes suffisent à retrouver une vitesse normale — aucun logiciel à installer.</p>
-          <ol class="guide-steps">
-            <li><strong>Redémarrez vraiment.</strong> Démarrer → Marche/Arrêt → <em>Redémarrer</em> (pas seulement « fermer le couvercle »). Ça vide la mémoire encombrée.</li>
-            <li><strong>Faites de la place.</strong> Paramètres → Système → Stockage → activez l'<em>Assistant Stockage</em> pour effacer les fichiers temporaires. Visez au moins 15 % d'espace libre sur le disque.</li>
-            <li><strong>Allégez le démarrage.</strong> Ctrl + Maj + Échap pour ouvrir le Gestionnaire des tâches → onglet <em>Démarrage</em> → clic droit → <em>Désactiver</em> sur les applications « à impact élevé » dont vous n'avez pas besoin au démarrage.</li>
-            <li><strong>Mettez à jour.</strong> Paramètres → Windows Update → Rechercher des mises à jour, puis redémarrez.</li>
-          </ol>
-          <div class="faq-note">
-            Toujours lent après ça ? La cause est souvent plus profonde (disque vieillissant, malware, pilotes). Notre <strong>optimisation à 95 $</strong> règle ça en une intervention à distance — ou utilisez d'abord notre <a href="outils-diagnostic.html">outil de diagnostic Windows</a> pour nous envoyer un rapport.
-          </div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Le navigateur (Chrome, Edge) rame ou plante</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li>Fermez les onglets inutiles — chacun consomme de la mémoire.</li>
-            <li>Videz le cache : <em>Ctrl + Maj + Suppr</em> → cochez « Images et fichiers en cache » → effacer.</li>
-            <li>Désactivez les extensions une à une pour repérer la coupable (menu → Extensions).</li>
-            <li>Vérifiez les mises à jour du navigateur, puis redémarrez-le.</li>
-          </ol>
-        </div>
-      </details>
-
-    </div>
-
-    <!-- ═══ WIFI ═══ -->
-    <h2 class="guide-group-title" id="wifi">🌐 Mon WiFi / Internet ne fonctionne plus</h2>
-    <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>Plus aucune connexion (rien ne charge)</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li><strong>Le redémarrage du modem/routeur.</strong> Débranchez l'alimentation du modem <em>et</em> du routeur, attendez 30 secondes, rebranchez le modem en premier. Laissez les voyants se stabiliser (1 à 2 minutes) avant de rebrancher le routeur.</li>
-            <li><strong>Testez un autre appareil.</strong> Si votre téléphone n'a pas Internet non plus, le problème vient du modem ou du fournisseur — appelez votre fournisseur. Si seul un appareil est touché, passez à l'étape suivante.</li>
-            <li><strong>Réactivez le WiFi de l'appareil.</strong> Désactivez puis réactivez le WiFi, ou activez/désactivez le mode avion 10 secondes.</li>
-            <li><strong>Oubliez et reconnectez le réseau.</strong> Paramètres WiFi → cliquez sur votre réseau → <em>Oublier</em> → reconnectez-vous avec le mot de passe.</li>
-          </ol>
-          <div class="faq-note">Notez la couleur et l'état des voyants du modem avant d'appeler le fournisseur : ça accélère beaucoup le diagnostic.</div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Le WiFi coupe par intermittence</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li>Rapprochez-vous du routeur pour écarter un problème de portée.</li>
-            <li>Éloignez le routeur des micro-ondes, téléphones sans fil et gros objets métalliques.</li>
-            <li>Sur Windows : Gestionnaire de périphériques → Cartes réseau → clic droit sur votre carte WiFi → <em>Mettre à jour le pilote</em>.</li>
-            <li>Si plusieurs appareils saturent le réseau, un routeur récent ou un répéteur peut être nécessaire.</li>
-          </ol>
-        </div>
-      </details>
-
-    </div>
-
-    <!-- ═══ DEMARRAGE ═══ -->
-    <h2 class="guide-group-title" id="demarrage">💥 Mon ordinateur ne démarre pas correctement</h2>
-    <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>Écran noir / l'ordinateur ne s'allume pas</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li><strong>Vérifiez l'alimentation.</strong> Câble bien branché des deux côtés, prise fonctionnelle (testez avec un autre appareil), batterie chargée pour un portable.</li>
-            <li><strong>Forcez l'arrêt.</strong> Maintenez le bouton d'alimentation enfoncé 10 secondes, attendez, puis rallumez.</li>
-            <li><strong>Débranchez les périphériques.</strong> Retirez clés USB, disques externes, écrans secondaires, puis réessayez.</li>
-            <li><strong>Écran noir mais ventilateur tourne ?</strong> Vérifiez le câble de l'écran ou testez un autre moniteur.</li>
-          </ol>
-          <div class="alert alert-info" style="margin-top:14px;">Aucune réaction du tout (pas de voyant, pas de son) ? C'est probablement matériel. Nous ne réparons pas le matériel, mais nous pouvons vous orienter vers la bonne ressource sans frais.</div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Windows démarre mais bloque / boucle de redémarrage</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li>Forcez l'arrêt 3 fois de suite pendant le démarrage : Windows lancera l'<em>Environnement de récupération</em>.</li>
-            <li>Choisissez <em>Dépannage</em> → <em>Options avancées</em> → <em>Réparation du démarrage</em>.</li>
-            <li>Si ça échoue, essayez <em>Démarrer en mode sans échec</em> et désinstallez le dernier logiciel ou la dernière mise à jour installée.</li>
-          </ol>
-          <div class="faq-note">⚠️ N'utilisez l'option « Réinitialiser ce PC » qu'en dernier recours, et seulement si vos fichiers sont sauvegardés. Dans le doute, écrivez-nous avant.</div>
-        </div>
-      </details>
-
-    </div>
-
-    <!-- ═══ IMPRIMANTE ═══ -->
-    <h2 class="guide-group-title" id="imprimante">🖨️ Mon imprimante ne répond pas</h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>L'impression ne part pas</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li>Éteignez l'imprimante 30 secondes, puis rallumez-la (résout la majorité des cas).</li>
-            <li>Vérifiez qu'elle est sur le <em>même réseau WiFi</em> que l'ordinateur, ou que le câble USB est bien branché.</li>
-            <li>Windows : Paramètres → Bluetooth et appareils → Imprimantes → ouvrez la file d'attente et <em>annulez tous les documents</em> bloqués.</li>
-            <li>Réglez votre imprimante comme imprimante <em>par défaut</em> dans la même fenêtre.</li>
-            <li>Toujours rien ? <em>Supprimez</em> l'imprimante puis <em>Ajoutez-la</em> de nouveau.</li>
-          </ol>
-        </div>
-      </details>
-    </div>
-
-    <!-- ═══ COMPTES ═══ -->
-    <h2 class="guide-group-title" id="comptes">🔑 Comptes et mots de passe</h2>
-    <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>J'ai oublié mon mot de passe (compte Microsoft, Google, etc.)</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li>Sur la page de connexion, cliquez sur <em>« Mot de passe oublié »</em>.</li>
-            <li>Suivez la vérification par courriel ou par texto — gardez votre téléphone à portée.</li>
-            <li>Choisissez un mot de passe long (12+ caractères) et unique. Une phrase est plus forte et plus facile à retenir qu'un mot compliqué.</li>
-          </ol>
-          <div class="faq-note">Conseil sécurité : utilisez un gestionnaire de mots de passe et activez la <strong>vérification en deux étapes (2FA)</strong> partout où c'est possible. On forme volontiers les équipes là-dessus.</div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Je n'arrive plus à recevoir mes courriels</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li>Vérifiez votre connexion Internet (voir la section WiFi plus haut).</li>
-            <li>Connectez-vous au webmail (depuis un navigateur) : si ça fonctionne là, le problème vient de la configuration de votre application de courriel.</li>
-            <li>Vérifiez le dossier <em>Indésirables / Spam</em> et l'espace de stockage de la boîte.</li>
-            <li>Sur mobile : supprimez et reconfigurez le compte de courriel.</li>
-          </ol>
-        </div>
-      </details>
-
-    </div>
-
-    <!-- ═══ SECURITE ═══ -->
-    <h2 class="guide-group-title" id="securite">🛡️ Sécurité — je pense être infecté ou piégé</h2>
-    <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>Fenêtres publicitaires, page d'accueil changée, lenteurs soudaines</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li><strong>Ne cliquez pas</strong> sur les pop-ups « Votre PC est infecté, appelez ce numéro » — c'est une arnaque. Fermez l'onglet.</li>
-            <li>Lancez une analyse complète avec <em>Sécurité Windows</em> (Defender) : Paramètres → Confidentialité et sécurité → Sécurité Windows → Protection contre les virus → Analyse complète.</li>
-            <li>Désinstallez les programmes et extensions de navigateur inconnus installés récemment.</li>
-            <li>Changez vos mots de passe importants <em>depuis un autre appareil sain</em> si vous suspectez un vol.</li>
-          </ol>
-          <div class="alert alert-warning" style="margin-top:14px;"><strong>Rançongiciel suspecté</strong> (fichiers chiffrés, demande de rançon) : débranchez l'appareil du réseau, ne payez rien, et appelez-nous immédiatement au <a href="tel:+14502319199">450 231-9199</a>.</div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>J'ai cliqué sur un lien d'hameçonnage / donné un mot de passe</summary>
-        <div class="faq-content">
-          <ol class="guide-steps">
-            <li>Changez immédiatement le mot de passe du compte concerné, et de tout compte qui partageait ce mot de passe.</li>
-            <li>Activez la vérification en deux étapes sur ces comptes.</li>
-            <li>Prévenez votre banque si des informations financières ont pu être exposées.</li>
-            <li>En entreprise : avertissez votre responsable TI ou votre équipe — la rapidité limite les dégâts.</li>
-          </ol>
-        </div>
-      </details>
-
-    </div>
-
-    <!-- ═══ CTA ═══ -->
-    <div class="alert alert-success" style="margin-top:48px;">
-      <strong>✅ Réglé ? Tant mieux !</strong> C'est exactement le but. Gardez cette page sous la main.
-    </div>
-
-    <div style="text-align:center; margin-top:30px;">
-      <p style="color:var(--text-muted); margin-bottom:18px;">Le problème résiste, ou vous préférez qu'on s'en occupe ? On reste disponibles 24/7.</p>
-      <div class="hero-cta-group">
-        <a href="diagnostic.html" class="btn-cta btn-cta--primary">Lancer un pré-diagnostic</a>
-        <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">📞 450 231-9199</a>
+  <!-- Page hero + search -->
+  <section class="page-hero page-hero--center" style="max-width:880px;">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// centre d'aide</span>
+      <h1>Un petit problème ? Réglez-le vous-même.</h1>
+      <p class="page-hero-lead">Des guides pas-à-pas, gratuits et sans jargon. Si ça résiste, on prend le relais — 24/7.</p>
+      <div class="help-search">
+        <span class="search-glyph" aria-hidden="true"></span>
+        <label for="guide-search" class="visually-hidden">Rechercher un guide</label>
+        <input type="text" id="guide-search" placeholder="Rechercher un guide… (ex. WiFi, imprimante, mot de passe)" autocomplete="off">
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Category chips -->
+  <section class="section--tight" style="max-width:1040px;margin:0 auto;padding-top:8px;padding-bottom:8px;">
+    <div class="chip-row">
+      <button class="chip is-active" data-cat="all">Tous <span class="count">8</span></button>
+      <button class="chip" data-cat="perf">Performance <span class="count">2</span></button>
+      <button class="chip" data-cat="reseau">Réseau <span class="count">1</span></button>
+      <button class="chip" data-cat="periph">Périphériques <span class="count">1</span></button>
+      <button class="chip" data-cat="securite">Sécurité <span class="count">3</span></button>
+      <button class="chip" data-cat="m365">Microsoft 365 <span class="count">1</span></button>
+    </div>
+  </section>
+
+  <!-- Guides -->
+  <section class="section--tight" style="max-width:1040px;margin:0 auto;padding-top:22px;">
+    <div class="guide-list" id="guide-list">
+
+      <div class="guide" data-cat="perf" data-text="accélérer un pc windows devenu lent performance lent rame démarrage gestionnaire des tâches nettoyage disque">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--blue"><span class="glyph glyph--rect-blue"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">Accélérer un PC Windows devenu lent</span>
+            <span class="guide-meta"><span style="color:var(--blue);">// performance</span><span>~10 min</span><span>facile</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">Un PC qui rame est souvent encombré de programmes au démarrage et de fichiers temporaires. Voici l'ordre des opérations qui règle la majorité des cas.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Redémarrez complètement le PC (menu Démarrer → Marche/Arrêt → Redémarrer) plutôt que de simplement le mettre en veille.</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">Ouvrez le Gestionnaire des tâches (Ctrl + Maj + Échap) → onglet « Démarrage » et désactivez les programmes inutiles au lancement.</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Lancez « Nettoyage de disque » (recherchez-le dans le menu Démarrer) et supprimez les fichiers temporaires et la corbeille.</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Vérifiez l'espace libre du disque C: — gardez-en au moins 15 %. Si l'espace manque, déplacez vos fichiers vers un disque externe ou OneDrive.</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">Installez les mises à jour Windows en attente (Paramètres → Windows Update), puis redémarrez.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+      <div class="guide" data-cat="reseau" data-text="régler une connexion wifi instable réseau internet routeur ethernet signal débit">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--green"><span class="glyph glyph--circle-green"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">Régler une connexion WiFi instable</span>
+            <span class="guide-meta"><span style="color:var(--green-ink);">// réseau</span><span>~8 min</span><span>facile</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">Avant de blâmer votre fournisseur, ces étapes éliminent 9 problèmes de WiFi sur 10.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Redémarrez le routeur : débranchez-le 30 secondes, rebranchez et attendez 2 minutes que tous les voyants se stabilisent.</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">Rapprochez-vous du routeur pour tester. Les murs de béton et les micro-ondes affaiblissent fortement le signal.</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Sur le PC : cliquez sur l'icône réseau → « Oublier » votre réseau, puis reconnectez-vous avec le mot de passe.</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Si vous le pouvez, branchez un câble Ethernet pour confirmer que le problème vient bien du WiFi et non de la connexion Internet.</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">Testez votre débit sur fast.com ou speedtest.net et comparez à votre forfait.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+      <div class="guide" data-cat="periph" data-text="l'imprimante ne répond plus périphériques hors ligne usb file d'attente">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--blue"><span class="glyph glyph--rect-blue"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">L'imprimante ne répond plus</span>
+            <span class="guide-meta"><span style="color:var(--blue);">// périphériques</span><span>~7 min</span><span>facile</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">Une imprimante « hors ligne » ou silencieuse se débloque presque toujours sans réinstallation.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Vérifiez les câbles (USB ou alimentation) et, pour le WiFi, que l'imprimante est sur le même réseau que le PC.</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">Éteignez l'imprimante 30 secondes, puis rallumez-la — la plupart des imprimantes se reconnectent au réseau au démarrage.</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Sur Windows : Paramètres → Bluetooth et appareils → Imprimantes → ouvrez la file et choisissez « Annuler tous les documents ».</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Décochez « Utiliser l'imprimante hors connexion » si l'option est activée.</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">En dernier recours, supprimez l'imprimante puis « Ajouter un appareil » pour la réinstaller proprement.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+      <div class="guide" data-cat="securite" data-text="créer et gérer des mots de passe solides sécurité gestionnaire bitwarden phrase de passe 2fa">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--green"><span class="glyph glyph--circle-green"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">Créer et gérer des mots de passe solides</span>
+            <span class="guide-meta"><span style="color:var(--green-ink);">// sécurité</span><span>~12 min</span><span>essentiel</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">Un mot de passe réutilisé est la première porte d'entrée des fraudeurs. La bonne nouvelle : un gestionnaire fait tout le travail à votre place.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Visez des phrases de passe longues (4 mots aléatoires ou plus) plutôt que des mots courts compliqués : elles sont à la fois plus solides et plus faciles à retenir.</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">N'utilisez jamais le même mot de passe pour deux comptes importants (courriel, banque, réseaux sociaux).</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Installez un gestionnaire de mots de passe (Bitwarden, 1Password) : il génère, retient et remplit vos mots de passe automatiquement.</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Activez l'authentification à deux facteurs (2FA) sur vos comptes critiques — voir le guide dédié ci-dessous.</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">Vérifiez si vos adresses ont été compromises sur haveibeenpwned.com et changez les mots de passe concernés.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+      <div class="guide" data-cat="securite" data-text="reconnaître un courriel d'hameçonnage phishing sécurité fraude lien expéditeur urgence">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--green"><span class="glyph glyph--pin-green"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">Reconnaître un courriel d'hameçonnage</span>
+            <span class="guide-meta"><span style="color:var(--green-ink);">// sécurité</span><span>~6 min</span><span>essentiel</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">L'hameçonnage imite vos fournisseurs pour vous voler mots de passe ou argent. Cinq réflexes suffisent à les démasquer.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Méfiez-vous de l'urgence : « votre compte sera fermé », « action requise immédiatement ». La pression est un signal d'alarme.</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">Survolez les liens (sans cliquer) pour voir la vraie adresse de destination en bas de l'écran. Si elle ne correspond pas, n'y touchez pas.</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Vérifiez l'adresse de l'expéditeur en entier, pas seulement le nom affiché : les fraudeurs utilisent des domaines proches mais faux.</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Aucune institution sérieuse ne demande mot de passe ou NIP par courriel. En cas de doute, contactez-la par son canal officiel.</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">Si vous avez un doute au travail : ne cliquez pas, signalez le courriel à votre responsable TI et supprimez-le.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+      <div class="guide" data-cat="securite" data-text="activer l'authentification à deux facteurs mfa 2fa sécurité authenticator code qr">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--green"><span class="glyph glyph--pin-green"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">Activer l'authentification à deux facteurs (MFA)</span>
+            <span class="guide-meta"><span style="color:var(--green-ink);">// sécurité</span><span>~10 min</span><span>essentiel</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">Le 2FA ajoute une seconde clé (votre téléphone) en plus du mot de passe. Même volé, votre compte reste inaccessible.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Installez une application d'authentification (Microsoft Authenticator ou Google Authenticator) sur votre téléphone.</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">Dans les paramètres de sécurité du compte à protéger, cherchez « Vérification en deux étapes » ou « 2FA ».</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Choisissez « Application d'authentification » plutôt que SMS lorsque c'est possible — c'est plus sûr.</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Scannez le code QR affiché avec l'application, puis entrez le code à 6 chiffres pour confirmer.</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">Notez et rangez en lieu sûr les codes de secours fournis : ils débloquent le compte si vous perdez votre téléphone.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+      <div class="guide" data-cat="m365" data-text="récupérer un fichier supprimé dans onedrive microsoft 365 corbeille restaurer version">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--blue"><span class="glyph glyph--pill-blue"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">Récupérer un fichier supprimé dans OneDrive</span>
+            <span class="guide-meta"><span style="color:var(--blue);">// microsoft 365</span><span>~5 min</span><span>facile</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">Un fichier effacé par erreur dans OneDrive n'est presque jamais perdu : il dort dans la corbeille du cloud pendant 30 jours.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Ouvrez onedrive.com dans un navigateur et connectez-vous avec votre compte Microsoft 365.</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">Cliquez sur « Corbeille » dans le menu de gauche : les fichiers supprimés y restent disponibles.</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Cochez le fichier ou le dossier voulu, puis cliquez sur « Restaurer » — il revient à son emplacement d'origine.</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Pour une version antérieure d'un fichier existant : clic droit → « Historique des versions ».</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">Aucune trace ? Contactez-nous : une rétention avancée peut être configurée sur votre tenant M365.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+      <div class="guide" data-cat="perf" data-text="windows ne démarre plus performance réparation récupération restauration système boot">
+        <button class="guide-trigger" type="button">
+          <span class="guide-icon icon-wrap icon-wrap--blue"><span class="glyph glyph--circle-blue"></span></span>
+          <span class="guide-main">
+            <span class="guide-title">Windows ne démarre plus</span>
+            <span class="guide-meta"><span style="color:var(--blue);">// performance</span><span>~15 min</span><span>intermédiaire</span></span>
+          </span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="guide-panel">
+          <p class="guide-intro">Avant de paniquer (et avant tout, sans réinstaller), Windows dispose d'un mode de réparation automatique. Attention : si vos données sont précieuses, appelez-nous d'abord.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="gs-num">01</span><span class="gs-text">Si le PC tente de démarrer puis échoue 2-3 fois de suite, Windows ouvre automatiquement l'« Environnement de récupération ».</span></div>
+            <div class="guide-step"><span class="gs-num">02</span><span class="gs-text">Choisissez Dépannage → Options avancées → « Réparation du démarrage » et laissez l'outil faire son travail.</span></div>
+            <div class="guide-step"><span class="gs-num">03</span><span class="gs-text">Toujours bloqué ? Dépannage → Options avancées → « Restauration du système » pour revenir à un point antérieur.</span></div>
+            <div class="guide-step"><span class="gs-num">04</span><span class="gs-text">Vérifiez les branchements physiques (alimentation, écran) et débranchez les périphériques USB inutiles avant de réessayer.</span></div>
+            <div class="guide-step"><span class="gs-num">05</span><span class="gs-text">Si rien ne fonctionne, n'insistez pas avec une réinstallation : contactez-nous pour préserver vos données avant toute manipulation risquée.</span></div>
+          </div>
+          <div class="guide-stuck"><span class="gtag">[?]</span><span>Toujours bloqué ? <a href="contact.html">On le règle pour vous, 24/7 →</a></span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="guides-empty" id="guides-empty" style="display:none;">
+      <div class="ge-cmd">$ grep "<span id="guides-empty-query">…</span>" guides/ → 0 résultat</div>
+      <p>Aucun guide ne correspond. <a href="contact.html">Décrivez-nous votre problème →</a></p>
+    </div>
+  </section>
+
+  <!-- Windows diagnostic tool -->
+  <section class="section--tight" style="max-width:1040px;margin:0 auto;padding-top:26px;">
+    <div class="tool-grid">
+      <div class="tool-pitch">
+        <span class="eyebrow">// outil maison · résidentiel</span>
+        <h2>Outil de diagnostic Windows</h2>
+        <p>Avant de nous écrire, générez un rapport système complet de votre PC : matériel, sécurité, performance et erreurs récentes. Le rapport reste sur votre Bureau — <strong>c'est vous qui décidez de nous l'envoyer.</strong></p>
+        <ul class="tool-points">
+          <li class="tool-point"><span class="tp-check">✓</span><span>Un seul fichier, aucune installation : double-cliquez et le rapport se génère.</span></li>
+          <li class="tool-point"><span class="tp-check">✓</span><span>Couvre matériel, sécurité (pare-feu, antivirus, MFA), performance et erreurs récentes.</span></li>
+          <li class="tool-point"><span class="tp-check">✓</span><span>Le rapport texte est déposé sur votre Bureau — rien ne part sans votre accord.</span></li>
+          <li class="tool-point"><span class="tp-check">✓</span><span>Le script est lisible : vous pouvez l'ouvrir dans le Bloc-notes avant de l'exécuter.</span></li>
+        </ul>
+        <div class="btn-row">
+          <a href="outils/Diagnostic-BG.ps1" download class="btn btn--primary"><span class="arrow">↓</span> Télécharger l'outil (.ps1)</a>
+          <a href="outils-diagnostic.html" class="btn btn--secondary">Instructions détaillées →</a>
+        </div>
+        <p class="tool-fineprint">Windows 10 / 11 · script lisible, non signé · aucune donnée transmise automatiquement</p>
+      </div>
+      <div class="tool-term terminal--dark">
+        <div class="terminal-bar">
+          <span class="tdot tdot--r"></span>
+          <span class="tdot tdot--y"></span>
+          <span class="tdot tdot--g"></span>
+          <span class="terminal-name">Diagnostic-BG.ps1</span>
+        </div>
+        <div class="terminal-body">
+          <div style="color:#e8e6e1;">C:\&gt; Diagnostic-BG.ps1</div>
+          <div class="tterm-dim">&nbsp;</div>
+          <div class="tterm-ok">[1/5] Matériel ............ OK</div>
+          <div class="tterm-ok">[2/5] Stockage ........... 38 % libre</div>
+          <div class="tterm-ok">[3/5] Sécurité ........... pare-feu actif</div>
+          <div class="tterm-warn">[4/5] Performance ........ démarrage 22 s</div>
+          <div class="tterm-warn">[5/5] Journaux ........... 3 erreurs</div>
+          <div class="tterm-dim">&nbsp;</div>
+          <div class="tterm-info">→ rapport-systeme.txt enregistré</div>
+          <div class="tterm-info">&nbsp;&nbsp;sur le Bureau ✓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › on prend le relais</span>
+        <h2>Le guide n'a pas suffi ?</h2>
+        <p>Soutien à distance sécurisé, disponible 24/7. On règle ça avec vous.</p>
+        <div class="cta-btns">
+          <a href="diagnostic.html" class="btn btn--on-light">Lancer un pré-diagnostic</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services &amp; Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"

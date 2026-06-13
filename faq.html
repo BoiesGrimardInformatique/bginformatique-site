@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -107,198 +107,212 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Aller au contenu</a>
+
 <header class="site-header">
-  <div class="container header-container">
+  <div class="header-inner">
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
-      <span class="visually-hidden">BG Informatique</span>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="BG Informatique" height="34" width="118">
+      </picture>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services & Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html" aria-current="page">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">accueil</a>
+      <a href="services.html">services</a>
+      <a href="guides-depannage.html">aide</a>
+      <a href="faq.html" aria-current="page">faq</a>
+      <a href="a-propos.html">à propos</a>
+      <a href="contact.html">contact</a>
+      <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
     </nav>
     <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
+      <span class="dot" aria-hidden="true"></span>
+      450 231-9199
     </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
+    <a href="index.html">accueil</a>
+    <a href="services.html">services</a>
+    <a href="guides-depannage.html">aide</a>
+    <a href="faq.html" aria-current="page">faq</a>
+    <a href="a-propos.html">à propos</a>
+    <a href="contact.html">contact</a>
+    <a href="diagnostic.html" class="nav-diagnostic">diagnostic</a>
+  </nav>
 </header>
 
-<section class="page-hero">
-  <div class="container">
-    <h1>Foire aux questions</h1>
-    <p class="page-hero-lead">Les réponses aux questions qu'on nous pose le plus souvent. Vous ne trouvez pas la vôtre ? Appelez-nous, on aime expliquer.</p>
-  </div>
-</section>
+<main class="site-main" id="main">
 
-<section class="section">
-  <div class="container container-narrow">
-
-    <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>🐌 Mon ordinateur est très lent, que faire ?</summary>
-        <div class="faq-content">
-          <p><strong>Premier réflexe :</strong> redémarrez complètement l'appareil et vérifiez votre espace disque libre. Un disque rempli à plus de 90 % ralentit considérablement Windows et macOS.</p>
-          <p>Si le problème persiste, les causes typiques sont les logiciels qui démarrent automatiquement, les processus en arrière-plan, les malwares, ou une fragmentation excessive.</p>
-          <div class="faq-note">
-            <strong>Besoin d'aide ?</strong> Notre service d'optimisation à <strong>95 $</strong> identifie et corrige toutes ces causes en une intervention.
-          </div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>🔧 Réparez-vous le matériel ?</summary>
-        <div class="faq-content">
-          <p>Non. Nous nous spécialisons <strong>exclusivement dans la partie logicielle et réseau</strong> pour garantir une expertise neutre et pointue, sans vente de pièces.</p>
-          <p>Cette neutralité est volontaire : nous vous recommandons ce qui est bon pour vous, jamais ce qui est bon pour notre stock.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>🌐 Comment fonctionne le soutien à distance ?</summary>
-        <div class="faq-content">
-          <p>Nous utilisons des outils sécurisés (avec chiffrement et authentification) pour résoudre vos problèmes sans déplacement.</p>
-          <p>C'est <strong>rapide, efficace et disponible 24/7</strong>. Pour la plupart des problèmes logiciels résidentiels, c'est la solution la plus économique et la plus rapide.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>☁️ Vous gérez Microsoft 365 en entreprise ?</summary>
-        <div class="faq-content">
-          <p>Oui — c'est même notre cœur de métier côté entreprises. Nous administrons vos Tenants Microsoft 365, configurons la sécurité (MFA, politiques conditionnelles, DLP), gérons les identités et optimisons vos flux de travail sur Teams et SharePoint.</p>
-          <p>Voir nos <a href="services.html">tarifs entreprises</a>.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>🛡️ Mes données sont-elles en sécurité pendant l'intervention ?</summary>
-        <div class="faq-content">
-          <p>Oui. Avant toute intervention, nous vérifions que vous disposez de sauvegardes valides. Nos accès distants sont chiffrés, et nous appliquons une stricte politique de confidentialité (voir notre <a href="confidentialite.html">politique de confidentialité</a>).</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>📍 Servez-vous toutes les Laurentides ?</summary>
-        <div class="faq-content">
-          <p>Oui. Basés à Saint-Jérôme, nous servons toute la région des Laurentides : Mirabel, Sainte-Adèle, Saint-Sauveur, Mont-Tremblant, Prévost, et plus. La majorité des interventions se font à distance, ce qui élimine les frais et délais de déplacement.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>🤖 Pouvez-vous automatiser des tâches dans mon entreprise ?</summary>
-        <div class="faq-content">
-          <p>Oui. Nous développons des <strong>scripts Python/Bash sur mesure</strong>, des outils internes légers et des intégrations d'API entre logiciels — pour automatiser ce que votre équipe fait manuellement en ce moment.</p>
-          <p>Exemples courants : génération automatique de rapports, transferts de données entre un CRM et un logiciel de comptabilité, sauvegardes planifiées, envoi de notifications automatiques.</p>
-          <div class="faq-note">
-            Une première discussion gratuite permet d'estimer le gain de temps réel et le coût d'un tel projet. <a href="mailto:information@bginformatique.ca?subject=Demande%20d%27automatisation">Nous écrire</a>.
-          </div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>💡 Proposez-vous des services liés à l'intelligence artificielle ?</summary>
-        <div class="faq-content">
-          <p>Oui, dans trois axes :</p>
-          <ul style="margin:8px 0 8px 20px; color:var(--text-muted);">
-            <li><strong>Audit</strong> — nous analysons vos opérations pour identifier où l'IA apporte une valeur réelle (pas partout, soyons honnêtes).</li>
-            <li><strong>Déploiement</strong> — configuration de Microsoft Copilot dans votre environnement M365 existant.</li>
-            <li><strong>Formation</strong> — ateliers pratiques sur le prompting efficace et l'utilisation sécuritaire de l'IA en entreprise.</li>
-          </ul>
-          <p>Nous ne vendons pas de l'IA pour de l'IA — si ça ne s'applique pas à votre contexte, on vous le dit.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>🎣 Faites-vous des simulations d'hameçonnage ?</summary>
-        <div class="faq-content">
-          <p>Oui. Nous organisons des campagnes contrôlées qui reproduisent de vraies tentatives de phishing, suivies d'un <strong>rapport de vigilance</strong> : qui a cliqué, qui a soumis des identifiants, qui a signalé la tentative.</p>
-          <p>Aucune donnée réelle n'est collectée. L'objectif n'est pas de piéger, mais de <strong>mesurer</strong> le niveau de vigilance de l'équipe et d'identifier où concentrer la formation.</p>
-          <div class="faq-note">
-            Ces campagnes s'accompagnent souvent d'un atelier de formation en visioconférence. <a href="mailto:information@bginformatique.ca?subject=Demande%20simulation%20hame%C3%A7onnage">Nous contacter</a>.
-          </div>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>🖥️ Administrez-vous des serveurs Linux ?</summary>
-        <div class="faq-content">
-          <p>Oui. Nous gérons à distance des serveurs Debian et dérivés : configuration initiale, mises à jour, monitoring, gestion des accès, durcissement de la configuration et résolution d'incidents.</p>
-          <p>Pour les organisations qui ont besoin d'une gestion continue, des <strong>forfaits mensuels récurrents</strong> sont disponibles. Contactez-nous pour en discuter.</p>
-        </div>
-      </details>
-
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">// faq</span>
+      <h1>Les réponses, sans détour.</h1>
+      <p class="page-hero-lead">Tout ce qu'on nous demande le plus souvent — sur nos services, notre disponibilité et notre façon de protéger vos données. Une question reste sans réponse ? On répond en personne, 24/7.</p>
     </div>
+  </section>
 
-    <div style="text-align:center; margin-top:50px;">
-      <p style="color:var(--text-muted); margin-bottom:18px;">Votre question n'est pas dans la liste ?</p>
-      <a href="mailto:information@bginformatique.ca" class="btn-cta btn-cta--primary">Nous écrire</a>
+  <!-- FAQ grid -->
+  <section class="section" style="padding-top:28px;">
+    <div class="faq-grid">
+
+      <aside class="faq-aside">
+        <div class="faq-aside-card">
+          <div class="footer-col-title" style="margin-bottom:14px;">catégories</div>
+          <div class="faq-aside-links">
+            <a href="#general"><span class="fa-left"><span class="fa-sq" style="background:var(--green);"></span>Général</span><span class="fa-count">3</span></a>
+            <a href="#soutien"><span class="fa-left"><span class="fa-sq" style="background:var(--blue);"></span>Soutien &amp; disponibilité</span><span class="fa-count">3</span></a>
+            <a href="#services"><span class="fa-left"><span class="fa-sq" style="background:var(--blue);"></span>Services &amp; projets</span><span class="fa-count">3</span></a>
+            <a href="#securite"><span class="fa-left"><span class="fa-sq" style="background:var(--green);"></span>Sécurité &amp; confidentialité</span><span class="fa-count">3</span></a>
+          </div>
+        </div>
+        <div class="faq-aside-cta">
+          <div class="fac-tag">// toujours bloqué ?</div>
+          <p>Une question hors liste ? Écrivez-nous — réponse rapide, 24/7.</p>
+          <a href="contact.html" class="btn btn--green" style="padding:10px 18px;font-size:.9rem;">Nous écrire →</a>
+        </div>
+      </aside>
+
+      <div class="faq-groups">
+
+        <div class="faq-group" id="general">
+          <div class="faq-group-head"><span class="faq-group-tag" style="color:var(--green-ink);">// général</span><span class="faq-group-rule"></span></div>
+          <h2>Général</h2>
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Réparez-vous le matériel informatique ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Non. Nous nous spécialisons exclusivement dans la partie logicielle et réseau, pour garantir une expertise neutre et pointue — sans vente de pièces. On vous recommande ce qui est bon pour vous, jamais ce qui est bon pour notre stock.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Vendez-vous du matériel, des licences ou des accessoires ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Aucun. C'est un choix délibéré : nous ne touchons aucune commission sur l'équipement. Notre seul produit, c'est notre expertise. Quand nous recommandons un ordinateur ou un serveur, vous magasinez le meilleur prix où vous voulez, sans pression.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Servez-vous toute la région des Laurentides ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Oui. Basés à Saint-Jérôme, nous servons Mirabel, Sainte-Adèle, Saint-Sauveur, Mont-Tremblant, Prévost et plus. La majorité des interventions se font à distance, ce qui élimine les frais et délais de déplacement — partout au Québec.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-group" id="soutien">
+          <div class="faq-group-head"><span class="faq-group-tag accent">// soutien</span><span class="faq-group-rule"></span></div>
+          <h2>Soutien &amp; disponibilité</h2>
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Comment fonctionne le soutien à distance ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Nous utilisons des outils sécurisés (chiffrement et authentification) pour résoudre vos problèmes sans déplacement. C'est rapide, efficace et disponible 24/7 — la solution la plus économique pour la plupart des problèmes logiciels.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Êtes-vous vraiment disponibles 24 h / 7 j ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Oui. Les urgences n'attendent pas les heures d'ouverture, nous non plus. Pour le résidentiel, le soutien hors heures normales peut s'appliquer à un tarif d'urgence — toujours annoncé à l'avance, jamais de surprise sur la facture.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Quel est votre délai de réponse en cas d'urgence ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Moins d'une heure en moyenne pour une urgence ayant un impact sur vos opérations. On évalue d'abord la situation par téléphone, puis on intervient à distance — souvent dans la foulée du même appel.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-group" id="services">
+          <div class="faq-group-head"><span class="faq-group-tag accent">// services</span><span class="faq-group-rule"></span></div>
+          <h2>Services &amp; projets</h2>
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Pouvez-vous automatiser des tâches dans mon entreprise ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Oui. Nous développons des scripts Python/Bash sur mesure, des outils internes légers et des intégrations d'API : rapports automatiques, transferts entre logiciels, sauvegardes planifiées, notifications. Une première discussion gratuite estime le gain de temps réel.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Proposez-vous des services liés à l'intelligence artificielle ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Oui, sur trois axes : audit d'opportunités IA, déploiement de Microsoft Copilot dans votre environnement M365, et formation au prompting et à l'usage sécuritaire. On ne vend pas de l'IA pour de l'IA — si ça ne s'applique pas, on vous le dit.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Travaillez-vous avec les OBNL et les travailleurs autonomes ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Absolument. Une bonne partie de notre clientèle est composée d'OBNL et de travailleurs autonomes. On adapte l'approche et le budget à votre réalité — pas besoin d'être une grande entreprise pour avoir une TI sérieuse.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-group" id="securite">
+          <div class="faq-group-head"><span class="faq-group-tag" style="color:var(--green-ink);">// sécurité</span><span class="faq-group-rule"></span></div>
+          <h2>Sécurité &amp; confidentialité</h2>
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Faites-vous des simulations d'hameçonnage ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Oui. Nous organisons des campagnes contrôlées qui reproduisent de vraies tentatives de phishing, suivies d'un rapport de vigilance : qui a cliqué, qui a soumis des identifiants, qui a signalé. Aucune donnée réelle n'est collectée — l'objectif est de mesurer et d'améliorer la vigilance de l'équipe.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Mes données sont-elles en sécurité pendant une intervention à distance ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Oui. Chaque session à distance est chiffrée et exige votre autorisation explicite à la connexion. Vous voyez l'écran en tout temps et pouvez couper l'accès à tout moment. Nous ne conservons aucune copie de vos fichiers après l'intervention.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger"><span class="accordion-q">Êtes-vous conformes à la Loi 25 du Québec ?</span><span class="accordion-icon" aria-hidden="true">+</span></button>
+              <div class="accordion-panel"><p>Oui. Nous limitons la collecte au strict nécessaire, sécurisons les renseignements que vous nous confiez et ne les utilisons que pour répondre à votre demande. Les détails sont dans notre <a href="confidentialite.html" style="color:var(--blue);">politique de confidentialité</a>.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- CTA band -->
+  <section class="cta-band">
+    <div class="cta-inner">
+      <div class="cta-content">
+        <span class="cta-eyebrow">bg › on répond en personne</span>
+        <h2>Votre question n'est pas ici ?</h2>
+        <p>Posez-la directement — première discussion gratuite, sans engagement.</p>
+        <div class="cta-btns">
+          <a href="contact.html" class="btn btn--on-light">Nous écrire</a>
+          <a href="tel:+14502319199" class="btn btn--on-translucent mono">450 231-9199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line">📍 Saint-Jérôme, QC</p>
-        <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services & Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils-diagnostic.html">Outil diagnostic Windows</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes & Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo-nav.webp" alt="BG Informatique">
+      <p>Partenaire TI des PME et OBNL des Laurentides. À distance, sans vente de matériel.</p>
+      <span class="footer-availability"><span class="dot" aria-hidden="true"></span>disponible 24/7</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">contact</div>
+      <p><a href="tel:+14502319199">450 231-9199</a></p>
+      <p><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <p>Saint-Jérôme, QC</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">pages</div>
+      <div class="footer-links">
+        <a href="services.html">Services &amp; Tarifs</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="diagnostic.html">Pré-diagnostic</a>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil diagnostic Windows</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">mentions</div>
+      <div class="footer-links">
+        <a href="conditions.html">Termes &amp; Conditions</a>
+        <a href="confidentialite.html">Confidentialité</a>
+      </div>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 BG Informatique — tous droits réservés.</div>
 </footer>
 
-<script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-  toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-</script>
-
+<script src="main.js" defer></script>
 
 <!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
-<!-- Remplacer bginformatique par votre identifiant GoatCounter après inscription sur goatcounter.com -->
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
