@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -102,15 +102,34 @@
 <!-- ═══ Hero ═══ -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="container">
-    <span class="hero-eyebrow">Saint-Jérôme · Laurentides · 24/7</span>
-    <h1 id="hero-title">L'expertise TI au service de votre productivité</h1>
-    <p class="hero-lead">Automatisation, intelligence artificielle, infrastructure cloud, cybersécurité et Microsoft 365 — à distance, pour les PME et OBNL des Laurentides. Sans vente de matériel.</p>
-    <div class="hero-cta-group">
-      <a href="services.html" class="btn-cta btn-cta--primary">Consulter nos services</a>
-      <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">
-        <span aria-hidden="true">📞</span>
-        <span>450 231-9199</span>
-      </a>
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow">En ligne 24/7 — Saint-Jérôme · Laurentides</span>
+        <h1 id="hero-title">L'expertise TI au service de votre <span class="accent">productivité</span>.</h1>
+        <p class="hero-lead">Automatisation, intelligence artificielle, infrastructure cloud, cybersécurité et Microsoft 365 — à distance, pour les PME et OBNL des Laurentides. Sans vente de matériel.</p>
+        <div class="hero-cta-group">
+          <a href="services.html" class="btn-cta btn-cta--primary">Consulter nos services</a>
+          <a href="tel:+14502319199" class="btn-cta btn-cta--secondary">
+            <span aria-hidden="true">📞</span>
+            <span>450 231-9199</span>
+          </a>
+        </div>
+      </div>
+      <div class="term-card" aria-hidden="true">
+        <div class="term-card-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="term-title">bg · état des systèmes</span>
+        </div>
+        <div class="term-card-body">
+          <div class="prompt">$ bg status --all</div>
+          <div class="line"><span class="ok">✓</span> uptime ............ <span class="val">99.9%</span></div>
+          <div class="line"><span class="ok">✓</span> backups ........... <span class="val">cloud · OK</span></div>
+          <div class="line"><span class="ok">✓</span> mfa ............... <span class="val">enforced</span></div>
+          <div class="line"><span class="ok">✓</span> automations ....... <span class="val">14 active</span></div>
+          <div class="line"><span class="arrow">→</span> m365 governance ... <span class="val">audited</span></div>
+          <div class="prompt">bg ›<span class="cursor"></span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -194,7 +213,7 @@
         <h4 class="footer-heading">BG Informatique</h4>
         <p class="footer-line">📍 Saint-Jérôme, QC</p>
         <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
+        <p class="footer-line"><span class="footer-availability">Disponible 24/7</span></p>
       </div>
       <div>
         <h4 class="footer-heading">Contact</h4>
