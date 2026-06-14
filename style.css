@@ -1170,6 +1170,82 @@ p { color: var(--text-muted); }
   border-top: 1px solid var(--border);
 }
 
+/* ── Section méthode (process) ────────────────────────── */
+.method-wrap {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-elevated);
+  padding: 48px 40px;
+  box-shadow: 0 12px 32px rgba(60, 45, 25, 0.06);
+}
+
+.method-wrap .steps-grid { margin-top: 36px; }
+
+.method-wrap .step-card { background: var(--surface); }
+
+/* ── Bloc deux colonnes (aide + preuves) ──────────────── */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.split-feature {
+  border: 1px solid rgba(31, 148, 96, 0.3);
+  border-radius: 18px;
+  background: linear-gradient(150deg, rgba(31, 148, 96, 0.09) 0%, var(--surface-elevated) 65%);
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.split-feature h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 14px 0; line-height: 1.12; }
+.split-feature p { color: var(--text-muted); font-size: 1.02rem; line-height: 1.62; margin-bottom: 26px; max-width: 460px; }
+
+.stat-panel {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-elevated);
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  box-shadow: 0 12px 32px rgba(60, 45, 25, 0.06);
+}
+
+.stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.stat-row .stat-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.3rem;
+  color: var(--text);
+  line-height: 1;
+}
+
+.stat-row .stat-num .u { color: var(--green); }
+.stat-row .stat-num .b { color: var(--brand-blue); }
+
+.stat-row .stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.stat-panel .divider { height: 1px; background: var(--border); }
+
+@media (max-width: 880px) {
+  .split-grid { grid-template-columns: 1fr; }
+  .method-wrap { padding: 36px 24px; }
+}
+
 /* ── Bandeau CTA final (bleu) ─────────────────────────── */
 .cta-band {
   position: relative;
@@ -1218,6 +1294,12 @@ p { color: var(--text-muted); }
 .cta-band .hero-cta-group {
   position: relative;
   justify-content: center;
+}
+
+.cta-band .eyebrow {
+  position: relative;
+  color: #bfe8d2;
+  margin-bottom: 16px;
 }
 
 /* Boutons sur fond bleu */
