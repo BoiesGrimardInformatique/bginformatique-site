@@ -1821,6 +1821,43 @@ p { color: var(--text-muted); }
   .wizard-choices.type-select { grid-template-columns: 1fr 1fr; }
 }
 
+/* ── Barre d'appel mobile fixe (conversion appels) ────── */
+.mobile-call-bar { display: none; }
+
+@media (max-width: 680px) {
+  .mobile-call-bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 16px;
+    background: var(--green);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+  }
+  .mobile-call-bar::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    animation: bgPulse 1.6s ease-in-out infinite;
+  }
+  .mobile-call-bar:hover,
+  .mobile-call-bar:focus { color: #fff; }
+  body { padding-bottom: 62px; }
+}
+
 /* ── Respect des préférences de mouvement ─────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
