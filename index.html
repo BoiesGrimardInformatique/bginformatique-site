@@ -244,6 +244,37 @@
   </div>
 </section>
 
+<!-- ═══ Nos engagements ═══ -->
+<section class="section" style="padding-top:0;" aria-labelledby="engagements-title">
+  <div class="container">
+    <span class="eyebrow" style="display:block; text-align:center; margin-bottom:10px;">// nos engagements</span>
+    <h2 id="engagements-title" class="section-title">Une relation TI sans mauvaise surprise.</h2>
+    <p class="section-subtitle">Pas de témoignages achetés ni de promesses vagues — des engagements concrets, vérifiables dès le premier appel.</p>
+    <div class="card-grid">
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">🤝</span>
+        <h3>Sans engagement</h3>
+        <p>La première discussion est <strong>gratuite et sans pression</strong>. Vous repartez avec un avis clair, que vous nous confiiez le mandat ou non.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">🔌</span>
+        <h3>Sans vente de matériel</h3>
+        <p>On ne vous vend aucune pièce. Nos recommandations servent <strong>votre intérêt</strong>, jamais notre inventaire.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">🎓</span>
+        <h3>Expertise certifiée</h3>
+        <p>Certifications <strong>Cisco, IBM, Google</strong> et spécialisation <strong>Microsoft 365</strong> — une compétence à jour, pas de l'improvisation.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">🔒</span>
+        <h3>Intervention à distance sécurisée</h3>
+        <p>Accès chiffrés et authentifiés, hors de vos heures critiques. <strong>Rapide, traçable et sans déplacement</strong> à payer.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ Bande CTA finale ═══ -->
 <section class="cta-band" aria-labelledby="final-cta">
   <div class="container">
@@ -333,5 +364,17 @@
 
 <!-- Barre d'appel mobile fixe -->
 <a href="tel:+14502319199" class="mobile-call-bar" aria-label="Appeler BG Informatique au 450 231-9199">Appeler maintenant — 450 231-9199</a>
+<!-- Suivi des conversions : clics téléphone & courriel (GoatCounter, sans donnée personnelle) -->
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({
+      path: a.getAttribute('href').indexOf('tel:') === 0 ? 'conversion/appel-telephone' : 'conversion/courriel',
+      title: 'Conversion',
+      event: true
+    });
+  });
+</script>
 </body>
 </html>
