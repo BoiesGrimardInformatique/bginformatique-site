@@ -428,6 +428,27 @@ p { color: var(--text-muted); }
   flex-wrap: wrap;
 }
 
+/* Bandeau de réassurance (sous CTA) */
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 22px;
+}
+.trust-row li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+.trust-row li::before {
+  content: '✓';
+  color: var(--green-text);
+  font-weight: 700;
+}
+
 /* Hero d'accueil : deux colonnes avec carte terminal */
 .hero-grid {
   display: grid;
