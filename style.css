@@ -449,6 +449,18 @@ p { color: var(--text-muted); }
   font-weight: 700;
 }
 
+/* Bandeau de réassurance centré (bas des pages services) */
+.reassurance-strip {
+  border-top: 1px solid var(--border);
+  background: rgba(255, 253, 249, 0.5);
+  padding: 24px 0;
+}
+.reassurance-strip .trust-row {
+  justify-content: center;
+  margin-top: 0;
+}
+.reassurance-strip .trust-row li { font-size: 0.8rem; }
+
 /* Hero d'accueil : deux colonnes avec carte terminal */
 .hero-grid {
   display: grid;
