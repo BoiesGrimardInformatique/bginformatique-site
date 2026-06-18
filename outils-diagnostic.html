@@ -378,14 +378,24 @@
   </div>
 </section>
 
-<footer class="site-footer">
+<!-- Bandeau de réassurance -->
+<section class="reassurance-strip" aria-label="Nos garanties">
+  <div class="container">
+    <ul class="trust-row center">
+      <li>Sans engagement</li>
+      <li>Sans vente de matériel</li>
+      <li>Réponse 24/7</li>
+      <li>Service à distance · Laurentides</li>
+    </ul>
+  </div>
+</section><footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div>
         <h4 class="footer-heading">BG Informatique</h4>
         <p class="footer-line">📍 Saint-Jérôme, QC</p>
         <p class="footer-line">🌐 Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">● Disponible 24/7</span></p>
+        <p class="footer-line"><span class="footer-availability">Disponible 24/7</span></p>
       </div>
       <div>
         <h4 class="footer-heading">Contact</h4>
@@ -452,5 +462,19 @@
 <script data-goatcounter="https://bginformatique.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
+<!-- Barre d'appel mobile fixe -->
+<a href="tel:+14502319199" class="mobile-call-bar" aria-label="Appeler BG Informatique au 450 231-9199">Appeler maintenant — 450 231-9199</a>
+<!-- Suivi des conversions : clics téléphone & courriel (GoatCounter, sans donnée personnelle) -->
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({
+      path: a.getAttribute('href').indexOf('tel:') === 0 ? 'conversion/appel-telephone' : 'conversion/courriel',
+      title: 'Conversion',
+      event: true
+    });
+  });
+</script>
 </body>
 </html>
