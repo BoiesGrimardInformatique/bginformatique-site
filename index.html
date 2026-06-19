@@ -386,5 +386,38 @@
     });
   });
 </script>
+
+<!-- Easter egg : banane tournante -->
+<div id="banane-easter-egg" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:8rem;z-index:9999;pointer-events:none;animation:banana-spin 1s linear infinite;">🍌</div>
+<style>
+@keyframes banana-spin {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+</style>
+<script>
+(function () {
+  var buffer = '';
+  var timeout;
+  document.addEventListener('keydown', function (e) {
+    if (document.activeElement && (
+      document.activeElement.tagName === 'INPUT' ||
+      document.activeElement.tagName === 'TEXTAREA' ||
+      document.activeElement.isContentEditable
+    )) return;
+
+    buffer += e.key.toLowerCase();
+    clearTimeout(timeout);
+    timeout = setTimeout(function () { buffer = ''; }, 1500);
+
+    if (buffer.includes('banane')) {
+      buffer = '';
+      var el = document.getElementById('banane-easter-egg');
+      el.style.display = 'block';
+      setTimeout(function () { el.style.display = 'none'; }, 3000);
+    }
+  });
+})();
+</script>
 </body>
 </html>
