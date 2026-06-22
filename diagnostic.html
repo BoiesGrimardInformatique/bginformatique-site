@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -87,30 +87,30 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container header-container">
+<header class="site-header" id="site-header">
+  <div class="sidebar-brand">
+    <span class="sidebar-status-dot"></span>
     <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
       <picture>
-          <source srcset="logo-nav.webp" type="image/webp">
-          <img src="logo-nav.png" alt="" height="44" width="153">
-        </picture>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="" height="44" width="153">
+      </picture>
       <span class="visually-hidden">BG Informatique</span>
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services &amp; Tarifs</a>
-      <a href="guides-depannage.html">Centre d'aide</a>
-      <a href="faq.html">FAQ</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="diagnostic.html" class="nav-accent">Diagnostic</a>
-    </nav>
-    <a href="tel:+14502319199" class="header-phone">
-      <span aria-hidden="true">📞</span>
-      <span>450 231-9199</span>
-    </a>
-    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="index.html"><span class="nav-num">01</span><span>Accueil</span></a>
+    <a href="services.html"><span class="nav-num">02</span><span>Services &amp; Tarifs</span></a>
+    <a href="guides-depannage.html"><span class="nav-num">03</span><span>Centre d'aide</span></a>
+    <a href="faq.html"><span class="nav-num">04</span><span>FAQ</span></a>
+    <a href="a-propos.html"><span class="nav-num">05</span><span>À propos</span></a>
+    <a href="contact.html"><span class="nav-num">06</span><span>Contact</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="tel:+14502319199" class="header-phone">450 231-9199</a>
+    <a href="diagnostic.html" class="btn-cta btn-cta--primary nav-cta">Diagnostic gratuit →</a>
+  </div>
+  <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
 </header>
 
 <section class="page-hero">
@@ -458,11 +458,18 @@
 <script>
   // Nav mobile
   const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
+  const sidebar = document.getElementById('site-header');
   toggle?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
+    const isOpen = sidebar.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', isOpen);
     toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  // Close sidebar when clicking outside
+  document.addEventListener('click', (e) => {
+    if (sidebar?.classList.contains('is-open') && !sidebar.contains(e.target)) {
+      sidebar.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
   });
 
   // ── Wizard ──────────────────────────────────
