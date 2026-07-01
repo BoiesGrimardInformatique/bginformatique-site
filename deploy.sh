@@ -2,6 +2,11 @@
 # ==========================================================
 #  Script de déploiement - BG Informatique
 #  Usage : ./deploy.sh ["message de commit optionnel"]
+#
+#  Un déploiement équivaut TOUJOURS à un merge sur `main` :
+#  quelle que soit la branche de travail, le script committe les
+#  modifications locales, fusionne cette branche dans `main`, puis
+#  pousse `main` (c'est `main` qui est publié en ligne).
 # ==========================================================
 
 set -euo pipefail  # Arrête à la moindre erreur
@@ -21,27 +26,7 @@ if [ ! -d ".git" ]; then
   exit 1
 fi
 
-# Vérifier qu'on est sur la branche main
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if [ "$CURRENT_BRANCH" != "main" ]; then
-  echo -e "${YELLOW}Attention : vous êtes sur la branche '$CURRENT_BRANCH', pas 'main'.${NC}"
-  read -p "Continuer quand même ? (o/N) " -n 1 -r
-  echo
-  [[ ! $REPLY =~ ^[OoYy]$ ]] && { echo "Annulé."; exit 0; }
-fi
-
-# Vérifier s'il y a quelque chose à committer
-if git diff --quiet && git diff --staged --quiet; then
-  echo -e "${YELLOW}Aucune modification à déployer. Sortie.${NC}"
-  exit 0
-fi
-
-# Afficher les fichiers modifiés
-echo -e "${BLUE}Fichiers modifiés :${NC}"
-git status --short
-
-# Ajout de toutes les modifications
-git add .
 
 # Message de commit : argument utilisateur ou horodatage
 if [ $# -gt 0 ]; then
@@ -51,12 +36,49 @@ else
   COMMIT_MSG="Mise à jour BG Informatique - $DATE"
 fi
 
-echo -e "${BLUE}Commit : $COMMIT_MSG${NC}"
-git commit -m "$COMMIT_MSG"
+# 1) Committer les modifications locales (s'il y en a)
+if git diff --quiet && git diff --staged --quiet; then
+  echo -e "${YELLOW}Aucune modification locale à committer.${NC}"
+else
+  echo -e "${BLUE}Fichiers modifiés :${NC}"
+  git status --short
+  git add .
+  echo -e "${BLUE}Commit : $COMMIT_MSG${NC}"
+  git commit -m "$COMMIT_MSG"
+fi
 
-# Envoi vers GitHub
-echo -e "${BLUE}Synchronisation avec le dépôt distant...${NC}"
-git push origin "$CURRENT_BRANCH"
+# 2) Publier sur `main` (déploiement = merge sur main)
+echo -e "${BLUE}Publication sur main...${NC}"
+git fetch origin main
+
+if [ "$CURRENT_BRANCH" = "main" ]; then
+  # Déjà sur main : s'aligner sur origin/main puis pousser
+  git merge --ff-only origin/main || {
+    echo -e "${RED}Erreur : 'main' local a divergé de origin/main. Résolvez le conflit manuellement.${NC}"
+    exit 1
+  }
+  git push origin main
+else
+  # Sur une branche de travail : fusionner dans main puis pousser main
+  git checkout main
+  git merge --ff-only origin/main || {
+    echo -e "${RED}Erreur : 'main' local a divergé de origin/main. Résolvez le conflit manuellement.${NC}"
+    git checkout "$CURRENT_BRANCH"
+    exit 1
+  }
+
+  if git merge --ff-only "$CURRENT_BRANCH"; then
+    echo -e "${GREEN}Fast-forward de main.${NC}"
+  else
+    git merge --no-ff "$CURRENT_BRANCH" -m "Déploiement : fusion de $CURRENT_BRANCH dans main"
+  fi
+
+  git push origin main
+
+  # Revenir sur la branche de travail et la synchroniser
+  git checkout "$CURRENT_BRANCH"
+  git push origin "$CURRENT_BRANCH"
+fi
 
 echo -e "${GREEN}─── Succès : déploiement terminé ! ───${NC}"
 echo -e "${GREEN}Le site sera en ligne sur https://bginformatique.ca dans quelques instants.${NC}"
