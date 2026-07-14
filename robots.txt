@@ -5,6 +5,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /tmp/
+Disallow: /outils/tc-9x2k7m/
 
 # Sitemap (apex domain pour correspondre au CNAME)
 Sitemap: https://bginformatique.ca/sitemap.xml

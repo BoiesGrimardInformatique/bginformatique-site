@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>TimeCalculator — Feuille de temps et interventions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>⏱ TimeCalculator</h1>
+    <p class="subtitle">Punch in, punch out et suivi des interventions techniques</p>
+  </header>
+
+  <main>
+    <!-- Carte punch in/out -->
+    <section class="card punch-card">
+      <div class="punch-status">
+        <span class="status-dot" id="status-dot"></span>
+        <div>
+          <div class="status-label" id="status-label">Hors service</div>
+          <div class="status-detail" id="status-detail">Appuyez sur « Punch In » pour commencer</div>
+        </div>
+      </div>
+      <div class="punch-timer" id="punch-timer" hidden>00:00:00</div>
+      <div class="punch-actions">
+        <button id="btn-punch-in" class="btn btn-primary btn-lg">Punch In</button>
+        <button id="btn-punch-out" class="btn btn-danger btn-lg" hidden>Punch Out</button>
+        <button id="btn-cancel-punch" class="btn btn-ghost" hidden>Annuler le punch</button>
+      </div>
+    </section>
+
+    <!-- Sommaire du temps travaillé -->
+    <section class="summary">
+      <div class="card stat">
+        <div class="stat-value" id="stat-today">0 min</div>
+        <div class="stat-label">Aujourd'hui</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-value" id="stat-week">0 min</div>
+        <div class="stat-label">Cette semaine</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-value" id="stat-month">0 min</div>
+        <div class="stat-label">Ce mois-ci</div>
+      </div>
+    </section>
+
+    <!-- Période affichée + sauvegarde -->
+    <section class="card">
+      <div class="toolbar">
+        <label class="inline-label" for="filter-period">Période :</label>
+        <select id="filter-period">
+          <option value="today">Aujourd'hui</option>
+          <option value="week" selected>Cette semaine</option>
+          <option value="month">Ce mois-ci</option>
+          <option value="last-month">Mois précédent</option>
+          <option value="all">Tout</option>
+          <option value="custom">Période personnalisée…</option>
+        </select>
+        <span id="custom-range" hidden>
+          <input type="date" id="filter-from" title="Du">
+          <input type="date" id="filter-to" title="Au">
+        </span>
+        <span class="spacer"></span>
+        <button id="btn-export-json" class="btn">Sauvegarde JSON</button>
+        <label class="btn" for="input-import">Importer JSON</label>
+        <input type="file" id="input-import" accept=".json,application/json" hidden>
+      </div>
+    </section>
+
+    <!-- Feuille de temps (punchs) -->
+    <section class="card">
+      <div class="section-head">
+        <h2>Feuille de temps</h2>
+        <span class="spacer"></span>
+        <button id="btn-add-punch" class="btn btn-primary">+ Ajouter une période</button>
+        <button id="btn-export-punches" class="btn">Exporter CSV</button>
+      </div>
+      <div class="filtered-total" id="punch-total"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Début</th>
+              <th>Fin</th>
+              <th>Durée</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="punch-tbody"></tbody>
+        </table>
+      </div>
+      <p id="punch-empty" class="empty" hidden>Aucune période travaillée pour cette période.</p>
+    </section>
+
+    <!-- Interventions -->
+    <section class="card">
+      <div class="section-head">
+        <h2>Interventions</h2>
+        <select id="filter-client" title="Client">
+          <option value="">Tous les clients</option>
+        </select>
+        <span class="spacer"></span>
+        <button id="btn-add-intervention" class="btn btn-primary">+ Inscrire une intervention</button>
+        <button id="btn-export-interventions" class="btn">Exporter CSV</button>
+      </div>
+      <div class="filtered-total" id="intervention-total"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Début</th>
+              <th>Fin</th>
+              <th>Durée</th>
+              <th>Client</th>
+              <th>Billet</th>
+              <th>Catégorie</th>
+              <th>Description</th>
+              <th>Fact.</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="intervention-tbody"></tbody>
+        </table>
+      </div>
+      <p id="intervention-empty" class="empty" hidden>Aucune intervention pour cette période.</p>
+    </section>
+  </main>
+
+  <!-- Formulaire de période travaillée (ajout manuel, modification) -->
+  <dialog id="punch-dialog">
+    <form id="punch-form">
+      <h2 id="punch-dialog-title">Période travaillée</h2>
+      <input type="hidden" id="p-id">
+      <div class="form-grid">
+        <label>Date
+          <input type="date" id="p-date" required>
+        </label>
+        <label>Début
+          <input type="time" id="p-start" required>
+        </label>
+        <label>Fin
+          <input type="time" id="p-end" required>
+        </label>
+      </div>
+      <div class="form-duration" id="p-duration">Durée : —</div>
+      <p class="form-error" id="p-error" hidden></p>
+      <div class="form-actions">
+        <button type="button" class="btn" id="btn-punch-dialog-cancel">Annuler</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Formulaire d'intervention (inscription, modification) -->
+  <dialog id="intervention-dialog">
+    <form id="intervention-form">
+      <h2 id="intervention-dialog-title">Intervention</h2>
+      <input type="hidden" id="f-id">
+      <div class="form-grid">
+        <label>Date
+          <input type="date" id="f-date" required>
+        </label>
+        <label>Début
+          <input type="time" id="f-start" required>
+        </label>
+        <label>Fin
+          <input type="time" id="f-end" required>
+        </label>
+      </div>
+      <div class="form-duration" id="f-duration">Durée : —</div>
+      <label>Client
+        <input type="text" id="f-client" list="client-list" placeholder="Nom du client" autocomplete="off">
+        <datalist id="client-list"></datalist>
+      </label>
+      <label>Billet / Ticket
+        <input type="text" id="f-ticket" placeholder="N° de billet (optionnel)" autocomplete="off">
+      </label>
+      <label>Catégorie
+        <select id="f-category">
+          <option>Dépannage</option>
+          <option>Installation</option>
+          <option>Maintenance</option>
+          <option>Support à distance</option>
+          <option>Déplacement</option>
+          <option>Autre</option>
+        </select>
+      </label>
+      <label>Description
+        <textarea id="f-description" rows="3" placeholder="Travaux effectués, pièces remplacées, etc."></textarea>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="f-billable" checked> Facturable
+      </label>
+      <p class="form-error" id="f-error" hidden></p>
+      <div class="form-actions">
+        <button type="button" class="btn" id="btn-intervention-dialog-cancel">Annuler</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
