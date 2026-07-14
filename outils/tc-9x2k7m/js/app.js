@@ -12,6 +12,26 @@
  */
 "use strict";
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth,
+  OAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  onSnapshot,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { firebaseConfig, MICROSOFT_TENANT_ID } from "./firebase-config.js";
+
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+
 const STORAGE_KEY = "timecalculator.v1";
 
 /* ---------- État ---------- */
@@ -50,8 +70,14 @@ function normalizeState(data) {
   };
 }
 
+let userDocRef = null;
+let applyingRemote = false;
+
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  if (userDocRef && !applyingRemote) {
+    setDoc(userDocRef, state).catch((e) => console.error("Synchronisation Firestore échouée.", e));
+  }
 }
 
 function genId() {
@@ -801,7 +827,68 @@ els.inputImport.addEventListener("change", () => {
   }
 });
 
-/* ---------- Démarrage ---------- */
+/* ---------- Authentification et synchronisation ---------- */
+
+const elsAuth = {
+  gate: $("auth-gate"),
+  main: document.querySelector("main"),
+  btnLogin: $("btn-login"),
+  btnLogout: $("btn-logout"),
+  error: $("auth-error"),
+};
+
+const provider = new OAuthProvider("microsoft.com");
+provider.setCustomParameters({ tenant: MICROSOFT_TENANT_ID });
+
+elsAuth.btnLogin.addEventListener("click", () => {
+  elsAuth.error.hidden = true;
+  signInWithPopup(auth, provider).catch((e) => {
+    elsAuth.error.textContent = "Connexion échouée : " + e.message;
+    elsAuth.error.hidden = false;
+  });
+});
+
+elsAuth.btnLogout.addEventListener("click", () => signOut(auth));
+
+let unsubscribeSnapshot = null;
+
+onAuthStateChanged(auth, (user) => {
+  if (unsubscribeSnapshot) {
+    unsubscribeSnapshot();
+    unsubscribeSnapshot = null;
+  }
+
+  if (!user) {
+    userDocRef = null;
+    elsAuth.gate.hidden = false;
+    elsAuth.main.hidden = true;
+    elsAuth.btnLogout.hidden = true;
+    return;
+  }
+
+  elsAuth.gate.hidden = true;
+  elsAuth.main.hidden = false;
+  elsAuth.btnLogout.hidden = false;
+
+  userDocRef = doc(db, "users", user.uid, "timecalculator", "state");
+
+  // Affichage instantané depuis le cache local pendant que Firestore répond.
+  state = load();
+  render();
+
+  unsubscribeSnapshot = onSnapshot(userDocRef, (snap) => {
+    if (snap.exists()) {
+      applyingRemote = true;
+      state = normalizeState(snap.data());
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      render();
+      applyingRemote = false;
+    } else {
+      // Première connexion : on pousse le cache local existant vers Firestore.
+      setDoc(userDocRef, state);
+    }
+  });
+});
 
 // Au changement de jour, la journée qui se termine se replie et rejoint
 // les autres journées de la semaine; le sommaire repart pour le nouveau jour.
@@ -813,5 +900,3 @@ setInterval(() => {
     render();
   }
 }, 30000);
-
-render();

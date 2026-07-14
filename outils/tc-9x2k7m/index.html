@@ -11,9 +11,19 @@
   <header class="app-header">
     <h1>⏱ TimeCalculator</h1>
     <p class="subtitle">Punch in, punch out et suivi des interventions techniques</p>
+    <button id="btn-logout" class="btn btn-ghost" hidden>Déconnexion</button>
   </header>
 
-  <main>
+  <div id="auth-gate" class="auth-gate">
+    <div class="card auth-card">
+      <h2>Connexion requise</h2>
+      <p>Connecte-toi avec ton compte Microsoft BGInformatique pour accéder à ta feuille de temps.</p>
+      <button id="btn-login" class="btn btn-primary btn-lg">Se connecter avec Microsoft</button>
+      <p class="form-error" id="auth-error" hidden></p>
+    </div>
+  </div>
+
+  <main hidden>
     <!-- Carte punch in/out -->
     <section class="card punch-card">
       <div class="punch-status">
@@ -203,6 +213,6 @@
     </form>
   </dialog>
 
-  <script src="js/app.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

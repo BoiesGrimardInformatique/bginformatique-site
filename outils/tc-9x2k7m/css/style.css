@@ -453,3 +453,17 @@ dialog textarea {
     justify-content: center;
   }
 }
+
+.auth-gate {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.auth-card {
+  max-width: 420px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
