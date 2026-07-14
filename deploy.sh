@@ -36,6 +36,18 @@ else
   COMMIT_MSG="Mise à jour BG Informatique - $DATE"
 fi
 
+# 0) Cache-busting pour TimeCalculator (outils/tc-9x2k7m) : force le
+#    rechargement des assets par le navigateur à chaque déploiement.
+TC_INDEX="outils/tc-9x2k7m/index.html"
+if [ -f "$TC_INDEX" ]; then
+  TC_VERSION=$(date +'%Y%m%d%H%M%S')
+  sed -i.bak -E \
+    -e "s#(js/app\.js)\?v=[0-9]+#\1?v=${TC_VERSION}#" \
+    -e "s#(css/style\.css)\?v=[0-9]+#\1?v=${TC_VERSION}#" \
+    "$TC_INDEX"
+  rm -f "${TC_INDEX}.bak"
+fi
+
 # 1) Committer les modifications locales (s'il y en a)
 if git diff --quiet && git diff --staged --quiet; then
   echo -e "${YELLOW}Aucune modification locale à committer.${NC}"
