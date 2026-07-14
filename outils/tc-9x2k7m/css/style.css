@@ -329,6 +329,29 @@ tr:last-child td {
   width: 1.2em;
 }
 
+.merged-row .chevron {
+  display: inline-block;
+  width: 1.2em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.merged-row td {
+  font-weight: 600;
+}
+
+.segment-row td {
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-weight: normal;
+  font-size: 0.85rem;
+}
+
 td .row-actions {
   display: flex;
   gap: 4px;

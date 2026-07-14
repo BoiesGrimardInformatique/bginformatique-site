@@ -175,6 +175,7 @@ const els = {
   btnPunchDialogCancel: $("btn-punch-dialog-cancel"),
   // Interventions
   btnAddIntervention: $("btn-add-intervention"),
+  btnMergeInterventions: $("btn-merge-interventions"),
   btnExportInterventions: $("btn-export-interventions"),
   interventionTotal: $("intervention-total"),
   interventionTbody: $("intervention-tbody"),
@@ -427,6 +428,88 @@ function deleteIntervention(id) {
   render();
 }
 
+// Fusionne les interventions qui partagent le même numéro de billet et la
+// même journée. Aucune donnée n'est perdue : la durée totale est la somme
+// des durées d'origine (pas l'écart entre le premier début et la dernière
+// fin, pour ne pas gonfler le total en cas de trous entre les interventions),
+// le détail textuel est conservé dans la description fusionnée, et chaque
+// intervention d'origine (avec sa propre durée) reste consultable via
+// `segments`, affichés en sous-lignes dépliables dans le tableau.
+function mergeInterventions() {
+  const groups = new Map();
+  for (const i of state.interventions) {
+    const ticket = (i.ticket || "").trim();
+    if (!ticket) continue;
+    const key = ticket + "|" + dateISO(new Date(i.start));
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(i);
+  }
+
+  const removeIds = new Set();
+  const newRecords = [];
+
+  for (const items of groups.values()) {
+    if (items.length < 2) continue;
+    items.sort((a, b) => a.start - b.start);
+
+    const totalMinutes = items.reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+    const start = items[0].start;
+    const end = start + totalMinutes * 60000;
+
+    const clients = [...new Set(items.map((i) => i.client).filter(Boolean))];
+    const categories = [...new Set(items.map((i) => i.category).filter(Boolean))];
+    const billable = items.some((i) => i.billable);
+
+    const detailLines = items.map((i) => {
+      const s = new Date(i.start);
+      const e = new Date(i.end);
+      const desc = i.description ? ` — ${i.description}` : "";
+      return `${timeHM(s)}–${timeHM(e)} (${i.category})${desc}`;
+    });
+    const description = `[Fusion de ${items.length} interventions]\n` + detailLines.join("\n");
+
+    const segments = items.map((i) => ({
+      start: i.start,
+      end: i.end,
+      client: i.client,
+      category: i.category,
+      description: i.description,
+      billable: i.billable,
+    }));
+
+    newRecords.push({
+      id: genId(),
+      start,
+      end,
+      client: clients.join(" / "),
+      ticket: items[0].ticket.trim(),
+      category: categories.join(" / "),
+      description,
+      billable,
+      segments,
+    });
+
+    for (const i of items) removeIds.add(i.id);
+  }
+
+  if (newRecords.length === 0) {
+    alert("Aucune intervention à fusionner (même numéro de billet et même journée requis).");
+    return;
+  }
+
+  if (
+    !confirm(
+      `Fusionner ${newRecords.length} groupe${newRecords.length > 1 ? "s" : ""} d'interventions partageant le même numéro de billet et la même journée ?\n\nChaque intervention d'origine (avec sa durée) restera consultable en sous-ligne, en plus d'être résumée dans la description.`
+    )
+  ) {
+    return;
+  }
+
+  state.interventions = state.interventions.filter((i) => !removeIds.has(i.id)).concat(newRecords);
+  save();
+  render();
+}
+
 function refreshClientDatalist() {
   const clients = uniqueClients();
   els.clientList.innerHTML = "";
@@ -608,6 +691,20 @@ function renderClientFilter() {
   if (clients.includes(current)) els.filterClient.value = current;
 }
 
+// Sous-lignes dépliables (segments) des interventions fusionnées : par
+// défaut dépliées pour garder la durée de chaque intervention d'origine
+// visible séparément. État par intervention, conservé pour la session.
+const interventionSegmentsExpanded = new Map();
+
+function isInterventionExpanded(id) {
+  return interventionSegmentsExpanded.has(id) ? interventionSegmentsExpanded.get(id) : true;
+}
+
+function toggleInterventionSegments(id) {
+  interventionSegmentsExpanded.set(id, !isInterventionExpanded(id));
+  renderInterventionTable();
+}
+
 function renderInterventionTable() {
   const rows = filteredInterventions();
   els.interventionTbody.innerHTML = "";
@@ -622,12 +719,20 @@ function renderInterventionTable() {
     total += min;
     if (i.billable) billableTotal += min;
 
+    const hasSegments = Array.isArray(i.segments) && i.segments.length > 1;
+    const expanded = hasSegments && isInterventionExpanded(i.id);
+
     const tr = document.createElement("tr");
+    if (hasSegments) tr.className = "merged-row";
     tr.innerHTML = `
-      <td>${dateISO(start)}</td>
+      <td>${
+        hasSegments
+          ? `<span class="chevron" data-toggle-segments="${i.id}" title="Afficher ou masquer les ${i.segments.length} durées d'origine">${expanded ? "▾" : "▸"}</span>`
+          : ""
+      }${dateISO(start)}</td>
       <td>${timeHM(start)}</td>
       <td>${timeHM(end)}</td>
-      <td>${fmtDuration(min)}</td>
+      <td>${fmtDuration(min)}${hasSegments ? ` <span class="muted">(${i.segments.length} durées)</span>` : ""}</td>
       <td>${escapeHtml(i.client) || "—"}</td>
       <td>${escapeHtml(i.ticket || "") || "—"}</td>
       <td>${escapeHtml(i.category)}</td>
@@ -640,6 +745,28 @@ function renderInterventionTable() {
         </span>
       </td>`;
     els.interventionTbody.appendChild(tr);
+
+    if (expanded) {
+      for (const seg of i.segments) {
+        const segStart = new Date(seg.start);
+        const segEnd = new Date(seg.end);
+        const segMin = minutesBetween(seg.start, seg.end);
+        const trSeg = document.createElement("tr");
+        trSeg.className = "segment-row";
+        trSeg.innerHTML = `
+          <td></td>
+          <td>${timeHM(segStart)}</td>
+          <td>${timeHM(segEnd)}</td>
+          <td>${fmtDuration(segMin)}</td>
+          <td>${escapeHtml(seg.client) || "—"}</td>
+          <td>—</td>
+          <td>${escapeHtml(seg.category)}</td>
+          <td class="desc">${escapeHtml(seg.description) || "—"}</td>
+          <td>${seg.billable ? "✓" : "—"}</td>
+          <td></td>`;
+        els.interventionTbody.appendChild(trSeg);
+      }
+    }
   }
 
   els.interventionTotal.innerHTML =
@@ -811,11 +938,18 @@ els.punchTbody.addEventListener("click", (event) => {
 });
 
 els.interventionTbody.addEventListener("click", (event) => {
+  const chevron = event.target.closest("[data-toggle-segments]");
+  if (chevron) {
+    toggleInterventionSegments(chevron.dataset.toggleSegments);
+    return;
+  }
   const btn = event.target.closest("button");
   if (!btn) return;
   if (btn.dataset.editIntervention) editIntervention(btn.dataset.editIntervention);
   if (btn.dataset.deleteIntervention) deleteIntervention(btn.dataset.deleteIntervention);
 });
+
+els.btnMergeInterventions.addEventListener("click", mergeInterventions);
 
 els.btnExportPunches.addEventListener("click", exportPunchesCsv);
 els.btnExportInterventions.addEventListener("click", exportInterventionsCsv);
