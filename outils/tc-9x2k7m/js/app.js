@@ -160,6 +160,7 @@ const els = {
   filterFrom: $("filter-from"),
   filterTo: $("filter-to"),
   filterClient: $("filter-client"),
+  filterToVerify: $("filter-to-verify"),
   btnExportReport: $("btn-export-report"),
   btnExportJson: $("btn-export-json"),
   inputImport: $("input-import"),
@@ -200,6 +201,7 @@ const els = {
   fCategory: $("f-category"),
   fDescription: $("f-description"),
   fBillable: $("f-billable"),
+  fToVerify: $("f-to-verify"),
   fError: $("f-error"),
   btnInterventionDialogCancel: $("btn-intervention-dialog-cancel"),
 };
@@ -360,6 +362,7 @@ function openInterventionDialog(opts) {
   els.fCategory.value = opts.category || "Dépannage";
   els.fDescription.value = opts.description || "";
   els.fBillable.checked = opts.billable !== false;
+  els.fToVerify.checked = !!opts.toVerify;
   els.fError.hidden = true;
   refreshClientDatalist();
   updateInterventionFormDuration();
@@ -395,6 +398,7 @@ function submitInterventionForm(event) {
     category: els.fCategory.value,
     description,
     billable: els.fBillable.checked,
+    toVerify: els.fToVerify.checked,
   };
 
   const idx = state.interventions.findIndex((i) => i.id === record.id);
@@ -423,6 +427,7 @@ function editIntervention(id) {
     category: i.category,
     description: i.description,
     billable: i.billable,
+    toVerify: i.toVerify,
   });
 }
 
@@ -613,9 +618,24 @@ function filteredPunches() {
 function filteredInterventions() {
   const [from, to] = filterRange();
   const client = els.filterClient.value;
+  const toVerifyOnly = els.filterToVerify.checked;
   return state.interventions
-    .filter((i) => i.start >= from && i.start < to && (!client || i.client === client))
+    .filter(
+      (i) =>
+        i.start >= from &&
+        i.start < to &&
+        (!client || i.client === client) &&
+        (!toVerifyOnly || i.toVerify)
+    )
     .sort((a, b) => b.start - a.start);
+}
+
+function toggleInterventionVerify(id) {
+  const i = state.interventions.find((x) => x.id === id);
+  if (!i) return;
+  i.toVerify = !i.toVerify;
+  save();
+  renderInterventionTable();
 }
 
 function escapeHtml(s) {
@@ -770,6 +790,7 @@ function renderInterventionTable() {
 
     const tr = document.createElement("tr");
     if (hasSegments) tr.className = "merged-row";
+    if (i.toVerify) tr.classList.add("to-verify-row");
     tr.innerHTML = `
       <td>${
         hasSegments
@@ -784,6 +805,7 @@ function renderInterventionTable() {
       <td>${escapeHtml(i.category)}</td>
       <td class="desc">${escapeHtml(i.description) || "—"}</td>
       <td>${i.billable ? "✓" : "—"}</td>
+      <td class="center"><input type="checkbox" data-toggle-verify="${i.id}" title="À vérifier avant facturation" ${i.toVerify ? "checked" : ""}></td>
       <td>
         <span class="row-actions">
           <button class="icon-btn" data-edit-intervention="${i.id}" title="Modifier">✏️</button>
@@ -809,6 +831,7 @@ function renderInterventionTable() {
           <td>${escapeHtml(seg.category)}</td>
           <td class="desc">${escapeHtml(seg.description) || "—"}</td>
           <td>${seg.billable ? "✓" : "—"}</td>
+          <td></td>
           <td></td>`;
         els.interventionTbody.appendChild(trSeg);
       }
@@ -869,7 +892,7 @@ function exportInterventionsCsv() {
     alert("Aucune intervention à exporter pour cette période.");
     return;
   }
-  const lines = ["Date;Début;Fin;Durée (min);Durée (h);Client;Billet;Catégorie;Description;Facturable"];
+  const lines = ["Date;Début;Fin;Durée (min);Durée (h);Client;Billet;Catégorie;Description;Facturable;À vérifier"];
   for (const i of [...rows].reverse()) {
     const start = new Date(i.start);
     const min = minutesBetween(i.start, i.end);
@@ -885,6 +908,7 @@ function exportInterventionsCsv() {
         csvField(i.category),
         csvField(i.description),
         i.billable ? "Oui" : "Non",
+        i.toVerify ? "Oui" : "Non",
       ].join(";")
     );
   }
@@ -932,6 +956,7 @@ function generateWeeklyReport() {
   let grandPunchMin = 0;
   let grandInterventionMin = 0;
   let grandBillableMin = 0;
+  const grandToVerifyCount = interventions.filter((i) => i.toVerify).length;
 
   // Deux parties distinctes plutôt qu'un mélange par semaine : toute la
   // feuille de temps d'abord, puis les interventions démarrent sur une
@@ -987,18 +1012,19 @@ function generateWeeklyReport() {
                 <td>${escapeHtml(i.category)}</td>
                 <td>${escapeHtml(i.description) || "—"}</td>
                 <td class="center">${i.billable ? "✓" : "—"}</td>
+                <td class="center">${i.toVerify ? "⚠️" : "—"}</td>
               </tr>`;
             })
             .join("")
-        : `<tr><td colspan="8" class="empty-row">Aucune intervention</td></tr>`;
+        : `<tr><td colspan="9" class="empty-row">Aucune intervention</td></tr>`;
 
       return `
       <section class="week">
         <h3>${isoWeekLabel(w.monday)}</h3>
         <table>
-          <thead><tr><th>Date</th><th>Heures</th><th>Durée</th><th>Client</th><th>Billet</th><th>Catégorie</th><th>Description</th><th>Fact.</th></tr></thead>
+          <thead><tr><th>Date</th><th>Heures</th><th>Durée</th><th>Client</th><th>Billet</th><th>Catégorie</th><th>Description</th><th>Fact.</th><th>Vérif.</th></tr></thead>
           <tbody>${interventionRows}</tbody>
-          <tfoot><tr><td colspan="7">Total de la semaine (dont facturable : ${fmtDuration(billableMin)})</td><td>${fmtDuration(interventionMin)}</td></tr></tfoot>
+          <tfoot><tr><td colspan="7">Total de la semaine (dont facturable : ${fmtDuration(billableMin)})</td><td colspan="2">${fmtDuration(interventionMin)}</td></tr></tfoot>
         </table>
       </section>`;
     })
@@ -1026,6 +1052,9 @@ function generateWeeklyReport() {
   .summary-card { flex: 1; border: 1px solid #d8dee5; border-radius: 8px; padding: 14px 16px; background: #f7f9fb; }
   .summary-card .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: #667; margin-bottom: 4px; }
   .summary-card .value { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
+  .summary-card.warning { background: #fff4e5; border-color: #f0b429; }
+  .summary-card.warning .value { color: #9a5b00; }
+  tr.to-verify-row td { background: #fff4e5; }
   .report-part h2 { font-size: 1.2rem; color: #1a3a5c; border-bottom: 2px solid #1a3a5c; padding-bottom: 8px; margin: 0 0 20px; }
   .report-part.page-break { page-break-before: always; break-before: page; }
   section.week { margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
@@ -1063,6 +1092,7 @@ function generateWeeklyReport() {
       <div class="summary-card"><div class="label">Temps travaillé</div><div class="value">${fmtDuration(grandPunchMin)}</div></div>
       <div class="summary-card"><div class="label">Interventions</div><div class="value">${fmtDuration(grandInterventionMin)}</div></div>
       <div class="summary-card"><div class="label">Dont facturable</div><div class="value">${fmtDuration(grandBillableMin)}</div></div>
+      <div class="summary-card${grandToVerifyCount > 0 ? " warning" : ""}"><div class="label">À vérifier</div><div class="value">${grandToVerifyCount}</div></div>
     </div>
   </div>
   <div class="report-part">
@@ -1166,6 +1196,7 @@ els.filterPeriod.addEventListener("change", () => {
 els.filterFrom.addEventListener("change", () => { renderPunchTable(); renderInterventionTable(); });
 els.filterTo.addEventListener("change", () => { renderPunchTable(); renderInterventionTable(); });
 els.filterClient.addEventListener("change", renderInterventionTable);
+els.filterToVerify.addEventListener("change", renderInterventionTable);
 
 els.punchTbody.addEventListener("click", (event) => {
   const btn = event.target.closest("button");
@@ -1188,6 +1219,11 @@ els.interventionTbody.addEventListener("click", (event) => {
   if (!btn) return;
   if (btn.dataset.editIntervention) editIntervention(btn.dataset.editIntervention);
   if (btn.dataset.deleteIntervention) deleteIntervention(btn.dataset.deleteIntervention);
+});
+
+els.interventionTbody.addEventListener("change", (event) => {
+  const checkbox = event.target.closest("[data-toggle-verify]");
+  if (checkbox) toggleInterventionVerify(checkbox.dataset.toggleVerify);
 });
 
 els.btnMergeInterventions.addEventListener("click", mergeInterventions);

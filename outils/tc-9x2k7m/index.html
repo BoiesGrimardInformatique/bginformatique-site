@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>TimeCalculator — Feuille de temps et interventions</title>
-  <link rel="stylesheet" href="css/style.css?v=20260714185453">
+  <link rel="stylesheet" href="css/style.css?v=20260714204747">
 </head>
 <body>
   <header class="app-header">
@@ -113,6 +113,9 @@
         <select id="filter-client" title="Client">
           <option value="">Tous les clients</option>
         </select>
+        <label class="inline-label checkbox">
+          <input type="checkbox" id="filter-to-verify"> À vérifier seulement
+        </label>
         <span class="spacer"></span>
         <button id="btn-add-intervention" class="btn btn-primary">+ Inscrire une intervention</button>
         <button id="btn-merge-interventions" class="btn" title="Fusionne les interventions partageant le même numéro de billet et la même journée">Fusionner billets</button>
@@ -132,6 +135,7 @@
               <th>Catégorie</th>
               <th>Description</th>
               <th>Fact.</th>
+              <th>À vérifier</th>
               <th></th>
             </tr>
           </thead>
@@ -208,6 +212,9 @@
       <label class="checkbox">
         <input type="checkbox" id="f-billable" checked> Facturable
       </label>
+      <label class="checkbox">
+        <input type="checkbox" id="f-to-verify"> À vérifier avant facturation
+      </label>
       <p class="form-error" id="f-error" hidden></p>
       <div class="form-actions">
         <button type="button" class="btn" id="btn-intervention-dialog-cancel">Annuler</button>
@@ -216,6 +223,6 @@
     </form>
   </dialog>
 
-  <script type="module" src="js/app.js?v=20260714185453"></script>
+  <script type="module" src="js/app.js?v=20260714204747"></script>
 </body>
 </html>

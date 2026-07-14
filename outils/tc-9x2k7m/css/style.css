@@ -513,3 +513,7 @@ dialog textarea {
   opacity: 1;
   transform: translate(-50%, 0);
 }
+
+tr.to-verify-row td {
+  background: #fff4e5;
+}
