@@ -448,20 +448,22 @@ function deleteIntervention(id) {
 // le détail textuel est conservé dans la description fusionnée, et chaque
 // intervention d'origine (avec sa propre durée) reste consultable via
 // `segments`, affichés en sous-lignes dépliables dans le tableau.
-// En mode « Période personnalisée », le regroupement se fait uniquement par
-// numéro de billet (peu importe la date) et se limite à la plage
-// personnalisée affichée. Dans les autres modes, seules les interventions
-// d'une même journée partageant le même billet sont fusionnées.
+//
+// En mode « Période personnalisée », la fusion ne modifie plus les données :
+// elle sert uniquement à simplifier le rapport imprimé (voir
+// generateTicketMergedReport plus bas). Le bouton « Fusionner billets »
+// bascule donc vers ce mode-là quand le filtre actif est « custom ».
 function mergeInterventions() {
-  const customMode = els.filterPeriod.value === "custom";
-  const [from, to] = customMode ? filterRange() : [-Infinity, Infinity];
+  if (els.filterPeriod.value === "custom") {
+    generateTicketMergedReport();
+    return;
+  }
 
   const groups = new Map();
   for (const i of state.interventions) {
     const ticket = (i.ticket || "").trim();
     if (!ticket) continue;
-    if (customMode && !(i.start >= from && i.start < to)) continue;
-    const key = customMode ? ticket : ticket + "|" + dateISO(new Date(i.start));
+    const key = ticket + "|" + dateISO(new Date(i.start));
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(i);
   }
@@ -513,18 +515,14 @@ function mergeInterventions() {
     for (const i of items) removeIds.add(i.id);
   }
 
-  const criteriaLabel = customMode
-    ? "le même numéro de billet, peu importe la date (période personnalisée)"
-    : "le même numéro de billet et la même journée";
-
   if (newRecords.length === 0) {
-    alert(`Aucune intervention à fusionner (${criteriaLabel} requis).`);
+    alert("Aucune intervention à fusionner (même numéro de billet et même journée requis).");
     return;
   }
 
   if (
     !confirm(
-      `Fusionner ${newRecords.length} groupe${newRecords.length > 1 ? "s" : ""} d'interventions partageant ${criteriaLabel} ?\n\nChaque intervention d'origine (avec sa durée) restera consultable en sous-ligne, en plus d'être résumée dans la description.`
+      `Fusionner ${newRecords.length} groupe${newRecords.length > 1 ? "s" : ""} d'interventions partageant le même numéro de billet et la même journée ?\n\nChaque intervention d'origine (avec sa durée) restera consultable en sous-ligne, en plus d'être résumée dans la description.`
     )
   ) {
     return;
@@ -533,6 +531,135 @@ function mergeInterventions() {
   state.interventions = state.interventions.filter((i) => !removeIds.has(i.id)).concat(newRecords);
   save();
   render();
+}
+
+// Regroupe les interventions filtrées par numéro de billet, peu importe la
+// date, et ouvre directement un rapport imprimable — sans toucher aux
+// données enregistrées. Utilisé uniquement en mode « Période personnalisée ».
+function generateTicketMergedReport() {
+  const [from, to] = filterRange();
+  const interventions = state.interventions
+    .filter((i) => i.start >= from && i.start < to)
+    .sort((a, b) => a.start - b.start);
+
+  if (interventions.length === 0) {
+    alert("Aucune intervention à inclure pour cette période personnalisée.");
+    return;
+  }
+
+  const groups = new Map();
+  for (const i of interventions) {
+    const ticket = (i.ticket || "").trim();
+    const key = ticket || `__sans-billet__${i.id}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(i);
+  }
+
+  const summaryRows = [...groups.values()]
+    .map((items) => {
+      items.sort((a, b) => a.start - b.start);
+      const ticket = (items[0].ticket || "").trim();
+      const min = items.reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+      const billableMin = items.filter((i) => i.billable).reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+      const toVerify = items.some((i) => i.toVerify);
+      const clients = [...new Set(items.map((i) => i.client).filter(Boolean))];
+      const categories = [...new Set(items.map((i) => i.category).filter(Boolean))];
+      const dates = [...new Set(items.map((i) => dateISO(new Date(i.start))))].sort();
+      const detail = items
+        .map((i) => {
+          const s = new Date(i.start);
+          const e = new Date(i.end);
+          const desc = i.description ? ` — ${escapeHtml(i.description)}` : "";
+          return `${dateISO(s)} ${timeHM(s)}–${timeHM(e)}${desc}`;
+        })
+        .join("<br>");
+
+      return {
+        firstStart: items[0].start,
+        html: `<tr${toVerify ? ' class="to-verify-row"' : ""}>
+          <td>${escapeHtml(ticket) || "—"}</td>
+          <td>${dates.join(", ")}</td>
+          <td>${fmtDuration(min)}</td>
+          <td>${escapeHtml(clients.join(" / ")) || "—"}</td>
+          <td>${escapeHtml(categories.join(" / "))}</td>
+          <td class="desc">${detail}</td>
+          <td class="center">${billableMin > 0 ? "✓" : "—"}</td>
+          <td class="center">${toVerify ? "⚠️" : "—"}</td>
+        </tr>`,
+        min,
+        billableMin,
+        toVerify,
+      };
+    })
+    .sort((a, b) => a.firstStart - b.firstStart);
+
+  const totalMin = summaryRows.reduce((sum, r) => sum + r.min, 0);
+  const billableTotal = summaryRows.reduce((sum, r) => sum + r.billableMin, 0);
+  const toVerifyCount = summaryRows.filter((r) => r.toVerify).length;
+  const periodLabel = `${dateISO(new Date(from))} au ${dateISO(new Date(to - 24 * 3600 * 1000))}`;
+  const generatedAt = new Date().toLocaleString("fr-CA");
+
+  const html = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Interventions fusionnées par billet — TimeCalculator</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 32px; color: #1a1a1a; background: #fff; }
+  .report-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid #1a3a5c; padding-bottom: 16px; margin-bottom: 24px; }
+  .report-header h1 { margin: 0; font-size: 1.5rem; color: #1a3a5c; }
+  .report-header .meta { text-align: right; font-size: 0.85rem; color: #555; line-height: 1.5; }
+  .note { background: #eef2f6; border: 1px solid #d8dee5; border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; color: #445; margin-bottom: 24px; }
+  .summary-bar { display: flex; gap: 16px; margin-bottom: 24px; }
+  .summary-card { flex: 1; border: 1px solid #d8dee5; border-radius: 8px; padding: 14px 16px; background: #f7f9fb; }
+  .summary-card .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: #667; margin-bottom: 4px; }
+  .summary-card .value { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
+  .summary-card.warning { background: #fff4e5; border-color: #f0b429; }
+  .summary-card.warning .value { color: #9a5b00; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { border: 1px solid #e1e6eb; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #eef2f6; font-weight: 600; }
+  tfoot td { background: #f7f9fb; font-weight: 700; }
+  td.center { text-align: center; }
+  tr.to-verify-row td { background: #fff4e5; }
+  .print-bar { margin-bottom: 24px; }
+  .print-bar button { font: inherit; padding: 8px 16px; border-radius: 6px; border: 1px solid #1a3a5c; background: #1a3a5c; color: #fff; cursor: pointer; }
+  @media print { .print-bar { display: none; } body { padding: 0; } }
+</style>
+</head>
+<body>
+  <div class="print-bar"><button onclick="window.print()">Imprimer / Enregistrer en PDF</button></div>
+  <div class="report-header">
+    <h1>Interventions fusionnées par billet</h1>
+    <div class="meta">
+      Période : ${periodLabel}<br>
+      Généré le ${generatedAt}
+    </div>
+  </div>
+  <div class="note">Regroupement par numéro de billet, peu importe la date, pour cette période personnalisée. Ceci est une vue de rapport uniquement : aucune donnée enregistrée n'a été modifiée.</div>
+  <div class="summary-bar">
+    <div class="summary-card"><div class="label">Total</div><div class="value">${fmtDuration(totalMin)}</div></div>
+    <div class="summary-card"><div class="label">Dont facturable</div><div class="value">${fmtDuration(billableTotal)}</div></div>
+    <div class="summary-card${toVerifyCount > 0 ? " warning" : ""}"><div class="label">À vérifier</div><div class="value">${toVerifyCount}</div></div>
+  </div>
+  <table>
+    <thead><tr><th>Billet</th><th>Dates</th><th>Durée totale</th><th>Client(s)</th><th>Catégorie(s)</th><th>Détail</th><th>Fact.</th><th>Vérif.</th></tr></thead>
+    <tbody>${summaryRows.map((r) => r.html).join("")}</tbody>
+    <tfoot><tr><td colspan="2">Total</td><td>${fmtDuration(totalMin)}</td><td colspan="5"></td></tr></tfoot>
+  </table>
+</body>
+</html>`;
+
+  const reportWindow = window.open("", "_blank");
+  if (!reportWindow) {
+    alert("Le navigateur a bloqué l'ouverture du rapport. Autorisez les fenêtres pop-up pour ce site.");
+    return;
+  }
+  reportWindow.document.open();
+  reportWindow.document.write(html);
+  reportWindow.document.close();
 }
 
 function refreshClientDatalist() {

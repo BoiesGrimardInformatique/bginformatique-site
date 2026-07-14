@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>TimeCalculator — Feuille de temps et interventions</title>
-  <link rel="stylesheet" href="css/style.css?v=20260714205433">
+  <link rel="stylesheet" href="css/style.css?v=20260714205837">
 </head>
 <body>
   <header class="app-header">
@@ -118,7 +118,7 @@
         </label>
         <span class="spacer"></span>
         <button id="btn-add-intervention" class="btn btn-primary">+ Inscrire une intervention</button>
-        <button id="btn-merge-interventions" class="btn" title="Fusionne les interventions partageant le même numéro de billet et la même journée. En mode Période personnalisée : peu importe la date, dans la plage affichée.">Fusionner billets</button>
+        <button id="btn-merge-interventions" class="btn" title="Fusionne les interventions partageant le même numéro de billet et la même journée (fusion permanente). En mode Période personnalisée : ouvre plutôt un rapport regroupé par billet, peu importe la date, limité à la période affichée — sans modifier les données enregistrées.">Fusionner billets</button>
         <button id="btn-export-interventions" class="btn">Exporter CSV</button>
       </div>
       <div class="filtered-total" id="intervention-total"></div>
@@ -223,6 +223,6 @@
     </form>
   </dialog>
 
-  <script type="module" src="js/app.js?v=20260714205433"></script>
+  <script type="module" src="js/app.js?v=20260714205837"></script>
 </body>
 </html>
