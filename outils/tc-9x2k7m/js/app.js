@@ -1009,6 +1009,7 @@ function generateWeeklyReport() {
   :root { color-scheme: light; }
   * { box-sizing: border-box; }
   body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 32px; color: #1a1a1a; background: #fff; }
+  .report-top { page-break-inside: avoid; break-inside: avoid; page-break-after: avoid; break-after: avoid; }
   .report-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid #1a3a5c; padding-bottom: 16px; margin-bottom: 24px; }
   .report-header h1 { margin: 0; font-size: 1.6rem; color: #1a3a5c; }
   .report-header .meta { text-align: right; font-size: 0.85rem; color: #555; line-height: 1.5; }
@@ -1016,7 +1017,8 @@ function generateWeeklyReport() {
   .summary-card { flex: 1; border: 1px solid #d8dee5; border-radius: 8px; padding: 14px 16px; background: #f7f9fb; }
   .summary-card .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: #667; margin-bottom: 4px; }
   .summary-card .value { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
-  section.week { margin-bottom: 36px; page-break-inside: avoid; }
+  section.week { margin-bottom: 36px; page-break-inside: avoid; break-inside: avoid; }
+  section.week:first-of-type { page-break-before: avoid; break-before: avoid; }
   section.week h2 { font-size: 1.1rem; color: #1a3a5c; border-bottom: 1px solid #d8dee5; padding-bottom: 6px; margin-bottom: 12px; }
   section.week h3 { font-size: 0.9rem; color: #445; margin: 16px 0 6px; text-transform: uppercase; letter-spacing: 0.03em; }
   table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 4px; }
@@ -1030,23 +1032,27 @@ function generateWeeklyReport() {
   @media print {
     .print-bar { display: none; }
     body { padding: 0; }
-    section.week { page-break-inside: avoid; }
+    .report-top { page-break-inside: avoid; break-inside: avoid; page-break-after: avoid; break-after: avoid; }
+    section.week { page-break-inside: avoid; break-inside: avoid; }
+    section.week:first-of-type { page-break-before: avoid; break-before: avoid; }
   }
 </style>
 </head>
 <body>
   <div class="print-bar"><button onclick="window.print()">Imprimer / Enregistrer en PDF</button></div>
-  <div class="report-header">
-    <h1>Rapport d'activité — TimeCalculator</h1>
-    <div class="meta">
-      Période : ${periodLabel}<br>
-      Généré le ${generatedAt}
+  <div class="report-top">
+    <div class="report-header">
+      <h1>Rapport d'activité — TimeCalculator</h1>
+      <div class="meta">
+        Période : ${periodLabel}<br>
+        Généré le ${generatedAt}
+      </div>
     </div>
-  </div>
-  <div class="summary-bar">
-    <div class="summary-card"><div class="label">Temps travaillé</div><div class="value">${fmtDuration(grandPunchMin)}</div></div>
-    <div class="summary-card"><div class="label">Interventions</div><div class="value">${fmtDuration(grandInterventionMin)}</div></div>
-    <div class="summary-card"><div class="label">Dont facturable</div><div class="value">${fmtDuration(grandBillableMin)}</div></div>
+    <div class="summary-bar">
+      <div class="summary-card"><div class="label">Temps travaillé</div><div class="value">${fmtDuration(grandPunchMin)}</div></div>
+      <div class="summary-card"><div class="label">Interventions</div><div class="value">${fmtDuration(grandInterventionMin)}</div></div>
+      <div class="summary-card"><div class="label">Dont facturable</div><div class="value">${fmtDuration(grandBillableMin)}</div></div>
+    </div>
   </div>
   ${weekSections}
 </body>
