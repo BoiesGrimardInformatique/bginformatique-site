@@ -448,12 +448,20 @@ function deleteIntervention(id) {
 // le détail textuel est conservé dans la description fusionnée, et chaque
 // intervention d'origine (avec sa propre durée) reste consultable via
 // `segments`, affichés en sous-lignes dépliables dans le tableau.
+// En mode « Période personnalisée », le regroupement se fait uniquement par
+// numéro de billet (peu importe la date) et se limite à la plage
+// personnalisée affichée. Dans les autres modes, seules les interventions
+// d'une même journée partageant le même billet sont fusionnées.
 function mergeInterventions() {
+  const customMode = els.filterPeriod.value === "custom";
+  const [from, to] = customMode ? filterRange() : [-Infinity, Infinity];
+
   const groups = new Map();
   for (const i of state.interventions) {
     const ticket = (i.ticket || "").trim();
     if (!ticket) continue;
-    const key = ticket + "|" + dateISO(new Date(i.start));
+    if (customMode && !(i.start >= from && i.start < to)) continue;
+    const key = customMode ? ticket : ticket + "|" + dateISO(new Date(i.start));
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(i);
   }
@@ -505,14 +513,18 @@ function mergeInterventions() {
     for (const i of items) removeIds.add(i.id);
   }
 
+  const criteriaLabel = customMode
+    ? "le même numéro de billet, peu importe la date (période personnalisée)"
+    : "le même numéro de billet et la même journée";
+
   if (newRecords.length === 0) {
-    alert("Aucune intervention à fusionner (même numéro de billet et même journée requis).");
+    alert(`Aucune intervention à fusionner (${criteriaLabel} requis).`);
     return;
   }
 
   if (
     !confirm(
-      `Fusionner ${newRecords.length} groupe${newRecords.length > 1 ? "s" : ""} d'interventions partageant le même numéro de billet et la même journée ?\n\nChaque intervention d'origine (avec sa durée) restera consultable en sous-ligne, en plus d'être résumée dans la description.`
+      `Fusionner ${newRecords.length} groupe${newRecords.length > 1 ? "s" : ""} d'interventions partageant ${criteriaLabel} ?\n\nChaque intervention d'origine (avec sa durée) restera consultable en sous-ligne, en plus d'être résumée dans la description.`
     )
   ) {
     return;
