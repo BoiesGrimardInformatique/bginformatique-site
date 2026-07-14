@@ -155,6 +155,7 @@ const els = {
   filterFrom: $("filter-from"),
   filterTo: $("filter-to"),
   filterClient: $("filter-client"),
+  btnExportReport: $("btn-export-report"),
   btnExportJson: $("btn-export-json"),
   inputImport: $("input-import"),
   // Feuille de temps
@@ -845,6 +846,177 @@ function exportInterventionsCsv() {
   downloadCsv(`interventions-${dateISO(new Date())}.csv`, lines);
 }
 
+/* ---------- Rapport hebdomadaire (impression / PDF) ---------- */
+
+function isoWeekLabel(monday) {
+  const sunday = new Date(monday.getTime() + 6 * 24 * 3600 * 1000);
+  const fmtLong = (d) => d.toLocaleDateString("fr-CA", { day: "numeric", month: "long" });
+  const range =
+    monday.getMonth() === sunday.getMonth()
+      ? `${monday.getDate()} au ${fmtLong(sunday)}`
+      : `${fmtLong(monday)} au ${fmtLong(sunday)}`;
+  return `Semaine du ${range} ${sunday.getFullYear()}`;
+}
+
+function generateWeeklyReport() {
+  const [from, to] = filterRange();
+  const punches = state.punches.filter((p) => p.start >= from && p.start < to).sort((a, b) => a.start - b.start);
+  const interventions = state.interventions
+    .filter((i) => i.start >= from && i.start < to)
+    .sort((a, b) => a.start - b.start);
+
+  if (punches.length === 0 && interventions.length === 0) {
+    alert("Aucune donnée à inclure dans le rapport pour cette période.");
+    return;
+  }
+
+  const weeks = new Map();
+  const weekKeyOf = (ms) => startOfWeek(new Date(ms)).getTime();
+  for (const p of punches) {
+    const k = weekKeyOf(p.start);
+    if (!weeks.has(k)) weeks.set(k, { monday: new Date(k), punches: [], interventions: [] });
+    weeks.get(k).punches.push(p);
+  }
+  for (const i of interventions) {
+    const k = weekKeyOf(i.start);
+    if (!weeks.has(k)) weeks.set(k, { monday: new Date(k), punches: [], interventions: [] });
+    weeks.get(k).interventions.push(i);
+  }
+  const sortedWeeks = [...weeks.values()].sort((a, b) => a.monday - b.monday);
+
+  let grandPunchMin = 0;
+  let grandInterventionMin = 0;
+  let grandBillableMin = 0;
+
+  const weekSections = sortedWeeks
+    .map((w) => {
+      const punchMin = w.punches.reduce((sum, p) => sum + minutesBetween(p.start, p.end), 0);
+      const interventionMin = w.interventions.reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+      const billableMin = w.interventions
+        .filter((i) => i.billable)
+        .reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+      grandPunchMin += punchMin;
+      grandInterventionMin += interventionMin;
+      grandBillableMin += billableMin;
+
+      const punchRows = w.punches.length
+        ? w.punches
+            .map((p) => {
+              const s = new Date(p.start);
+              const e = new Date(p.end);
+              return `<tr><td>${dateISO(s)}</td><td>${timeHM(s)}</td><td>${timeHM(e)}</td><td>${fmtDuration(minutesBetween(p.start, p.end))}</td></tr>`;
+            })
+            .join("")
+        : `<tr><td colspan="4" class="empty-row">Aucune période travaillée</td></tr>`;
+
+      const interventionRows = w.interventions.length
+        ? w.interventions
+            .map((i) => {
+              const s = new Date(i.start);
+              const e = new Date(i.end);
+              const min = minutesBetween(i.start, i.end);
+              return `<tr>
+                <td>${dateISO(s)}</td>
+                <td>${timeHM(s)}–${timeHM(e)}</td>
+                <td>${fmtDuration(min)}</td>
+                <td>${escapeHtml(i.client) || "—"}</td>
+                <td>${escapeHtml(i.ticket || "") || "—"}</td>
+                <td>${escapeHtml(i.category)}</td>
+                <td>${escapeHtml(i.description) || "—"}</td>
+                <td class="center">${i.billable ? "✓" : "—"}</td>
+              </tr>`;
+            })
+            .join("")
+        : `<tr><td colspan="8" class="empty-row">Aucune intervention</td></tr>`;
+
+      return `
+      <section class="week">
+        <h2>${isoWeekLabel(w.monday)}</h2>
+
+        <h3>Feuille de temps</h3>
+        <table>
+          <thead><tr><th>Date</th><th>Début</th><th>Fin</th><th>Durée</th></tr></thead>
+          <tbody>${punchRows}</tbody>
+          <tfoot><tr><td colspan="3">Total de la semaine</td><td>${fmtDuration(punchMin)} (${fmtDecimalHours(punchMin)} h)</td></tr></tfoot>
+        </table>
+
+        <h3>Interventions</h3>
+        <table>
+          <thead><tr><th>Date</th><th>Heures</th><th>Durée</th><th>Client</th><th>Billet</th><th>Catégorie</th><th>Description</th><th>Fact.</th></tr></thead>
+          <tbody>${interventionRows}</tbody>
+          <tfoot><tr><td colspan="7">Total de la semaine (dont facturable : ${fmtDuration(billableMin)})</td><td>${fmtDuration(interventionMin)}</td></tr></tfoot>
+        </table>
+      </section>`;
+    })
+    .join("");
+
+  const periodFrom = sortedWeeks[0].monday;
+  const periodTo = new Date(to === Infinity ? Date.now() : to - 1);
+  const periodLabel = `${dateISO(periodFrom)} au ${dateISO(periodTo)}`;
+  const generatedAt = new Date().toLocaleString("fr-CA");
+
+  const html = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Rapport d'activité — TimeCalculator</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 32px; color: #1a1a1a; background: #fff; }
+  .report-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid #1a3a5c; padding-bottom: 16px; margin-bottom: 24px; }
+  .report-header h1 { margin: 0; font-size: 1.6rem; color: #1a3a5c; }
+  .report-header .meta { text-align: right; font-size: 0.85rem; color: #555; line-height: 1.5; }
+  .summary-bar { display: flex; gap: 16px; margin-bottom: 32px; }
+  .summary-card { flex: 1; border: 1px solid #d8dee5; border-radius: 8px; padding: 14px 16px; background: #f7f9fb; }
+  .summary-card .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: #667; margin-bottom: 4px; }
+  .summary-card .value { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
+  section.week { margin-bottom: 36px; page-break-inside: avoid; }
+  section.week h2 { font-size: 1.1rem; color: #1a3a5c; border-bottom: 1px solid #d8dee5; padding-bottom: 6px; margin-bottom: 12px; }
+  section.week h3 { font-size: 0.9rem; color: #445; margin: 16px 0 6px; text-transform: uppercase; letter-spacing: 0.03em; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 4px; }
+  th, td { border: 1px solid #e1e6eb; padding: 6px 8px; text-align: left; }
+  th { background: #eef2f6; font-weight: 600; }
+  tfoot td { background: #f7f9fb; font-weight: 700; }
+  td.center { text-align: center; }
+  td.empty-row { text-align: center; color: #888; font-style: italic; }
+  .print-bar { margin-bottom: 24px; }
+  .print-bar button { font: inherit; padding: 8px 16px; border-radius: 6px; border: 1px solid #1a3a5c; background: #1a3a5c; color: #fff; cursor: pointer; }
+  @media print {
+    .print-bar { display: none; }
+    body { padding: 0; }
+    section.week { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="print-bar"><button onclick="window.print()">Imprimer / Enregistrer en PDF</button></div>
+  <div class="report-header">
+    <h1>Rapport d'activité — TimeCalculator</h1>
+    <div class="meta">
+      Période : ${periodLabel}<br>
+      Généré le ${generatedAt}
+    </div>
+  </div>
+  <div class="summary-bar">
+    <div class="summary-card"><div class="label">Temps travaillé</div><div class="value">${fmtDuration(grandPunchMin)}</div></div>
+    <div class="summary-card"><div class="label">Interventions</div><div class="value">${fmtDuration(grandInterventionMin)}</div></div>
+    <div class="summary-card"><div class="label">Dont facturable</div><div class="value">${fmtDuration(grandBillableMin)}</div></div>
+  </div>
+  ${weekSections}
+</body>
+</html>`;
+
+  const reportWindow = window.open("", "_blank");
+  if (!reportWindow) {
+    alert("Le navigateur a bloqué l'ouverture du rapport. Autorisez les fenêtres pop-up pour ce site.");
+    return;
+  }
+  reportWindow.document.open();
+  reportWindow.document.write(html);
+  reportWindow.document.close();
+}
+
 function exportJson() {
   downloadFile(
     `timecalculator-sauvegarde-${dateISO(new Date())}.json`,
@@ -953,6 +1125,7 @@ els.btnMergeInterventions.addEventListener("click", mergeInterventions);
 
 els.btnExportPunches.addEventListener("click", exportPunchesCsv);
 els.btnExportInterventions.addEventListener("click", exportInterventionsCsv);
+els.btnExportReport.addEventListener("click", generateWeeklyReport);
 els.btnExportJson.addEventListener("click", exportJson);
 els.inputImport.addEventListener("change", () => {
   if (els.inputImport.files.length > 0) {
