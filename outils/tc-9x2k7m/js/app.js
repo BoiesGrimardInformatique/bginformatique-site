@@ -933,16 +933,13 @@ function generateWeeklyReport() {
   let grandInterventionMin = 0;
   let grandBillableMin = 0;
 
-  const weekSections = sortedWeeks
+  // Deux parties distinctes plutôt qu'un mélange par semaine : toute la
+  // feuille de temps d'abord, puis les interventions démarrent sur une
+  // nouvelle page (rapport plus propre, chaque partie lisible d'un bloc).
+  const punchWeekSections = sortedWeeks
     .map((w) => {
       const punchMin = w.punches.reduce((sum, p) => sum + minutesBetween(p.start, p.end), 0);
-      const interventionMin = w.interventions.reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
-      const billableMin = w.interventions
-        .filter((i) => i.billable)
-        .reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
       grandPunchMin += punchMin;
-      grandInterventionMin += interventionMin;
-      grandBillableMin += billableMin;
 
       const punchRows = w.punches.length
         ? w.punches
@@ -953,6 +950,27 @@ function generateWeeklyReport() {
             })
             .join("")
         : `<tr><td colspan="4" class="empty-row">Aucune période travaillée</td></tr>`;
+
+      return `
+      <section class="week">
+        <h3>${isoWeekLabel(w.monday)}</h3>
+        <table>
+          <thead><tr><th>Date</th><th>Début</th><th>Fin</th><th>Durée</th></tr></thead>
+          <tbody>${punchRows}</tbody>
+          <tfoot><tr><td colspan="3">Total de la semaine</td><td>${fmtDuration(punchMin)} (${fmtDecimalHours(punchMin)} h)</td></tr></tfoot>
+        </table>
+      </section>`;
+    })
+    .join("");
+
+  const interventionWeekSections = sortedWeeks
+    .map((w) => {
+      const interventionMin = w.interventions.reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+      const billableMin = w.interventions
+        .filter((i) => i.billable)
+        .reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+      grandInterventionMin += interventionMin;
+      grandBillableMin += billableMin;
 
       const interventionRows = w.interventions.length
         ? w.interventions
@@ -976,16 +994,7 @@ function generateWeeklyReport() {
 
       return `
       <section class="week">
-        <h2>${isoWeekLabel(w.monday)}</h2>
-
-        <h3>Feuille de temps</h3>
-        <table>
-          <thead><tr><th>Date</th><th>Début</th><th>Fin</th><th>Durée</th></tr></thead>
-          <tbody>${punchRows}</tbody>
-          <tfoot><tr><td colspan="3">Total de la semaine</td><td>${fmtDuration(punchMin)} (${fmtDecimalHours(punchMin)} h)</td></tr></tfoot>
-        </table>
-
-        <h3>Interventions</h3>
+        <h3>${isoWeekLabel(w.monday)}</h3>
         <table>
           <thead><tr><th>Date</th><th>Heures</th><th>Durée</th><th>Client</th><th>Billet</th><th>Catégorie</th><th>Description</th><th>Fact.</th></tr></thead>
           <tbody>${interventionRows}</tbody>
@@ -1017,10 +1026,11 @@ function generateWeeklyReport() {
   .summary-card { flex: 1; border: 1px solid #d8dee5; border-radius: 8px; padding: 14px 16px; background: #f7f9fb; }
   .summary-card .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: #667; margin-bottom: 4px; }
   .summary-card .value { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
-  section.week { margin-bottom: 36px; page-break-inside: avoid; break-inside: avoid; }
+  .report-part h2 { font-size: 1.2rem; color: #1a3a5c; border-bottom: 2px solid #1a3a5c; padding-bottom: 8px; margin: 0 0 20px; }
+  .report-part.page-break { page-break-before: always; break-before: page; }
+  section.week { margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
   section.week:first-of-type { page-break-before: avoid; break-before: avoid; }
-  section.week h2 { font-size: 1.1rem; color: #1a3a5c; border-bottom: 1px solid #d8dee5; padding-bottom: 6px; margin-bottom: 12px; }
-  section.week h3 { font-size: 0.9rem; color: #445; margin: 16px 0 6px; text-transform: uppercase; letter-spacing: 0.03em; }
+  section.week h3 { font-size: 0.9rem; color: #445; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.03em; }
   table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 4px; }
   th, td { border: 1px solid #e1e6eb; padding: 6px 8px; text-align: left; }
   th { background: #eef2f6; font-weight: 600; }
@@ -1033,6 +1043,7 @@ function generateWeeklyReport() {
     .print-bar { display: none; }
     body { padding: 0; }
     .report-top { page-break-inside: avoid; break-inside: avoid; page-break-after: avoid; break-after: avoid; }
+    .report-part.page-break { page-break-before: always; break-before: page; }
     section.week { page-break-inside: avoid; break-inside: avoid; }
     section.week:first-of-type { page-break-before: avoid; break-before: avoid; }
   }
@@ -1054,7 +1065,14 @@ function generateWeeklyReport() {
       <div class="summary-card"><div class="label">Dont facturable</div><div class="value">${fmtDuration(grandBillableMin)}</div></div>
     </div>
   </div>
-  ${weekSections}
+  <div class="report-part">
+    <h2>Feuille de temps</h2>
+    ${punchWeekSections}
+  </div>
+  <div class="report-part page-break">
+    <h2>Interventions</h2>
+    ${interventionWeekSections}
+  </div>
 </body>
 </html>`;
 
