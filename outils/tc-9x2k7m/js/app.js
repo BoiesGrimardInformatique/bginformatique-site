@@ -314,6 +314,7 @@ function submitPunchForm(event) {
   else state.punches.push(record);
   save();
   els.punchDialog.close();
+  ensureVisible(record.start);
   render();
 }
 
@@ -397,6 +398,7 @@ function submitInterventionForm(event) {
 
   save();
   els.interventionDialog.close();
+  ensureInterventionVisible(record);
   render();
 }
 
@@ -556,6 +558,44 @@ function filterRange() {
     default:
       return [-Infinity, Infinity];
   }
+}
+
+// Bref avis visuel non bloquant (ex. quand le filtre change automatiquement).
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add("visible"));
+  setTimeout(() => {
+    toast.classList.remove("visible");
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
+
+// Si un enregistrement fraîchement ajouté tombe hors du filtre de période
+// actif (ex. plage personnalisée périmée), on bascule sur « Tout » pour
+// qu'il soit immédiatement visible, plutôt que de laisser croire qu'il n'a
+// pas été enregistré.
+function ensureVisible(recordStartMs) {
+  const [from, to] = filterRange();
+  if (recordStartMs >= from && recordStartMs < to) return;
+  els.filterPeriod.value = "all";
+  els.customRange.hidden = true;
+  showToast("Filtre changé pour « Tout » afin d'afficher l'ajout le plus récent.");
+}
+
+// Variante pour les interventions : tient compte aussi du filtre client.
+function ensureInterventionVisible(record) {
+  const [from, to] = filterRange();
+  const periodOk = record.start >= from && record.start < to;
+  const clientFilter = els.filterClient.value;
+  const clientOk = !clientFilter || clientFilter === record.client;
+  if (periodOk && clientOk) return;
+  els.filterPeriod.value = "all";
+  els.customRange.hidden = true;
+  els.filterClient.value = "";
+  showToast("Filtre changé pour « Tout » afin d'afficher l'ajout le plus récent.");
 }
 
 function filteredPunches() {
