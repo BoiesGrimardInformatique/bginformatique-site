@@ -59,7 +59,7 @@ function load() {
   } catch (e) {
     console.error("Données locales illisibles, réinitialisation.", e);
   }
-  return { activePunch: null, punches: [], interventions: [] };
+  return { activePunch: null, punches: [], interventions: [], updatedAt: 0 };
 }
 
 function normalizeState(data) {
@@ -67,13 +67,18 @@ function normalizeState(data) {
     activePunch: data.activePunch || null,
     punches: Array.isArray(data.punches) ? data.punches : [],
     interventions: Array.isArray(data.interventions) ? data.interventions : [],
+    updatedAt: typeof data.updatedAt === "number" ? data.updatedAt : 0,
   };
 }
 
 let userDocRef = null;
 let applyingRemote = false;
 
+// Horodatage de la dernière modification locale : sert à ignorer les échos
+// Firestore périmés qui arriveraient après un ajout local plus récent (ce qui
+// effaçait silencieusement l'ajout avant ce correctif — voir onSnapshot plus bas).
 function save() {
+  state.updatedAt = Date.now();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   if (userDocRef && !applyingRemote) {
     setDoc(userDocRef, state).catch((e) => console.error("Synchronisation Firestore échouée.", e));
@@ -1225,8 +1230,14 @@ onAuthStateChanged(auth, (user) => {
 
   unsubscribeSnapshot = onSnapshot(userDocRef, (snap) => {
     if (snap.exists()) {
+      const incoming = normalizeState(snap.data());
+      // Ignore les échos périmés (ex. confirmation tardive d'une écriture
+      // antérieure) qui arriveraient après un ajout local plus récent : sans
+      // cette garde, un ajout tout juste effectué pouvait être silencieusement
+      // écrasé par une version plus vieille reçue en retard.
+      if (incoming.updatedAt < state.updatedAt) return;
       applyingRemote = true;
-      state = normalizeState(snap.data());
+      state = incoming;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       render();
       applyingRemote = false;
