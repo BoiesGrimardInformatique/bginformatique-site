@@ -517,3 +517,9 @@ dialog textarea {
 tr.to-verify-row td {
   background: #fff4e5;
 }
+
+.verify-note {
+  font-size: 0.82rem;
+  color: #9a5b00;
+  margin-top: 2px;
+}

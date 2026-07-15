@@ -202,6 +202,8 @@ const els = {
   fDescription: $("f-description"),
   fBillable: $("f-billable"),
   fToVerify: $("f-to-verify"),
+  fVerifyNoteWrap: $("f-verify-note-wrap"),
+  fVerifyNote: $("f-verify-note"),
   fError: $("f-error"),
   btnInterventionDialogCancel: $("btn-intervention-dialog-cancel"),
 };
@@ -363,6 +365,8 @@ function openInterventionDialog(opts) {
   els.fDescription.value = opts.description || "";
   els.fBillable.checked = opts.billable !== false;
   els.fToVerify.checked = !!opts.toVerify;
+  els.fVerifyNote.value = opts.verifyNote || "";
+  els.fVerifyNoteWrap.hidden = !els.fToVerify.checked;
   els.fError.hidden = true;
   refreshClientDatalist();
   updateInterventionFormDuration();
@@ -399,6 +403,7 @@ function submitInterventionForm(event) {
     description,
     billable: els.fBillable.checked,
     toVerify: els.fToVerify.checked,
+    verifyNote: els.fToVerify.checked ? els.fVerifyNote.value.trim() : "",
   };
 
   const idx = state.interventions.findIndex((i) => i.id === record.id);
@@ -428,6 +433,7 @@ function editIntervention(id) {
     description: i.description,
     billable: i.billable,
     toVerify: i.toVerify,
+    verifyNote: i.verifyNote,
   });
 }
 
@@ -572,6 +578,12 @@ function toggleInterventionVerify(id) {
   const i = state.interventions.find((x) => x.id === id);
   if (!i) return;
   i.toVerify = !i.toVerify;
+  if (i.toVerify) {
+    const note = prompt("Note de vérification (optionnelle) :", i.verifyNote || "");
+    i.verifyNote = note === null ? i.verifyNote || "" : note.trim();
+  } else {
+    i.verifyNote = "";
+  }
   save();
   renderInterventionTable();
 }
@@ -739,9 +751,11 @@ function renderInterventionTable() {
       <td>${escapeHtml(i.client) || "—"}</td>
       <td>${escapeHtml(i.ticket || "") || "—"}</td>
       <td>${escapeHtml(i.category)}</td>
-      <td class="desc">${escapeHtml(i.description) || "—"}</td>
+      <td class="desc">${escapeHtml(i.description) || "—"}${
+        i.toVerify && i.verifyNote ? `<div class="verify-note">⚠️ ${escapeHtml(i.verifyNote)}</div>` : ""
+      }</td>
       <td>${i.billable ? "✓" : "—"}</td>
-      <td class="center"><input type="checkbox" data-toggle-verify="${i.id}" title="À vérifier avant facturation" ${i.toVerify ? "checked" : ""}></td>
+      <td class="center"><input type="checkbox" data-toggle-verify="${i.id}" title="${i.toVerify && i.verifyNote ? "À vérifier — " + escapeHtml(i.verifyNote) : "À vérifier avant facturation"}" ${i.toVerify ? "checked" : ""}></td>
       <td>
         <span class="row-actions">
           <button class="icon-btn" data-edit-intervention="${i.id}" title="Modifier">✏️</button>
@@ -827,7 +841,7 @@ function exportInterventionsCsv() {
     alert("Aucune intervention à exporter pour cette période.");
     return;
   }
-  const lines = ["Date;Début;Fin;Durée (min);Durée (h);Client;Billet;Catégorie;Description;Facturable;À vérifier"];
+  const lines = ["Date;Début;Fin;Durée (min);Durée (h);Client;Billet;Catégorie;Description;Facturable;À vérifier;Note de vérification"];
   for (const i of [...rows].reverse()) {
     const start = new Date(i.start);
     const min = minutesBetween(i.start, i.end);
@@ -844,6 +858,7 @@ function exportInterventionsCsv() {
         csvField(i.description),
         i.billable ? "Oui" : "Non",
         i.toVerify ? "Oui" : "Non",
+        csvField(i.toVerify ? i.verifyNote || "" : ""),
       ].join(";")
     );
   }
@@ -891,6 +906,10 @@ function buildTicketMergedInterventionSection(interventions) {
           return `${dateISO(s)} ${timeHM(s)}–${timeHM(e)}${desc}`;
         })
         .join("<br>");
+      const notes = [...new Set(items.filter((i) => i.toVerify && i.verifyNote).map((i) => i.verifyNote))];
+      const notesHtml = notes.length
+        ? `<div class="verify-note">⚠️ ${notes.map((n) => escapeHtml(n)).join(" · ")}</div>`
+        : "";
 
       return {
         firstStart: items[0].start,
@@ -900,7 +919,7 @@ function buildTicketMergedInterventionSection(interventions) {
           <td>${fmtDuration(min)}</td>
           <td>${escapeHtml(clients.join(" / ")) || "—"}</td>
           <td>${escapeHtml(categories.join(" / "))}</td>
-          <td class="desc">${detail}</td>
+          <td class="desc">${detail}${notesHtml}</td>
           <td class="center">${billable ? "✓" : "—"}</td>
           <td class="center">${toVerify ? "⚠️" : "—"}</td>
         </tr>`,
@@ -1012,7 +1031,9 @@ function generateWeeklyReport(mergeByTicket) {
                     <td>${escapeHtml(i.client) || "—"}</td>
                     <td>${escapeHtml(i.ticket || "") || "—"}</td>
                     <td>${escapeHtml(i.category)}</td>
-                    <td>${escapeHtml(i.description) || "—"}</td>
+                    <td>${escapeHtml(i.description) || "—"}${
+                      i.toVerify && i.verifyNote ? `<div class="verify-note">⚠️ ${escapeHtml(i.verifyNote)}</div>` : ""
+                    }</td>
                     <td class="center">${i.billable ? "✓" : "—"}</td>
                     <td class="center">${i.toVerify ? "⚠️" : "—"}</td>
                   </tr>`;
@@ -1057,6 +1078,7 @@ function generateWeeklyReport(mergeByTicket) {
   .summary-card.warning { background: #fff4e5; border-color: #f0b429; }
   .summary-card.warning .value { color: #9a5b00; }
   tr.to-verify-row td { background: #fff4e5; }
+  .verify-note { font-size: 0.8rem; color: #9a5b00; margin-top: 4px; }
   .report-part h2 { font-size: 1.2rem; color: #1a3a5c; border-bottom: 2px solid #1a3a5c; padding-bottom: 8px; margin: 0 0 20px; }
   .report-part.page-break { page-break-before: always; break-before: page; }
   section.week { margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
@@ -1226,6 +1248,11 @@ els.interventionTbody.addEventListener("click", (event) => {
 els.interventionTbody.addEventListener("change", (event) => {
   const checkbox = event.target.closest("[data-toggle-verify]");
   if (checkbox) toggleInterventionVerify(checkbox.dataset.toggleVerify);
+});
+
+els.fToVerify.addEventListener("change", () => {
+  els.fVerifyNoteWrap.hidden = !els.fToVerify.checked;
+  if (els.fToVerify.checked) els.fVerifyNote.focus();
 });
 
 els.btnMergeInterventions.addEventListener("click", mergeInterventions);
