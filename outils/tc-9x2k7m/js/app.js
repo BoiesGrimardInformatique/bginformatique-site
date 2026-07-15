@@ -897,6 +897,7 @@ function renderInterventionTable() {
       trNote.innerHTML = `
         <td></td>
         <td colspan="10">
+          <div class="verify-note-label">⚠️ À vérifier avant facturation</div>
           <input type="text" class="verify-note-input" ${noteTarget} placeholder="Note de vérification (optionnelle)…" value="${escapeHtml(i.verifyNote || "")}">
         </td>`;
       els.interventionTbody.appendChild(trNote);
@@ -1215,8 +1216,8 @@ function generateWeeklyReport(mergeByTicket) {
   .summary-card .value { font-size: 1.3rem; font-weight: 700; color: #1a3a5c; }
   .summary-card.warning { background: #fff4e5; border-color: #f0b429; }
   .summary-card.warning .value { color: #9a5b00; }
-  tr.to-verify-row td { background: #fff4e5; }
-  .verify-note { font-size: 0.8rem; color: #9a5b00; margin-top: 4px; }
+  tr.to-verify-row td { background: #fff4e5; box-shadow: inset 4px 0 0 #d97706; }
+  .verify-note { font-size: 0.85rem; font-weight: 700; color: #7c4a00; background: #fff4e5; border: 1px solid #d97706; border-radius: 6px; padding: 3px 7px; margin-top: 4px; display: inline-block; }
   .report-part h2 { font-size: 1.2rem; color: #1a3a5c; border-bottom: 2px solid #1a3a5c; padding-bottom: 8px; margin: 0 0 20px; }
   .report-part.page-break { page-break-before: always; break-before: page; }
   section.week { margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
