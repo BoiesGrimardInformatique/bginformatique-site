@@ -877,7 +877,6 @@ function renderInterventionTable() {
         const segMin = minutesBetween(seg.start, seg.end);
         const trSeg = document.createElement("tr");
         trSeg.className = "segment-row";
-        if (seg.toVerify) trSeg.classList.add("to-verify-row");
         trSeg.innerHTML = `
           <td></td>
           <td>${timeHM(segStart)}</td>
@@ -886,11 +885,9 @@ function renderInterventionTable() {
           <td>${escapeHtml(seg.client) || "—"}</td>
           <td>—</td>
           <td>${escapeHtml(seg.category)}</td>
-          <td class="desc">${escapeHtml(seg.description) || "—"}${
-            seg.toVerify && seg.verifyNote ? `<div class="verify-note">⚠️ ${escapeHtml(seg.verifyNote)}</div>` : ""
-          }</td>
+          <td class="desc">${escapeHtml(seg.description) || "—"}</td>
           <td>${seg.billable ? "✓" : "—"}</td>
-          <td class="center">${seg.toVerify ? "⚠️" : "—"}</td>
+          <td></td>
           <td></td>`;
         els.interventionTbody.appendChild(trSeg);
       }
