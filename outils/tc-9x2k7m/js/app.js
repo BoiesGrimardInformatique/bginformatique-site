@@ -441,97 +441,13 @@ function deleteIntervention(id) {
   render();
 }
 
-// Fusionne les interventions qui partagent le même numéro de billet et la
-// même journée. Aucune donnée n'est perdue : la durée totale est la somme
-// des durées d'origine (pas l'écart entre le premier début et la dernière
-// fin, pour ne pas gonfler le total en cas de trous entre les interventions),
-// le détail textuel est conservé dans la description fusionnée, et chaque
-// intervention d'origine (avec sa propre durée) reste consultable via
-// `segments`, affichés en sous-lignes dépliables dans le tableau.
-//
-// En mode « Période personnalisée », la fusion ne modifie plus les données :
-// elle ouvre directement le rapport complet de la période (comme le bouton
-// « Rapport hebdomadaire »), mais avec la section Interventions regroupée
-// par numéro de billet plutôt que par semaine. Le bouton « Fusionner
-// billets » bascule donc vers ce mode-là quand le filtre actif est « custom ».
+// Ouvre le rapport complet de la période affichée (peu importe le filtre
+// actif — aujourd'hui, semaine, mois, tout, personnalisée…), avec la
+// section Interventions regroupée par numéro de billet plutôt que par
+// semaine. Aucune donnée enregistrée n'est jamais modifiée : c'est toujours
+// une simple vue de rapport, disponible en tout temps.
 function mergeInterventions() {
-  if (els.filterPeriod.value === "custom") {
-    generateWeeklyReport(true);
-    return;
-  }
-
-  const groups = new Map();
-  for (const i of state.interventions) {
-    const ticket = (i.ticket || "").trim();
-    if (!ticket) continue;
-    const key = ticket + "|" + dateISO(new Date(i.start));
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(i);
-  }
-
-  const removeIds = new Set();
-  const newRecords = [];
-
-  for (const items of groups.values()) {
-    if (items.length < 2) continue;
-    items.sort((a, b) => a.start - b.start);
-
-    const totalMinutes = items.reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
-    const start = items[0].start;
-    const end = start + totalMinutes * 60000;
-
-    const clients = [...new Set(items.map((i) => i.client).filter(Boolean))];
-    const categories = [...new Set(items.map((i) => i.category).filter(Boolean))];
-    const billable = items.some((i) => i.billable);
-
-    const detailLines = items.map((i) => {
-      const s = new Date(i.start);
-      const e = new Date(i.end);
-      const desc = i.description ? ` — ${i.description}` : "";
-      return `${timeHM(s)}–${timeHM(e)} (${i.category})${desc}`;
-    });
-    const description = `[Fusion de ${items.length} interventions]\n` + detailLines.join("\n");
-
-    const segments = items.map((i) => ({
-      start: i.start,
-      end: i.end,
-      client: i.client,
-      category: i.category,
-      description: i.description,
-      billable: i.billable,
-    }));
-
-    newRecords.push({
-      id: genId(),
-      start,
-      end,
-      client: clients.join(" / "),
-      ticket: items[0].ticket.trim(),
-      category: categories.join(" / "),
-      description,
-      billable,
-      segments,
-    });
-
-    for (const i of items) removeIds.add(i.id);
-  }
-
-  if (newRecords.length === 0) {
-    alert("Aucune intervention à fusionner (même numéro de billet et même journée requis).");
-    return;
-  }
-
-  if (
-    !confirm(
-      `Fusionner ${newRecords.length} groupe${newRecords.length > 1 ? "s" : ""} d'interventions partageant le même numéro de billet et la même journée ?\n\nChaque intervention d'origine (avec sa durée) restera consultable en sous-ligne, en plus d'être résumée dans la description.`
-    )
-  ) {
-    return;
-  }
-
-  state.interventions = state.interventions.filter((i) => !removeIds.has(i.id)).concat(newRecords);
-  save();
-  render();
+  generateWeeklyReport(true);
 }
 
 function refreshClientDatalist() {
