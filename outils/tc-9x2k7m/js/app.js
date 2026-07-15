@@ -561,6 +561,17 @@ function filterRange() {
       return [startOfDay(now).getTime(), Infinity];
     case "week":
       return [startOfWeek(now).getTime(), Infinity];
+    case "last-week": {
+      const to = startOfWeek(now);
+      const from = new Date(to);
+      from.setDate(from.getDate() - 7);
+      return [from.getTime(), to.getTime()];
+    }
+    case "2weeks": {
+      const from = new Date(startOfWeek(now));
+      from.setDate(from.getDate() - 7);
+      return [from.getTime(), Infinity];
+    }
     case "month":
       return [startOfMonth(now).getTime(), Infinity];
     case "last-month": {
@@ -788,13 +799,11 @@ function renderInterventionTable() {
   els.interventionEmpty.hidden = rows.length > 0;
 
   let total = 0;
-  let billableTotal = 0;
   for (const i of rows) {
     const start = new Date(i.start);
     const end = new Date(i.end);
     const min = minutesBetween(i.start, i.end);
     total += min;
-    if (i.billable) billableTotal += min;
 
     const hasSegments = Array.isArray(i.segments) && i.segments.length > 1;
     const expanded = hasSegments && isInterventionExpanded(i.id);
@@ -853,8 +862,7 @@ function renderInterventionTable() {
     rows.length === 0
       ? ""
       : `${rows.length} intervention${rows.length > 1 ? "s" : ""} — total : ` +
-        `<strong>${fmtDuration(total)}</strong> (${fmtDecimalHours(total)} h), ` +
-        `dont facturable : <strong>${fmtDuration(billableTotal)}</strong> (${fmtDecimalHours(billableTotal)} h)`;
+        `<strong>${fmtDuration(total)}</strong> (${fmtDecimalHours(total)} h)`;
 }
 
 /* ---------- Export / import ---------- */
