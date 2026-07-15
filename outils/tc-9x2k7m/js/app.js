@@ -597,6 +597,37 @@ function updateInterventionVerifyNote(id, value) {
   save();
 }
 
+// Marquer « à vérifier » depuis la ligne fusionnée (vue temporaire) applique
+// le même état à chaque intervention d'origine réelle : la note reste donc
+// visible sur chacune d'elles dans le rapport (qui les affiche séparément,
+// par semaine), même si la fusion elle-même n'est pas enregistrée.
+function toggleGroupVerify(idsCsv) {
+  const ids = idsCsv.split(",");
+  const items = ids.map((id) => state.interventions.find((x) => x.id === id)).filter(Boolean);
+  if (items.length === 0) return;
+  const newValue = !items.every((i) => i.toVerify);
+  for (const i of items) {
+    i.toVerify = newValue;
+    if (!newValue) i.verifyNote = "";
+  }
+  save();
+  renderInterventionTable();
+  if (newValue) {
+    const input = els.interventionTbody.querySelector(`[data-verify-note-input-group="${idsCsv}"]`);
+    if (input) input.focus();
+  }
+}
+
+function updateGroupVerifyNote(idsCsv, value) {
+  const ids = idsCsv.split(",");
+  const note = value.trim();
+  for (const id of ids) {
+    const i = state.interventions.find((x) => x.id === id);
+    if (i) i.verifyNote = note;
+  }
+  save();
+}
+
 function escapeHtml(s) {
   return String(s)
     .replace(/&/g, "&amp;")
@@ -765,6 +796,7 @@ function buildVirtualTicketMerge(rows) {
     merged.push({
       id: `__virtual__${items[0].ticket.trim()}`,
       virtual: true,
+      realIds: items.map((i) => i.id),
       start,
       end,
       client: clients.join(" / "),
@@ -820,6 +852,14 @@ function renderInterventionTable() {
     const hasSegments = Array.isArray(i.segments) && i.segments.length > 1;
     const expanded = hasSegments && isInterventionExpanded(i.id);
     const editable = !i.virtual;
+    // Sur une ligne fusionnée (vue temporaire), la case et la note « à
+    // vérifier » restent actives, mais s'appliquent à chaque intervention
+    // d'origine réelle (voir toggleGroupVerify) — seules modifier/supprimer
+    // sont désactivées puisqu'elles n'ont pas de sens sur un groupe.
+    const verifyTarget = editable ? `data-toggle-verify="${i.id}"` : `data-toggle-verify-group="${(i.realIds || []).join(",")}"`;
+    const noteTarget = editable
+      ? `data-verify-note-input="${i.id}"`
+      : `data-verify-note-input-group="${(i.realIds || []).join(",")}"`;
 
     const tr = document.createElement("tr");
     if (hasSegments) tr.className = "merged-row";
@@ -836,17 +876,9 @@ function renderInterventionTable() {
       <td>${escapeHtml(i.client) || "—"}</td>
       <td>${escapeHtml(i.ticket || "") || "—"}</td>
       <td>${escapeHtml(i.category)}</td>
-      <td class="desc">${escapeHtml(i.description) || "—"}${
-        !editable && i.toVerify && i.verifyNote ? `<div class="verify-note">⚠️ ${escapeHtml(i.verifyNote)}</div>` : ""
-      }</td>
+      <td class="desc">${escapeHtml(i.description) || "—"}</td>
       <td>${i.billable ? "✓" : "—"}</td>
-      <td class="center">${
-        editable
-          ? `<input type="checkbox" data-toggle-verify="${i.id}" title="À vérifier avant facturation" ${i.toVerify ? "checked" : ""}>`
-          : i.toVerify
-          ? "⚠️"
-          : "—"
-      }</td>
+      <td class="center"><input type="checkbox" ${verifyTarget} title="À vérifier avant facturation" ${i.toVerify ? "checked" : ""}></td>
       <td>
         ${
           editable
@@ -859,13 +891,13 @@ function renderInterventionTable() {
       </td>`;
     els.interventionTbody.appendChild(tr);
 
-    if (editable && i.toVerify) {
+    if (i.toVerify) {
       const trNote = document.createElement("tr");
       trNote.className = "verify-note-row";
       trNote.innerHTML = `
         <td></td>
         <td colspan="10">
-          <input type="text" class="verify-note-input" data-verify-note-input="${i.id}" placeholder="Note de vérification (optionnelle)…" value="${escapeHtml(i.verifyNote || "")}">
+          <input type="text" class="verify-note-input" ${noteTarget} placeholder="Note de vérification (optionnelle)…" value="${escapeHtml(i.verifyNote || "")}">
         </td>`;
       els.interventionTbody.appendChild(trNote);
     }
@@ -1356,8 +1388,18 @@ els.interventionTbody.addEventListener("change", (event) => {
     toggleInterventionVerify(checkbox.dataset.toggleVerify);
     return;
   }
+  const groupCheckbox = event.target.closest("[data-toggle-verify-group]");
+  if (groupCheckbox) {
+    toggleGroupVerify(groupCheckbox.dataset.toggleVerifyGroup);
+    return;
+  }
   const noteInput = event.target.closest("[data-verify-note-input]");
-  if (noteInput) updateInterventionVerifyNote(noteInput.dataset.verifyNoteInput, noteInput.value);
+  if (noteInput) {
+    updateInterventionVerifyNote(noteInput.dataset.verifyNoteInput, noteInput.value);
+    return;
+  }
+  const groupNoteInput = event.target.closest("[data-verify-note-input-group]");
+  if (groupNoteInput) updateGroupVerifyNote(groupNoteInput.dataset.verifyNoteInputGroup, groupNoteInput.value);
 });
 
 els.fToVerify.addEventListener("change", () => {
