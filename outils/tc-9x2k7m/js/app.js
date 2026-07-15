@@ -781,6 +781,8 @@ function buildVirtualTicketMerge(rows) {
         category: i.category,
         description: i.description,
         billable: i.billable,
+        toVerify: i.toVerify,
+        verifyNote: i.verifyNote,
       })),
     });
   }
@@ -875,6 +877,7 @@ function renderInterventionTable() {
         const segMin = minutesBetween(seg.start, seg.end);
         const trSeg = document.createElement("tr");
         trSeg.className = "segment-row";
+        if (seg.toVerify) trSeg.classList.add("to-verify-row");
         trSeg.innerHTML = `
           <td></td>
           <td>${timeHM(segStart)}</td>
@@ -883,9 +886,11 @@ function renderInterventionTable() {
           <td>${escapeHtml(seg.client) || "—"}</td>
           <td>—</td>
           <td>${escapeHtml(seg.category)}</td>
-          <td class="desc">${escapeHtml(seg.description) || "—"}</td>
+          <td class="desc">${escapeHtml(seg.description) || "—"}${
+            seg.toVerify && seg.verifyNote ? `<div class="verify-note">⚠️ ${escapeHtml(seg.verifyNote)}</div>` : ""
+          }</td>
           <td>${seg.billable ? "✓" : "—"}</td>
-          <td></td>
+          <td class="center">${seg.toVerify ? "⚠️" : "—"}</td>
           <td></td>`;
         els.interventionTbody.appendChild(trSeg);
       }
