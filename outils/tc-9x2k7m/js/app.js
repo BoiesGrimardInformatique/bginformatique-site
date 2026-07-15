@@ -452,8 +452,11 @@ function deleteIntervention(id) {
 // section Interventions regroupée par numéro de billet plutôt que par
 // semaine. Aucune donnée enregistrée n'est jamais modifiée : c'est toujours
 // une simple vue de rapport, disponible en tout temps.
-function mergeInterventions() {
-  generateWeeklyReport(true);
+function toggleTicketMergedView() {
+  ticketMergedView = !ticketMergedView;
+  els.btnMergeInterventions.classList.toggle("active", ticketMergedView);
+  els.btnMergeInterventions.textContent = ticketMergedView ? "Annuler la fusion" : "Fusionner billets";
+  renderInterventionTable();
 }
 
 function refreshClientDatalist() {
@@ -578,14 +581,20 @@ function toggleInterventionVerify(id) {
   const i = state.interventions.find((x) => x.id === id);
   if (!i) return;
   i.toVerify = !i.toVerify;
-  if (i.toVerify) {
-    const note = prompt("Note de vérification (optionnelle) :", i.verifyNote || "");
-    i.verifyNote = note === null ? i.verifyNote || "" : note.trim();
-  } else {
-    i.verifyNote = "";
-  }
+  if (!i.toVerify) i.verifyNote = "";
   save();
   renderInterventionTable();
+  if (i.toVerify) {
+    const input = els.interventionTbody.querySelector(`[data-verify-note-input="${id}"]`);
+    if (input) input.focus();
+  }
+}
+
+function updateInterventionVerifyNote(id, value) {
+  const i = state.interventions.find((x) => x.id === id);
+  if (!i) return;
+  i.verifyNote = value.trim();
+  save();
 }
 
 function escapeHtml(s) {
@@ -707,6 +716,78 @@ function renderClientFilter() {
   if (clients.includes(current)) els.filterClient.value = current;
 }
 
+// Vue de fusion temporaire (par numéro de billet, peu importe la date) :
+// un simple bascule d'affichage en mémoire, jamais enregistré, jamais
+// envoyé à Firestore. S'applique par-dessus le filtre actif, quel qu'il
+// soit, et se réinitialise au rechargement de la page.
+let ticketMergedView = false;
+
+// Regroupe les interventions déjà filtrées par numéro de billet, peu importe
+// la date, pour l'affichage uniquement. Réutilise le même format `segments`
+// que la fusion permanente pour profiter du même rendu dépliable — mais rien
+// n'est écrit dans `state`. Les groupes d'un seul élément restent tels quels
+// (toujours modifiables normalement).
+function buildVirtualTicketMerge(rows) {
+  const groups = new Map();
+  const singles = [];
+  for (const i of rows) {
+    const ticket = (i.ticket || "").trim();
+    if (!ticket) {
+      singles.push(i);
+      continue;
+    }
+    if (!groups.has(ticket)) groups.set(ticket, []);
+    groups.get(ticket).push(i);
+  }
+
+  const merged = [];
+  for (const items of groups.values()) {
+    if (items.length < 2) {
+      singles.push(items[0]);
+      continue;
+    }
+    items.sort((a, b) => a.start - b.start);
+    const totalMinutes = items.reduce((sum, i) => sum + minutesBetween(i.start, i.end), 0);
+    const start = items[0].start;
+    const end = start + totalMinutes * 60000;
+    const clients = [...new Set(items.map((i) => i.client).filter(Boolean))];
+    const categories = [...new Set(items.map((i) => i.category).filter(Boolean))];
+    const billable = items.some((i) => i.billable);
+    const toVerify = items.some((i) => i.toVerify);
+    const notes = [...new Set(items.filter((i) => i.toVerify && i.verifyNote).map((i) => i.verifyNote))];
+    const detailLines = items.map((i) => {
+      const s = new Date(i.start);
+      const e = new Date(i.end);
+      const desc = i.description ? ` — ${i.description}` : "";
+      return `${dateISO(s)} ${timeHM(s)}–${timeHM(e)} (${i.category})${desc}`;
+    });
+
+    merged.push({
+      id: `__virtual__${items[0].ticket.trim()}`,
+      virtual: true,
+      start,
+      end,
+      client: clients.join(" / "),
+      ticket: items[0].ticket.trim(),
+      category: categories.join(" / "),
+      description: `[Vue fusionnée temporaire — ${items.length} interventions]\n` + detailLines.join("\n"),
+      billable,
+      toVerify,
+      verifyNote: notes.join(" · "),
+      segments: items.map((i) => ({
+        start: i.start,
+        end: i.end,
+        client: i.client,
+        category: i.category,
+        description: i.description,
+        billable: i.billable,
+      })),
+    });
+  }
+
+  return [...singles, ...merged].sort((a, b) => b.start - a.start);
+}
+
 // Sous-lignes dépliables (segments) des interventions fusionnées : par
 // défaut dépliées pour garder la durée de chaque intervention d'origine
 // visible séparément. État par intervention, conservé pour la session.
@@ -722,7 +803,8 @@ function toggleInterventionSegments(id) {
 }
 
 function renderInterventionTable() {
-  const rows = filteredInterventions();
+  const filtered = filteredInterventions();
+  const rows = ticketMergedView ? buildVirtualTicketMerge(filtered) : filtered;
   els.interventionTbody.innerHTML = "";
   els.interventionEmpty.hidden = rows.length > 0;
 
@@ -735,6 +817,7 @@ function renderInterventionTable() {
 
     const hasSegments = Array.isArray(i.segments) && i.segments.length > 1;
     const expanded = hasSegments && isInterventionExpanded(i.id);
+    const editable = !i.virtual;
 
     const tr = document.createElement("tr");
     if (hasSegments) tr.className = "merged-row";
@@ -752,17 +835,38 @@ function renderInterventionTable() {
       <td>${escapeHtml(i.ticket || "") || "—"}</td>
       <td>${escapeHtml(i.category)}</td>
       <td class="desc">${escapeHtml(i.description) || "—"}${
-        i.toVerify && i.verifyNote ? `<div class="verify-note">⚠️ ${escapeHtml(i.verifyNote)}</div>` : ""
+        !editable && i.toVerify && i.verifyNote ? `<div class="verify-note">⚠️ ${escapeHtml(i.verifyNote)}</div>` : ""
       }</td>
       <td>${i.billable ? "✓" : "—"}</td>
-      <td class="center"><input type="checkbox" data-toggle-verify="${i.id}" title="${i.toVerify && i.verifyNote ? "À vérifier — " + escapeHtml(i.verifyNote) : "À vérifier avant facturation"}" ${i.toVerify ? "checked" : ""}></td>
+      <td class="center">${
+        editable
+          ? `<input type="checkbox" data-toggle-verify="${i.id}" title="À vérifier avant facturation" ${i.toVerify ? "checked" : ""}>`
+          : i.toVerify
+          ? "⚠️"
+          : "—"
+      }</td>
       <td>
-        <span class="row-actions">
+        ${
+          editable
+            ? `<span class="row-actions">
           <button class="icon-btn" data-edit-intervention="${i.id}" title="Modifier">✏️</button>
           <button class="icon-btn delete" data-delete-intervention="${i.id}" title="Supprimer">✕</button>
-        </span>
+        </span>`
+            : `<span class="muted" title="Vue fusionnée temporaire — modifiez les interventions d'origine individuellement">—</span>`
+        }
       </td>`;
     els.interventionTbody.appendChild(tr);
+
+    if (editable && i.toVerify) {
+      const trNote = document.createElement("tr");
+      trNote.className = "verify-note-row";
+      trNote.innerHTML = `
+        <td></td>
+        <td colspan="10">
+          <input type="text" class="verify-note-input" data-verify-note-input="${i.id}" placeholder="Note de vérification (optionnelle)…" value="${escapeHtml(i.verifyNote || "")}">
+        </td>`;
+      els.interventionTbody.appendChild(trNote);
+    }
 
     if (expanded) {
       for (const seg of i.segments) {
@@ -1247,7 +1351,12 @@ els.interventionTbody.addEventListener("click", (event) => {
 
 els.interventionTbody.addEventListener("change", (event) => {
   const checkbox = event.target.closest("[data-toggle-verify]");
-  if (checkbox) toggleInterventionVerify(checkbox.dataset.toggleVerify);
+  if (checkbox) {
+    toggleInterventionVerify(checkbox.dataset.toggleVerify);
+    return;
+  }
+  const noteInput = event.target.closest("[data-verify-note-input]");
+  if (noteInput) updateInterventionVerifyNote(noteInput.dataset.verifyNoteInput, noteInput.value);
 });
 
 els.fToVerify.addEventListener("change", () => {
@@ -1255,7 +1364,7 @@ els.fToVerify.addEventListener("change", () => {
   if (els.fToVerify.checked) els.fVerifyNote.focus();
 });
 
-els.btnMergeInterventions.addEventListener("click", mergeInterventions);
+els.btnMergeInterventions.addEventListener("click", toggleTicketMergedView);
 
 els.btnExportPunches.addEventListener("click", exportPunchesCsv);
 els.btnExportInterventions.addEventListener("click", exportInterventionsCsv);

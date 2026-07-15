@@ -518,6 +518,26 @@ tr.to-verify-row td {
   background: #fff4e5;
 }
 
+tr.verify-note-row td {
+  background: #fff4e5;
+  padding: 4px 8px 8px;
+}
+
+.verify-note-input {
+  width: 100%;
+  border: 1px solid #f0b429;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font: inherit;
+  background: #fff;
+}
+
+.btn.active {
+  background: var(--accent, #2563eb);
+  color: #fff;
+  border-color: var(--accent, #2563eb);
+}
+
 .verify-note {
   font-size: 0.82rem;
   color: #9a5b00;
