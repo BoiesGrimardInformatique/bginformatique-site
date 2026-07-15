@@ -1153,7 +1153,7 @@ function generateWeeklyReport(mergeByTicket) {
             <table>
               <thead><tr><th>Date</th><th>Heures</th><th>Durée</th><th>Client</th><th>Billet</th><th>Catégorie</th><th>Description</th><th>Fact.</th><th>Vérif.</th></tr></thead>
               <tbody>${interventionRows}</tbody>
-              <tfoot><tr><td colspan="7">Total de la semaine (dont facturable : ${fmtDuration(billableMin)})</td><td colspan="2">${fmtDuration(interventionMin)}</td></tr></tfoot>
+              <tfoot><tr><td colspan="7">Total de la semaine</td><td colspan="2">${fmtDuration(interventionMin)}</td></tr></tfoot>
             </table>
           </section>`;
         })
@@ -1221,7 +1221,6 @@ function generateWeeklyReport(mergeByTicket) {
     <div class="summary-bar">
       <div class="summary-card"><div class="label">Temps travaillé</div><div class="value">${fmtDuration(grandPunchMin)}</div></div>
       <div class="summary-card"><div class="label">Interventions</div><div class="value">${fmtDuration(grandInterventionMin)}</div></div>
-      <div class="summary-card"><div class="label">Dont facturable</div><div class="value">${fmtDuration(grandBillableMin)}</div></div>
       <div class="summary-card${grandToVerifyCount > 0 ? " warning" : ""}"><div class="label">À vérifier</div><div class="value">${grandToVerifyCount}</div></div>
     </div>
   </div>
