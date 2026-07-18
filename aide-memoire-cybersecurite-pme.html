@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aide-mémoire cybersécurité PME (gratuit) | BG Informatique</title>
+  <meta name="description" content="12 réflexes cybersécurité essentiels pour les PME et OBNL des Laurentides. Aide-mémoire gratuit à imprimer, sans courriel ni inscription. BG Informatique.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bginformatique.ca/aide-memoire-cybersecurite-pme.html">
+
+  <meta property="og:title" content="Aide-mémoire cybersécurité PME — 12 réflexes essentiels">
+  <meta property="og:description" content="Aide-mémoire cybersécurité gratuit à imprimer ou afficher au bureau. 12 réflexes essentiels pour PME et OBNL. Sans inscription.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bginformatique.ca/aide-memoire-cybersecurite-pme.html">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:image" content="https://bginformatique.ca/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://bginformatique.ca/og-image.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://bginformatique.ca/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Outils",
+      "item": "https://bginformatique.ca/outils.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Aide-mémoire cybersécurité",
+      "item": "https://bginformatique.ca/aide-memoire-cybersecurite-pme.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Aide-mémoire cybersécurité pour PME — 12 réflexes essentiels",
+  "description": "Aide-mémoire gratuit et imprimable regroupant 12 réflexes cybersécurité essentiels pour les PME et OBNL : mots de passe, hameçonnage, sauvegardes, mises à jour et conformité Loi 25.",
+  "inLanguage": "fr-CA",
+  "url": "https://bginformatique.ca/aide-memoire-cybersecurite-pme.html",
+  "author": {
+    "@type": "Organization",
+    "name": "BG Informatique",
+    "url": "https://bginformatique.ca/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BG Informatique",
+    "url": "https://bginformatique.ca/",
+    "telephone": "+14502319199",
+    "email": "information@bginformatique.ca",
+    "areaServed": "Laurentides, Québec"
+  }
+}
+</script>
+<style>
+  .print-actions { margin: 1.5rem 0 0; }
+
+  .checklist { margin: 0; padding: 0; list-style: none; }
+  .check-group-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text);
+    margin: 2.2rem 0 .9rem;
+    padding-left: .85rem;
+    border-left: 4px solid var(--brand-blue);
+    line-height: 1.3;
+  }
+  .check-group-title:first-child { margin-top: 0; }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .85rem;
+    padding: .9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--brand-blue);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    background: var(--surface-elevated);
+  }
+  .check-item h3 {
+    font-size: 1rem;
+    margin: 0 0 .15rem;
+    line-height: 1.35;
+  }
+  .check-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  @media print {
+    .site-header,
+    .cta-band,
+    .reassurance-strip,
+    .mobile-call-bar,
+    .print-actions,
+    .no-print,
+    .page-hero .hero-cta-group { display: none !important; }
+    body > * { margin-left: 0 !important; }
+    .checklist { break-inside: avoid; }
+    .check-item { break-inside: avoid; }
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .check-box {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .print-only { display: block !important; }
+  }
+  .print-only { display: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="sidebar-brand">
+    <span class="sidebar-status-dot"></span>
+    <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
+      <picture>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="" height="44" width="153">
+      </picture>
+      <span class="visually-hidden">BG Informatique</span>
+    </a>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="index.html"><span class="nav-num">01</span><span>Accueil</span></a>
+    <a href="services.html"><span class="nav-num">02</span><span>Services &amp; Tarifs</span></a>
+    <a href="guides-depannage.html"><span class="nav-num">03</span><span>Centre d'aide</span></a>
+    <a href="faq.html"><span class="nav-num">04</span><span>FAQ</span></a>
+    <a href="a-propos.html"><span class="nav-num">05</span><span>À propos</span></a>
+    <a href="contact.html"><span class="nav-num">06</span><span>Contact</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="tel:+14502319199" class="header-phone">450 231-9199</a>
+    <a href="diagnostic.html" class="btn-cta btn-cta--primary nav-cta">Diagnostic gratuit →</a>
+  </div>
+  <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">// Ressource gratuite</span>
+    <h1>Aide-mémoire cybersécurité pour PME — 12 réflexes essentiels</h1>
+    <p class="page-hero-lead">Un aide-mémoire clair, <strong>gratuit</strong>, à imprimer ou à afficher au bureau pour outiller votre équipe contre les menaces courantes. Aucune inscription, <strong>aucun courriel à laisser</strong> : consultez-le et imprimez-le librement.</p>
+    <div class="hero-cta-group no-print">
+      <button type="button" class="btn-cta btn-cta--primary" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
+      <a class="btn-cta btn-cta--secondary" href="rendez-vous.html">Parler à un spécialiste</a>
+    </div>
+  </div>
+</section>
+
+<section class="section no-print">
+  <div class="container container-narrow">
+    <div class="privacy-callout">
+      <h3>✅ Aucun courriel demandé</h3>
+      <p>Cette ressource est offerte <strong>librement</strong> : imprimez-la, affichez-la à la salle de pause, partagez-la avec vos collègues. Vous n'avez <strong>aucune adresse courriel ni aucun renseignement à laisser</strong> pour en profiter.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <p class="print-only"><strong>BG Informatique</strong> — Aide-mémoire cybersécurité PME · 450 231-9199 · bginformatique.ca</p>
+
+    <div class="checklist">
+      <h2 class="check-group-title">Comptes &amp; mots de passe</h2>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>1. Activer la double authentification (MFA) partout</h3>
+          <p>Un mot de passe volé ne suffit plus à entrer si un second facteur (application, code) est exigé. Activez-la d'abord sur les courriels et les accès bancaires.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>2. Utiliser un gestionnaire de mots de passe</h3>
+          <p>Il génère et retient un mot de passe unique et long pour chaque service, pour ne plus jamais réutiliser le même d'un site à l'autre.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>3. Séparer les comptes administrateurs des comptes courants</h3>
+          <p>On ne navigue pas et on ne lit pas ses courriels avec un compte admin : cela limite fortement les dégâts si le poste est compromis.</p>
+        </div>
+      </div>
+
+      <h2 class="check-group-title">Courriel &amp; hameçonnage</h2>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>4. Se méfier des messages urgents et des liens</h3>
+          <p>Un ton pressant (« votre compte sera suspendu ») est un signal d'alarme. Ne cliquez pas sous pression : prenez le temps de vérifier.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>5. Vérifier l'adresse réelle de l'expéditeur</h3>
+          <p>Le nom affiché peut être trompeur. Survolez ou affichez l'adresse complète : une faute ou un domaine douteux trahit la fraude.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>6. Confirmer tout changement de coordonnées bancaires par un 2e canal</h3>
+          <p>Un fournisseur « change » son compte de virement ? Confirmez par téléphone à un numéro connu, jamais celui indiqué dans le courriel.</p>
+        </div>
+      </div>
+
+      <h2 class="check-group-title">Sauvegardes</h2>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>7. Appliquer la règle 3-2-1</h3>
+          <p>3 copies de vos données, sur 2 supports différents, dont 1 hors site. C'est votre filet de sécurité contre la panne, le vol et le rançongiciel.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>8. Tester une restauration réelle</h3>
+          <p>Une sauvegarde qui ne se restaure pas ne vaut rien. Testez la récupération de quelques fichiers au moins deux fois par an.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>9. Conserver des sauvegardes hors ligne ou immuables</h3>
+          <p>Une copie déconnectée ou verrouillée en écriture ne peut pas être chiffrée par un rançongiciel : c'est votre dernier recours en cas d'attaque.</p>
+        </div>
+      </div>
+
+      <h2 class="check-group-title">Appareils &amp; mises à jour</h2>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>10. Activer les mises à jour automatiques</h3>
+          <p>La majorité des attaques exploitent des failles déjà corrigées. Laissez le système et les logiciels se mettre à jour sans délai.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>11. Chiffrer les appareils (BitLocker / FileVault)</h3>
+          <p>Un portable perdu ou volé ne livre pas ses données s'il est chiffré. Activez BitLocker (Windows) ou FileVault (Mac) sur chaque appareil.</p>
+        </div>
+      </div>
+
+      <h2 class="check-group-title">Réponse &amp; conformité</h2>
+      <div class="check-item">
+        <span class="check-box" aria-hidden="true"></span>
+        <div>
+          <h3>12. Préparer un plan de réponse et un registre Loi 25</h3>
+          <p>Sachez qui appeler et quoi faire en cas d'incident, et tenez le registre des incidents de confidentialité exigé par la Loi 25 au Québec.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section no-print">
+  <div class="container container-narrow">
+    <div class="about-block">
+      <h2>Besoin d'aide pour cocher toutes les cases ?</h2>
+      <p>Certains réflexes demandent un coup de main pour être bien mis en place — configurer le MFA, valider vos sauvegardes ou monter votre registre Loi 25. Nous accompagnons les PME et OBNL des Laurentides <strong>à distance, sans engagement et sans vente de matériel</strong>. La première discussion est gratuite.</p>
+      <div class="hero-cta-group">
+        <a class="btn-cta btn-cta--primary" href="rendez-vous.html">Réserver une discussion gratuite</a>
+        <a class="btn-cta btn-cta--ghost" href="contact.html">Nous écrire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band no-print">
+  <div class="container">
+    <h2>Un audit de sécurité, sans engagement</h2>
+    <p>Nous passons en revue vos comptes, vos sauvegardes et vos accès, puis nous priorisons les correctifs qui comptent vraiment. À distance, sans vente de matériel, première discussion gratuite.</p>
+    <div class="hero-cta-group">
+      <a class="btn-cta btn-cta--primary" href="rendez-vous.html">Réserver mon audit gratuit</a>
+      <a class="btn-cta btn-cta--secondary" href="tel:+14502319199">📞 450 231-9199</a>
+    </div>
+  </div>
+</section>
+
+<!-- Bandeau de réassurance -->
+<section class="reassurance-strip" aria-label="Nos garanties">
+  <div class="container">
+    <ul class="trust-row center">
+      <li>Sans engagement</li>
+      <li>Sans vente de matériel</li>
+      <li>Réponse 24/7</li>
+      <li>Service à distance · Laurentides</li>
+    </ul>
+  </div>
+</section><footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 class="footer-heading">BG Informatique</h4>
+        <p class="footer-line">📍 Saint-Jérôme, QC</p>
+        <p class="footer-line">🌐 Service à distance disponible</p>
+        <p class="footer-line"><span class="footer-availability">Disponible 24/7</span></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
+        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Services &amp; Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="rendez-vous.html">Prendre rendez-vous</a></li>
+          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
+          <li><a href="outils.html">Outils gratuits</a></li>
+          <li><a href="guides-depannage.html">Centre d'aide</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Mentions</h4>
+        <ul class="footer-links">
+          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav mobile
+  const toggle = document.querySelector('.nav-toggle');
+  const sidebar = document.getElementById('site-header');
+  toggle?.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  document.addEventListener('click', (e) => {
+    if (sidebar?.classList.contains('is-open') && !sidebar.contains(e.target)) {
+      sidebar.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+
+
+<!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
+<script data-goatcounter="https://bginformatique.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+
+<!-- Barre d'appel mobile fixe -->
+<a href="tel:+14502319199" class="mobile-call-bar" aria-label="Appeler BG Informatique au 450 231-9199">Appeler maintenant — 450 231-9199</a>
+<!-- Suivi des conversions : clics téléphone & courriel (GoatCounter, sans donnée personnelle) -->
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({
+      path: a.getAttribute('href').indexOf('tel:') === 0 ? 'conversion/appel-telephone' : 'conversion/courriel',
+      title: 'Conversion',
+      event: true
+    });
+  });
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a452e7a2aaf551d42e2cec2/1jsf3r3ca';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Calculateur d'économies d'automatisation | BG Informatique</title>
+  <meta name="description" content="Chiffrez en direct le temps et l'argent que votre PME pourrait économiser en automatisant ses tâches répétitives. Outil gratuit, BG Informatique, Saint-Jérôme.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bginformatique.ca/calculateur-automatisation.html">
+
+  <meta property="og:title" content="Combien pourriez-vous économiser en automatisant ?">
+  <meta property="og:description" content="Calculez en quelques secondes les heures et les dollars que l'automatisation pourrait libérer dans votre PME. Outil gratuit et instantané.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bginformatique.ca/calculateur-automatisation.html">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:image" content="https://bginformatique.ca/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://bginformatique.ca/og-image.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://bginformatique.ca/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Outils",
+      "item": "https://bginformatique.ca/outils.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Calculateur d'automatisation",
+      "item": "https://bginformatique.ca/calculateur-automatisation.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculateur d'économies d'automatisation",
+  "description": "Outil gratuit qui estime en direct le temps et l'argent qu'une PME peut économiser en automatisant ses tâches répétitives.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://bginformatique.ca/calculateur-automatisation.html",
+  "provider": {
+    "@type": "Organization",
+    "name": "BG Informatique",
+    "url": "https://bginformatique.ca/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CAD"
+  }
+}
+</script>
+<style>
+  .calc-card { max-width: 680px; margin: 0 auto; }
+  .calc-range-row { display: flex; align-items: center; gap: 14px; }
+  .calc-range-row input[type="range"] { flex: 1; padding: 0; accent-color: var(--brand-blue); }
+  .calc-range-val {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--brand-blue);
+    min-width: 3.5rem;
+    text-align: right;
+  }
+  .calc-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .calc-metric {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+  }
+  .calc-metric .num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.15;
+    color: var(--brand-blue);
+  }
+  .calc-metric .lbl {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+  @media (max-width: 560px) {
+    .calc-results { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="sidebar-brand">
+    <span class="sidebar-status-dot"></span>
+    <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
+      <picture>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="" height="44" width="153">
+      </picture>
+      <span class="visually-hidden">BG Informatique</span>
+    </a>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="index.html"><span class="nav-num">01</span><span>Accueil</span></a>
+    <a href="services.html"><span class="nav-num">02</span><span>Services &amp; Tarifs</span></a>
+    <a href="guides-depannage.html"><span class="nav-num">03</span><span>Centre d'aide</span></a>
+    <a href="faq.html"><span class="nav-num">04</span><span>FAQ</span></a>
+    <a href="a-propos.html"><span class="nav-num">05</span><span>À propos</span></a>
+    <a href="contact.html"><span class="nav-num">06</span><span>Contact</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="tel:+14502319199" class="header-phone">450 231-9199</a>
+    <a href="diagnostic.html" class="btn-cta btn-cta--primary nav-cta">Diagnostic gratuit →</a>
+  </div>
+  <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">// Outil gratuit</span>
+    <h1>Combien pourriez-vous économiser en automatisant ?</h1>
+    <p class="page-hero-lead">Chaque semaine, vos équipes passent des heures sur des tâches répétitives : ressaisies, rapports, relances, exports… Ces gestes se prêtent souvent à l'<strong>automatisation</strong> par scripts et intégrations. Ajustez les quatre champs ci-dessous pour estimer, en direct, le temps et l'argent que vous pourriez libérer chaque année.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="contact-form-card calc-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="emp">Nombre d'employés concernés</label>
+          <input id="emp" type="number" inputmode="numeric" min="0" step="1" value="3">
+        </div>
+        <div class="form-group">
+          <label for="hrs">Heures/semaine par employé sur des tâches répétitives</label>
+          <input id="hrs" type="number" inputmode="decimal" min="0" step="0.5" value="5">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="rate">Taux horaire moyen chargé ($)</label>
+          <input id="rate" type="number" inputmode="decimal" min="0" step="1" value="35">
+        </div>
+        <div class="form-group">
+          <label for="auto">Part réellement automatisable (%)</label>
+          <div class="calc-range-row">
+            <input id="auto" type="range" min="0" max="100" step="5" value="60" aria-describedby="autoVal">
+            <span class="calc-range-val" id="autoVal">60 %</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-results" id="results" role="status" aria-live="polite">
+        <div class="calc-metric">
+          <span class="num" id="resHeuresSem">—</span>
+          <span class="lbl">heures économisées / semaine</span>
+        </div>
+        <div class="calc-metric">
+          <span class="num" id="resHeuresAn">—</span>
+          <span class="lbl">heures économisées / an</span>
+        </div>
+        <div class="calc-metric">
+          <span class="num" id="resDollars">—</span>
+          <span class="lbl">économies estimées / an</span>
+        </div>
+        <div class="calc-metric">
+          <span class="num" id="resJours">—</span>
+          <span class="lbl">jours-personne libérés / an</span>
+        </div>
+      </div>
+
+      <p class="form-note" style="margin-top:18px;">Hypothèses : base de <strong>48 semaines travaillées</strong> par an et journées de 7 heures. Cette estimation est <strong>indicative</strong> : un véritable audit de vos processus affine le potentiel réel, en tenant compte de la complexité et des outils déjà en place.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="about-block">
+      <h2>Quelles tâches automatiser ?</h2>
+      <p>La plupart des PME et OBNL gagnent d'abord sur des gestes simples, répétés chaque jour ou chaque semaine. Voici les candidates les plus fréquentes :</p>
+      <ul class="benefit-list">
+        <li><strong>Saisies répétitives</strong> : recopier des données d'un fichier ou d'un courriel vers un logiciel.</li>
+        <li><strong>Rapports récurrents</strong> : génération et envoi automatiques de tableaux de bord et de bilans.</li>
+        <li><strong>Relances</strong> : rappels de paiement, suivis clients ou de dossiers envoyés au bon moment.</li>
+        <li><strong>Synchronisation de fichiers</strong> : garder plusieurs dossiers, dépôts ou plateformes à jour sans intervention.</li>
+        <li><strong>Facturation</strong> : émission, envoi et classement automatiques des factures.</li>
+        <li><strong>Exports</strong> : extractions régulières de données entre vos outils et vos systèmes.</li>
+      </ul>
+      <p>Vous reconnaissez plusieurs de ces tâches dans votre quotidien ? Découvrez notre approche de l'<a href="automatisation-processus-affaires-saint-jerome.html">automatisation des processus d'affaires</a> pour les PME et OBNL des Laurentides.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Obtenez une estimation précise</h2>
+    <p>Un chiffre au chapeau, c'est bien pour commencer. Un audit de vos processus, c'est mieux pour décider. Discutons de vos tâches répétitives : à distance, sans engagement, première discussion gratuite.</p>
+    <div class="hero-cta-group">
+      <a class="btn-cta btn-cta--primary" href="rendez-vous.html">Réserver une discussion gratuite</a>
+      <a class="btn-cta btn-cta--secondary" href="tel:+14502319199">📞 450 231-9199</a>
+    </div>
+  </div>
+</section>
+
+<!-- Bandeau de réassurance -->
+<section class="reassurance-strip" aria-label="Nos garanties">
+  <div class="container">
+    <ul class="trust-row center">
+      <li>Sans engagement</li>
+      <li>Sans vente de matériel</li>
+      <li>Réponse 24/7</li>
+      <li>Service à distance · Laurentides</li>
+    </ul>
+  </div>
+</section><footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 class="footer-heading">BG Informatique</h4>
+        <p class="footer-line">📍 Saint-Jérôme, QC</p>
+        <p class="footer-line">🌐 Service à distance disponible</p>
+        <p class="footer-line"><span class="footer-availability">Disponible 24/7</span></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
+        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Services &amp; Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="rendez-vous.html">Prendre rendez-vous</a></li>
+          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
+          <li><a href="outils.html">Outils gratuits</a></li>
+          <li><a href="guides-depannage.html">Centre d'aide</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Mentions</h4>
+        <ul class="footer-links">
+          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav mobile
+  const toggle = document.querySelector('.nav-toggle');
+  const sidebar = document.getElementById('site-header');
+  toggle?.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  document.addEventListener('click', (e) => {
+    if (sidebar?.classList.contains('is-open') && !sidebar.contains(e.target)) {
+      sidebar.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<script>
+(function () {
+  var emp = document.getElementById('emp');
+  if (!emp) return;
+  var hrs = document.getElementById('hrs');
+  var rate = document.getElementById('rate');
+  var auto = document.getElementById('auto');
+  var autoVal = document.getElementById('autoVal');
+
+  var elHeuresSem = document.getElementById('resHeuresSem');
+  var elHeuresAn = document.getElementById('resHeuresAn');
+  var elDollars = document.getElementById('resDollars');
+  var elJours = document.getElementById('resJours');
+
+  var SEMAINES = 48;
+  var HEURES_JOUR = 7;
+
+  function num(el, defVal) {
+    var v = parseFloat((el.value || '').replace(',', '.'));
+    if (!isFinite(v) || v < 0) v = defVal;
+    return v;
+  }
+
+  function frInt(n) {
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  function calc() {
+    var e = num(emp, 3);
+    var h = num(hrs, 5);
+    var r = num(rate, 35);
+    var a = num(auto, 60);
+    if (a > 100) a = 100;
+
+    autoVal.textContent = Math.round(a) + ' %';
+
+    var heuresSemaine = e * h * (a / 100);
+    var heuresAn = heuresSemaine * SEMAINES;
+    var dollarsAn = heuresAn * r;
+    var joursAn = heuresAn / HEURES_JOUR;
+
+    elHeuresSem.textContent = frInt(heuresSemaine) + ' h';
+    elHeuresAn.textContent = frInt(heuresAn) + ' h';
+    elDollars.textContent = frInt(dollarsAn) + ' $';
+    elJours.textContent = frInt(joursAn);
+  }
+
+  [emp, hrs, rate, auto].forEach(function (el) {
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+
+  calc();
+})();
+</script>
+
+<!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
+<script data-goatcounter="https://bginformatique.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+
+<!-- Barre d'appel mobile fixe -->
+<a href="tel:+14502319199" class="mobile-call-bar" aria-label="Appeler BG Informatique au 450 231-9199">Appeler maintenant — 450 231-9199</a>
+<!-- Suivi des conversions : clics téléphone & courriel (GoatCounter, sans donnée personnelle) -->
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({
+      path: a.getAttribute('href').indexOf('tel:') === 0 ? 'conversion/appel-telephone' : 'conversion/courriel',
+      title: 'Conversion',
+      event: true
+    });
+  });
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a452e7a2aaf551d42e2cec2/1jsf3r3ca';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

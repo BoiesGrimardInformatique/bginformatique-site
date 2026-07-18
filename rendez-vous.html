@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Prendre rendez-vous en ligne | BG Informatique</title>
+  <meta name="description" content="Réservez un appel-conseil gratuit avec BG Informatique — en ligne, en quelques clics. PME et OBNL des Laurentides. Sans engagement, disponible 24/7.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bginformatique.ca/rendez-vous.html">
+
+  <meta property="og:title" content="Prendre rendez-vous en ligne">
+  <meta property="og:description" content="Réservez un appel-conseil gratuit avec BG Informatique, en quelques clics. Sans engagement, à distance.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bginformatique.ca/rendez-vous.html">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:image" content="https://bginformatique.ca/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://bginformatique.ca/og-image.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://bginformatique.ca/" },
+    { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://bginformatique.ca/contact.html" },
+    { "@type": "ListItem", "position": 3, "name": "Prendre rendez-vous", "item": "https://bginformatique.ca/rendez-vous.html" }
+  ]
+}
+</script>
+<style>
+  .booking-shell { margin-top: 8px; }
+  #cal-inline { min-height: 560px; width: 100%; overflow: hidden; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-elevated); }
+  .booking-fallback-note { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 22px; }
+  .booking-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .booking-method {
+    display: flex; flex-direction: column; gap: 8px;
+    background: var(--surface-elevated); border: 1px solid var(--border);
+    border-radius: 4px; padding: 24px 22px; box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  }
+  .booking-method:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: rgba(14,143,196,0.4); }
+  .booking-method .bm-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; font-size: 1.2rem; border-radius: 4px;
+    background: var(--brand-blue-soft); border: 1px solid rgba(14,143,196,0.2);
+  }
+  .booking-method h3 { font-size: 1.08rem; margin: 4px 0 2px; }
+  .booking-method p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 8px; }
+  .booking-method a.bm-action { font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="sidebar-brand">
+    <span class="sidebar-status-dot"></span>
+    <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
+      <picture>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="" height="44" width="153">
+      </picture>
+      <span class="visually-hidden">BG Informatique</span>
+    </a>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="index.html"><span class="nav-num">01</span><span>Accueil</span></a>
+    <a href="services.html"><span class="nav-num">02</span><span>Services &amp; Tarifs</span></a>
+    <a href="guides-depannage.html"><span class="nav-num">03</span><span>Centre d'aide</span></a>
+    <a href="faq.html"><span class="nav-num">04</span><span>FAQ</span></a>
+    <a href="a-propos.html"><span class="nav-num">05</span><span>À propos</span></a>
+    <a href="contact.html"><span class="nav-num">06</span><span>Contact</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="tel:+14502319199" class="header-phone">450 231-9199</a>
+    <a href="diagnostic.html" class="btn-cta btn-cta--primary nav-cta">Diagnostic gratuit →</a>
+  </div>
+  <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">// réservation</span>
+    <h1>Prendre rendez-vous</h1>
+    <p class="page-hero-lead">Réservez un <strong>appel-conseil gratuit</strong> avec BG Informatique. On évalue votre situation, on répond à vos questions et on propose une approche claire — sans engagement, à distance, partout dans les Laurentides.</p>
+    <div class="hero-cta-group" style="margin-top:22px;">
+      <a href="tel:+14502319199" class="btn-cta btn-cta--primary">📞 450 231-9199</a>
+      <a href="mailto:information@bginformatique.ca?subject=Demande%20de%20rendez-vous" class="btn-cta btn-cta--secondary">Nous écrire</a>
+    </div>
+    <ul class="trust-row">
+      <li>Première discussion gratuite</li>
+      <li>Sans engagement</li>
+      <li>À distance · 24/7</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="booking-shell">
+      <!-- Calendrier de réservation en ligne (activé une fois le compte Cal.com branché) -->
+      <div id="cal-inline" style="display:none;" aria-label="Calendrier de réservation en ligne"></div>
+
+      <!-- Options de réservation directe (toujours disponibles) -->
+      <div id="booking-fallback">
+        <h2 style="margin-bottom:10px;">Choisissez le moyen qui vous convient</h2>
+        <p class="booking-fallback-note">Réservez votre appel-conseil gratuit dès maintenant. On confirme rapidement le moment qui vous arrange — souvent la journée même.</p>
+        <div class="booking-methods">
+          <div class="booking-method">
+            <span class="bm-icon" aria-hidden="true">📞</span>
+            <h3>Par téléphone</h3>
+            <p>Le plus rapide. On répond en tout temps, 24/7.</p>
+            <a class="bm-action" href="tel:+14502319199">450 231-9199 →</a>
+          </div>
+          <div class="booking-method">
+            <span class="bm-icon" aria-hidden="true">✉️</span>
+            <h3>Par courriel</h3>
+            <p>Dites-nous vos disponibilités, on vous propose un moment.</p>
+            <a class="bm-action" href="mailto:information@bginformatique.ca?subject=Demande%20de%20rendez-vous&body=Bonjour%2C%0A%0AJ%27aimerais%20r%C3%A9server%20un%20appel-conseil.%0A%0AMes%20disponibilit%C3%A9s%20%3A%20%5Bindiquez%20quelques%20cr%C3%A9neaux%5D%0ASujet%20%3A%20%5Ben%20quelques%20mots%5D%0A%0AMerci%20%21">Écrire un courriel →</a>
+          </div>
+          <div class="booking-method">
+            <span class="bm-icon" aria-hidden="true">📝</span>
+            <h3>Par formulaire</h3>
+            <p>Décrivez votre besoin, on vous recontacte.</p>
+            <a class="bm-action" href="contact.html">Ouvrir le formulaire →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container container-narrow">
+    <h2 style="margin-bottom:18px;">Comment ça se passe</h2>
+    <div class="steps-grid">
+      <article class="step-card">
+        <span class="step-number">01 →</span>
+        <h3>Vous réservez</h3>
+        <p>Par téléphone, courriel ou formulaire — au moment qui vous convient, sans pression.</p>
+      </article>
+      <article class="step-card">
+        <span class="step-number">02 →</span>
+        <h3>On confirme</h3>
+        <p>On valide un créneau rapidement, souvent la journée même, et on vous envoie le lien de l'appel.</p>
+      </article>
+      <article class="step-card">
+        <span class="step-number">03 →</span>
+        <h3>Discussion gratuite</h3>
+        <p>On évalue votre situation et on propose une approche claire et chiffrée. Vous décidez ensuite, librement.</p>
+      </article>
+    </div>
+    <div class="alert alert-info" style="margin-top:26px;">
+      <p><strong>Aucun engagement.</strong> Cet appel sert à comprendre votre besoin et à voir si on peut vous aider. Vous repartez avec un avis clair, que vous nous confiiez le mandat ou non.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <span class="eyebrow">bg › discussion gratuite</span>
+    <h2>Une question avant de réserver ?</h2>
+    <p>Écrivez-nous ou appelez directement. On est disponible en tout temps.</p>
+    <div class="hero-cta-group">
+      <a href="tel:+14502319199" class="btn-cta btn-cta--primary">📞 450 231-9199</a>
+      <a href="mailto:information@bginformatique.ca" class="btn-cta btn-cta--secondary">Nous écrire</a>
+    </div>
+  </div>
+</section>
+
+<!-- Bandeau de réassurance -->
+<section class="reassurance-strip" aria-label="Nos garanties">
+  <div class="container">
+    <ul class="trust-row center">
+      <li>Sans engagement</li>
+      <li>Sans vente de matériel</li>
+      <li>Réponse 24/7</li>
+      <li>Service à distance · Laurentides</li>
+    </ul>
+  </div>
+</section><footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 class="footer-heading">BG Informatique</h4>
+        <p class="footer-line">📍 Saint-Jérôme, QC</p>
+        <p class="footer-line">🌐 Service à distance disponible</p>
+        <p class="footer-line"><span class="footer-availability">Disponible 24/7</span></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
+        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Services &amp; Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="rendez-vous.html">Prendre rendez-vous</a></li>
+          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
+          <li><a href="outils.html">Outils gratuits</a></li>
+          <li><a href="guides-depannage.html">Centre d'aide</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Mentions</h4>
+        <ul class="footer-links">
+          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav mobile
+  const toggle = document.querySelector('.nav-toggle');
+  const sidebar = document.getElementById('site-header');
+  toggle?.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  document.addEventListener('click', (e) => {
+    if (sidebar?.classList.contains('is-open') && !sidebar.contains(e.target)) {
+      sidebar.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<script>
+(function () {
+  // ⚙️ CONFIGURATION — Réservation en ligne (Cal.com, gratuit)
+  // Pour activer le calendrier interactif :
+  //   1. Créez un compte gratuit sur https://cal.com (2 min).
+  //   2. Créez un type d'évènement (ex. « Appel-conseil 30 min »).
+  //   3. Collez ci-dessous votre lien au format "nom-utilisateur/type-evenement".
+  //      Exemple : var CAL_LINK = "bg-informatique/appel-conseil";
+  // Tant que ce champ reste vide, la page affiche les options de contact direct (téléphone, courriel, formulaire).
+  var CAL_LINK = "";
+
+  var mount = document.getElementById('cal-inline');
+  var fallback = document.getElementById('booking-fallback');
+
+  if (CAL_LINK && mount) {
+    if (fallback) fallback.style.display = 'none';
+    mount.style.display = 'block';
+    (function (C, A, L) {
+      var p = function (a, ar) { a.q.push(ar); };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal; var ar = arguments;
+        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+        if (ar[0] === L) {
+          var api = function () { p(api, arguments); };
+          var namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+          else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", { origin: "https://cal.com" });
+    Cal("inline", { elementOrSelector: "#cal-inline", calLink: CAL_LINK, layout: "month_view" });
+    Cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+  }
+})();
+</script>
+
+<!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
+<script data-goatcounter="https://bginformatique.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+
+<!-- Barre d'appel mobile fixe -->
+<a href="tel:+14502319199" class="mobile-call-bar" aria-label="Appeler BG Informatique au 450 231-9199">Appeler maintenant — 450 231-9199</a>
+<!-- Suivi des conversions : clics téléphone & courriel (GoatCounter, sans donnée personnelle) -->
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({
+      path: a.getAttribute('href').indexOf('tel:') === 0 ? 'conversion/appel-telephone' : 'conversion/courriel',
+      title: 'Conversion',
+      event: true
+    });
+  });
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a452e7a2aaf551d42e2cec2/1jsf3r3ca';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

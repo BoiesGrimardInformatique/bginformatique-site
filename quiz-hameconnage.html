@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Quiz hameçonnage : sauriez-vous le repérer ? | BG Informatique</title>
+  <meta name="description" content="Quiz gratuit et interactif : 6 mises en situation pour tester si vous repérez un hameçonnage. Sensibilisation cybersécurité PME, Saint-Jérôme et Laurentides.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bginformatique.ca/quiz-hameconnage.html">
+
+  <meta property="og:title" content="Quiz hameçonnage : sauriez-vous le repérer ?">
+  <meta property="og:description" content="6 courriels et SMS piégés, 2 minutes, sans inscription. Testez votre flair anti-hameçonnage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bginformatique.ca/quiz-hameconnage.html">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:image" content="https://bginformatique.ca/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://bginformatique.ca/og-image.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://www.bginformatique.ca/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Outils",
+      "item": "https://www.bginformatique.ca/outils.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Quiz hameçonnage",
+      "item": "https://www.bginformatique.ca/quiz-hameconnage.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Quiz hameçonnage BG Informatique",
+  "description": "Quiz interactif de sensibilisation à l'hameçonnage : 6 mises en situation réalistes en contexte PME québécoise pour évaluer votre capacité à repérer une fraude par courriel, SMS ou appel.",
+  "url": "https://www.bginformatique.ca/quiz-hameconnage.html",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "fr-CA",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CAD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "BG Informatique",
+    "telephone": "+14502319199",
+    "email": "information@bginformatique.ca",
+    "areaServed": "Laurentides, Québec"
+  }
+}
+</script>
+<style>
+  .scenario {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 1.5rem;
+  }
+  .scenario-meta {
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0 0 1rem;
+    padding: 0 0 1rem;
+    border-bottom: 1px dashed var(--border);
+    word-break: break-word;
+  }
+  .scenario-meta strong { color: var(--text); }
+  .scenario-channel {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--brand-blue);
+    margin: 0 0 .75rem;
+  }
+  .scenario-subject {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 .75rem;
+  }
+  .scenario-body { margin: 0; color: var(--text); line-height: 1.6; }
+  .quiz-explain {
+    border-left: 3px solid var(--brand-blue);
+    background: var(--surface-elevated);
+    padding: 1rem 1.25rem;
+    border-radius: 4px;
+    margin: 1.25rem 0 0;
+  }
+  .quiz-explain p { margin: 0; color: var(--text); line-height: 1.6; }
+  .quiz-explain p + p { margin-top: .6rem; }
+  .badge-ok, .badge-bad {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: .2rem .6rem;
+    border-radius: 4px;
+    margin: 0 0 .6rem;
+  }
+  .badge-ok { color: var(--surface-elevated); background: var(--brand-blue); }
+  .badge-bad { color: var(--surface-elevated); background: var(--danger); }
+  .wizard-choice[disabled] { cursor: default; opacity: .9; }
+  .quiz-tally {
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0 0 1rem;
+  }
+  .quiz-tally strong { color: var(--brand-blue); }
+  .scenario-body .link { color: var(--brand-blue); text-decoration: underline; word-break: break-all; }
+  .quiz-explain .mono { font-family: var(--font-mono); font-size: .9em; color: var(--brand-dark); }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="sidebar-brand">
+    <span class="sidebar-status-dot"></span>
+    <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
+      <picture>
+        <source srcset="logo-nav.webp" type="image/webp">
+        <img src="logo-nav.png" alt="" height="44" width="153">
+      </picture>
+      <span class="visually-hidden">BG Informatique</span>
+    </a>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="index.html"><span class="nav-num">01</span><span>Accueil</span></a>
+    <a href="services.html"><span class="nav-num">02</span><span>Services &amp; Tarifs</span></a>
+    <a href="guides-depannage.html"><span class="nav-num">03</span><span>Centre d'aide</span></a>
+    <a href="faq.html"><span class="nav-num">04</span><span>FAQ</span></a>
+    <a href="a-propos.html"><span class="nav-num">05</span><span>À propos</span></a>
+    <a href="contact.html"><span class="nav-num">06</span><span>Contact</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="tel:+14502319199" class="header-phone">450 231-9199</a>
+    <a href="diagnostic.html" class="btn-cta btn-cta--primary nav-cta">Diagnostic gratuit →</a>
+  </div>
+  <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">// Outil de sensibilisation</span>
+    <h1>Sauriez-vous repérer une tentative d'hameçonnage ?</h1>
+    <p class="page-hero-lead">6 mises en situation, environ 2 minutes, gratuit et sans inscription. Courriels, SMS et appels piégés inspirés de fraudes réelles vécues par des PME du Québec. Testez votre flair, puis découvrez les réflexes qui protègent votre entreprise.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="wizard">
+      <div class="wizard-progress" id="quiz-progress" aria-hidden="true">
+        <span class="wizard-progress-dot"></span>
+        <span class="wizard-progress-dot"></span>
+        <span class="wizard-progress-dot"></span>
+        <span class="wizard-progress-dot"></span>
+        <span class="wizard-progress-dot"></span>
+        <span class="wizard-progress-dot"></span>
+      </div>
+
+      <div class="wizard-step is-active" id="quiz-app">
+        <p class="quiz-tally">Question <strong>1</strong> sur 6</p>
+        <span class="wizard-eyebrow">Mise en situation</span>
+        <div class="scenario">
+          <span class="scenario-channel">Courriel</span>
+          <p class="scenario-meta"><strong>De :</strong> Microsoft 365 &lt;security-alert@ms-office-verify.com&gt;<br><strong>Objet :</strong> Action requise : votre boîte de courriel sera suspendue sous 24 h</p>
+          <p class="scenario-body">Cher utilisateur, notre système a détecté une anomalie sur votre compte. Sans vérification immédiate, votre accès Microsoft 365 sera définitivement suspendu. Cliquez ici pour confirmer votre identité : <span style="color:var(--brand-blue);text-decoration:underline;">http://ms-office-verify.com/login</span></p>
+        </div>
+        <div class="wizard-choices">
+          <button type="button" class="wizard-choice" data-choice="hameconnage">
+            <span class="wizard-choice-icon" aria-hidden="true">&#9888;&#65039;</span>
+            Hameçonnage
+          </button>
+          <button type="button" class="wizard-choice" data-choice="legitime">
+            <span class="wizard-choice-icon" aria-hidden="true">&#9989;</span>
+            Légitime
+          </button>
+        </div>
+        <noscript>
+          <div class="alert alert-info"><p>Ce quiz nécessite JavaScript pour être interactif. Activez-le, ou <a href="cybersecurite-formation-saint-jerome.html">demandez-nous une formation en cybersécurité</a>.</p></div>
+        </noscript>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container-narrow">
+    <div class="about-block">
+      <h2>4 réflexes qui déjouent presque tous les hameçonnages</h2>
+      <p>La technologie filtre beaucoup de menaces, mais c'est votre vigilance qui fait la vraie différence. Retenez ces réflexes simples.</p>
+    </div>
+    <ul class="benefit-list">
+      <li><strong>Vérifiez l'adresse d'expédition complète</strong>, pas seulement le nom affiché. Une lettre en trop, un domaine bizarre (@ms-office-verify.com) trahissent la fraude.</li>
+      <li><strong>Ne cliquez jamais sous pression.</strong> « Urgent », « sous 24 h », « votre compte sera suspendu » : la peur et l'empressement sont les outils du fraudeur.</li>
+      <li><strong>Validez par un second canal.</strong> Un changement de coordonnées bancaires ou une demande de virement ? Appelez le fournisseur ou le dirigeant à un numéro connu, jamais celui du message.</li>
+      <li><strong>Activez l'authentification multifacteur (MFA).</strong> Même si un mot de passe est volé, le MFA bloque l'accès dans la grande majorité des cas.</li>
+    </ul>
+    <div class="privacy-callout">
+      <h3>Former, c'est la meilleure protection</h3>
+      <p>Chez BG Informatique, nous simulons de vraies campagnes d'hameçonnage pour former vos équipes en conditions réelles, sans risque. Vos employés apprennent à reconnaître les pièges avant qu'un vrai fraudeur ne les teste. <a href="cybersecurite-formation-saint-jerome.html">Découvrez notre cybersécurité préventive et nos formations</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Un quiz réussi, c'est bien. Une équipe formée, c'est mieux.</h2>
+    <p>Simulation d'hameçonnage, sensibilisation, MFA, sauvegarde : nous outillons votre PME ou OBNL contre la fraude. 100 % à distance, sans vente de matériel, première discussion gratuite.</p>
+    <div class="hero-cta-group">
+      <a class="btn-cta btn-cta--primary" href="rendez-vous.html">Planifier une simulation d'hameçonnage</a>
+      <a class="btn-cta btn-cta--secondary" href="tel:+14502319199">&#128222; 450 231-9199</a>
+    </div>
+  </div>
+</section>
+
+<!-- Bandeau de réassurance -->
+<section class="reassurance-strip" aria-label="Nos garanties">
+  <div class="container">
+    <ul class="trust-row center">
+      <li>Sans engagement</li>
+      <li>Sans vente de matériel</li>
+      <li>Réponse 24/7</li>
+      <li>Service à distance · Laurentides</li>
+    </ul>
+  </div>
+</section><footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 class="footer-heading">BG Informatique</h4>
+        <p class="footer-line">📍 Saint-Jérôme, QC</p>
+        <p class="footer-line">🌐 Service à distance disponible</p>
+        <p class="footer-line"><span class="footer-availability">Disponible 24/7</span></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-line"><a href="tel:+14502319199">450 231-9199</a></p>
+        <p class="footer-line"><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Services &amp; Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="rendez-vous.html">Prendre rendez-vous</a></li>
+          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
+          <li><a href="outils.html">Outils gratuits</a></li>
+          <li><a href="guides-depannage.html">Centre d'aide</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Mentions</h4>
+        <ul class="footer-links">
+          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav mobile
+  const toggle = document.querySelector('.nav-toggle');
+  const sidebar = document.getElementById('site-header');
+  toggle?.addEventListener('click', () => {
+    const isOpen = sidebar.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  document.addEventListener('click', (e) => {
+    if (sidebar?.classList.contains('is-open') && !sidebar.contains(e.target)) {
+      sidebar.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  var QUESTIONS = [
+    {
+      channel: "Courriel",
+      from: "Microsoft 365 &lt;security-alert@ms-office-verify.com&gt;",
+      subject: "Action requise : votre boîte de courriel sera suspendue sous 24 h",
+      body: "Cher utilisateur, notre système a détecté une anomalie sur votre compte. Sans vérification immédiate, votre accès Microsoft 365 sera définitivement suspendu. Cliquez ici pour confirmer votre identité : <span class=\"link\">http://ms-office-verify.com/login</span>",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était un hameçonnage.</strong> Le domaine <span class=\"mono\">ms-office-verify.com</span> n'appartient pas à Microsoft (ce serait <span class=\"mono\">microsoft.com</span>). Le ton alarmiste et l'échéance de 24 h servent à vous faire agir sans réfléchir.</p><p>Ne cliquez jamais : allez directement sur <span class=\"mono\">office.com</span> ou signalez le message à votre équipe TI.</p>"
+    },
+    {
+      channel: "Courriel interne",
+      from: "Sophie Tremblay &lt;sophie.tremblay@votre-entreprise.ca&gt;",
+      subject: "Dîner d'équipe vendredi &mdash; sondage rapide",
+      body: "Bonjour à tous, on organise un dîner d'équipe vendredi midi. Répondez à ce courriel avec votre choix : pizza ou sushis ? Merci ! Sophie, réception",
+      answer: "legitime",
+      explanation: "<p><strong>C'était légitime.</strong> Le message provient d'une adresse interne cohérente, ne crée aucune urgence, ne demande ni identifiants ni argent, et n'inclut aucun lien ou pièce jointe suspecte.</p><p>Répondre au domaine interne connu est sans risque. Restez tout de même attentif si une demande inhabituelle s'y glisse un jour.</p>"
+    },
+    {
+      channel: "SMS",
+      from: "+1 438 555-0142",
+      subject: "Postes Canada",
+      body: "POSTES CANADA : votre colis est en attente. Des frais de douane de 2,99 $ sont requis pour la livraison. Réglez ici sous 48 h : postescanada-livraison.info/paiement",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était un hameçonnage.</strong> Postes Canada n'envoie pas de liens de paiement par SMS depuis un numéro cellulaire inconnu. Le domaine <span class=\"mono\">postescanada-livraison.info</span> est frauduleux, et le petit montant (2,99 $) sert à récolter vos données de carte.</p><p>Vérifiez toujours un suivi de colis directement sur le site officiel, jamais via le lien reçu.</p>"
+    },
+    {
+      channel: "Courriel &mdash; facture fournisseur",
+      from: "Comptes clients &lt;facturation@fournisseur-abc.com&gt;",
+      subject: "Mise à jour : nouvelles coordonnées bancaires pour vos paiements",
+      body: "Bonjour, veuillez noter que notre banque a changé. Merci de mettre à jour nos coordonnées pour votre prochain versement. Nouvel IBAN : DE89 3704 0044 0532 0130 00. Cette facture de 4 850 $ est due sous 5 jours.",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était un hameçonnage (fraude au changement de compte).</strong> Un changement soudain de coordonnées bancaires, surtout vers un IBAN étranger, est un signal d'alarme classique. Le compte du fournisseur a peut-être été piraté.</p><p>Ne modifiez jamais un compte de paiement sur la seule foi d'un courriel : appelez votre contact habituel à un numéro connu pour confirmer.</p>"
+    },
+    {
+      channel: "Invitation Teams",
+      from: "no-reply@microsoft.com",
+      subject: "Réunion Teams : Suivi de projet &mdash; jeudi 14 h",
+      body: "Marc Gauthier vous a invité à une réunion Microsoft Teams. Sujet : Suivi de projet. Jeudi 10 h30. Le bouton « Rejoindre la réunion » pointe vers teams.microsoft.com. Vous connaissez Marc et attendiez cette invitation.",
+      answer: "legitime",
+      explanation: "<p><strong>C'était légitime.</strong> L'invitation provient du domaine officiel <span class=\"mono\">microsoft.com</span>, le lien pointe vers <span class=\"mono\">teams.microsoft.com</span>, l'expéditeur est un collègue connu et la réunion était attendue.</p><p>Bon réflexe malgré tout : survolez toujours le bouton pour confirmer que l'adresse commence bien par le vrai domaine Microsoft.</p>"
+    },
+    {
+      channel: "Courriel &mdash; direction",
+      from: "Jean Boisvert, PDG &lt;jean.boisvert.pdg@gmail.com&gt;",
+      subject: "Demande confidentielle &mdash; disponible ?",
+      body: "Bonjour, je suis en réunion et je ne peux pas parler. J'ai besoin que vous fassiez un virement urgent de 12 000 $ à un nouveau fournisseur, c'est confidentiel pour l'instant. Envoyez-moi les détails dès que possible. Merci, Jean",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était un hameçonnage (fraude au président).</strong> Le PDG écrit depuis une adresse <span class=\"mono\">gmail.com</span> plutôt que le domaine de l'entreprise. Urgence, confidentialité, virement inhabituel et impossibilité de « parler » sont la signature exacte de cette arnaque.</p><p>Face à toute demande de virement urgente, validez de vive voix avec la personne à un numéro connu avant d'agir.</p>"
+    }
+  ];
+
+  var GOOD = "C'est exact !";
+  var BAD = "Raté&hellip;";
+  var TOTAL = QUESTIONS.length;
+
+  var app = document.getElementById("quiz-app");
+  var progressDots = [].slice.call(document.querySelectorAll("#quiz-progress .wizard-progress-dot"));
+  if (!app) { return; }
+
+  var state = { index: 0, score: 0, answered: false };
+
+  function esc(s) { return s; }
+
+  function renderQuestion() {
+    state.answered = false;
+    var q = QUESTIONS[state.index];
+    var html = "";
+    html += '<p class="quiz-tally">Question <strong>' + (state.index + 1) + '</strong> sur ' + TOTAL + '</p>';
+    html += '<span class="wizard-eyebrow">Mise en situation</span>';
+    html += '<div class="scenario">';
+    html += '<span class="scenario-channel">' + q.channel + '</span>';
+    html += '<p class="scenario-meta"><strong>De :</strong> ' + q.from + '<br><strong>Objet :</strong> ' + q.subject + '</p>';
+    html += '<p class="scenario-body">' + q.body + '</p>';
+    html += '</div>';
+    html += '<div class="wizard-choices" id="quiz-choices">';
+    html += '<button type="button" class="wizard-choice" data-choice="hameconnage"><span class="wizard-choice-icon" aria-hidden="true">&#9888;&#65039;</span>Hameçonnage</button>';
+    html += '<button type="button" class="wizard-choice" data-choice="legitime"><span class="wizard-choice-icon" aria-hidden="true">&#9989;</span>Légitime</button>';
+    html += '</div>';
+    html += '<div id="quiz-feedback"></div>';
+    app.innerHTML = html;
+
+    var choices = app.querySelectorAll(".wizard-choice");
+    [].forEach.call(choices, function (btn) {
+      btn.addEventListener("click", function () { onAnswer(btn); });
+    });
+  }
+
+  function onAnswer(btn) {
+    if (state.answered) { return; }
+    state.answered = true;
+
+    var q = QUESTIONS[state.index];
+    var chosen = btn.getAttribute("data-choice");
+    var correct = (chosen === q.answer);
+    if (correct) { state.score++; }
+
+    var choices = app.querySelectorAll(".wizard-choice");
+    [].forEach.call(choices, function (b) {
+      b.setAttribute("disabled", "disabled");
+      if (b.getAttribute("data-choice") === q.answer) {
+        b.classList.add("selected");
+      }
+    });
+    if (!correct) { btn.classList.remove("selected"); }
+
+    if (progressDots[state.index]) { progressDots[state.index].classList.add("done"); }
+
+    var fb = document.getElementById("quiz-feedback");
+    var badge = correct
+      ? '<span class="badge-ok">' + GOOD + '</span>'
+      : '<span class="badge-bad">' + BAD + '</span>';
+    var last = (state.index === TOTAL - 1);
+    var btnLabel = last ? "Voir mon résultat" : "Question suivante";
+    fb.innerHTML =
+      '<div class="quiz-explain">' + badge + q.explanation + '</div>' +
+      '<div class="wizard-nav"><span></span>' +
+      '<button type="button" class="wizard-btn-next" id="quiz-next">' + btnLabel + '</button></div>';
+
+    var next = document.getElementById("quiz-next");
+    next.addEventListener("click", advance);
+    next.focus();
+  }
+
+  function advance() {
+    if (state.index < TOTAL - 1) {
+      state.index++;
+      renderQuestion();
+    } else {
+      renderResult();
+    }
+  }
+
+  function resultMessage(score) {
+    if (score <= 2) {
+      return {
+        icon: "&#9888;&#65039;",
+        title: "À surveiller",
+        lead: "Plusieurs pièges vous ont échappé. Pas de panique : ça s'apprend, et vos employés sont dans le même cas. Une formation ciblée réduit drastiquement le risque."
+      };
+    }
+    if (score <= 4) {
+      return {
+        icon: "&#128077;",
+        title: "Bien, mais prudence",
+        lead: "Vous avez un bon instinct, mais quelques fraudes bien ficelées passent encore. Les attaques évoluent : la vigilance doit rester constante dans toute l'équipe."
+      };
+    }
+    return {
+      icon: "&#127942;",
+      title: "Expert anti-hameçonnage",
+      lead: "Bravo, vous démasquez les pièges avec brio ! Aidez maintenant vos collègues à en faire autant : un seul clic malheureux suffit à compromettre l'entreprise."
+    };
+  }
+
+  function renderResult() {
+    [].forEach.call(progressDots, function (d) { d.classList.add("done"); });
+    var m = resultMessage(state.score);
+    var html = "";
+    html += '<div class="wizard-result">';
+    html += '<span class="wizard-result-icon" aria-hidden="true">' + m.icon + '</span>';
+    html += '<h2>' + m.title + '</h2>';
+    html += '<p class="result-lead">Score : <strong>' + state.score + ' / ' + TOTAL + '</strong>. ' + m.lead + '</p>';
+    html += '<div class="result-service-card">';
+    html += '<span class="result-service-label">Les 4 réflexes clés</span>';
+    html += '<h3>À retenir pour toute votre équipe</h3>';
+    html += '<p>1. Vérifiez l\'adresse d\'expédition complète, pas le nom affiché.<br>' +
+            '2. Ne cliquez jamais sous pression ou par urgence.<br>' +
+            '3. Validez virements et changements de compte par un second canal.<br>' +
+            '4. Activez l\'authentification multifacteur (MFA) partout.</p>';
+    html += '</div>';
+    html += '<div class="wizard-result-actions">';
+    html += '<a class="btn-cta btn-cta--primary" href="rendez-vous.html">Planifier une simulation</a>';
+    html += '<a class="btn-cta btn-cta--secondary" href="cybersecurite-formation-saint-jerome.html">Nos formations cybersécurité</a>';
+    html += '</div>';
+    html += '<button type="button" class="wizard-restart" id="quiz-restart">&#8635; Recommencer le quiz</button>';
+    html += '</div>';
+    app.innerHTML = html;
+
+    document.getElementById("quiz-restart").addEventListener("click", restart);
+  }
+
+  function restart() {
+    state.index = 0;
+    state.score = 0;
+    state.answered = false;
+    [].forEach.call(progressDots, function (d) { d.classList.remove("done"); });
+    renderQuestion();
+  }
+
+  renderQuestion();
+})();
+</script>
+
+<!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
+<script data-goatcounter="https://bginformatique.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+
+<!-- Barre d'appel mobile fixe -->
+<a href="tel:+14502319199" class="mobile-call-bar" aria-label="Appeler BG Informatique au 450 231-9199">Appeler maintenant — 450 231-9199</a>
+<!-- Suivi des conversions : clics téléphone & courriel (GoatCounter, sans donnée personnelle) -->
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    window.goatcounter.count({
+      path: a.getAttribute('href').indexOf('tel:') === 0 ? 'conversion/appel-telephone' : 'conversion/courriel',
+      title: 'Conversion',
+      event: true
+    });
+  });
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a452e7a2aaf551d42e2cec2/1jsf3r3ca';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>
