@@ -1317,6 +1317,7 @@ body > *:not(.site-header) {
   font-size: 2.3rem;
   color: var(--text);
   line-height: 1;
+  white-space: nowrap; /* garde « 0 $ » et « <24h » sur une seule ligne */
 }
 
 .stat-row .stat-num .u { color: var(--brand-blue); }
@@ -1688,6 +1689,25 @@ body > *:not(.site-header) {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+/* Icônes inline des guides (remplacent les anciens emojis). */
+.guide-cat-link .g-ico {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+.guide-group-title .g-ico {
+  width: 22px;
+  height: 22px;
+  color: var(--brand-blue);
+  flex-shrink: 0;
+}
+.txt-ico {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.16em;
+  flex-shrink: 0;
 }
 .guide-steps,
 .step-list {
