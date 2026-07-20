@@ -9,9 +9,17 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Accueil commercial -->
+  <url>
+    <loc>https://bginformatique.ca/entreprises/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Section résidentielle -->
   <url>
-    <loc>https://bginformatique.ca/residentiel/</loc>
+    <loc>https://bginformatique.ca/residentiel/index.html</loc>
     <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -49,13 +57,13 @@
 
   <!-- Pages de services -->
   <url>
-    <loc>https://bginformatique.ca/services.html</loc>
+    <loc>https://bginformatique.ca/entreprises/services.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/diagnostic.html</loc>
+    <loc>https://bginformatique.ca/entreprises/diagnostic.html</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -75,25 +83,25 @@
 
   <!-- Pages SEO nouvelles catégories -->
   <url>
-    <loc>https://bginformatique.ca/automatisation-processus-affaires-saint-jerome.html</loc>
+    <loc>https://bginformatique.ca/entreprises/automatisation-processus-affaires-saint-jerome.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/consultation-ia-laurentides.html</loc>
+    <loc>https://bginformatique.ca/entreprises/consultation-ia-laurentides.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/infrastructure-cloud-saint-jerome.html</loc>
+    <loc>https://bginformatique.ca/entreprises/infrastructure-cloud-saint-jerome.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/cybersecurite-formation-saint-jerome.html</loc>
+    <loc>https://bginformatique.ca/entreprises/cybersecurite-formation-saint-jerome.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -101,19 +109,19 @@
 
   <!-- Pages SEO longue-traîne -->
   <url>
-    <loc>https://bginformatique.ca/reparation-ordinateur-saint-jerome-bg-informatique.html</loc>
+    <loc>https://bginformatique.ca/entreprises/reparation-ordinateur-saint-jerome-bg-informatique.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/consultant-informatique-laurentides.html</loc>
+    <loc>https://bginformatique.ca/entreprises/consultant-informatique-laurentides.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/depannage-informatique-urgence-saint-jerome.html</loc>
+    <loc>https://bginformatique.ca/entreprises/depannage-informatique-urgence-saint-jerome.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -121,7 +129,7 @@
 
   <!-- Contact -->
   <url>
-    <loc>https://bginformatique.ca/contact.html</loc>
+    <loc>https://bginformatique.ca/entreprises/contact.html</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
@@ -129,7 +137,7 @@
 
   <!-- À propos -->
   <url>
-    <loc>https://bginformatique.ca/a-propos.html</loc>
+    <loc>https://bginformatique.ca/entreprises/a-propos.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -137,7 +145,7 @@
 
   <!-- FAQ -->
   <url>
-    <loc>https://bginformatique.ca/faq.html</loc>
+    <loc>https://bginformatique.ca/entreprises/faq.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -159,7 +167,7 @@
 
   <!-- Prise de rendez-vous -->
   <url>
-    <loc>https://bginformatique.ca/rendez-vous.html</loc>
+    <loc>https://bginformatique.ca/entreprises/rendez-vous.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -167,7 +175,7 @@
 
   <!-- Outils gratuits -->
   <url>
-    <loc>https://bginformatique.ca/outils.html</loc>
+    <loc>https://bginformatique.ca/entreprises/outils.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -179,19 +187,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/quiz-hameconnage.html</loc>
+    <loc>https://bginformatique.ca/entreprises/quiz-hameconnage.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/calculateur-automatisation.html</loc>
+    <loc>https://bginformatique.ca/entreprises/calculateur-automatisation.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/aide-memoire-cybersecurite-pme.html</loc>
+    <loc>https://bginformatique.ca/entreprises/aide-memoire-cybersecurite-pme.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -199,25 +207,25 @@
 
   <!-- Pages locales (villes) -->
   <url>
-    <loc>https://bginformatique.ca/soutien-informatique-blainville.html</loc>
+    <loc>https://bginformatique.ca/entreprises/soutien-informatique-blainville.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/soutien-informatique-mirabel.html</loc>
+    <loc>https://bginformatique.ca/entreprises/soutien-informatique-mirabel.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/soutien-informatique-saint-sauveur.html</loc>
+    <loc>https://bginformatique.ca/entreprises/soutien-informatique-saint-sauveur.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/soutien-informatique-sainte-adele.html</loc>
+    <loc>https://bginformatique.ca/entreprises/soutien-informatique-sainte-adele.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -225,19 +233,19 @@
 
   <!-- Blogue -->
   <url>
-    <loc>https://bginformatique.ca/blogue.html</loc>
+    <loc>https://bginformatique.ca/entreprises/blogue.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/blogue-rancongiciel-7-reflexes-pme.html</loc>
+    <loc>https://bginformatique.ca/entreprises/blogue-rancongiciel-7-reflexes-pme.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bginformatique.ca/blogue-loi-25-pme-quebec.html</loc>
+    <loc>https://bginformatique.ca/entreprises/blogue-loi-25-pme-quebec.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
