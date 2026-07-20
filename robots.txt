@@ -5,7 +5,11 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /tmp/
-Disallow: /outils/tc-9x2k7m/
+
+# Les outils privés ne sont volontairement PAS listés ici : un robots.txt est
+# public, y déclarer un chemin revient à l'annoncer. Ils portent une balise
+# <meta name="robots" content="noindex, nofollow"> — que les moteurs ne peuvent
+# lire que s'ils sont autorisés à crawler la page.
 
 # Sitemap (apex domain pour correspondre au CNAME)
 Sitemap: https://bginformatique.ca/sitemap.xml
