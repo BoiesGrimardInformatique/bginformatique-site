@@ -28,6 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="residentiel.css">
 
   <style>
     /* Bloc code (specifique a cette page) */
@@ -216,34 +217,36 @@
   }
   </script>
 </head>
-<body>
+<body class="res">
 
-<header class="site-header" id="site-header">
-  <div class="sidebar-brand">
-    <span class="sidebar-status-dot"></span>
-    <a href="index.html" class="site-logo" aria-label="BG Informatique — Accueil">
+<header class="res-header" id="res-header">
+  <div class="res-wrap">
+    <a href="residentiel/index.html" class="res-brand" aria-label="BG Informatique — Accueil résidentiel">
       <picture>
         <source srcset="logo-nav.webp" type="image/webp">
-        <img src="logo-nav.png" alt="" height="44" width="153">
+        <img src="logo-nav.png" alt="BG Informatique" width="153" height="22">
       </picture>
-      <span class="visually-hidden">BG Informatique</span>
+      <span class="res-badge">résidentiel</span>
     </a>
+    <nav class="res-nav" aria-label="Navigation résidentielle">
+      <a href="residentiel/index.html">Accueil</a>
+      <a href="residentiel/services.html">Services</a>
+      <a href="residentiel/methode.html">Méthode</a>
+      <a href="residentiel/tarifs.html">Tarifs</a>
+      <a href="residentiel/faq.html">FAQ</a>
+      <a href="guides-depannage.html">Centre d'aide</a>
+    </nav>
+    <div class="res-actions">
+      <a href="index.html" class="res-switch">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>Entreprises
+      </a>
+      <a href="tel:+14502319199" class="res-tel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>450 231-9199
+      </a>
+      <a href="residentiel/rendez-vous.html" class="res-cta">Diagnostic gratuit →</a>
+    </div>
+    <button class="res-burger" aria-controls="res-header" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
   </div>
-  <span class="sidebar-menu-label">Menu</span>
-  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-    <a href="index.html"><span class="nav-num">01</span><span>Accueil</span></a>
-    <a href="services.html"><span class="nav-num">02</span><span>Services &amp; Tarifs</span></a>
-    <a href="guides-depannage.html"><span class="nav-num">03</span><span>Centre d'aide</span></a>
-    <a href="faq.html"><span class="nav-num">04</span><span>FAQ</span></a>
-    <a href="a-propos.html"><span class="nav-num">05</span><span>À propos</span></a>
-    <a href="contact.html"><span class="nav-num">06</span><span>Contact</span></a>
-  </nav>
-  <div class="sidebar-footer">
-    <a href="tel:+14502319199" class="header-phone">450 231-9199</a>
-    <a href="diagnostic.html" class="btn-cta btn-cta--primary nav-cta">Diagnostic gratuit →</a>
-    <span class="availability-badge">En ligne maintenant</span>
-  </div>
-  <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
 </header>
 
 <section class="page-hero">
@@ -385,73 +388,60 @@
 </section>
 
 <!-- Bandeau de réassurance -->
-<section class="reassurance-strip" aria-label="Nos garanties">
-  <div class="container">
-    <ul class="trust-row center">
-      <li>Sans engagement</li>
-      <li>Sans vente de matériel</li>
-      <li>Réponse 24/7</li>
-      <li>Service à distance · Laurentides</li>
-    </ul>
-  </div>
-</section><footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4 class="footer-heading">BG Informatique</h4>
-        <p class="footer-line"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Saint-Jérôme, QC</p>
-        <p class="footer-line"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Service à distance disponible</p>
-        <p class="footer-line"><span class="footer-availability">Disponible 24/7</span></p>
+<footer class="res-footer">
+  <div class="res-wrap res-footer-top">
+    <div class="res-footer-brand">
+      <a href="residentiel/index.html">
+        <picture>
+          <source srcset="logo-nav.webp" type="image/webp">
+          <img src="logo-nav.png" alt="BG Informatique" width="153" height="22">
+        </picture>
+      </a>
+      <p>Soutien informatique résidentiel, à distance et à domicile, à Saint-Jérôme et dans les Laurentides.</p>
+      <a href="index.html" class="res-footer-switch">↔ Vous êtes une entreprise ?</a>
+    </div>
+    <div class="res-footer-cols">
+      <div class="res-footer-col">
+        <span class="h">Navigation</span>
+        <a href="residentiel/services.html">Services</a>
+        <a href="residentiel/methode.html">Méthode</a>
+        <a href="residentiel/tarifs.html">Tarifs</a>
+        <a href="residentiel/faq.html">FAQ</a>
+        <a href="residentiel/rendez-vous.html">Rendez-vous</a>
       </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-line"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+14502319199">450 231-9199</a></p>
-        <p class="footer-line"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:information@bginformatique.ca">information@bginformatique.ca</a></p>
+      <div class="res-footer-col">
+        <span class="h">Aide gratuite</span>
+        <a href="guides-depannage.html">Centre d'aide</a>
+        <a href="outils-diagnostic.html">Outil de diagnostic Windows</a>
+        <a href="outil-mot-de-passe.html">Testeur de mot de passe</a>
       </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <ul class="footer-links">
-          <li><a href="services.html">Services &amp; Tarifs</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="rendez-vous.html">Prendre rendez-vous</a></li>
-          <li><a href="diagnostic.html">Pré-diagnostic</a></li>
-          <li><a href="outils.html">Outils gratuits</a></li>
-          <li><a href="blogue.html">Blogue</a></li>
-          <li><a href="guides-depannage.html">Centre d'aide</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Mentions</h4>
-        <ul class="footer-links">
-          <li><a href="conditions.html">Termes &amp; Conditions</a></li>
-          <li><a href="confidentialite.html">Confidentialité</a></li>
-        </ul>
+      <div class="res-footer-col">
+        <span class="h">Contact</span>
+        <a href="tel:+14502319199">450 231-9199</a>
+        <span>Saint-Jérôme &amp; Laurentides</span>
+        <span>Lun–Ven · réponse le jour même</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 BG Informatique. Tous droits réservés.</p>
+  </div>
+  <div class="res-footer-bottom">
+    <div class="res-wrap">
+      <span>© 2026 BG Informatique · Résidentiel</span>
+      <span>Sans engagement · Sans vente de matériel</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Nav mobile
-  const toggle = document.querySelector('.nav-toggle');
-  const sidebar = document.getElementById('site-header');
-  toggle?.addEventListener('click', () => {
-    const isOpen = sidebar.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-  // Close sidebar when clicking outside
-  document.addEventListener('click', (e) => {
-    if (sidebar?.classList.contains('is-open') && !sidebar.contains(e.target)) {
-      sidebar.classList.remove('is-open');
-      toggle?.setAttribute('aria-expanded', 'false');
-    }
-  });
+  // Menu mobile (en-tête résidentiel)
+  (function () {
+    var h = document.getElementById('res-header');
+    var b = h && h.querySelector('.res-burger');
+    b && b.addEventListener('click', function () {
+      var open = h.classList.toggle('is-open');
+      b.setAttribute('aria-expanded', open);
+      b.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+  })();
 
   // Bouton "Copier" sur les blocs de code
   document.querySelectorAll('.code-copy').forEach(btn => {

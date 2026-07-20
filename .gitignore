@@ -1,2 +1,5 @@
 # Fichiers sources non publiés (logos originaux, archives)
 _source/
+
+# Package de design livré (ne pas publier sur le site)
+*.zip
