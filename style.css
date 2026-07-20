@@ -1933,6 +1933,307 @@ body > *:not(.site-header) {
   body { padding-bottom: 60px; }
 }
 
+/* =========================================================
+   Refonte « Accueil » — composants ajoutés
+   ========================================================= */
+
+/* ── Trame de fond quadrillée ─────────────────────────── */
+body {
+  background-image:
+    linear-gradient(rgba(14, 26, 51, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 26, 51, 0.06) 1px, transparent 1px);
+  background-size: 46px 46px;
+  background-position: center top;
+}
+
+/* ── Icônes SVG inline ────────────────────────────────── */
+.icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card-icon .icon { width: 20px; height: 20px; }
+.card-icon { color: var(--brand-blue); }
+.footer-line .icon { width: 15px; height: 15px; }
+.footer-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Hero sombre ──────────────────────────────────────── */
+.hero--dark {
+  background: var(--sidebar-bg);
+  padding: 74px 0 58px;
+}
+
+.hero--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 55% 72% at 74% -5%, rgba(14, 143, 196, 0.24), transparent 60%);
+  pointer-events: none;
+}
+
+.hero--dark h1 { color: #fff; }
+.hero--dark h1 .accent { color: #3FA9D6; }
+.hero--dark .hero-lead {
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 52ch;
+}
+.hero--dark .hero-eyebrow {
+  color: #3FA9D6;
+  border-color: rgba(14, 143, 196, 0.4);
+  background: rgba(14, 143, 196, 0.12);
+}
+.hero--dark .hero-eyebrow::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: bgPulse 1.8s ease-in-out infinite;
+}
+.hero--dark .trust-row li { color: rgba(255, 255, 255, 0.7); }
+.hero--dark .trust-row li::before { color: #3FA9D6; }
+.hero--dark .term-card { animation: none; }
+
+/* Bande de statistiques du hero */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 46px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.hero-stats div {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 22px 26px;
+}
+
+.hero-stats .n {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.hero-stats .n span { color: #3FA9D6; }
+
+.hero-stats .l {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .hero-stats { grid-template-columns: 1fr; }
+}
+
+/* ── Terminal : indicateur « online » + badge flottant ── */
+.term-wrap { position: relative; }
+
+.term-card-bar .term-title { white-space: nowrap; }
+
+.term-status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #22c55e;
+}
+
+.term-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: bgPulse 1.6s ease-in-out infinite;
+}
+
+.term-float {
+  position: absolute;
+  top: -14px;
+  right: -6px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid rgba(14, 26, 51, 0.12);
+  border-radius: 4px;
+  padding: 8px 13px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--sidebar-bg);
+}
+
+.term-float::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+@media (max-width: 880px) {
+  .term-float { right: auto; left: 12px; }
+}
+
+/* ── En-tête de section : puce + filet + méta ─────────── */
+.section-head { margin-bottom: 36px; }
+
+.section-head-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.section-head-top::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  background: var(--brand-blue);
+  border-radius: 1px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--brand-blue-soft);
+}
+
+.section-head-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.section-head-meta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.4vw, 2.35rem);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.12;
+  max-width: 26ch;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+/* ── Liste d'expertises numérotée ─────────────────────── */
+.expertise-list {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.expertise-row {
+  display: grid;
+  grid-template-columns: 54px 40px 1fr 22px;
+  gap: 22px;
+  align-items: center;
+  padding: 24px 26px 24px 23px;
+  border-left: 3px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.expertise-row + .expertise-row { border-top: 1px solid var(--border); }
+
+.expertise-row:hover,
+.expertise-row:focus-visible {
+  background: var(--brand-blue-soft);
+  border-left-color: var(--brand-blue);
+}
+
+.expertise-row .card-icon { margin-bottom: 0; }
+
+.expertise-row .num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 1;
+}
+
+.expertise-row h3 {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.expertise-row p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.expertise-row p strong {
+  color: var(--brand-blue);
+  font-weight: 600;
+}
+
+.expertise-row .arrow {
+  font-family: var(--font-mono);
+  color: var(--brand-blue);
+  font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+  .expertise-row {
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+    padding: 20px;
+  }
+  .expertise-row .num,
+  .expertise-row .arrow { display: none; }
+}
+
+/* ── Sidebar : libellé de menu + badge ────────────────── */
+.sidebar-menu-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-very-light);
+  padding: 0 12px;
+  margin-bottom: 12px;
+}
+
+.sidebar-footer .availability-badge { font-size: 0.75rem; }
+
 /* ── Reduced motion ───────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
