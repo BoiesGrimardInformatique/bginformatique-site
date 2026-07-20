@@ -48,6 +48,20 @@ if [ -f "$TC_INDEX" ]; then
   rm -f "${TC_INDEX}.bak"
 fi
 
+# 0b) Cache-busting des feuilles de style du site.
+#     style.css et residentiel.css évoluent ensemble : un navigateur qui
+#     garde l'une en cache et recharge l'autre affichait du texte blanc sans
+#     son fond sombre. La version est un condensé du CONTENU des deux
+#     fichiers — elle ne bouge donc que s'ils changent vraiment, ce qui évite
+#     de toucher les 37 pages à chaque déploiement.
+CSS_VERSION=$(cat style.css residentiel.css | md5sum | cut -c1-8)
+while IFS= read -r -d '' f; do
+  sed -i -E \
+    "s#(href=\"[^\"]*(style|residentiel)\.css)(\?v=[0-9a-f]+)?\"#\1?v=${CSS_VERSION}\"#g" \
+    "$f"
+done < <(find . -name '*.html' -not -path './outils/tc-9x2k7m/*' -not -path './.git/*' -print0)
+echo -e "${BLUE}Feuilles de style versionnées : v=${CSS_VERSION}${NC}"
+
 # 1) Committer les modifications locales (s'il y en a)
 if git diff --quiet && git diff --staged --quiet; then
   echo -e "${YELLOW}Aucune modification locale à committer.${NC}"

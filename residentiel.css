@@ -4,6 +4,11 @@
    distinct de la sidebar du site commercial.
    ========================================================= */
 
+/* Les jetons introduits en même temps que cette feuille (--navy,
+   --status-dot, --term-*, --shadow-cta) portent tous une valeur de repli :
+   les deux fichiers sont mis en cache séparément par le navigateur, et un
+   style.css périmé rendait sinon le texte blanc sans son fond sombre. */
+
 /* ── Réinitialisation du gabarit commercial ───────────── */
 /* style.css pousse tout le contenu à droite de la sidebar :
    la section résidentielle n'a pas de sidebar. */
@@ -18,7 +23,7 @@ body.res { background-image: none; }
 
 /* ── En-tête ──────────────────────────────────────────── */
 .res-header {
-  background: var(--navy);
+  background: var(--navy, #0E1A33);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-family: var(--font-body);
   position: sticky;
@@ -101,7 +106,7 @@ body.res { background-image: none; }
   font-size: 0.85rem;
   background: var(--brand-blue);
   color: #fff;
-  box-shadow: var(--shadow-cta);
+  box-shadow: var(--shadow-cta, 0 6px 18px rgba(14, 143, 196, 0.28));
   transition: background var(--transition), transform var(--transition);
   white-space: nowrap;
 }
@@ -175,7 +180,7 @@ body.res { background-image: none; }
 
 /* ── Hero ─────────────────────────────────────────────── */
 .res-hero {
-  background: var(--navy);
+  background: var(--navy, #0E1A33);
   position: relative;
   overflow: hidden;
   padding: 62px 0 0;
@@ -239,7 +244,7 @@ body.res { background-image: none; }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--status-dot);
+  background: var(--status-dot, #22c55e);
   animation: bgPulse 1.8s ease-in-out infinite;
 }
 
@@ -459,11 +464,11 @@ body.res { background-image: none; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--status-dot);
+  background: var(--status-dot, #22c55e);
   flex-shrink: 0;
 }
 
-.res-verdict[data-mode="surplace"]::before { background: var(--term-yellow); }
+.res-verdict[data-mode="surplace"]::before { background: var(--term-yellow, #f0b429); }
 .res-verdict[data-mode="attente"]::before { background: var(--text-light); }
 
 .res-est-note {
@@ -600,12 +605,12 @@ a.res-card:hover {
 
 /* Dernière étape : inversée en navy pour marquer l'aboutissement */
 .res-step--done {
-  background: var(--navy);
+  background: var(--navy, #0E1A33);
   border-color: rgba(255, 255, 255, 0.1);
-  border-left-color: var(--status-dot);
+  border-left-color: var(--status-dot, #22c55e);
 }
 
-.res-step--done .n { color: var(--status-dot); }
+.res-step--done .n { color: var(--status-dot, #22c55e); }
 .res-step--done h3 { color: #fff; }
 .res-step--done p { color: rgba(255, 255, 255, 0.72); }
 
@@ -633,9 +638,9 @@ a.res-card:hover {
   background: var(--text-light);
 }
 
-.dot-state[data-state="oui"]::before { background: var(--term-green); }
+.dot-state[data-state="oui"]::before { background: var(--term-green, #28b463); }
 .dot-state[data-state="souvent"]::before { background: var(--brand-blue); }
-.dot-state[data-state="domicile"]::before { background: var(--term-yellow); }
+.dot-state[data-state="domicile"]::before { background: var(--term-yellow, #f0b429); }
 
 /* ── Tarifs ───────────────────────────────────────────── */
 .res-price {
@@ -730,7 +735,7 @@ a.res-card:hover {
 
 /* ── Bande CTA ────────────────────────────────────────── */
 .res-band {
-  background: var(--navy);
+  background: var(--navy, #0E1A33);
   border-radius: 4px;
   padding: 46px 38px;
   position: relative;
