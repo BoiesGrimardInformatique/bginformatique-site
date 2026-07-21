@@ -545,8 +545,11 @@ tr.verify-note-row td {
   font: inherit;
   font-weight: 600;
   font-size: 0.98rem;
+  line-height: 1.4;
   background: #fff;
   color: #7c4a00;
+  resize: vertical;
+  min-height: 2.6em;
 }
 
 .verify-note-input:focus {
@@ -575,4 +578,5 @@ tr.verify-note-row td {
   padding: 4px 8px;
   margin-top: 4px;
   display: inline-block;
+  white-space: pre-wrap;
 }
