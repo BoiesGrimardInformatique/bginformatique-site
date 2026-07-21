@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>TimeCalculator — Feuille de temps et interventions</title>
-  <link rel="stylesheet" href="css/style.css?v=20260720210939">
+  <link rel="stylesheet" href="css/style.css?v=20260721185109">
 </head>
 <body>
   <header class="app-header">
@@ -219,7 +219,7 @@
         <input type="checkbox" id="f-to-verify"> À vérifier avant facturation
       </label>
       <label id="f-verify-note-wrap" hidden>Note de vérification
-        <input type="text" id="f-verify-note" placeholder="Ex. : confirmer le nombre d'heures avec le client" autocomplete="off">
+        <textarea id="f-verify-note" rows="3" placeholder="Ex. : confirmer le nombre d'heures avec le client&#10;Une ligne par point à vérifier"></textarea>
       </label>
       <p class="form-error" id="f-error" hidden></p>
       <div class="form-actions">
@@ -229,6 +229,6 @@
     </form>
   </dialog>
 
-  <script type="module" src="js/app.js?v=20260720210939"></script>
+  <script type="module" src="js/app.js?v=20260721185109"></script>
 </body>
 </html>
