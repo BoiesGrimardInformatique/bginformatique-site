@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Quiz hameçonnage : sauriez-vous repérer l'arnaque ? | BG Informatique</title>
+  <meta name="description" content="Quiz gratuit et interactif : 6 courriels et SMS piégés pour tester si vous repérez une arnaque à la maison. Banque, colis, remboursement, abonnement — Saint-Jérôme et Laurentides.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bginformatique.ca/residentiel/quiz-hameconnage.html">
+
+  <meta property="og:title" content="Quiz hameçonnage : sauriez-vous repérer l'arnaque ?">
+  <meta property="og:description" content="6 courriels et SMS piégés, 2 minutes, sans inscription. Testez votre flair anti-arnaque à la maison.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bginformatique.ca/residentiel/quiz-hameconnage.html">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:image" content="https://bginformatique.ca/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://bginformatique.ca/og-image.png">
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css?v=e2376141">
+  <link rel="stylesheet" href="/residentiel.css?v=e2376141">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Résidentiel",
+      "item": "https://bginformatique.ca/residentiel/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Quiz hameçonnage",
+      "item": "https://bginformatique.ca/residentiel/quiz-hameconnage.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Quiz hameçonnage résidentiel BG Informatique",
+  "description": "Quiz interactif de sensibilisation à l'hameçonnage pour les particuliers : 6 mises en situation réalistes (banque, colis, remboursement, abonnement) pour évaluer votre capacité à repérer une fraude par courriel ou SMS à la maison.",
+  "url": "https://bginformatique.ca/residentiel/quiz-hameconnage.html",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "fr-CA",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CAD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "BG Informatique",
+    "telephone": "+14502319199",
+    "email": "information@bginformatique.ca",
+    "areaServed": "Laurentides, Québec"
+  }
+}
+</script>
+<style>
+  .scenario {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 1.5rem;
+  }
+  .scenario-meta {
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0 0 1rem;
+    padding: 0 0 1rem;
+    border-bottom: 1px dashed var(--border);
+    word-break: break-word;
+  }
+  .scenario-meta strong { color: var(--text); }
+  .scenario-channel {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--brand-blue);
+    margin: 0 0 .75rem;
+  }
+  .scenario-subject {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 .75rem;
+  }
+  .scenario-body { margin: 0; color: var(--text); line-height: 1.6; }
+  .quiz-explain {
+    border-left: 3px solid var(--brand-blue);
+    background: var(--surface-elevated);
+    padding: 1rem 1.25rem;
+    border-radius: 4px;
+    margin: 1.25rem 0 0;
+  }
+  .quiz-explain p { margin: 0; color: var(--text); line-height: 1.6; }
+  .quiz-explain p + p { margin-top: .6rem; }
+  .badge-ok, .badge-bad {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: .2rem .6rem;
+    border-radius: 4px;
+    margin: 0 0 .6rem;
+  }
+  .badge-ok { color: var(--surface-elevated); background: var(--brand-blue); }
+  .badge-bad { color: var(--surface-elevated); background: var(--danger); }
+  .wizard-choice[disabled] { cursor: default; opacity: .9; }
+  .quiz-tally {
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0 0 1rem;
+  }
+  .quiz-tally strong { color: var(--brand-blue); }
+  .scenario-body .link { color: var(--brand-blue); text-decoration: underline; word-break: break-all; }
+  .quiz-explain .mono { font-family: var(--font-mono); font-size: .9em; color: var(--brand-dark); }
+  .quiz-shell { max-width: 720px; margin: 0 auto; }
+</style>
+</head>
+<body class="res">
+
+<!-- ═══ En-tête résidentiel ═══ -->
+<header class="res-header" id="res-header">
+  <div class="res-wrap">
+    <a href="/residentiel/index.html" class="res-brand" aria-label="BG Informatique — Accueil résidentiel">
+      <picture>
+        <source srcset="/logo-nav.webp" type="image/webp">
+        <img src="/logo-nav.png" alt="BG Informatique" width="153" height="22">
+      </picture>
+      <span class="res-badge">résidentiel</span>
+    </a>
+    <nav class="res-nav" aria-label="Navigation résidentielle">
+      <a href="/residentiel/index.html">Accueil</a>
+      <a href="/residentiel/services.html">Services</a>
+      <a href="/residentiel/methode.html">Méthode</a>
+      <a href="/residentiel/tarifs.html">Tarifs</a>
+      <a href="/residentiel/faq.html">FAQ</a>
+    </nav>
+    <div class="res-actions">
+      <a href="/" class="res-switch">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>Entreprises
+      </a>
+      <a href="tel:+14502319199" class="res-tel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>450 231-9199
+      </a>
+      <a href="/residentiel/rendez-vous.html" class="res-cta">Diagnostic gratuit →</a>
+    </div>
+    <button class="res-burger" aria-controls="res-header" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
+
+<!-- ═══ Hero de page ═══ -->
+<section class="res-pagehero" aria-labelledby="quiz-title">
+  <div class="res-wrap">
+    <span class="res-eyebrow">// quiz gratuit</span>
+    <h1 id="quiz-title">Sauriez-vous repérer l'arnaque ?</h1>
+    <p>6 mises en situation, environ 2 minutes, gratuit et sans inscription. Des courriels et SMS piégés inspirés de vraies fraudes qui ciblent les familles du Québec. Testez votre flair, puis repartez avec les bons réflexes.</p>
+  </div>
+</section>
+
+<!-- ═══ Quiz interactif ═══ -->
+<section class="res-section res-section--surface" aria-label="Quiz interactif">
+  <div class="res-wrap">
+    <div class="quiz-shell">
+      <div class="wizard">
+        <div class="wizard-progress" id="quiz-progress" aria-hidden="true">
+          <span class="wizard-progress-dot"></span>
+          <span class="wizard-progress-dot"></span>
+          <span class="wizard-progress-dot"></span>
+          <span class="wizard-progress-dot"></span>
+          <span class="wizard-progress-dot"></span>
+          <span class="wizard-progress-dot"></span>
+        </div>
+
+        <div class="wizard-step is-active" id="quiz-app">
+          <p class="quiz-tally">Question <strong>1</strong> sur 6</p>
+          <span class="wizard-eyebrow">Mise en situation</span>
+          <div class="scenario">
+            <span class="scenario-channel">Courriel</span>
+            <p class="scenario-meta"><strong>De :</strong> Desjardins &lt;securite@desjardins-verification.com&gt;<br><strong>Objet :</strong> Alerte de sécurité : activité inhabituelle sur votre compte AccèsD</p>
+            <p class="scenario-body">Cher membre, une connexion suspecte a été détectée sur votre compte. Pour éviter le blocage, confirmez votre identité dès maintenant : <span style="color:var(--brand-blue);text-decoration:underline;">http://desjardins-verification.com/accesd</span></p>
+          </div>
+          <div class="wizard-choices">
+            <button type="button" class="wizard-choice" data-choice="hameconnage">
+              <span class="wizard-choice-icon" aria-hidden="true">&#9888;&#65039;</span>
+              Arnaque
+            </button>
+            <button type="button" class="wizard-choice" data-choice="legitime">
+              <span class="wizard-choice-icon" aria-hidden="true">&#9989;</span>
+              Légitime
+            </button>
+          </div>
+          <noscript>
+            <div class="alert alert-info"><p>Ce quiz nécessite JavaScript pour être interactif. Activez-le, ou <a href="/residentiel/rendez-vous.html">demandez-nous un coup de main</a>.</p></div>
+          </noscript>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Les 4 réflexes ═══ -->
+<section class="res-section" aria-labelledby="reflexes-title">
+  <div class="res-wrap">
+    <div class="res-head">
+      <span class="res-eyebrow">// à retenir</span>
+      <h2 id="reflexes-title">4 réflexes qui déjouent presque toutes les arnaques</h2>
+      <p>La technologie filtre beaucoup de menaces, mais c'est votre vigilance qui fait la vraie différence. Retenez ces réflexes simples — et partagez-les avec vos proches.</p>
+    </div>
+    <div class="res-grid res-grid--2">
+      <article class="res-card">
+        <h3>Vérifiez l'adresse complète</h3>
+        <p>Regardez l'adresse d'expédition en entier, pas seulement le nom affiché. Une lettre en trop, un domaine bizarre (<span style="font-family:var(--font-mono)">desjardins-verification.com</span>) trahissent la fraude.</p>
+      </article>
+      <article class="res-card">
+        <h3>Ne cliquez jamais sous pression</h3>
+        <p>« Urgent », « sous 24 h », « votre compte sera bloqué » : la peur et l'empressement sont les outils du fraudeur. Prenez le temps de vérifier.</p>
+      </article>
+      <article class="res-card">
+        <h3>Passez par le site officiel</h3>
+        <p>Votre banque, Revenu Québec ou Postes Canada ne demandent jamais vos informations par un lien. Tapez vous-même l'adresse officielle ou ouvrez l'application.</p>
+      </article>
+      <article class="res-card">
+        <h3>Activez la double authentification</h3>
+        <p>La double authentification (2FA) ajoute un code en plus du mot de passe. Même si un mot de passe est volé, votre compte reste protégé.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Bande CTA ═══ -->
+<section class="res-section res-section--tight">
+  <div class="res-wrap">
+    <div class="res-band">
+      <h2>Un doute sur un courriel, un SMS ou un appel ?</h2>
+      <p>On regarde ça avec vous, sans jugement. Sécurisation des comptes, mots de passe et double authentification — pour vous ou pour un proche moins à l'aise avec la techno.</p>
+      <div class="res-band-cta">
+        <a href="/residentiel/rendez-vous.html" class="btn-cta btn-cta--primary">Prendre rendez-vous →</a>
+        <a href="/residentiel/services.html" class="res-btn-ghost">Voir nos services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Pied de page résidentiel ═══ -->
+<footer class="res-footer">
+  <div class="res-wrap res-footer-top">
+    <div class="res-footer-brand">
+      <a href="/residentiel/index.html">
+        <picture>
+          <source srcset="/logo-nav.webp" type="image/webp">
+          <img src="/logo-nav.png" alt="BG Informatique" width="153" height="22">
+        </picture>
+      </a>
+      <p>Soutien informatique résidentiel, à distance et à domicile, à Saint-Jérôme et dans les Laurentides.</p>
+      <a href="/" class="res-footer-switch">↔ Vous êtes une entreprise ?</a>
+    </div>
+    <div class="res-footer-cols">
+      <div class="res-footer-col">
+        <span class="h">Navigation</span>
+        <a href="/residentiel/services.html">Services</a>
+        <a href="/residentiel/methode.html">Méthode</a>
+        <a href="/residentiel/tarifs.html">Tarifs</a>
+        <a href="/residentiel/faq.html">FAQ</a>
+        <a href="/residentiel/rendez-vous.html">Rendez-vous</a>
+      </div>
+      <div class="res-footer-col">
+        <span class="h">Aide gratuite</span>
+        <a href="/guides-depannage.html">Centre d'aide</a>
+        <a href="/outils-diagnostic.html">Outil de diagnostic Windows</a>
+        <a href="/residentiel/outil-mot-de-passe.html">Testeur de mot de passe</a>
+        <a href="/residentiel/quiz-hameconnage.html">Quiz hameçonnage</a>
+      </div>
+      <div class="res-footer-col">
+        <span class="h">Contact</span>
+        <a href="tel:+14502319199">450 231-9199</a>
+        <span>Saint-Jérôme &amp; Laurentides</span>
+        <span>Lun–Ven · réponse le jour même</span>
+      </div>
+    </div>
+  </div>
+  <div class="res-footer-bottom">
+    <div class="res-wrap">
+      <span>© 2026 BG Informatique · Résidentiel</span>
+      <span>Sans engagement · Sans vente de matériel</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Menu mobile
+  (function () {
+    var h = document.getElementById('res-header');
+    var b = h && h.querySelector('.res-burger');
+    b && b.addEventListener('click', function () {
+      var open = h.classList.toggle('is-open');
+      b.setAttribute('aria-expanded', open);
+      b.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+  })();
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  var QUESTIONS = [
+    {
+      channel: "Courriel",
+      from: "Desjardins &lt;securite@desjardins-verification.com&gt;",
+      subject: "Alerte de sécurité : activité inhabituelle sur votre compte AccèsD",
+      body: "Cher membre, une connexion suspecte a été détectée sur votre compte. Pour éviter le blocage, confirmez votre identité dès maintenant : <span class=\"link\">http://desjardins-verification.com/accesd</span>",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était une arnaque.</strong> Le domaine <span class=\"mono\">desjardins-verification.com</span> n'appartient pas à Desjardins (ce serait <span class=\"mono\">desjardins.com</span>). Aucune banque ne vous demande de « confirmer votre identité » par un lien reçu dans un courriel.</p><p>Ne cliquez jamais : ouvrez l'application AccèsD ou tapez vous-même <span class=\"mono\">desjardins.com</span> dans votre navigateur.</p>"
+    },
+    {
+      channel: "SMS",
+      from: "+1 438 555-0142",
+      subject: "Postes Canada",
+      body: "POSTES CANADA : votre colis est en attente. Des frais de douane de 2,99 $ sont requis pour la livraison. Réglez ici sous 48 h : postescanada-livraison.info/paiement",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était une arnaque.</strong> Postes Canada n'envoie pas de liens de paiement par SMS depuis un numéro cellulaire inconnu. Le domaine <span class=\"mono\">postescanada-livraison.info</span> est frauduleux, et le petit montant (2,99 $) sert à récolter vos données de carte.</p><p>Vérifiez toujours un suivi de colis directement sur le site officiel, jamais via le lien reçu.</p>"
+    },
+    {
+      channel: "Courriel",
+      from: "Netflix &lt;no-reply@netflix-paiement.net&gt;",
+      subject: "Votre abonnement est suspendu — mise à jour de paiement requise",
+      body: "Nous n'avons pas pu traiter votre dernier paiement. Mettez à jour vos informations bancaires sous 24 h pour éviter l'interruption de votre abonnement : <span class=\"link\">netflix-paiement.net/billing</span>",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était une arnaque.</strong> Le domaine <span class=\"mono\">netflix-paiement.net</span> n'est pas celui de Netflix (<span class=\"mono\">netflix.com</span>). Le ton alarmiste et l'échéance de 24 h servent à vous faire entrer votre carte à la hâte.</p><p>Gérez toujours un abonnement en ouvrant l'application ou en tapant vous-même l'adresse officielle, jamais via le lien du courriel.</p>"
+    },
+    {
+      channel: "Courriel — confirmation de commande",
+      from: "Amazon.ca &lt;expedition@amazon.ca&gt;",
+      subject: "Votre colis a été expédié — arrivée prévue mardi",
+      body: "Bonjour, votre commande d'un chargeur USB-C a été expédiée. Suivez votre colis dans la section « Vos commandes » sur amazon.ca. Aucune action n'est requise de votre part.",
+      answer: "legitime",
+      explanation: "<p><strong>C'était légitime.</strong> Le message provient du domaine officiel <span class=\"mono\">amazon.ca</span>, ne crée aucune urgence, ne demande ni carte ni mot de passe, et vous invite à passer par « Vos commandes » plutôt que par un lien.</p><p>Bon réflexe malgré tout : vérifiez le suivi directement dans votre compte Amazon plutôt qu'en cliquant sur un lien.</p>"
+    },
+    {
+      channel: "SMS",
+      from: "+1 581 555-0177",
+      subject: "Revenu Québec",
+      body: "REVENU QUÉBEC : vous avez droit à un remboursement de 274,50 $. Réclamez votre dépôt avant 72 h : rq-remboursement.info/depot",
+      answer: "hameconnage",
+      explanation: "<p><strong>C'était une arnaque.</strong> Revenu Québec n'annonce pas de remboursement par SMS avec un lien. Le domaine <span class=\"mono\">rq-remboursement.info</span> est frauduleux : il sert à récolter votre numéro d'assurance sociale et vos informations bancaires.</p><p>Vérifiez toujours ce genre d'avis dans votre espace « Mon dossier » officiel sur <span class=\"mono\">revenuquebec.ca</span>.</p>"
+    },
+    {
+      channel: "Virement Interac",
+      from: "notification@interac.ca",
+      subject: "Marie Lavoie vous a envoyé 40,00 $",
+      body: "Marie Lavoie vous a envoyé un virement Interac de 40,00 $ avec la note « pour le souper de samedi ». Vous connaissez Marie et attendiez ce remboursement. Déposez le montant via votre institution habituelle.",
+      answer: "legitime",
+      explanation: "<p><strong>C'était légitime.</strong> La notification provient du domaine officiel <span class=\"mono\">interac.ca</span>, l'expéditeur est une personne que vous connaissez, et le montant comme la note correspondent à ce que vous attendiez.</p><p>Prudence tout de même : pour déposer, passez par l'application de votre banque. Ne saisissez jamais vos identifiants bancaires sur une page tierce ouverte depuis le message.</p>"
+    }
+  ];
+
+  var GOOD = "C'est exact !";
+  var BAD = "Raté&hellip;";
+  var TOTAL = QUESTIONS.length;
+
+  var app = document.getElementById("quiz-app");
+  var progressDots = [].slice.call(document.querySelectorAll("#quiz-progress .wizard-progress-dot"));
+  if (!app) { return; }
+
+  var state = { index: 0, score: 0, answered: false };
+
+  function renderQuestion() {
+    state.answered = false;
+    var q = QUESTIONS[state.index];
+    var html = "";
+    html += '<p class="quiz-tally">Question <strong>' + (state.index + 1) + '</strong> sur ' + TOTAL + '</p>';
+    html += '<span class="wizard-eyebrow">Mise en situation</span>';
+    html += '<div class="scenario">';
+    html += '<span class="scenario-channel">' + q.channel + '</span>';
+    html += '<p class="scenario-meta"><strong>De :</strong> ' + q.from + '<br><strong>Objet :</strong> ' + q.subject + '</p>';
+    html += '<p class="scenario-body">' + q.body + '</p>';
+    html += '</div>';
+    html += '<div class="wizard-choices" id="quiz-choices">';
+    html += '<button type="button" class="wizard-choice" data-choice="hameconnage"><span class="wizard-choice-icon" aria-hidden="true">&#9888;&#65039;</span>Arnaque</button>';
+    html += '<button type="button" class="wizard-choice" data-choice="legitime"><span class="wizard-choice-icon" aria-hidden="true">&#9989;</span>Légitime</button>';
+    html += '</div>';
+    html += '<div id="quiz-feedback"></div>';
+    app.innerHTML = html;
+
+    var choices = app.querySelectorAll(".wizard-choice");
+    [].forEach.call(choices, function (btn) {
+      btn.addEventListener("click", function () { onAnswer(btn); });
+    });
+  }
+
+  function onAnswer(btn) {
+    if (state.answered) { return; }
+    state.answered = true;
+
+    var q = QUESTIONS[state.index];
+    var chosen = btn.getAttribute("data-choice");
+    var correct = (chosen === q.answer);
+    if (correct) { state.score++; }
+
+    var choices = app.querySelectorAll(".wizard-choice");
+    [].forEach.call(choices, function (b) {
+      b.setAttribute("disabled", "disabled");
+      if (b.getAttribute("data-choice") === q.answer) {
+        b.classList.add("selected");
+      }
+    });
+    if (!correct) { btn.classList.remove("selected"); }
+
+    if (progressDots[state.index]) { progressDots[state.index].classList.add("done"); }
+
+    var fb = document.getElementById("quiz-feedback");
+    var badge = correct
+      ? '<span class="badge-ok">' + GOOD + '</span>'
+      : '<span class="badge-bad">' + BAD + '</span>';
+    var last = (state.index === TOTAL - 1);
+    var btnLabel = last ? "Voir mon résultat" : "Question suivante";
+    fb.innerHTML =
+      '<div class="quiz-explain">' + badge + q.explanation + '</div>' +
+      '<div class="wizard-nav"><span></span>' +
+      '<button type="button" class="wizard-btn-next" id="quiz-next">' + btnLabel + '</button></div>';
+
+    var next = document.getElementById("quiz-next");
+    next.addEventListener("click", advance);
+    next.focus();
+  }
+
+  function advance() {
+    if (state.index < TOTAL - 1) {
+      state.index++;
+      renderQuestion();
+    } else {
+      renderResult();
+    }
+  }
+
+  function resultMessage(score) {
+    if (score <= 2) {
+      return {
+        icon: "&#9888;&#65039;",
+        title: "À surveiller",
+        lead: "Plusieurs pièges vous ont échappé — c'est normal, les fraudeurs sont doués. Un coup de main pour sécuriser vos comptes (et ceux de vos proches) change vraiment la donne."
+      };
+    }
+    if (score <= 4) {
+      return {
+        icon: "&#128077;",
+        title: "Bien, mais prudence",
+        lead: "Vous avez un bon instinct, mais quelques arnaques bien montées passent encore. Restez vigilant — surtout pour les proches moins à l'aise avec la techno."
+      };
+    }
+    return {
+      icon: "&#127942;",
+      title: "Œil de lynx",
+      lead: "Bravo, vous démasquez les pièges avec brio ! Aidez maintenant vos parents ou grands-parents à en faire autant : un seul mauvais clic peut coûter cher."
+    };
+  }
+
+  function renderResult() {
+    [].forEach.call(progressDots, function (d) { d.classList.add("done"); });
+    var m = resultMessage(state.score);
+    var html = "";
+    html += '<div class="wizard-result">';
+    html += '<span class="wizard-result-icon" aria-hidden="true">' + m.icon + '</span>';
+    html += '<h2>' + m.title + '</h2>';
+    html += '<p class="result-lead">Score : <strong>' + state.score + ' / ' + TOTAL + '</strong>. ' + m.lead + '</p>';
+    html += '<div class="result-service-card">';
+    html += '<span class="result-service-label">Les 4 réflexes clés</span>';
+    html += '<h3>À retenir pour toute la maisonnée</h3>';
+    html += '<p>1. Vérifiez l\'adresse d\'expédition complète, pas le nom affiché.<br>' +
+            '2. Ne cliquez jamais sous pression ou par urgence.<br>' +
+            '3. Banque, Revenu Québec et Postes Canada ne demandent jamais vos infos par lien.<br>' +
+            '4. Activez la double authentification (2FA) sur vos comptes importants.</p>';
+    html += '</div>';
+    html += '<div class="wizard-result-actions">';
+    html += '<a class="btn-cta btn-cta--primary" href="/residentiel/rendez-vous.html">Prendre rendez-vous</a>';
+    html += '<a class="btn-cta btn-cta--secondary" href="/residentiel/services.html">Nos services</a>';
+    html += '</div>';
+    html += '<button type="button" class="wizard-restart" id="quiz-restart">&#8635; Recommencer le quiz</button>';
+    html += '</div>';
+    app.innerHTML = html;
+
+    document.getElementById("quiz-restart").addEventListener("click", restart);
+  }
+
+  function restart() {
+    state.index = 0;
+    state.score = 0;
+    state.answered = false;
+    [].forEach.call(progressDots, function (d) { d.classList.remove("done"); });
+    renderQuestion();
+  }
+
+  renderQuestion();
+})();
+</script>
+
+<!-- GoatCounter analytics : sans cookie, sans donnée personnelle -->
+<script data-goatcounter="https://bginformatique.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+
+<a href="tel:+14502319199" class="mobile-call-bar" aria-label="Appeler BG Informatique au 450 231-9199">Appeler maintenant — 450 231-9199</a>
+</body>
+</html>
